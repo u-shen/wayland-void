@@ -1,0 +1,55 @@
+# Set My Keymaps:
+# ===============================================================================#
+Keymap = "/home/lli/.moc/keymap"
+
+# Set Theme:
+# ================================================================================#
+Theme = gruvbox_theme
+XTermTheme = gruvbox_theme
+
+# Directory in which you store music files:
+# ================================================================================#
+MusicDir = "/home/lli/music"
+ReadTags = yes
+
+# How to sort? FileName is the only option for now:
+# ================================================================================#
+Sort = FileName
+
+# title - artist name:
+# ================================================================================#
+FormatString = "%(t:%t - :)%(a:%a:)"
+
+# Turn on shuffle:
+# ================================================================================#
+Shuffle = yes
+
+# Turn on repeat:
+# ================================================================================#
+Repeat = yes
+
+# Turn on AutoNext:
+# ================================================================================#
+AutoNext = yes
+
+# Remember the playlist after exit ?
+# ================================================================================#
+SavePlaylist = yes
+
+# When using more than one client (interface) at a time, do the share the
+# playlist ?
+# ================================================================================#
+SyncPlaylist = yes
+
+# Number items in the playlist:
+# ================================================================================#
+PlaylistNumbering = yes
+
+# When the song changes, should the menu be scrolled so that the currently
+# played file is visible ?
+# ================================================================================#
+FollowPlayedFile = yes
+
+# Display full paths instead of just file names in the playlist ?
+# ================================================================================#
+PlaylistFullPaths = no

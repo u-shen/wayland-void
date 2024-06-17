@@ -1,0 +1,10 @@
+[Default]
+save_dir=$HOME/pix/screenshots/
+save_filename_format=%Y%m%d-%H%M%S_swappy_area.png
+show_panel=false
+line_size=5
+text_size=20
+text_font=JetBrains Mono Nerd Font
+paint_mode=arrow
+early_exit=false
+fill_shape=false

@@ -1,0 +1,51 @@
+From 55c22683c88c9816ceba6351a716fbe005555abd Mon Sep 17 00:00:00 2001
+From: wochap <gean.marroquin@gmail.com>
+Date: Thu, 11 Apr 2024 12:43:29 -0500
+Subject: [PATCH] add ability to change cursor's theme and size
+
+---
+ config.def.h | 2 ++
+ dwl.c        | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 8847e58..3189d48 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -13,6 +13,8 @@ static const float focuscolor[]            = COLOR(0x005577ff);
+ static const float urgentcolor[]           = COLOR(0xff0000ff);
+ /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
+ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
++static const char cursortheme[]            = ""; /* theme from /usr/share/cursors/xorg-x11 */
++static const unsigned int cursorsize       = 24;
+ 
+ /* tagging - TAGCOUNT must be no greater than 31 */
+ #define TAGCOUNT (9)
+diff --git a/dwl.c b/dwl.c
+index bf763df..961e2f1 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -2274,7 +2274,9 @@ setup(void)
+ 
+ 	int i, sig[] = {SIGCHLD, SIGINT, SIGTERM, SIGPIPE};
+ 	struct sigaction sa = {.sa_flags = SA_RESTART, .sa_handler = handlesig};
++	char cursorsize_str[3];
+ 	sigemptyset(&sa.sa_mask);
++	sprintf(cursorsize_str, "%d", cursorsize);
+ 
+ 	for (i = 0; i < (int)LENGTH(sig); i++)
+ 		sigaction(sig[i], &sa, NULL);
+@@ -2412,8 +2414,8 @@ setup(void)
+ 	 * Xcursor themes to source cursor images from and makes sure that cursor
+ 	 * images are available at all scale factors on the screen (necessary for
+ 	 * HiDPI support). Scaled cursors will be loaded with each output. */
+-	cursor_mgr = wlr_xcursor_manager_create(NULL, 24);
+-	setenv("XCURSOR_SIZE", "24", 1);
++	cursor_mgr = wlr_xcursor_manager_create(cursortheme, cursorsize);
++	setenv("XCURSOR_SIZE", cursorsize_str, 1);
+ 
+ 	/*
+ 	 * wlr_cursor *only* displays an image on screen. It does not move around
+-- 
+2.43.2
+

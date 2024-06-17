@@ -1,0 +1,35 @@
+#!/bin/sh
+
+cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+cache="$cachedir/wmenu_run"
+
+[ -d "$cachedir" ] || mkdir -p "$cachedir"
+
+uptodate() {
+	[ -f "$cache" ] || return 1
+	IFS=:
+	for path in $PATH; do
+		# non-POSIX
+		test "$path" -nt "$cache" && return 1
+	done
+	return 0
+}
+
+bins() {
+	IFS=:
+	for path in $PATH; do
+		for bin in "$path"/*; do
+			[ -x "$bin" ] && echo "${bin##*/}"
+		done
+	done
+}
+
+path() {
+	if uptodate; then
+		cat "$cache"
+	else
+		bins | sort -u | tee "$cache"
+	fi
+}
+
+path | wmenu -l 6 -if "Maple Mono NF 11" -p "RUN PROGRAMME: " -N 0d0e0f -n ebdbb2 -M 689d6a -m 1d2021 -S 689d6a -s 1d2021 "$@" | ${SHELL:-"/bin/sh"} &

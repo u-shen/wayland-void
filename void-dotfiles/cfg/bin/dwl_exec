@@ -1,0 +1,3 @@
+#!/bin/sh
+~/.config/bin/dwl_bar | dwlb -status-stdin all &
+dwl -s dwlb

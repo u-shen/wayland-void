@@ -1,0 +1,77 @@
+From ff29aba2f45d5acdee66efaf7cf94ab66145c0ed Mon Sep 17 00:00:00 2001
+From: wochap <gean.marroquin@gmail.com>
+Date: Thu, 11 Apr 2024 14:19:24 -0500
+Subject: [PATCH] rules for floating windows support default x, y, width,
+ height If the width or height is less than or equal to 1, then the value will
+ be interpreted as a percentage. For example, 0.5 represents 50%, 0.25
+ represents 25%, and 1 represents 100%. NOTE: Some clients, like Thunar, have
+ minimum width/height
+
+`floating_relative_to_monitor` allows the user to choose whether to position relative to the monitor or relative to the window area.
+---
+ config.def.h |  7 ++++---
+ dwl.c        | 16 ++++++++++++++++
+ 2 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 8847e58..ebaf1ab 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -13,6 +13,7 @@ static const float focuscolor[]            = COLOR(0x005577ff);
+ static const float urgentcolor[]           = COLOR(0xff0000ff);
+ /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
+ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
++static const int floating_relative_to_monitor = 0; /* 0 means center floating relative to the window area */
+ 
+ /* tagging - TAGCOUNT must be no greater than 31 */
+ #define TAGCOUNT (9)
+@@ -21,10 +22,10 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
+ static int log_level = WLR_ERROR;
+ 
+ static const Rule rules[] = {
+-	/* app_id             title       tags mask     isfloating   monitor */
++	/* app_id             title       tags mask     isfloating   monitor   x   y   width   height */
+ 	/* examples: */
+-	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
+-	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
++	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1,       0,  0,  1000,   0.75 }, /* Start on currently visible tags floating, not tiled */
++	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1,       0,  0,  0,      0 },/* Start on ONLY tag "9" */
+ };
+ 
+ /* layout(s) */
+diff --git a/dwl.c b/dwl.c
+index bf763df..94e4d7d 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -228,6 +228,10 @@ typedef struct {
+ 	uint32_t tags;
+ 	int isfloating;
+ 	int monitor;
++	int x;
++	int y;
++	float w;
++	float h;
+ } Rule;
+ 
+ typedef struct {
+@@ -468,6 +472,18 @@ applyrules(Client *c)
+ 				if (r->monitor == i++)
+ 					mon = m;
+ 			}
++			if (c->isfloating) {
++				struct wlr_box b = floating_relative_to_monitor ? mon->m : mon->w;
++				int newwidth = ROUND(r->w ? (r->w <= 1 ? b.width * r->w : r->w) : c->geom.width);
++				int newheight = ROUND(r->h ? (r->h <= 1 ? b.height * r->h : r->h) : c->geom.height);
++
++				resize(c, (struct wlr_box){
++					.x = r->x ? r->x + b.x : (b.width - newwidth) / 2 + b.x,
++					.y = r->y ? r->y + b.y : (b.height - newheight) / 2 + b.y,
++					.width = newwidth,
++					.height = newheight,
++				}, 1);
++			}
+ 		}
+ 	}
+ 	setmon(c, mon, newtags);
+-- 
+2.43.2
