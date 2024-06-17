@@ -9,8 +9,6 @@ return {
 		keys = {
 			{ "<TAB>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-			{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 			{ "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
