@@ -12,12 +12,13 @@ return {
 	},
 	config = function()
 		function on_attach(client, bufnr)
+			vim.keymap.set("n", "<leader>p", "<Cmd>LspStop<CR>", { buffer = bufnr })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-			vim.keymap.set("n", "<Space>gd", vim.lsp.buf.definition, { buffer = bufnr })
-			vim.keymap.set("n", "<Space>gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
-			vim.keymap.set("n", "<Space>gi", vim.lsp.buf.implementation, { buffer = bufnr })
-			vim.keymap.set("n", "<Space>ca", vim.lsp.buf.code_action, { buffer = bufnr })
-			vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
 		end
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
