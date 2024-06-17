@@ -176,18 +176,4 @@ return {
 		"dominikduda/vim_current_word",
 		enabled = true,
 	},
-
-	-----------------------------------------------------------
-	-- better-escape.nvim
-	-----------------------------------------------------------
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertCharPre",
-		opts = {
-			mapping = { "jk", "kj", "jj", "kk" },
-			keys = "<Esc>",
-			timeout = 300,
-			clear_empty_lines = false,
-		},
-	},
 }

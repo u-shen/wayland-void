@@ -23,9 +23,9 @@ return {
 			{ "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "Open Lazy Git" },
 		},
 		config = function()
-			vim.cmd([[
-			let g:lazygit_floating_window_use_plenary = 1
-			]])
+			vim.g.lazygit_floating_window_winblend = 1
+			vim.g.lazygit_floating_window_use_plenary = 1
+			vim.g.lazygit_floating_window_scaling_factor = 0.9
 		end,
 	},
 
