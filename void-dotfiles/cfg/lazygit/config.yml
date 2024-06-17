@@ -1,15 +1,12 @@
+# ----------------------------------------------------------- #
+# --  Git For Lazy Peaple like me:                            #
+# ----------------------------------------------------------- #
 gui:
-  windowSize: "normal"
-  scrollHeight: 5
-  scrollPastBottom: true
-  scrollOffMargin: 6
-  scrollOffBehavior: "margin"
-  sidePanelWidth: 0.3
-  expandFocusedSidePanel: false
+  scrollHeight: 2
   mainPanelSplitMode: "flexible"
+  enlargedSideViewLocation: "left"
   language: "en"
-  timeFormat: "02 Jan 06" # https://pkg.go.dev/time#Time.Format
-  shortTimeFormat: "3:04PM"
+  nerdFontsVersion: "3"
   theme:
     activeBorderColor:
       - green
@@ -35,70 +32,12 @@ gui:
       - default
   commitLength:
     show: true
-  mouseEvents: true
-  skipDiscardChangeWarning: false
-  skipStashWarning: false
-  showFileTree: false
-  showListFooter: true
-  showRandomTip: false
-  showBranchCommitHash: true
-  showBottomLine: false
-  showPanelJumps: true
-  showCommandLog: true
-  nerdFontsVersion: "3"
-  commandLogSize: 8
-  splitDiff: "auto"
-  skipRewordInEditorWarning: false
-  border: "single"
-  animateExplosion: true
+
 git:
   paging:
-    colorArg: always
-    pager: delta --paging=never
+    colorArg: "always"
+    pager: "delta --dark --paging=never"
   commit:
-    signOff: false
-  merging:
-    manualCommit: false
-    # extra args passed to `git merge`, e.g. --no-ff
-    args: ""
-  log:
-    # one of date-order, author-date-order, topo-order or default.
-    # topo-order makes it easier to read the git log graph, but commits may not
-    # appear chronologically. See https://git-scm.com/docs/git-log#_commit_ordering
-    order: "topo-order"
-    # one of always, never, when-maximised
-    # this determines whether the git graph is rendered in the commits panel
-    showGraph: "when-maximised"
-    # displays the whole git graph by default in the commits panel (equivalent to passing the `--all` argument to `git log`)
-    showWholeGraph: false
-  skipHookPrefix: WIP
-  # The main branches. We colour commits green if they belong to one of these branches,
-  # so that you can easily see which commits are unique to your branch (coloured in yellow)
-  mainBranches: [master, main]
-  autoFetch: true
-  autoRefresh: true
-  fetchAll: true
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
-  overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
-  disableForcePushing: false
-  parseEmoji: false
-os:
-  copyToClipboardCmd: "" # See 'Custom Command for Copying to Clipboard' section
-  editPreset: "" # see 'Configuring File Editing' section
-  edit: ""
-  editAtLine: ""
-  editAtLineAndWait: ""
-  open: ""
-  openLink: ""
-refresher:
-  refreshInterval: 10 # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option 'git.autoRefresh'.
-  fetchInterval: 30 # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.
-update:
-  method: prompt # can be: prompt | background | never
-  days: 14 # how often an update is checked for
-confirmOnQuit: false
-quitOnTopLevelReturn: false
-disableStartupPopups: false
-notARepository: "prompt"
-promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
+    signoff: false
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
