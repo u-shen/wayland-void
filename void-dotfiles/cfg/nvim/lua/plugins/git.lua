@@ -11,8 +11,6 @@ return {
 			"LazyGit",
 			"LazyGitConfig",
 			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
 		},
 		-- optional for floating window border decoration
 		dependencies = {
@@ -22,7 +20,13 @@ return {
 		-- order to load the plugin when the command is run for the first time
 		keys = {
 			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "Open Lazy Git" },
+			{ "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "Open Lazy Git" },
 		},
+		config = function()
+			vim.cmd([[
+			let g:lazygit_floating_window_use_plenary = 1
+			]])
+		end,
 	},
 
 	-----------------------------------------------------------
