@@ -6,7 +6,6 @@ return {
 		"stevearc/oil.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "-", "<cmd>Oil<cr>", desc = "Oil Floatings" },
 			{ "<leader>o", "<cmd>Oil <cr>", desc = "Oil NoNFloatings" },
 			{ "<leader>fo", "<cmd>Oil --float<cr>", desc = "Oil Floatings" },
 		},

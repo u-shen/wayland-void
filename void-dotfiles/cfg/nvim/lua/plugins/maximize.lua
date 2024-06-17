@@ -5,6 +5,6 @@ return {
 	"szw/vim-maximizer",
 	event = "VeryLazy",
 	keys = {
-		{ "<leader>z", "<cmd>MaximizerToggle<CR>", { desc = "Maximize current window" } },
+		{ "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize current window" } },
 	},
 }
