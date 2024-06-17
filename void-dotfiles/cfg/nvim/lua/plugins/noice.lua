@@ -4,7 +4,7 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		{ "MunifTanjim/nui.nvim", lazy = true },
 		{
@@ -36,12 +36,9 @@ return {
 		},
 	},
 	opts = {
-		notify = {
-			view = "mini",
-		},
 		cmdline = {
 			enabled = true,
-			-- view = "cmdline",
+			view = "cmdline",
 			format = {
 				cmdline = { icon = "  " },
 				search_down = { icon = "  " },
@@ -58,7 +55,7 @@ return {
 		},
 		presets = {
 			bottom_search = true,
-			command_palette = true,
+			command_palette = false,
 			long_message_to_split = true,
 			inc_rename = true,
 			lsp_doc_border = true,
