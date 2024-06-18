@@ -12,8 +12,8 @@ return {
 	},
 	config = function()
 		function on_attach(client, bufnr)
-			vim.keymap.set("n", "<leader>p", "<Cmd>LspStop<CR>", { buffer = bufnr })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>p", "<Cmd>LspStop<CR>", { buffer = bufnr })
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
 			vim.keymap.set("n", "<leader>gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
 			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr })
