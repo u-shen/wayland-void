@@ -8,7 +8,7 @@ return {
 		enabled = true,
 		priority = 1000,
 		config = function()
-			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_background = "medium"
 			vim.g.gruvbox_material_inlay_hints_background = "dimmed"
 			vim.g.gruvbox_material_float_style = "dim"
 			vim.g.gruvbox_material_current_word = "grey background"
@@ -20,7 +20,7 @@ return {
 			vim.g.gruvbox_material_diagnostic_line_highlight = 1
 			vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 			vim.cmd([[
-			let g:gruvbox_material_colors_override = {'bg0': ['#141617', '234'], 'bg2': ['#1b1b1b', '235'], "bg_dim":['#0d0e0f', '236']}
+			let g:gruvbox_material_colors_override = {'bg0': ['#282828', '234'], 'bg2': ['#1b1b1b', '235'], "bg_dim":['#1b1b1b', '236']}
             colorscheme gruvbox-material
 			]])
 		end,

@@ -1,15 +1,15 @@
-@define-color cc-bg #0d0e0f;
-@define-color noti-bg #141617;
-@define-color noti-bg-darker #0d0e0f;
-@define-color noti-bg-hover #0d0e0f;
-@define-color noti-bg-focus #0d0e0f;
-@define-color noti-close-bg #0d0e0f;
+@define-color cc-bg #202020;
+@define-color noti-bg #282828;
+@define-color noti-bg-darker #202020;
+@define-color noti-bg-hover #202020;
+@define-color noti-bg-focus #202020;
+@define-color noti-close-bg #202020;
 @define-color noti-close-bg-hover #2E3030;
 @define-color text-color #d4be98;
 @define-color text-color-disabled #928374;
 @define-color bg-selected #1B1D1D;
 
-@define-color black     #141617;
+@define-color black     #202020;
 @define-color blue      #7daea3;
 @define-color green     #a9b665;
 @define-color yellow    #000000;
