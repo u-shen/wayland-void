@@ -85,8 +85,8 @@ return {
 		opts = {
 			signcolumn = true,
 			numhl = true,
-			linehl = true,
-			word_diff = true,
+			linehl = false,
+			word_diff = false,
 			watch_gitdir = { interval = 1000, follow_files = true },
 			attach_to_untracked = true,
 			current_line_blame = true,
@@ -110,7 +110,6 @@ return {
 				row = 0,
 				col = 1,
 			},
-			yadm = { enable = false },
 		},
 	},
 }
