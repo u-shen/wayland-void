@@ -29,14 +29,12 @@ c.tabs.select_on_remove = "prev"
 # =================================================================#
 c.statusbar.show = "never"
 c.statusbar.position = "bottom"
-c.statusbar.widgets = ["progress", "url"]
+c.statusbar.widgets = ["url", "progress"]
 # =================================================================#
 # ===========================  URL ================================#
 # =================================================================#
-# c.url.default_page = '~/prjcts/siteWeb/newtab/index.html'
-# c.url.start_pages = '~/prjcts/siteWeb/newtab/index.html'
-# c.url.default_page = 'https://start.duckduckgo.com/'
-# c.url.start_pages = 'https://start.duckduckgo.com/'
+c.url.default_page = "https://start.duckduckgo.com/"
+c.url.start_pages = "https://start.duckduckgo.com/"
 # =================================================================#
 # ===========================  Downloads ==========================#
 # =================================================================#
@@ -48,7 +46,7 @@ c.downloads.remove_finished = 5000
 # =================================================================#
 # ===========================  Content   ==========================#
 # =================================================================#
-c.content.autoplay = False
+c.content.autoplay = True
 c.content.blocking.enabled = True
 c.content.desktop_capture = "ask"
 c.content.headers.do_not_track = True
@@ -60,14 +58,14 @@ c.content.media.audio_video_capture = "ask"
 c.content.media.video_capture = "ask"
 c.content.notifications.enabled = "ask"
 c.content.notifications.presenter = "auto"
-c.content.pdfjs = False
-c.content.private_browsing = False
+c.content.pdfjs = True
+c.content.private_browsing = True
 # =================================================================#
 # ====================== Privacy ==================================#
 # =================================================================#
-c.content.webgl = False
-c.content.canvas_reading = False
-c.content.geolocation = False
+c.content.webgl = True
+c.content.canvas_reading = True
+c.content.geolocation = True
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.cookies.accept = "no-unknown-3rdparty"
 # =================================================================#
@@ -80,27 +78,14 @@ c.content.blocking.adblock.lists = [
     "https://easylist.to/easylist/easyprivacy.txt",
 ]
 # =================================================================#
-# ====================== Enable plugins ===========================#
-# =================================================================#
-c.content.plugins = True
-c.qt.args = [
-    "ppapi-widevine-path=/usr/lib/qt/plugins/ppapi/libwidevinecdmadapter.so",
-    "widevine-path=/usr/lib/chromium/libwidevinecdm.so",
-    "ignore-gpu-blocklist",
-    "enable-gpu-rasterization",
-    "enable-accelerated-video-decode",
-    "enable-quic",
-    "enable-zero-copy",
-]
-# =================================================================#
 # ==========================  Dark mode ===========================#
 # =================================================================#
 c.colors.webpage.preferred_color_scheme = "dark"
-c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.algorithm = "lightness-cielab"
-c.colors.webpage.darkmode.threshold.foreground = 150
-c.colors.webpage.darkmode.threshold.background = 100
-c.colors.webpage.darkmode.policy.images = "smart"
+# c.colors.webpage.darkmode.enabled = True
+# c.colors.webpage.darkmode.algorithm = "lightness-cielab"
+# c.colors.webpage.darkmode.threshold.foreground = 150
+# c.colors.webpage.darkmode.threshold.background = 100
+# c.colors.webpage.darkmode.policy.images = "smart"
 # =================================================================#
 # ===========================  Others =============================#
 # =================================================================#
@@ -112,7 +97,7 @@ c.search.incremental = True
 c.scrolling.bar = "never"
 c.scrolling.smooth = True
 c.hints.leave_on_load = False
-c.auto_save.session = True
+c.auto_save.session = False
 c.session.lazy_restore = True
 c.qt.highdpi = True
 c.completion.height = "30%"
