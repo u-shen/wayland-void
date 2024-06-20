@@ -4,7 +4,7 @@
 # Template author: theova and Daniel Mulford
 # Commentary: Tinted Theming: (https://github.com/tinted-theming)
 
-base00 = "#141617"
+base00 = "#282828"
 base01 = "#202020"
 base02 = "#89b482"
 base03 = "#665c54"
