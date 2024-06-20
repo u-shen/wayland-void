@@ -1,4 +1,5 @@
 config.load_autoconfig(False)
+
 # =================================================================#
 # =========================     Font    ===========================#
 # =================================================================#
@@ -46,8 +47,7 @@ c.downloads.remove_finished = 5000
 # =================================================================#
 # ===========================  Content   ==========================#
 # =================================================================#
-c.content.autoplay = True
-c.content.blocking.enabled = True
+c.content.autoplay = False
 c.content.desktop_capture = "ask"
 c.content.headers.do_not_track = True
 c.content.images = True
@@ -58,14 +58,14 @@ c.content.media.audio_video_capture = "ask"
 c.content.media.video_capture = "ask"
 c.content.notifications.enabled = "ask"
 c.content.notifications.presenter = "auto"
-c.content.pdfjs = True
-c.content.private_browsing = True
+c.content.pdfjs = False
+c.content.private_browsing = False
 # =================================================================#
 # ====================== Privacy ==================================#
 # =================================================================#
-c.content.webgl = True
-c.content.canvas_reading = True
-c.content.geolocation = True
+c.content.webgl = False
+c.content.canvas_reading = False
+c.content.geolocation = False
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.cookies.accept = "no-unknown-3rdparty"
 # =================================================================#
@@ -90,7 +90,7 @@ c.colors.webpage.preferred_color_scheme = "dark"
 # ===========================  Others =============================#
 # =================================================================#
 c.editor.encoding = "utf-8"
-c.prompt.filebrowser = False
+c.prompt.filebrowser = True
 c.prompt.radius = 4
 c.new_instance_open_target = "tab-silent"
 c.search.incremental = True

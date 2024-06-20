@@ -90,6 +90,9 @@ eval "$(zoxide init bash)"
 alias ls="eza --long --group --icons=auto --git --sort=name --group-directories-first"
 alias ll="eza --long --group --icons=auto --git --sort=name --group-directories-first"
 alias lt="eza --long --group --icons=auto --git --only-dirs --tree --level=3 --sort=modified"
+# Cd To Zoxide
+alias cd="z"
+alias cdf="zi"
 ## NeoVim To Vim
 alias v="nvim"
 alias vi="nvim"
