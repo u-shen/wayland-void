@@ -5,7 +5,7 @@
 # Commentary: Tinted Theming: (https://github.com/tinted-theming)
 
 base00 = "#141617"
-base01 = "#3c3836"
+base01 = "#202020"
 base02 = "#89b482"
 base03 = "#665c54"
 base04 = "#bdae93"
@@ -274,28 +274,28 @@ c.colors.tabs.pinned.odd.bg = base0B
 c.colors.tabs.pinned.odd.fg = base00
 
 # Background color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.bg = base02
+c.colors.tabs.pinned.selected.even.bg = base01
 
 # Foreground color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.fg = base00
+c.colors.tabs.pinned.selected.even.fg = base04
 
 # Background color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.bg = base02
+c.colors.tabs.pinned.selected.odd.bg = base01
 
 # Foreground color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.fg = base00
+c.colors.tabs.pinned.selected.odd.fg = base04
 
 # Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = base00
+c.colors.tabs.selected.odd.fg = base02
 
 # Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = base02
+c.colors.tabs.selected.odd.bg = base01
 
 # Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = base00
+c.colors.tabs.selected.even.fg = base02
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = base02
+c.colors.tabs.selected.even.bg = base01
 
 # Background color for webpages if unset (or empty to use the theme's
 # color).
