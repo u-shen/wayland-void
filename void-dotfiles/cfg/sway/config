@@ -29,6 +29,7 @@ set {
     $menuGui fuzzel
     $fileGui nemo
     $fileCli nnn -P z
+    $swayNc swaync-client -t -sw
 }
 
 #==========================#
@@ -54,7 +55,7 @@ input "type:touchpad" {
 input "type:keyboard" {
     xkb_layout us,ara
     xkb_options caps:escape,grp:alts_toggle
-    repeat_delay 200
+    repeat_delay 150
     repeat_rate 50
 }
 seat seat0 {
@@ -99,6 +100,7 @@ output eDP-1 {
 # Define Variable colours: #
 #==========================#
 set $bg       #282828
+set $bg_dim   #202020
 set $fg       #d4be98
 set $red      #ea6962
 set $orange   #e78a4e
@@ -130,6 +132,7 @@ bindsym {
     $mod+p                  exec $menu
     $mod+d                  exec $menuGui
     $mod+Shift+n            exec $fileGui
+    $mod+Shift+d            exec $swayNc
     $mod+n                  exec "$termbidi start --class fileCli $fileCli"
     $mod+Shift+Backslash    exec "$termbidi start --class wez_float"
     $mod+Shift+Return       exec "$terminal --app-id=foot_float"
@@ -302,7 +305,7 @@ bar {
     status_command ~/.config/sway/scripts/statusbar.sh
     tray_output eDP-1
     colors {
-            background $bg
+            background $bg_dim
             statusline $fg
             #                    border     backgr.     text
             focused_workspace    $aqua      $aqua       $bg
@@ -330,25 +333,25 @@ for_window [app_id="^fileCli$"]    floating enable, resize set width 50 ppt heig
 #==========================#
 # corner:
 #==========================#
-#corner_radius 5
-#smart_corner_radius on
+# corner_radius 5
+# smart_corner_radius on
 
-## shadows
-##==========================#
-#shadows on
-#shadow_color #1d2021
-#shadow_blur_radius 20
-#default_dim_inactive 0
+# shadows
+#==========================#
+# shadows on
+# shadow_color $bg_dim
+# shadow_blur_radius 20
+# default_dim_inactive 0
 
-## blur:                    #
-##==========================#
-#blur enable
-#blur_passes 4
-#blur_radius 4
+# blur:                    #
+#==========================#
+# blur enable
+# blur_passes 4
+# blur_radius 4
 
-## layers:                  #
-##==========================#
-#layer_effects "waybar" blur enable; shadows enable, corner_radius 5
-#layer_effects "swaync-control-center" blur enable
-#layer_effects "swaync-notification-window" blur disable
-#layer_effects "gtk-layer-shell" blur enable
+# layers:                  #
+#==========================#
+# layer_effects "waybar" blur enable; shadows enable, corner_radius 5
+# layer_effects "swaync-control-center" blur enable
+# layer_effects "swaync-notification-window" blur disable
+# layer_effects "gtk-layer-shell" blur enable

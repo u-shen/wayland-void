@@ -49,7 +49,7 @@ def cli_args():
 
     """
     args = sys.argv[1:]
-    cmd = CONF.get('wmenu', 'dmenu_command', fallback=False)
+    cmd = CONF.get('dmenu', 'dmenu_command', fallback=False)
     if "-l" in args or "-p" in args:
         for nope in ['-l', '-p'] if cmd is not False else ['-p']:
             try:
@@ -97,7 +97,7 @@ def dmenu_cmd(num_lines, prompt="Networks", active_lines=None):
                 "rofi": ["-dmenu", "-p", str(prompt)],
                 "bemenu": ["-p", str(prompt)],
                 "wofi": ["-p", str(prompt)],
-                "fuzzel": ["-p", str(prompt), "-l", str(num_lines), "--log-level", "none"]}
+                "fuzzel": ["-p", str(prompt), "--log-level", "none"]}
     command = shlex.split(CONF.get('dmenu', 'dmenu_command', fallback="dmenu"))
     cmd_base = basename(command[0])
     command.extend(cli_args())
@@ -746,12 +746,11 @@ def launch_connection_editor():
     """
     terminal = CONF.get("editor", "terminal", fallback="xterm")
     gui_if_available = CONF.getboolean("editor", "gui_if_available", fallback=True)
-    guis = ["gnome-control-center", "nm-connection-editor"]
+    gui = CONF.get("editor", "gui", fallback="nm-connection-editor")
     if gui_if_available is True:
-        for gui in guis:
-            if is_installed(gui):
-                subprocess.run(gui, check=False)
-                return
+        if is_installed(gui):
+            subprocess.run(gui, check=False)
+            return
     if is_installed("nmtui"):
         subprocess.run([terminal, "-e", "nmtui"], check=False)
         return

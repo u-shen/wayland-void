@@ -19,10 +19,7 @@ return {
 			vim.g.gruvbox_material_better_performance = 1
 			vim.g.gruvbox_material_diagnostic_line_highlight = 1
 			vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-			vim.cmd([[
-			let g:gruvbox_material_colors_override = {'bg0': ['#282828', '234'], 'bg2': ['#0d0e0f', '235'], "bg_dim":['#1b1b1b', '236']}
-            colorscheme gruvbox-material
-			]])
+			vim.cmd([[colorscheme gruvbox-material]])
 		end,
 	},
 }
