@@ -88,18 +88,18 @@ return {
 		local actions = require("telescope.actions")
 		local TelescopeColor = {
 			TelescopeMatching = { fg = "#d8a657" },
-			TelescopeSelection = { fg = "#202020", bg = "#689d6a", bold = true },
+			TelescopeSelection = { fg = "#0d0e0f", bg = "#689d6a", bold = true },
 
-			TelescopePromptPrefix = { bg = "#202020" },
-			TelescopePromptNormal = { bg = "#202020" },
-			TelescopeResultsNormal = { bg = "#202020" },
-			TelescopePreviewNormal = { bg = "#202020" },
-			TelescopePromptBorder = { bg = "#202020", fg = "#202020" },
-			TelescopeResultsBorder = { bg = "#202020", fg = "#202020" },
-			TelescopePreviewBorder = { bg = "#202020", fg = "#202020" },
-			TelescopePromptTitle = { bg = "#ea6962", fg = "#202020" },
-			TelescopeResultsTitle = { fg = "#202020" },
-			TelescopePreviewTitle = { bg = "#a9b665", fg = "#202020" },
+			TelescopePromptPrefix = { bg = "#0d0e0f" },
+			TelescopePromptNormal = { bg = "#0d0e0f" },
+			TelescopeResultsNormal = { bg = "#0d0e0f" },
+			TelescopePreviewNormal = { bg = "#0d0e0f" },
+			TelescopePromptBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
+			TelescopeResultsBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
+			TelescopePreviewBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
+			TelescopePromptTitle = { bg = "#ea6962", fg = "#0d0e0f" },
+			TelescopeResultsTitle = { fg = "#0d0e0f" },
+			TelescopePreviewTitle = { bg = "#a9b665", fg = "#0d0e0f" },
 		}
 
 		for hl, col in pairs(TelescopeColor) do

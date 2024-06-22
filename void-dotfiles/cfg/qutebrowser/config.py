@@ -1,5 +1,4 @@
 config.load_autoconfig(False)
-
 # =================================================================#
 # =========================     Font    ===========================#
 # =================================================================#
@@ -18,7 +17,7 @@ c.tabs.favicons.show = "always"
 c.tabs.favicons.scale = 1
 c.tabs.last_close = "close"
 c.tabs.position = "top"
-c.tabs.show = "switching"
+c.tabs.show = "multiple"
 c.tabs.show_switching_delay = 800
 c.tabs.title.format = "{perc}{audio}{current_title}"
 c.window.title_format = "{perc}{current_title} - qutebrowser At {scroll_pos}"
@@ -47,25 +46,19 @@ c.downloads.remove_finished = 5000
 # =================================================================#
 # ===========================  Content   ==========================#
 # =================================================================#
-c.content.autoplay = False
-c.content.desktop_capture = "ask"
+c.content.autoplay = True
 c.content.headers.do_not_track = True
-c.content.images = True
-c.content.javascript.clipboard = "access-paste"
 c.content.javascript.enabled = True
+c.content.javascript.clipboard = "access-paste"
+c.content.desktop_capture = "ask"
 c.content.media.audio_capture = "ask"
 c.content.media.audio_video_capture = "ask"
 c.content.media.video_capture = "ask"
 c.content.notifications.enabled = "ask"
 c.content.notifications.presenter = "auto"
-c.content.pdfjs = False
-c.content.private_browsing = False
 # =================================================================#
 # ====================== Privacy ==================================#
 # =================================================================#
-c.content.webgl = False
-c.content.canvas_reading = False
-c.content.geolocation = False
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.cookies.accept = "no-unknown-3rdparty"
 # =================================================================#
@@ -154,7 +147,7 @@ config.bind(
 config.bind("wi", "devtools bottom")
 config.bind("<Ctrl-p>", "hint links spawn mpv {hint-url}")
 config.bind("<Ctrl-o>", "prompt-open-download", mode="prompt")
-config.bind("<Ctrl-e>", "cmd-edit", mode="command")
+config.bind("<Ctrl-e>", "edit-url", mode="normal")
 config.bind("<Ctrl-j>", "completion-item-focus next", mode="command")
 config.bind("<Ctrl-k>", "completion-item-focus prev", mode="command")
 # =================================================================#

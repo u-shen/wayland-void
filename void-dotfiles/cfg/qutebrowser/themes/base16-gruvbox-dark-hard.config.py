@@ -1,25 +1,25 @@
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
-# Scheme name: Gruvbox dark, hard
-# Scheme author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# Scheme name: Gruvbox Material Dark, Hard
+# Scheme author: Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)
 # Template author: theova and Daniel Mulford
 # Commentary: Tinted Theming: (https://github.com/tinted-theming)
 
-base00 = "#282828"
-base01 = "#202020"
-base02 = "#89b482"
-base03 = "#665c54"
+base00 = "#141617"
+base01 = "#2a2827"
+base02 = "#504945"
+base03 = "#5a524c"
 base04 = "#bdae93"
-base05 = "#d5c4a1"
+base05 = "#ddc7a1"
 base06 = "#ebdbb2"
 base07 = "#fbf1c7"
-base08 = "#fb4934"
-base09 = "#fe8019"
-base0A = "#fabd2f"
-base0B = "#b8bb26"
-base0C = "#8ec07c"
-base0D = "#83a598"
+base08 = "#ea6962"
+base09 = "#e78a4e"
+base0A = "#d8a657"
+base0B = "#a9b665"
+base0C = "#89b482"
+base0D = "#7daea3"
 base0E = "#d3869b"
-base0F = "#d65d0e"
+base0F = "#bd6f3e"
 
 # set qutebrowser colors
 
@@ -46,7 +46,7 @@ c.colors.completion.category.border.top = base00
 c.colors.completion.category.border.bottom = base00
 
 # Foreground color of the selected completion item.
-c.colors.completion.item.selected.fg = base00
+c.colors.completion.item.selected.fg = base05
 
 # Background color of the selected completion item.
 c.colors.completion.item.selected.bg = base02
@@ -79,13 +79,13 @@ c.colors.contextmenu.disabled.fg = base04
 c.colors.contextmenu.menu.bg = base00
 
 # Foreground color of the context menu. If set to null, the Qt default is used.
-c.colors.contextmenu.menu.fg = base05
+c.colors.contextmenu.menu.fg =  base05
 
 # Background color of the context menu’s selected item. If set to null, the Qt default is used.
 c.colors.contextmenu.selected.bg = base02
 
-# Foreground color of the context menu’s selected item. If set to null, the Qt default is used.
-c.colors.contextmenu.selected.fg = base00
+#Foreground color of the context menu’s selected item. If set to null, the Qt default is used.
+c.colors.contextmenu.selected.fg = base05
 
 # Background color for the download bar.
 c.colors.downloads.bar.bg = base00
@@ -194,13 +194,13 @@ c.colors.statusbar.private.bg = base00
 c.colors.statusbar.command.fg = base04
 
 # Background color of the statusbar in command mode.
-c.colors.statusbar.command.bg = "#1b1b1b"
+c.colors.statusbar.command.bg = base01
 
 # Foreground color of the statusbar in private browsing + command mode.
 c.colors.statusbar.command.private.fg = base0E
 
 # Background color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.bg = base00
+c.colors.statusbar.command.private.bg = base01
 
 # Foreground color of the statusbar in caret mode.
 c.colors.statusbar.caret.fg = base0D
@@ -274,28 +274,28 @@ c.colors.tabs.pinned.odd.bg = base0B
 c.colors.tabs.pinned.odd.fg = base00
 
 # Background color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.bg = base01
+c.colors.tabs.pinned.selected.even.bg = base02
 
 # Foreground color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.fg = base04
+c.colors.tabs.pinned.selected.even.fg = base05
 
 # Background color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.bg = base01
+c.colors.tabs.pinned.selected.odd.bg = base02
 
 # Foreground color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.fg = base04
+c.colors.tabs.pinned.selected.odd.fg = base05
 
 # Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = base02
+c.colors.tabs.selected.odd.fg = base05
 
 # Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = base01
+c.colors.tabs.selected.odd.bg = base02
 
 # Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = base02
+c.colors.tabs.selected.even.fg = base05
 
 # Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = base01
+c.colors.tabs.selected.even.bg = base02
 
 # Background color for webpages if unset (or empty to use the theme's
 # color).
