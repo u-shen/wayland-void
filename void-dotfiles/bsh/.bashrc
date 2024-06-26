@@ -93,6 +93,9 @@ alias lt="eza --long --group --icons=auto --git --only-dirs --tree --level=3 --s
 # Cd To Zoxide
 alias cd="z"
 alias cdf="zi"
+# Fetch (System Info)
+alias fetch="fastfetch"
+alias neofetch="fastfetch"
 ## NeoVim To Vim
 alias v="nvim"
 alias vi="nvim"

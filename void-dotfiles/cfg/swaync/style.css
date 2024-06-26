@@ -45,7 +45,7 @@
   padding: 0;
   border: 1px solid @noti-close-bg;
   background: @noti-bg-darker;
-  /* box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);*/
+  box-shadow: -5px -5px 2px 0px rgba(0, 0, 0, 0.75);
 }
 
 .notification-content {
@@ -323,7 +323,7 @@
   margin: 10px;
   border: 1px solid @noti-close-bg;
   border-radius: 10px;
-  /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);*/
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
 .widget-mpris-player {
@@ -347,7 +347,7 @@
   border: 1px solid @noti-close-bg;
   border-radius: 10px;
   background: @noti-bg;
-  /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);*/
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
@@ -358,9 +358,9 @@
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  /* background: @noti-bg-hover; */
+  background: @noti-bg-hover;
   color: @brgreen;
-  /* text-shadow: 0 0 3px @white; */
+  text-shadow: 0 0 3px @white;
 }
 
 .widget-menubar > box > .menu-button-bar > button {

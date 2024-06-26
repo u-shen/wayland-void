@@ -14,7 +14,8 @@ set window-title-home-tilde true
 set window-title-basename true
 set statusbar-home-tilde true
 set adjust-open "best-fit"
-set adjust-open width
+set adjust-open "width"
+set first-page-column 1:2
 set recolor true
 set recolor-keephue true
 set sandbox strict
