@@ -107,7 +107,7 @@
         "break",
         {
             "type": "colors",
-            "paddingLeft": 10,
+            "paddingLeft": 15,
             "symbol": "star"
         },
         "break"
