@@ -1,0 +1,82 @@
+From cd67c8386b0188daa15348c1d0d99187a556e461 Mon Sep 17 00:00:00 2001
+From: choc <notchoc@proton.me>
+Date: Mon, 2 Jan 2023 13:00:29 +0800
+Subject: [PATCH] passthrough: allow pausing keybind handling
+
+also allows for bitcarrying-esque control of nested instances
+---
+ config.def.h |  4 ++++
+ dwl.c        | 14 ++++++++++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index 646a3d6..2d14e2a 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -20,6 +20,9 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
+ /* logging */
+ static int log_level = WLR_ERROR;
+ 
++/* passthrough */
++static int passthrough = 0;
++
+ static const Rule rules[] = {
+ 	/* app_id             title       tags mask     isfloating   monitor */
+ 	/* examples: */
+@@ -156,6 +159,7 @@ static const Key keys[] = {
+ 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
+ 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
+ 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
++	{ WLR_MODIFIER_ALT|WLR_MODIFIER_LOGO|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT, XKB_KEY_Escape, togglepassthrough, {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
+ 
+ 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
+diff --git a/dwl.c b/dwl.c
+index 9fb50a7..a1c65b4 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -339,6 +339,7 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *m);
+ static void togglefloating(const Arg *arg);
+ static void togglefullscreen(const Arg *arg);
++static void togglepassthrough(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void unlocksession(struct wl_listener *listener, void *data);
+@@ -620,6 +621,11 @@ buttonpress(struct wl_listener *listener, void *data)
+ 		for (b = buttons; b < END(buttons); b++) {
+ 			if (CLEANMASK(mods) == CLEANMASK(b->mod) &&
+ 					event->button == b->button && b->func) {
++				if (passthrough) {
++					if (b->func != togglepassthrough) continue;
++					b->func(&b->arg);
++					break;
++				}
+ 				b->func(&b->arg);
+ 				return;
+ 			}
+@@ -1509,6 +1515,8 @@ keybinding(uint32_t mods, xkb_keysym_t sym)
+ 	for (k = keys; k < END(keys); k++) {
+ 		if (CLEANMASK(mods) == CLEANMASK(k->mod)
+ 				&& sym == k->keysym && k->func) {
++			if (passthrough && k->func != togglepassthrough)
++				continue;
+ 			k->func(&k->arg);
+ 			return 1;
+ 		}
+@@ -2677,6 +2685,12 @@ togglefullscreen(const Arg *arg)
+ 		setfullscreen(sel, !sel->isfullscreen);
+ }
+ 
++void
++togglepassthrough(const Arg *arg)
++{
++	passthrough = !passthrough;
++}
++
+ void
+ toggletag(const Arg *arg)
+ {
+-- 
+2.43.0
+
