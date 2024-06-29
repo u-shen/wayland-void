@@ -79,5 +79,4 @@ sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/nnn/plugins/
 # echo "########################################"
 # cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwl/ && make clean install
 # cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwlb/ && make clean install
-# cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwlmsg/ && make clean install
 echo "###########     DONE    #################"

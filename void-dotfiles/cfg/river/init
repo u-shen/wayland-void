@@ -111,6 +111,7 @@ riverctl rule-add -app-id "mypaint" tags 2147483664
 riverctl rule-add -app-id "virt-manager" tags 2147483664
 # Others Rules:            #
 #==========================#
+riverctl rule-add -app-id "*" ssd
 riverctl rule-add -app-id "nemo" ssd
 riverctl rule-add -app-id "Firefox" ssd
 riverctl rule-add -app-id "*zathura" ssd
@@ -227,6 +228,8 @@ done
 # Mode Binding:            #
 #==========================#
 riverctl declare-mode passthrough
+riverctl map normal $mod+Control P enter-mode passthrough
+riverctl map passthrough $mod+Control P enter-mode normal
 riverctl map normal $mod F11 enter-mode passthrough
 riverctl map passthrough $mod F11 enter-mode normal
 #==========================#
