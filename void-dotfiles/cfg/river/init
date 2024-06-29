@@ -33,7 +33,7 @@ riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.s
 # Keyboard:                #
 #==========================#
 riverctl keyboard-layout -options "caps:escape,grp:alt_altgr_toggle" "us,ara"
-riverctl set-repeat 50 200
+riverctl set-repeat 50 150
 # Touchpad:                #
 #==========================#
 riverctl input $touchpad tap enabled
