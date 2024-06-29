@@ -5,7 +5,7 @@ screenshot_area_and_edit="EDITOR"
 # Store each option in a single string seperated by newlines.
 options=$(printf "$screenshot_all_displays\n$screenshot_area_of_display\n$screenshot_area_and_edit\n")
 # Prompt the user with wmenu
-choice="$(echo -e "$options" | wmenu -il 3 -f "JetBrains Mono Nerd Font 12" -p "SCREENSHOOT MENU: " -N 1d2021 -n ebdbb2 -M 689d6a -m 1d2021 -S 689d6a -s 1d2021)"
+choice="$(echo -e "$options" | wmenu -il 3 -f "Maple Mono NF 11" -p "SCREENSHOOT MENU: " -N 0d0e0f -n ebdbb2 -M 689d6a -m 1d2021 -S 689d6a -s 0d0e0f)"
 
 case $choice in
     $screenshot_all_displays)

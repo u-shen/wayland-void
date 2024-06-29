@@ -10,12 +10,12 @@
 }
 /* Waybar Css */
 window#waybar {
-  background-color: #1d2021;
-  border-bottom: 2px solid #282828;
+  background-color: #141617;
+  border-bottom: 2px solid #202020;
   color: #ebdbb2;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-bottom: 4px solid #282828;
+  border-bottom: 4px solid #202020;
 }
 
 /* Group All Modules */
@@ -29,9 +29,9 @@ window#waybar {
 #temperature,
 #custom-wf-recorder,
 #custom-updates {
-  background-color: #282828;
+  background-color: #202020;
   border-radius: 8px;
-  border: 2px solid #32302f;
+  border: 2px solid #282828;
   background-origin: border-box;
   background-clip: padding-box;
   padding: 0 15px;
@@ -69,7 +69,7 @@ window#waybar {
 #custom-symbol {
   background: #1d2021;
   padding: 4px 10px;
-  box-shadow: inset 0px 0px 1px 20px #282828;
+  box-shadow: inset 0px 0px 1px 20px #202020;
 }
 #custom-symbol {
   color: #689d6a;
@@ -110,7 +110,7 @@ window#waybar {
 }
 #battery.charging,
 #battery.plugged {
-  background-color: #282828;
+  background-color: #202020;
 }
 /* Animation battery */
 @keyframes blink {
@@ -145,7 +145,7 @@ window#waybar {
 #custom-power,
 #custom-launcher {
   color: #cc241d;
-  background: #282828;
+  background: #202020;
   border-radius: 15px 0px 0px 0px;
   border: 2px solid #32302f;
   padding: 0 14px;
@@ -160,7 +160,7 @@ window#waybar {
 #custom-wf-recorder {
   padding: 0 20px;
   color: #cc241d;
-  background: #282828;
+  background: #202020;
 }
 #custom-updates {
   color: #d79921;

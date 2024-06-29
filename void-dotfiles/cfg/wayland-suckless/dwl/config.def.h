@@ -68,7 +68,7 @@ static const MonitorRule monrules[] = {
 	{ "eDP-1",    0.5f,  1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 	*/
 	/* defaults */
-	{ NULL,       0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
+	{ NULL,       0.6f,  1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 };
 
 /* keyboard */
@@ -143,7 +143,7 @@ static const int cursor_timeout = 5;
 
 /* commands */
 static const char *menucmd[]          = { "wmenu_run", NULL };
-static const char *menuGui[]       = { "fuzzel", NULL };
+static const char *menuGui[]       		= { "fuzzel", NULL };
 static const char *termcmd[]          = { "foot", NULL };
 static const char *termbidi[]         = { "wezterm", NULL };
 static const char *browser[]          = { "firefox", NULL };

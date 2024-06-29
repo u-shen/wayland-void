@@ -10,7 +10,7 @@ mod="Mod1"
 mod4="Mod4"
 terminal="foot"
 termbidi="wezterm"
-termtmux="$terminal tmux attach -t LLI || $terminal tmux new -s LLI"
+swaync_dashboard="swaync-client -t"
 file_manager_cli="nnn -P z"
 file_manager_gui="nemo"
 browser="firefox"
@@ -107,7 +107,6 @@ riverctl rule-add -app-id "pavucontrol" position 1115 45
 # 2147483664 => tags 5
 riverctl rule-add -app-id "Waydroid" tags 2147483664
 riverctl rule-add -app-id "mypaint" tags 2147483664
-riverctl rule-add -app-id "nemo" tags 2147483664
 riverctl rule-add -app-id "virt-manager" tags 2147483664
 # Others Rules:            #
 #==========================#
@@ -120,16 +119,16 @@ riverctl rule-add -app-id "*zathura" ssd
 #==========================#
 # Programme Bindings:      #
 #==========================#
-riverctl map normal $mod Return spawn $terminal
-riverctl map normal $mod Backslash spawn $termbidi
-riverctl map normal $mod T spawn "$termtmux"
-riverctl map normal $mod W spawn $browser
-riverctl map normal $mod Q spawn $browser_VI
-riverctl map normal $mod P spawn $menu
-riverctl map normal $mod D spawn $menu_gui
+riverctl map normal $mod Return spawn "$terminal"
+riverctl map normal $mod Backslash spawn "$termbidi"
+riverctl map normal $mod W spawn "$browser"
+riverctl map normal $mod Q spawn "$browser_VI"
+riverctl map normal $mod P spawn "$menu"
+riverctl map normal $mod D spawn "$menu_gui"
 riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/onScreenKeyboard.sh"
 riverctl map normal $mod N spawn "$termbidi start --class=file_manager_cli $file_manager_cli"
-riverctl map normal $mod+Shift N spawn $file_manager_gui
+riverctl map normal $mod+Shift N spawn "$file_manager_gui"
+riverctl map normal $mod+Shift D spawn "$swaync_dashboard"
 riverctl map normal $mod+Shift Return spawn "$terminal --app-id=foot_float"
 riverctl map normal $mod+Shift Backslash spawn "$termbidi start --class termbidi_float"
 riverctl map normal $mod+Shift P spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/powerMenu.sh"
@@ -233,7 +232,7 @@ riverctl map passthrough $mod F11 enter-mode normal
 #==========================#
 riverctl default-attach-mode top
 riverctl default-layout rivertile
-rivertile -view-padding 4 -outer-padding 4 &
+rivertile -view-padding 2 -outer-padding 2 &
 # Layouts Binding:         #
 #==========================#
 # RiverTile Layouts :      #
