@@ -3,6 +3,7 @@
 ####################################
 export GDK_BACKEND=wayland
 export XDG_SESSION_TYPE=wayland
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QUTE_QT_WRAPPER=PyQt6
