@@ -6,15 +6,15 @@ case $SELECTION in
 	*"Lock")
 		swaylock;;
 	*"Suspend")
-		systemctl suspend;;
+	doas zzz;;
 	*"Log out")
-		swaymsg exit;;
+	riverctl exit;;
 	*"Reboot")
-		systemctl reboot;;
+	doas reboot;;
 	*"Reboot to UEFI")
-		systemctl reboot --firmware-setup;;
+	doas reboot --firmware-setup;;
 	*"Hard reboot")
-		pkexec "echo b > /proc/sysrq-trigger";;
+	doas reboot -f;;
 	*"Shutdown")
-		systemctl poweroff;;
+	doas poweroff;;
 esac
