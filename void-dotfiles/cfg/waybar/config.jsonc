@@ -77,7 +77,7 @@
     },
     "clock#3": {
         "format": "󱣺  {:%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"	
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "custom/symbol": {
     "format": "󱋱{}",
@@ -160,14 +160,14 @@
   // == Show Power Manager ==//
   "custom/power": {
     "format": "  {}",
-    "on-click": "bash ~/.config/river/scripts/powerMenu.sh"
+    "on-click": "bash ~/.config/river/scripts/powerMenu-fuzzel.sh"
   },
     // == Show Update Package Manager ==//
   "custom/updates": {
       "format": "   {} ",
       "interval": 3600,                     // every hour
       "exec": "xbps-install --memory-sync --dry-run --update | grep -Fe update -e install | wc -l",       // # of updates and tooltip details
-      "exec-if": "exit 0",                
+      "exec-if": "exit 0",
       "on-click": "foot doas xbps-install -SMu",
       "signal": 8,
       "min-length": 8
