@@ -15,7 +15,7 @@ file_manager_cli="nnn -P z"
 file_manager_gui="nemo"
 browser="firefox"
 browser_VI="qutebrowser"
-browser_GO="chromium --enable-features=WaylandWindowDecorations,UseOzonePlatform --ozone-platform=wayland"
+browser_GO="chromium"
 menu="wmenu_run"
 menu_gui="fuzzel"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
@@ -237,7 +237,7 @@ riverctl map passthrough $mod F11 enter-mode normal
 #==========================#
 riverctl default-attach-mode top
 riverctl default-layout rivertile
-rivertile -view-padding 2 -outer-padding 2 &
+rivertile -view-padding 1 -outer-padding 1 &
 # Layouts Binding:         #
 #==========================#
 # RiverTile Layouts :      #
