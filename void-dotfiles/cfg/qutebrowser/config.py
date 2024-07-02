@@ -140,10 +140,7 @@ for url_pattern in can_access_clipboard:
 # =================================================================#
 config.bind("xs", "config-cycle statusbar.show always never")
 config.bind("xt", "config-cycle tabs.show always never")
-config.bind(
-    "xx",
-    "config-cycle tabs.show always never;; config-cycle statusbar.show always never",
-)
+config.bind("xx", "config-cycle tabs.show always never;; config-cycle statusbar.show always never")
 config.bind("wi", "devtools bottom")
 config.bind("<Ctrl-p>", "hint links spawn mpv {hint-url}")
 config.bind("<Ctrl-o>", "prompt-open-download", mode="prompt")
