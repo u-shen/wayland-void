@@ -6,7 +6,7 @@ exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESK
 #==========================#
 # Background Daemon:       #
 #==========================#
-killall wbg;wbg ~/pix/wallpapers/FANTASY.png &
+killall wbg;wbg ~/pix/wallpapers/WITCHER.png &
 #==========================#
 #  App Daemon              #
 #==========================#

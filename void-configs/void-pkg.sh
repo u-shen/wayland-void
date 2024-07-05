@@ -48,7 +48,7 @@ sudo xbps-install -Sy \
     # VIRTUALTION TOOLS:
     qemu libvirt virt-manager waydroid \
     # PROGRAMMING LANGUAGE:
-    nodejs python3 python3-pip python3-devel rust go \
+    nodejs python3 python3-pip python3-devel rust cargo go \
     # FONTS:
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk \
     font-awesome dejavu-fonts-ttf \
