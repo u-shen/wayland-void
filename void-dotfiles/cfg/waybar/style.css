@@ -43,13 +43,15 @@ window#waybar {
 }
 #tags button {
   color: #689d6a;
-  margin-left: -5px;
+  margin: 0 -4px;
+  padding: 0 4px 0 2px;
 }
 #tags button.occupied {
   color: #98971a;
 }
 #tags button.focused {
-  color: #141617;
+  color: #0d0e0f;
+  border-radius: 4px;
   background-color: #689d6a;
   transition-property: background-color;
   transition-duration: 1s;
