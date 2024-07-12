@@ -53,8 +53,6 @@ window#waybar {
   color: #0d0e0f;
   border-radius: 4px;
   background-color: #689d6a;
-  transition-property: background-color;
-  transition-duration: 4s;
 }
 #tags button.urgent {
   color: #9d0006;
