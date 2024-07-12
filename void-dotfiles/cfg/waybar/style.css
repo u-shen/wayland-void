@@ -54,7 +54,7 @@ window#waybar {
   border-radius: 4px;
   background-color: #689d6a;
   transition-property: background-color;
-  transition-duration: 1s;
+  transition-duration: 4s;
 }
 #tags button.urgent {
   color: #9d0006;
