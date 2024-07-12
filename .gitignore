@@ -11,6 +11,7 @@
 void-dotfiles/cfg/qutebrowser/autoconfig.yml
 void-dotfiles/cfg/qutebrowser/bookmarks/
 void-dotfiles/cfg/mpv/watch_later/
+void-dotfiles/cfg/mpv/volume
 void-dotfiles/cfg/cava/shaders/
 void-dotfiles/cfg/nnn/bookmarks/
 void-dotfiles/cfg/nnn/sessions/
