@@ -33,7 +33,7 @@ riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.s
 # Keyboard:                #
 #==========================#
 riverctl keyboard-layout -options "caps:escape,grp:alt_altgr_toggle" "us,ara"
-riverctl set-repeat 50 150
+riverctl set-repeat 50 200
 # Touchpad:                #
 #==========================#
 riverctl input $touchpad tap enabled
@@ -219,8 +219,8 @@ for mode in normal locked; do
 	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 	# Control screen backlight brightness with brightnessctl
-	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl set +5%"
-	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl set 5%-"
+	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +10%"
+	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 10%-"
 done
 # Mode Binding:            #
 #==========================#

@@ -1,4 +1,8 @@
 {
+  // ======================= General configuration =============================== //
+  "layer":"bottom",
+  "height": 10,
+  "reload_style_on_change"	: true,
   // ======================= Waybar configuration =============================== //
   "modules-left": [
     "custom/launcher",

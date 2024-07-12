@@ -4,8 +4,8 @@
   margin: 0;
   border: none;
   font-family: "Maple Mono NF", "Font Awesome 6 Free";
-  font-size: 14px;
-  font-weight: Bold;
+  font-size: 13px;
+  font-weight: 800;
 }
 /* Waybar Css */
 window#waybar {
@@ -29,12 +29,12 @@ window#waybar {
 #custom-wf-recorder,
 #custom-updates {
   background-color: #202020;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 2px solid #282828;
   background-origin: border-box;
   background-clip: padding-box;
   padding: 0 15px;
-  margin: 2px 4px 8px 4px;
+  margin: 4px 4px 8px 4px;
 }
 
 /*  Module Left */
@@ -43,13 +43,16 @@ window#waybar {
 }
 #tags button {
   color: #689d6a;
-  margin-left: -10px;
+  margin-left: -5px;
 }
 #tags button.occupied {
   color: #98971a;
 }
 #tags button.focused {
-  color: #d79921;
+  color: #141617;
+  background-color: #689d6a;
+  transition-property: background-color;
+  transition-duration: 1s;
 }
 #tags button.urgent {
   color: #9d0006;
