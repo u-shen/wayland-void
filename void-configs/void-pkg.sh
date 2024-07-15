@@ -22,7 +22,7 @@ sudo xbps-install -Sy \
     # SCREENSHARING TOOLS:
     obs wf-recorder xdg-desktop-portal-wlr \
     # COMMAND LINE TOOLS:
-    xdg-user-dirs xdg-utils psmisc acl-progs unrar bash-completion opendoas btop \
+    xdg-user-dirs xdg-utils psmisc acl-progs bash-completion opendoas btop \
     fastfetch nnn moc yt-dlp aria2 ffmpeg libsixel-util rsync eza bat glow starship wl-clipboard trash-cli tealdeer man-db \
     neovim lazygit cava fzf fd ripgrep zoxide pastel delta curl jq brightnessctl ImageMagick \
     # Graphical TOOLS:
