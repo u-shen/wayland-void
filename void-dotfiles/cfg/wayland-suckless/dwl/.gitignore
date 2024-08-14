@@ -1,6 +1,6 @@
 dwl
-*.rej
-*.orig
+*rej
+*orig
 *.o
 *-protocol.c
 *-protocol.h

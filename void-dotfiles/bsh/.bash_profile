@@ -6,5 +6,4 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 # If running from tty Start Compositor
-[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session river >/dev/null 2>&1
-[ "$(tty)" = "/dev/tty2" ] && exec dbus-run-session dwl_exec >/dev/null 2>&1
+[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session dwl_exec >/dev/null 2>&1

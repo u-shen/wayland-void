@@ -74,7 +74,7 @@ network() {
 main() {
 	while true; do
         echo " [ $(network) ] [ $(volume_pulse) ] [ $(battery) ] [ $(clock) ]"
-		sleep 0.5
+		sleep 1
 	done
 }
 
