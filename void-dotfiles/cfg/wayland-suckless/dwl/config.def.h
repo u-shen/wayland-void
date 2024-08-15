@@ -114,7 +114,7 @@ LIBINPUT_CONFIG_ACCEL_PROFILE_FLAT
 LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE
 */
 static const enum libinput_config_accel_profile accel_profile = LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE;
-static const double accel_speed = 0.5;
+static const double accel_speed = 0.1;
 
 /* You can choose between:
 LIBINPUT_CONFIG_TAP_MAP_LRM -- 1/2/3 finger tap maps to left/right/middle
@@ -135,15 +135,15 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *menucmd[]          = { "wmenu_run", NULL };
-static const char *menuGui[]       		= { "fuzzel", NULL };
 static const char *termcmd[]          = { "foot", NULL };
 static const char *termbidi[]         = { "wezterm", NULL };
 static const char *browser[]          = { "firefox", NULL };
 static const char *browserVi[]        = { "qutebrowser", NULL };
 static const char *browserGO[]        = { "chromium", NULL };
-static const char *fileCli[]          = { "wezterm", "start", "--class", "fileCli", "nnn", "-P", "z", NULL };
 static const char *fileGui[]          = { "nemo", NULL };
+static const char *menuGui[]       		= { "fuzzel", NULL };
+static const char *menucmd[]          = { "wmenu-run", "-il", "10", "-p", "LAUNCH:",  "-N", "1d2021","-n", "ebdbb2","-S","689d6a", "-s","0d0e0f", "-M", "689d6a", "-m" ,"1d2021", NULL };
+static const char *fileCli[]          = { "wezterm", "start", "--class", "fileCli", "nnn", "-P", "z", NULL };
 static const char *onScreenKeyboard[] = { "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/onScreenKeyboard.sh", NULL};
 static const char *screenShoot[]      = { "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/screenShoot.sh", NULL};
 static const char *screenRecored[]    = { "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/screenRecored.sh", NULL};
