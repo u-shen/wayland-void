@@ -19,8 +19,6 @@ ln -sf ~/.local/wayland-void/void-dotfiles/icons ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/themes ~/.local/share/
 echo "===============> In ~/ <==================="
 ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/
-ln -sf ~/.local/wayland-void/void-dotfiles/music ~/
-ln -sf ~/.local/wayland-void/void-dotfiles/music/.moc ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bashrc ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bash_profile ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/others/.npmrc ~/
@@ -33,7 +31,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "#########################################"
 echo "######    Directory In HOME       #######"
 echo "#########################################"
-mkdir -p ~/{desk,dl,dox,prjcts,vids,pub}
+mkdir -p ~/{desk,dl,dox,prjcts,vids,music,pub}
 rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2> /dev/null
 
 echo "########################################"
@@ -43,7 +41,7 @@ sudo rm /var/service/acpid 2> /dev/null
 sudo ln -s /etc/sv/elogind /var/service/
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/
-# sudo ln -s /etc/sv/bluetoothd /var/service/
+sudo ln -s /etc/sv/bluetoothd /var/service/
 # sudo ln -s /etc/sv/at /var/service/
 # sudo ln -s /etc/sv/cronie /var/service/
 # sudo ln -s /etc/sv/rsyslogd /var/service/

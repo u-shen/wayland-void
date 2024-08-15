@@ -41,6 +41,7 @@ static const Rule rules[] = {
 	{ "foot_float",     	NULL,       0,            1,           -1,     400,200,  1200,   0.75 },
 	{ "wez_float",     	  NULL,       0,            1,           -1,     400,200,  1200,   0.75 },
 	{ "fileCli",     		  NULL,       0,            1,           -1,     400,200,  1200,   0.75 },
+	{ "vimiv",     		  	NULL,       0,            1,           -1,     400,200,  1200,   0.75 },
 };
 
 /* layout(s) */
