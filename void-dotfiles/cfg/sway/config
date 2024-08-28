@@ -328,30 +328,30 @@ for_window [app_id="^foot_float$"] floating enable, resize set width 50 ppt heig
 for_window [app_id="^wez_float$"]  floating enable, resize set width 50 ppt height 80 ppt, move center
 for_window [app_id="^fileCli$"]    floating enable, resize set width 50 ppt height 80 ppt, move center
 
-#==========================#
-# EYE CANDY:               #
-#==========================#
-# corner:
-#==========================#
-corner_radius 5
-smart_corner_radius on
-
-# shadows
-#==========================#
-shadows on
-shadow_color $bg_dim
-shadow_blur_radius 20
-default_dim_inactive 0
-
-# blur:                    #
-#==========================#
-blur enable
-blur_passes 4
-blur_radius 4
-
-# layers:                  #
-#==========================#
-layer_effects "waybar" blur enable; shadows enable, corner_radius 5
-layer_effects "swaync-control-center" blur enable
-layer_effects "swaync-notification-window" blur disable
-layer_effects "gtk-layer-shell" blur enable
+# #==========================#
+# # EYE CANDY:               #
+# #==========================#
+# # corner:
+# #==========================#
+# corner_radius 5
+# smart_corner_radius on
+#
+# # shadows
+# #==========================#
+# shadows on
+# shadow_color $bg_dim
+# shadow_blur_radius 20
+# default_dim_inactive 0
+#
+# # blur:                    #
+# #==========================#
+# blur enable
+# blur_passes 4
+# blur_radius 4
+#
+# # layers:                  #
+# #==========================#
+# layer_effects "waybar" blur enable; shadows enable, corner_radius 5
+# layer_effects "swaync-control-center" blur enable
+# layer_effects "swaync-notification-window" blur disable
+# layer_effects "gtk-layer-shell" blur enable

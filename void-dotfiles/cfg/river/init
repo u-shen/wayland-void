@@ -13,9 +13,9 @@ termbidi="wezterm"
 swaync_dashboard="swaync-client -t"
 file_manager_cli="nnn -P z"
 file_manager_gui="nemo"
-browser="firefox"
+browser="chromium"
 browser_VI="qutebrowser"
-browser_GO="chromium"
+browser_GO="firefox"
 menu="wmenu_run"
 menu_gui="fuzzel"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
@@ -233,32 +233,32 @@ riverctl map passthrough $mod F11 enter-mode normal
 # Layouts configurations:  #
 #==========================#
 riverctl default-attach-mode top
-riverctl default-layout rivertile
+riverctl default-layout rivertile &
 rivertile -view-padding 1 -outer-padding 1 &
 # Layouts Binding:         #
 #==========================#
 # RiverTile Layouts :      #
 #==========================#
-# riverctl map -repeat normal $mod H send-layout-cmd rivertile "main-ratio -0.05"
-# riverctl map -repeat normal $mod L send-layout-cmd rivertile "main-ratio +0.05"
-# riverctl map normal $mod+Control Comma send-layout-cmd rivertile "main-count +1"
-# riverctl map normal $mod+Control Period send-layout-cmd rivertile "main-count -1"
-# riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top"
-# riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
-# riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
-# riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
+riverctl map -repeat normal $mod H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map -repeat normal $mod L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal $mod+Control Comma send-layout-cmd rivertile "main-count +1"
+riverctl map normal $mod+Control Period send-layout-cmd rivertile "main-count -1"
+riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top"
+riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
+riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
+riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
 # Filtile Layouts :     	 #
 #==========================#
-riverctl default-layout filtile
-filtile \
-	--output eDP-1 view-padding 2, outer-padding 2, &
-riverctl map normal $mod Z send-layout-cmd filtile "flip"
-riverctl map normal $mod C send-layout-cmd filtile "pad"
-riverctl map normal $mod M send-layout-cmd filtile "monocle"
-riverctl map normal $mod T send-layout-cmd filtile "monocle"
-riverctl map -repeat normal $mod H send-layout-cmd filtile "move-split-left 5"
-riverctl map -repeat normal $mod L send-layout-cmd filtile "move-split-right 5"
-riverctl map -repeat normal $mod+Control K  send-layout-cmd filtile "diminish -20"
-riverctl map -repeat normal $mod+Control J send-layout-cmd filtile "diminish +20"
-riverctl map -repeat normal $mod+Control+Shift K send-layout-cmd filtile "diminish -200"
-riverctl map -repeat normal $mod+Control+Shift J send-layout-cmd filtile "diminish +200"
+# riverctl default-layout filtile
+# filtile \
+# 	--output eDP-1 view-padding 2, outer-padding 2, &
+# riverctl map normal $mod Z send-layout-cmd filtile "flip"
+# riverctl map normal $mod C send-layout-cmd filtile "pad"
+# riverctl map normal $mod M send-layout-cmd filtile "monocle"
+# riverctl map normal $mod T send-layout-cmd filtile "monocle"
+# riverctl map -repeat normal $mod H send-layout-cmd filtile "move-split-left 5"
+# riverctl map -repeat normal $mod L send-layout-cmd filtile "move-split-right 5"
+# riverctl map -repeat normal $mod+Control K  send-layout-cmd filtile "diminish -20"
+# riverctl map -repeat normal $mod+Control J send-layout-cmd filtile "diminish +20"
+# riverctl map -repeat normal $mod+Control+Shift K send-layout-cmd filtile "diminish -200"
+# riverctl map -repeat normal $mod+Control+Shift J send-layout-cmd filtile "diminish +200"

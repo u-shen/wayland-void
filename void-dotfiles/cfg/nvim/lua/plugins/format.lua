@@ -7,7 +7,7 @@ return {
 	keys = {
 		{
 			mode = { "n", "i" },
-			"<C-p>",
+			"<C-f>",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
