@@ -2,32 +2,35 @@
 -- Auto Completion
 -----------------------------------------------------------
 local symbol_map = {
-	Text = "󰉿",
-	Method = "󰆧",
+	Text = "",
+	Method = "",
 	Function = "󰊕",
-	Constructor = "",
-	Field = "󰜢",
-	Variable = "󰀫",
-	Class = "󰠱",
+	Constructor = "󰡱",
+	Field = "",
+	Variable = "",
+	Class = "",
 	Interface = "",
 	Module = "",
-	Property = "󰜢",
-	Unit = "󰑭",
-	Value = "󰎠",
+	Property = "",
+	Unit = "",
+	Value = "",
 	Enum = "",
-	Keyword = "󰌋",
+	Keyword = "",
 	Snippet = "",
-	Color = "󰏘",
-	File = "󰈙",
-	Reference = "󰈇",
-	Folder = "󰉋",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
 	EnumMember = "",
-	Constant = "󰏿",
-	Struct = "󰙅",
+	Constant = "",
+	Struct = "",
 	Event = "",
-	Operator = "󰆕",
-	TypeParameter = "",
-	Copilot = "",
+	Operator = "",
+	TypeParameter = " ",
+	Robot = "󱚤",
+	Roboti = "󱨚",
+	Smiley = " ",
+	Note = " ",
 }
 
 return {
@@ -75,7 +78,7 @@ return {
 					format = lspkind.cmp_format({
 						symbol_map = symbol_map,
 						before = function(entry, vim_item)
-							vim_item.kind = string.format("%s %s", symbol_map[vim_item.kind], vim_item.kind)
+							vim_item.kind = string.format(vim_item.kind, symbol_map[vim_item.kind], "%s %s")
 							vim_item.menu = ({
 								buffer = "[Buffer]",
 								nvim_lsp = "[LSP]",
@@ -104,11 +107,10 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				},
 				sources = cmp.config.sources({
-					-- { name = "copilot" },
-					{ name = "vsnip" },
-					{ name = "path" },
-					{ name = "buffer" },
 					{ name = "nvim_lsp" },
+					{ name = "path" },
+					{ name = "vsnip" },
+					{ name = "buffer" },
 				}),
 				sorting = {
 					priority_weight = 2,
