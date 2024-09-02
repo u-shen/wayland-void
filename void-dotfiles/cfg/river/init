@@ -158,10 +158,15 @@ riverctl map normal $mod+Control Q exit
 riverctl map normal $mod+Shift C close
 riverctl map normal $mod+Shift Space toggle-float
 riverctl map normal $mod F toggle-fullscreen
-riverctl map normal $mod J focus-view next
-riverctl map normal $mod K focus-view previous
-riverctl map normal $mod+Shift J swap next
-riverctl map normal $mod+Shift K swap previous
+
+riverctl map normal $mod H focus-view left
+riverctl map normal $mod J focus-view down
+riverctl map normal $mod K focus-view up
+riverctl map normal $mod L focus-view right
+riverctl map normal $mod+Shift H swap left
+riverctl map normal $mod+Shift J swap down
+riverctl map normal $mod+Shift K swap up
+riverctl map normal $mod+Shift L swap right
 riverctl map normal $mod Period focus-view next
 riverctl map normal $mod Comma focus-view previous
 riverctl map normal $mod+Shift Period swap next
@@ -239,26 +244,11 @@ rivertile -view-padding 1 -outer-padding 1 &
 #==========================#
 # RiverTile Layouts :      #
 #==========================#
-riverctl map -repeat normal $mod H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map -repeat normal $mod L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map -repeat normal $mod+Control H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map -repeat normal $mod+Control L send-layout-cmd rivertile "main-ratio +0.05"
 riverctl map normal $mod+Control Comma send-layout-cmd rivertile "main-count +1"
 riverctl map normal $mod+Control Period send-layout-cmd rivertile "main-count -1"
 riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top"
 riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
 riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
 riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
-# Filtile Layouts :     	 #
-#==========================#
-# riverctl default-layout filtile
-# filtile \
-# 	--output eDP-1 view-padding 2, outer-padding 2, &
-# riverctl map normal $mod Z send-layout-cmd filtile "flip"
-# riverctl map normal $mod C send-layout-cmd filtile "pad"
-# riverctl map normal $mod M send-layout-cmd filtile "monocle"
-# riverctl map normal $mod T send-layout-cmd filtile "monocle"
-# riverctl map -repeat normal $mod H send-layout-cmd filtile "move-split-left 5"
-# riverctl map -repeat normal $mod L send-layout-cmd filtile "move-split-right 5"
-# riverctl map -repeat normal $mod+Control K  send-layout-cmd filtile "diminish -20"
-# riverctl map -repeat normal $mod+Control J send-layout-cmd filtile "diminish +20"
-# riverctl map -repeat normal $mod+Control+Shift K send-layout-cmd filtile "diminish -200"
-# riverctl map -repeat normal $mod+Control+Shift J send-layout-cmd filtile "diminish +200"

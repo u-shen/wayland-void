@@ -2,15 +2,14 @@
 echo " ##################################################################"
 echo " #############   The Environment Is Ready  ########################"
 echo " ##################################################################"
-rm -rf ~/.config 2> /dev/null && mkdir -p ~/{.config,.local/share}
+rm -rf ~/.config 2>/dev/null && mkdir -p ~/{.config,.local/share}
 cd && mv wayland-void ~/.local/
 
 echo "#########################################"
 echo "###### Link My Dotfiles Programme #######"
 echo "#########################################"
 echo "===========> In ~/.config <================"
-for config in $(ls $HOME/.local/wayland-void/void-dotfiles/cfg)
-do
+for config in $(ls $HOME/.local/wayland-void/void-dotfiles/cfg); do
     ln -sf ~/.local/wayland-void/void-dotfiles/cfg/$config ~/.config/
 done
 echo "=========> In ~/.local/share <============="
@@ -32,12 +31,12 @@ echo "#########################################"
 echo "######    Directory In HOME       #######"
 echo "#########################################"
 mkdir -p ~/{desk,dl,dox,prjcts,vids,music,pub}
-rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2> /dev/null
+rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2>/dev/null
 
 echo "########################################"
 echo "######     managment Services   ########"
 echo "########################################"
-sudo rm /var/service/acpid 2> /dev/null
+sudo rm /var/service/acpid 2>/dev/null
 sudo ln -s /etc/sv/elogind /var/service/
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/
@@ -66,15 +65,15 @@ sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 rfkill unblock bluetooth
 # Using doas Like sudo Without Password: #
 #========================================#
-sudo bash -c  "echo 'permit nopass lli as root' > /etc/doas.conf"
+sudo bash -c "echo 'permit nopass lli as root' > /etc/doas.conf"
 # Added Execute To Binary File:    #
 #==================================#
 sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/bin/
 sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/river/
 sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/nnn/plugins/
-echo "########################################"
-echo "#####    Compile  Compositor     #######"
-echo "########################################"
-cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwl/ && make clean install
-cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwlb/ && make clean install
-echo "###########     DONE    #################"
+# echo "########################################"
+# echo "#####    Compile  Compositor     #######"
+# echo "########################################"
+# cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwl/ && make clean install
+# cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwlb/ && make clean install
+# echo "###########     DONE    #################"

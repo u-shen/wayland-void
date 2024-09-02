@@ -1,8 +1,8 @@
 {
   // ======================= General configuration =============================== //
-  "layer":"bottom",
+  "layer": "bottom",
   "height": 10,
-  "reload_style_on_change"	: true,
+  "reload_style_on_change": true,
   // ======================= Waybar configuration =============================== //
   "modules-left": [
     "custom/launcher",
@@ -71,35 +71,34 @@
     "min-length": 8
   },
   // == Show Clock ==//
-    "clock#1": {
-        "format": "  {:%a}",
-        "tooltip": false
-    },
-    "clock#2": {
-        "format": "󱦻  {:%I:%M%p}",
-        "tooltip": false
-    },
-    "clock#3": {
-        "format": "󱣺  {:%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "custom/symbol": {
+  "clock#1": {
+    "format": "  {:%a}",
+    "tooltip": false
+  },
+  "clock#2": {
+    "format": "󱦻  {:%I:%M%p}",
+    "tooltip": false
+  },
+  "clock#3": {
+    "format": "󱣺  {:%m-%d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "custom/symbol": {
     "format": "{}",
-
-    },
+  },
   // == Show Light ==//
-    "backlight": {
-        "device": "intel_backlight",
-        "rotate": 0,
-        "format": "{icon} {percent}%",
-        "format-icons": [
-          " ",
-          " "
-        ],
-        "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 8
-    },
+  "backlight": {
+    "device": "intel_backlight",
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      " ",
+      " "
+    ],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 8
+  },
   // == Show Level Battery ==//
   "battery": {
     "states": {
@@ -129,8 +128,8 @@
     "format-muted": " -> {format_source}",
     "format-icons": {
       "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
+      "hands-free": "   ",
+      "headset": "  ",
       "phone": " ",
       "portable": " ",
       "car": " ",
@@ -149,7 +148,7 @@
     "format": " {temperatureC}°C",
     "tooltip": false,
     "min-length": 8
-    },
+  },
   // == Fuzzel Launcher Applications ==//
   "custom/launcher": {
     "format": " ",
@@ -170,17 +169,17 @@
     "format": "  {}",
     "on-click": "bash ~/.config/river/scripts/powerMenu-fuzzel.sh"
   },
-    // == Show Update Package Manager ==//
+  // == Show Update Package Manager ==//
   "custom/updates": {
-      "format": "   {} ",
-      "interval": 3600,                     // every hour
-      "exec": "xbps-install --memory-sync --dry-run --update | grep -Fe update -e install | wc -l",       // # of updates and tooltip details
-      "exec-if": "exit 0",
-      "on-click": "foot doas xbps-install -SMu",
-      "signal": 8,
-      "min-length": 8
+    "format": "   {} ",
+    "interval": 3600, // every hour
+    "exec": "xbps-install --memory-sync --dry-run --update | grep -Fe update -e install | wc -l", // # of updates and tooltip details
+    "exec-if": "exit 0",
+    "on-click": "foot doas xbps-install -SMu",
+    "signal": 8,
+    "min-length": 8
   },
-    // == Show SwayNotifications Dashboard ==//
+  // == Show SwayNotifications Dashboard ==//
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
