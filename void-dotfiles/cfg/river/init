@@ -38,9 +38,9 @@ riverctl set-repeat 50 200
 #==========================#
 riverctl input $touchpad tap enabled
 riverctl input $touchpad events enabled
-riverctl input $touchpad natural-scroll disabled
+riverctl input $touchpad natural-scroll enabled
 riverctl input $touchpad accel-profile adaptive
-riverctl input $touchpad pointer-accel 0.5
+riverctl input $touchpad pointer-accel 0.2
 
 #==========================#
 # Misc configurations:     #
