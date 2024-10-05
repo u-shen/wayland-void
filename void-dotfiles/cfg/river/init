@@ -33,7 +33,7 @@ riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.s
 # Keyboard:                #
 #==========================#
 riverctl keyboard-layout -options "caps:escape,grp:alt_altgr_toggle" "us,ara"
-riverctl set-repeat 50 200
+riverctl set-repeat 80 200
 # Touchpad:                #
 #==========================#
 riverctl input $touchpad tap enabled
@@ -45,7 +45,7 @@ riverctl input $touchpad pointer-accel 0.0
 #==========================#
 # Misc configurations:     #
 #==========================#
-riverctl border-width 1
+riverctl border-width 2
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 riverctl hide-cursor timeout 5000
@@ -121,7 +121,6 @@ riverctl rule-add -app-id "*" ssd
 riverctl map normal $mod Return spawn "$terminal"
 riverctl map normal $mod Backslash spawn "$termbidi"
 riverctl map normal $mod W spawn "$browser"
-riverctl map normal $mod Q spawn "$browser_VI"
 riverctl map normal $mod G spawn "$browser_GO"
 riverctl map normal $mod P spawn "$menu"
 riverctl map normal $mod D spawn "$menu_gui"
@@ -156,6 +155,7 @@ riverctl map -repeat normal $mod4 Comma spawn "mocp --volume -10"
 #==========================#
 riverctl map normal $mod+Control Q exit
 riverctl map normal $mod+Shift C close
+riverctl map normal $mod Q close
 riverctl map normal $mod+Shift Space toggle-float
 riverctl map normal $mod F toggle-fullscreen
 
@@ -239,7 +239,7 @@ riverctl map passthrough $mod F11 enter-mode normal
 #==========================#
 riverctl default-attach-mode top
 riverctl default-layout rivertile &
-rivertile -view-padding 1 -outer-padding 1 -main-ratio 0.5 &
+rivertile -view-padding 2 -outer-padding 2 -main-ratio 0.5 &
 # Layouts Binding:         #
 #==========================#
 # RiverTile Layouts :      #
