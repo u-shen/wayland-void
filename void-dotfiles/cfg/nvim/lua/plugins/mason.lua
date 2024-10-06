@@ -35,7 +35,6 @@ return {
         "tsserver",
         "tailwindcss",
         "jsonls",
-        "bashls",
         "pyright",
       },
     },
