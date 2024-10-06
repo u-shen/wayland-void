@@ -1,6 +1,6 @@
 {
   // ======================= General configuration =============================== //
-  "layer": "bottom",
+  "position": "top",
   "height": 10,
   "reload_style_on_change": true,
   // ======================= Waybar configuration =============================== //
@@ -10,14 +10,14 @@
     "temperature",
     "custom/updates",
     "custom/wf-recorder",
-    "river/mode",
+    "river/mode"
   ],
   "modules-center": [
     "clock#1",
     "custom/symbol",
     "clock#2",
     "custom/symbol",
-    "clock#3",
+    "clock#3"
   ],
   "modules-right": [
     "idle_inhibitor",
@@ -46,7 +46,7 @@
   },
   //== Show Mode River WM ==//
   "river/mode": {
-    "format": "mode: {}",
+    "format": "mode: {}"
   },
   // == Show Language Keyboard in River WM ==//
   "river/language": {
@@ -84,7 +84,7 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "custom/symbol": {
-    "format": "{}",
+    "format": "{}"
   },
   // == Show Light ==//
   "backlight": {
@@ -93,7 +93,7 @@
     "format": "{icon} {percent}%",
     "format-icons": [
       " ",
-      " "
+      " "
     ],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
@@ -116,7 +116,7 @@
       " ",
       " ",
       " "
-    ],
+    ]
   },
   // == Show Volume ==//
   "pulseaudio": {
@@ -162,7 +162,7 @@
     "interval": 1,
     "exec": "echo '{\"class\": \"recording\"}'",
     "exec-if": "pgrep wf-recorder",
-    "on-click": "killall -s SIGINT wf-recorder",
+    "on-click": "killall -s SIGINT wf-recorder"
   },
   // == Show Power Manager ==//
   "custom/power": {
@@ -199,5 +199,5 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-  },
+  }
 }
