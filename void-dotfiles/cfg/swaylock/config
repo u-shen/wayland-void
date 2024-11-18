@@ -1,0 +1,49 @@
+#==============
+# GENERAL:    #
+#==============
+font=JetBrainsMono Nerd Font
+font-size=20
+ignore-empty-password
+image=~/pix/wallpapers/LOCK.png
+scaling=fill
+daemonize
+show-failed-attempts
+color=1d2021FF
+bs-hl-color=d79921FF
+key-hl-color=689d6aFF
+separator-color=00000000
+#==============
+# INSIDE:     #
+#==============
+inside-color=00000099
+inside-clear-color=98971a00
+inside-caps-lock-color=009ddc00
+inside-ver-color=d9d8d800
+inside-wrong-color=9d000600
+#==============
+# RING:       #
+#==============
+ring-color=1d2021ff
+ring-clear-color=98971a
+ring-caps-lock-color=231f20D9
+ring-ver-color=231f20D9
+ring-wrong-color=9d0006
+#==============
+# LINE:       #
+#==============
+line-color=00000000
+line-clear-color=ffd204FF
+line-caps-lock-color=009ddcFF
+line-ver-color=d9d8d8FF
+line-wrong-color=ee2e24FF
+#==============
+# color:       #
+#==============
+text-clear-color=1d202100
+text-ver-color=1d202100
+text-wrong-color=9d0006ff
+
+caps-lock-key-hl-color=ffd204FF
+caps-lock-bs-hl-color=ee2e24FF
+disable-caps-lock-text
+text-caps-lock-color=009ddc

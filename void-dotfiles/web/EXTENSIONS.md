@@ -1,0 +1,7 @@
+# MAKE BROWSER WORK WITH VIM KEYS
+
+Tridactyl
+
+# CONTROLS ALL VIDEOS IN YOUTUBES
+
+YouTube High Definition

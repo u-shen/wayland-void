@@ -1,0 +1,357 @@
+# ░█▀▀░█░█░█▀█░█░█
+# ░▀▀█░█▄█░█▀█░░█░
+# ░▀▀▀░▀░▀░▀░▀░░▀░
+#------------------------------------------#
+# First Edit 2023-03-31                    #
+# github.com/farah-xyz/wayland-dots        #
+#------------------------------------------#
+#==========================#
+# Variable:                #
+#==========================#
+set {
+    # Modifire Keys :          #
+    #==========================#
+    $mod Mod1
+    $mod4 Mod4
+    # Vim Keys:                #
+    #==========================#
+    $left  h
+    $down  j
+    $up    k
+    $right l
+    # FAVORITE APP:            #
+    #==========================#
+    $terminal foot
+    $termbidi wezterm
+    $browser firefox
+    $browser_VI qutebrowser
+    $menu wmenu_run
+    $menuGui fuzzel
+    $fileGui nemo
+    $fileCli nnn -P z
+    $swayNc swaync-client -t -sw
+}
+
+#==========================#
+# AutoStart:               #
+#==========================#
+exec_always {
+    "$HOME/.config/sway/scripts/autostart.sh"
+    "$HOME/.config/sway/scripts/gtkTheme.sh"
+    "$HOME/.config/sway/scripts/idle.sh"
+}
+
+#==========================#
+# Input configurations:    #
+#==========================#
+input "type:touchpad" {
+    dwt enabled
+    tap enabled
+    middle_emulation enabled
+    natural_scroll disabled
+    accel_profile adaptive
+    pointer_accel 0.5
+}
+input "type:keyboard" {
+    xkb_layout us,ara
+    xkb_options caps:escape,grp:alts_toggle
+    repeat_delay 150
+    repeat_rate 50
+}
+seat seat0 {
+    hide_cursor when-typing enable
+    hide_cursor 8000
+}
+
+#==========================#
+# Output configurations:   #
+#==========================#
+output eDP-1 {
+    mode 1920x1080@60.008Hz
+    background ~/pix/wallpapers/WITCHER.png fill
+}
+
+#==========================#
+# MISC:                    #
+#==========================#
+    # Border:                  #
+    #==========================#
+    default_border pixel 2
+    default_floating_border pixel 2
+    # Gaps:                    #
+    #==========================#
+    gaps inner  2
+    gaps outer  0
+    # Smart:                   #
+    #==========================#
+    smart_borders on
+    smart_gaps on
+    # Others:                   #
+    #==========================#
+    xwayland enable
+    workspace_layout default
+    default_orientation horizontal
+    font pango: JetBrains Mono Nerd Font Bold 11
+    floating_modifier $mod normal
+
+#==========================#
+# window colours:          #
+#==========================#
+# Define Variable colours: #
+#==========================#
+set $bg       #282828
+set $bg_dim   #202020
+set $fg       #d4be98
+set $red      #ea6962
+set $orange   #e78a4e
+set $green    #a9b665
+set $blue     #7daea3
+set $purple   #d3869b
+set $aqua     #89b482
+set $darkgray #282828
+# Set Variable colours:    #
+#==========================#
+#       Gruvbox Theme   brdr        bg          text    indictr     chld_brdr
+client.focused          $aqua       $aqua       $bg     $aqua       $aqua
+client.focused_inactive $aqua       $aqua       $bg     $aqua       $bg
+client.unfocused        $bg         $bg         $fg     $bg         $bg
+client.urgent           $red        $red        $bg     $red        $red
+client.placeholder      $bg         $bg         $bg     $bg         $bg
+client.background       $bg
+
+#==========================#
+# Key Bindings:            #
+#==========================#
+# Programme:               #
+#==========================#
+bindsym {
+    $mod+Return             exec $terminal
+    $mod+Backslash          exec $termbidi
+    $mod+q                  exec $browser_VI
+    $mod+w                  exec $browser
+    $mod+p                  exec $menu
+    $mod+d                  exec $menuGui
+    $mod+Shift+n            exec $fileGui
+    $mod+Shift+d            exec $swayNc
+    $mod+n                  exec "$termbidi start --class fileCli $fileCli"
+    $mod+Shift+Backslash    exec "$termbidi start --class wez_float"
+    $mod+Shift+Return       exec "$terminal --app-id=foot_float"
+    $mod+o                  exec "$HOME/.config/sway/scripts/onScreenKeyboard.sh"
+    $mod+Shift+w            exec "$HOME/.config/sway/scripts/wifiMenu.py"
+    $mod+Shift+b            exec "$HOME/.config/sway/scripts/blueMenu.sh"
+    $mod+Shift+m            exec "$HOME/.config/sway/scripts/mountMenu.sh"
+    $mod+Shift+p            exec "$HOME/.config/sway/scripts/powerMenu.sh"
+}
+# Screenshoot Binding:     #
+#==========================#
+bindsym {
+    $mod+Shift+s            exec "$HOME/.config/sway/scripts/screenShoot.sh"
+    $mod+Shift+r            exec "$HOME/.config/sway/scripts/screenRecored.sh"
+    $mod+Print              exec "$HOME/.config/sway/scripts/screenShoot.sh"
+    $mod+Shift+Print        exec "$HOME/.config/sway/scripts/screenRecored.sh"
+}
+# MUSIC Bidings:           #
+#==========================#
+bindsym {
+    $mod4+p                 exec "mocp --toggle-pause"
+    $mod4+n                 exec "mocp --next"
+    $mod4+b                 exec "mocp --previous"
+    $mod4+q                 exec "mocp --exit"
+    $mod4+Left              exec "mocp --seek -10"
+    $mod4+Right             exec "mocp --seek +10"
+    $mod4+Period            exec "mocp --volume +10"
+    $mod4+Comma             exec "mocp --volume -10"
+}
+# Meltimedia Binding:      #
+#==========================#
+bindsym {
+    # Audio keybindings:       #
+    #==========================#
+    XF86AudioRaiseVolume    exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+    XF86AudioLowerVolume    exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    XF86AudioMute           exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    XF86AudioMicMute        exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    # brightness control:      #
+    #==========================#
+    XF86MonBrightnessUp     exec brightnessctl set +5%
+    XF86MonBrightnessDown   exec brightnessctl set 5%-
+}
+# Window Bindings:         #
+#==========================#
+bindsym {
+    $mod+Ctrl+q             exit
+    $mod+Shift+c            kill
+    $mod+Ctrl+r             reload
+    $mod+v                  splitv
+    $mod+b                  splith
+    $mod+c                  split none
+    $mod+e                  layout stacking
+    $mod+t                  layout tabbed
+    $mod+s                  layout toggle split
+    $mod+f                  fullscreen
+    $mod+Shift+space        floating toggle
+    $mod+space              focus mode_toggle
+    $mod+a                  focus parent
+    $mod+Shift+a            focus child
+}
+# Scratchpads Bidings:     #
+#==========================#
+bindsym {
+    $mod+minus              move scratchpad
+    $mod+equal              scratchpad show
+}
+# Others Bidings:          #
+#==========================#
+bindsym {
+    # comma(,) period(.):      #
+    #==========================#
+    $mod+period             workspace next
+    $mod+comma              workspace prev
+    # slash(/):                #
+    #==========================#
+    $mod+slash              workspace back_and_forth
+    $mod+tab                workspace back_and_forth
+}
+# Moving Bidings :         #
+#==========================#
+bindsym {
+    # Move your focus around:  #
+    #==========================#
+    $mod+$left              focus left
+    $mod+$down              focus down
+    $mod+$up                focus up
+    $mod+$right             focus right
+    # Or use arrow Keys:       #
+    #==========================#
+    $mod+Left               focus left
+    $mod+Down               focus down
+    $mod+Up                 focus up
+    $mod+Right              focus right
+    # Move the focused window: #
+    #==========================#
+    $mod+Shift+$left        move left
+    $mod+Shift+$down        move down
+    $mod+Shift+$up          move up
+    $mod+Shift+$right       move right
+    # Ditto, with arrow keys:  #
+    #==========================#
+    $mod+Shift+Left         move left
+    $mod+Shift+Down         move down
+    $mod+Shift+Up           move up
+    $mod+Shift+Right        move right
+}
+# Resizing Bidings:        #
+#==========================#
+bindsym {
+    $mod+Ctrl+h             resize shrink width  5 px or 5 ppt
+    $mod+Ctrl+j             resize grow   height 5 px or 5 ppt
+    $mod+Ctrl+k             resize shrink height 5 px or 5 ppt
+    $mod+Ctrl+l             resize grow   width  5 px or 5 ppt
+    $mod+Ctrl+Left          resize shrink width  5 px or 5 ppt
+    $mod+Ctrl+Up            resize grow   height 5 px or 5 ppt
+    $mod+Ctrl+Down          resize shrink height 5 px or 5 ppt
+    $mod+Ctrl+Right         resize grow   width  5 px or 5 ppt
+}
+# Workspaces Bdidings:     #
+#==========================#
+bindsym {
+    # Switch to workspace:     #
+    #==========================#
+    $mod+1                  workspace number 1
+    $mod+2                  workspace number 2
+    $mod+3                  workspace number 3
+    $mod+4                  workspace number 4
+    $mod+5                  workspace number 5
+    $mod+6                  workspace number 6
+    $mod+7                  workspace number 7
+    $mod+8                  workspace number 8
+    $mod+9                  workspace number 9
+    $mod+0                  workspace number 10
+    # Move focused container:  #
+    #==========================#
+    $mod+Shift+1            move container to workspace number 1
+    $mod+Shift+2            move container to workspace number 2
+    $mod+Shift+3            move container to workspace number 3
+    $mod+Shift+4            move container to workspace number 4
+    $mod+Shift+5            move container to workspace number 5
+    $mod+Shift+6            move container to workspace number 6
+    $mod+Shift+7            move container to workspace number 7
+    $mod+Shift+8            move container to workspace number 8
+    $mod+Shift+9            move container to workspace number 9
+    $mod+Shift+0            move container to workspace number 10
+    # move container (follow): #
+    #==========================#
+    $mod+Ctrl+1             move container to workspace number 1,  workspace 1
+    $mod+Ctrl+2             move container to workspace number 2,  workspace 2
+    $mod+Ctrl+3             move container to workspace number 3,  workspace 3
+    $mod+Ctrl+4             move container to workspace number 4,  workspace 4
+    $mod+Ctrl+5             move container to workspace number 5,  workspace 5
+    $mod+Ctrl+6             move container to workspace number 6,  workspace 6
+    $mod+Ctrl+7             move container to workspace number 7,  workspace 7
+    $mod+Ctrl+8             move container to workspace number 8,  workspace 8
+    $mod+Ctrl+9             move container to workspace number 9,  workspace 9
+    $mod+Ctrl+0             move container to workspace number 10, workspace 10
+}
+
+#==========================#
+# Mode:                    #
+#==========================#
+#==========================#
+# Status Bar:              #
+#==========================#
+bar {
+    position top
+    font pango:JetBrains Mono Nerd Font Bold 11
+    status_command ~/.config/sway/scripts/statusbar.sh
+    tray_output eDP-1
+    colors {
+            background $bg_dim
+            statusline $fg
+            #                    border     backgr.     text
+            focused_workspace    $aqua      $aqua       $bg
+            inactive_workspace   $bg        $green      $bg
+            active_workspace     $bg        $blue       $bg
+            urgent_workspace     $red       $red        $fg
+
+        }
+}
+#==========================#
+# RULES:                   #
+#==========================#
+# Inhibit Idle Rules:      #
+#==========================#
+for_window  [app_id=".*"]          inhabit_idle fullscreen
+for_window  [class=".*"]           inhabit_idle fullscreen
+# Inhibit Idle Rules:      #
+#==========================#
+for_window [app_id="^foot_float$"] floating enable, resize set width 50 ppt height 80 ppt, move center
+for_window [app_id="^wez_float$"]  floating enable, resize set width 50 ppt height 80 ppt, move center
+for_window [app_id="^fileCli$"]    floating enable, resize set width 50 ppt height 80 ppt, move center
+
+# #==========================#
+# # EYE CANDY:               #
+# #==========================#
+# # corner:
+# #==========================#
+# corner_radius 5
+# smart_corner_radius on
+#
+# # shadows
+# #==========================#
+# shadows on
+# shadow_color $bg_dim
+# shadow_blur_radius 20
+# default_dim_inactive 0
+#
+# # blur:                    #
+# #==========================#
+# blur enable
+# blur_passes 4
+# blur_radius 4
+#
+# # layers:                  #
+# #==========================#
+# layer_effects "waybar" blur enable; shadows enable, corner_radius 5
+# layer_effects "swaync-control-center" blur enable
+# layer_effects "swaync-notification-window" blur disable
+# layer_effects "gtk-layer-shell" blur enable

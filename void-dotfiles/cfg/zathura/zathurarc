@@ -1,0 +1,69 @@
+# -----------------------------------------------------------------------------
+# Zathura settings
+# -----------------------------------------------------------------------------
+# Font:
+# -----------------------------------------------------------------------------
+set font "Jetbrains Mono Nerd Font"
+# -----------------------------------------------------------------------------
+# Configs:
+# -----------------------------------------------------------------------------
+set selection-clipboard clipboard
+set page-padding 10
+set incremental-search true
+set window-title-home-tilde true
+set window-title-basename true
+set statusbar-home-tilde true
+set adjust-open "best-fit"
+set adjust-open "width"
+set first-page-column 1:2
+set recolor true
+set recolor-keephue true
+set sandbox strict
+# -----------------------------------------------------------------------------
+# Keybinds:
+# -----------------------------------------------------------------------------
+map <C-Tab> toggle_statusbar
+map <C-t> set recolor "false"
+# -----------------------------------------------------------------------------
+# Themes:
+# -----------------------------------------------------------------------------
+set notification-error-bg       "#141617"
+set notification-error-fg       "#fb4934"
+set notification-warning-bg     "#141617"
+set notification-warning-fg     "#fabd2f"
+set notification-bg             "#141617"
+set notification-fg             "#b8bb26"
+
+set completion-bg               "#141617"
+set completion-fg               "#ebdbb2"
+set completion-group-bg         "#3c3836"
+set completion-group-fg         "#928374"
+set completion-highlight-bg     "#83a598"
+set completion-highlight-fg     "#504945"
+
+# Define the color in index mode
+set index-bg                    "#141617"
+set index-fg                    "#d8a675"
+set index-active-bg             "#458588"
+set index-active-fg             "#ebdbb2"
+
+set inputbar-bg                 "#141617"
+set inputbar-fg                 "#ebdbb2"
+
+set statusbar-bg                "#141617"
+set statusbar-fg                "#ebdbb2"
+
+set highlight-color             "#83a598"
+set highlight-active-color      "#8ec07c"
+
+set default-bg                  "#141617"
+set default-fg                  "#ebdbb2"
+set render-loading              true
+set render-loading-bg           "#171717"
+set render-loading-fg           "#ebdbb2"
+
+# Recolor book content's color
+set recolor-lightcolor          "#171717"
+set recolor-darkcolor           "#ebdbb2"
+set recolor                     "true"
+

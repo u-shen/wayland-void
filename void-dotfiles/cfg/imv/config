@@ -1,0 +1,15 @@
+[options]
+background = 1d2021
+width = 1400
+height = 800
+overlay_font = JetBrainsMono Nerd Font:14
+overlay_text_color = 202325
+overlay_text_alpha = e6
+overlay_background_color = dce1e4
+overlay_background_alpha = 73
+overlay_position_bottom = true
+scaling_mode = full
+
+[binds]
+p = prev 1
+n = next 1

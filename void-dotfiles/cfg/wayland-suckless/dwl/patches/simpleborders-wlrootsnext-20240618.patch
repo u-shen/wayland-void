@@ -1,0 +1,73 @@
+From 143b8d35f73f32be7f6a1f8e099144a38b4c5eb6 Mon Sep 17 00:00:00 2001
+From: Ben Collerson <benc@benc.cc>
+Date: Sat, 30 Dec 2023 13:39:31 +1000
+Subject: [PATCH] simpleborders
+
+---
+ dwl.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/dwl.c b/dwl.c
+index 9890a6c..66760ec 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -258,6 +258,7 @@ static void closemon(Monitor *m);
+ static void commitlayersurfacenotify(struct wl_listener *listener, void *data);
+ static void commitnotify(struct wl_listener *listener, void *data);
+ static void commitpopup(struct wl_listener *listener, void *data);
++static int countclients(Monitor *m);
+ static void createdecoration(struct wl_listener *listener, void *data);
+ static void createidleinhibitor(struct wl_listener *listener, void *data);
+ static void createkeyboard(struct wlr_keyboard *keyboard);
+@@ -307,6 +308,7 @@ static void motionnotify(uint32_t time, struct wlr_input_device *device, double
+ 		double sy, double sx_unaccel, double sy_unaccel);
+ static void motionrelative(struct wl_listener *listener, void *data);
+ static void moveresize(const Arg *arg);
++static int needsborder(Client *c);
+ static void outputmgrapply(struct wl_listener *listener, void *data);
+ static void outputmgrapplyortest(struct wlr_output_configuration_v1 *config, int test);
+ static void outputmgrtest(struct wl_listener *listener, void *data);
+@@ -804,6 +806,17 @@ commitnotify(struct wl_listener *listener, void *data)
+ 		c->resize = 0;
+ }
+ 
++int
++countclients(Monitor *m)
++{
++	unsigned int n = 0;
++	Client *c;
++	wl_list_for_each(c, &clients, link)
++		if (VISIBLEON(c, m) && !c->isfloating && !c->isfullscreen)
++			n++;
++	return n;
++}
++
+ void
+ commitpopup(struct wl_listener *listener, void *data)
+ {
+@@ -1893,6 +1906,14 @@ moveresize(const Arg *arg)
+ 	}
+ }
+ 
++int
++needsborder(Client *c) {
++	return ((countclients(c->mon) > 1
++			&& c->mon->lt[c->mon->sellt]->arrange != monocle)
++		|| c->isfloating)
++		&& !c->isfullscreen;
++}
++
+ void
+ outputmgrapply(struct wl_listener *listener, void *data)
+ {
+@@ -2127,6 +2148,7 @@ resize(Client *c, struct wlr_box geo, int interact)
+ 	struct wlr_box clip;
+ 	client_set_bounds(c, geo.width, geo.height);
+ 	c->geom = geo;
++	c->bw = needsborder(c) ? borderpx : 0;
+ 	applybounds(c, bbox);
+ 
+ 	/* Update scene-graph, including borders */
+-- 
+2.44.1
+

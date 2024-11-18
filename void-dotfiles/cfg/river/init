@@ -1,0 +1,254 @@
+#!/bin/sh
+#------------------------------------------#
+# First Edit 2023-08-13                    #
+# github.com/farah-xyz/wayland-void        #
+#------------------------------------------#
+#==========================#
+# Variable:                #
+#==========================#
+mod="Mod1"
+mod4="Mod4"
+terminal="foot"
+termbidi="wezterm"
+swaync_dashboard="swaync-client -t"
+file_manager_cli="nnn -P z"
+file_manager_gui="nemo"
+browser="chromium"
+browser_VI="qutebrowser"
+browser_GO="firefox"
+menu="wmenu_run"
+menu_gui="fuzzel"
+touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
+
+#==========================#
+# AutoStart:               #
+#==========================#
+riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/autostart.sh > /dev/null 2>&1"
+riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/gtkTheme.sh > /dev/null 2>&1"
+riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.sh > /dev/null 2>&1"
+
+#==========================#
+# Input configurations:    #
+#==========================#
+# Keyboard:                #
+#==========================#
+riverctl keyboard-layout -options "caps:escape,grp:alt_altgr_toggle" "us,ara"
+riverctl set-repeat 80 200
+# Touchpad:                #
+#==========================#
+riverctl input $touchpad tap enabled
+riverctl input $touchpad events enabled
+riverctl input $touchpad natural-scroll enabled
+riverctl input $touchpad accel-profile adaptive
+riverctl input $touchpad pointer-accel 0.2
+
+#==========================#
+# Misc configurations:     #
+#==========================#
+riverctl border-width 2
+riverctl set-cursor-warp on-focus-change
+riverctl focus-follows-cursor always
+riverctl hide-cursor timeout 5000
+riverctl hide-cursor when-typing enabled
+riverctl xcursor-theme Bibata-Modern-Classic 25
+
+#==========================#
+# Borders colours:         #
+#==========================#
+riverctl background-color 0x1d2021
+riverctl border-color-focused 0x689d6a
+riverctl border-color-unfocused 0x282828
+riverctl border-color-urgent 0xcc241d
+
+#==========================#
+# window Rules:            #
+#==========================#
+# Fullscreen Rules:        #
+#==========================#
+riverctl rule-add -app-id "Waydroid" fullscreen
+riverctl rule-add -title "Library" fullscreen
+riverctl rule-add -title "*KVM" fullscreen
+riverctl rule-add -title "wlroots*" fullscreen
+# Floating Rules:          #
+#==========================#
+riverctl rule-add -title "Virtual Machine*" float
+riverctl rule-add -app-id "foot_float" float
+riverctl rule-add -app-id "termbidi_float" float
+riverctl rule-add -app-id "man_page" float
+riverctl rule-add -app-id "file_manager_cli" float
+riverctl rule-add -app-id "blueman-manager" float
+riverctl rule-add -app-id "blueman-sendto" float
+riverctl rule-add -app-id "wihotspot-gui" float
+riverctl rule-add -app-id "pavucontrol" float
+riverctl rule-add -app-id "vimiv" float
+riverctl rule-add -app-id "imv" float
+# Dimensions Rules:        #
+#==========================#
+riverctl rule-add -title "Virtual Machine*" dimensions 600 400
+riverctl rule-add -app-id "foot_float" dimensions 1200 800
+riverctl rule-add -app-id "man_page" dimensions 900 1080
+riverctl rule-add -app-id "termbidi_float" dimensions 1200 800
+riverctl rule-add -app-id "file_manager_cli" dimensions 1200 800
+riverctl rule-add -app-id "blueman-manager" dimensions 800 400
+riverctl rule-add -app-id "blueman-sendto" dimensions 1200 800
+riverctl rule-add -app-id "wihotspot-gui" dimensions 800 400
+riverctl rule-add -app-id "pavucontrol" dimensions 800 400
+riverctl rule-add -app-id "mpv" dimensions 1500 800
+riverctl rule-add -app-id "vimiv" dimensions 1500 900
+# Position Rules:          #
+#==========================#
+riverctl rule-add -title "Virtual Machine*" position 1400 45
+riverctl rule-add -app-id "man_page" position 1400 45
+riverctl rule-add -app-id "nm-applet" position 1400 45
+riverctl rule-add -app-id "blueman-manager" position 1400 45
+riverctl rule-add -app-id "wihotspot-gui" position 1400 45
+riverctl rule-add -app-id "pavucontrol" position 1115 45
+# Tags Rules:              #
+#==========================#
+# 2147483664 => tags 5
+riverctl rule-add -app-id "Waydroid" tags 2147483664
+riverctl rule-add -app-id "mypaint" tags 2147483664
+riverctl rule-add -app-id "virt-manager" tags 2147483664
+# Others Rules:            #
+#==========================#
+riverctl rule-add -app-id "*" ssd
+
+#==========================#
+# Key Bindings:            #
+#==========================#
+# Programme Bindings:      #
+#==========================#
+riverctl map normal $mod Return spawn "$terminal"
+riverctl map normal $mod Backslash spawn "$termbidi"
+riverctl map normal $mod W spawn "$browser"
+riverctl map normal $mod G spawn "$browser_GO"
+riverctl map normal $mod P spawn "$menu"
+riverctl map normal $mod D spawn "$menu_gui"
+riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/onScreenKeyboard.sh"
+riverctl map normal $mod N spawn "$termbidi start --class=file_manager_cli $file_manager_cli"
+riverctl map normal $mod+Shift N spawn "$file_manager_gui"
+riverctl map normal $mod+Shift D spawn "$swaync_dashboard"
+riverctl map normal $mod+Shift Return spawn "$terminal --app-id=foot_float"
+riverctl map normal $mod+Shift Backslash spawn "$termbidi start --class termbidi_float"
+riverctl map normal $mod+Shift P spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/powerMenu.sh"
+riverctl map normal $mod+Shift W spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/wifiMenu.py"
+riverctl map normal $mod+Shift B spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/blueMenu.sh"
+riverctl map normal $mod+Shift M spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/mountMenu.sh"
+riverctl map normal $mod+Control R spawn "$HOME/.config/river/init"
+# Screenshoot Binding:     #
+#==========================#
+riverctl map normal $mod Print spawn "$HOME/.config/river/scripts/screenShoot.sh"
+riverctl map normal $mod+Shift Print spawn "$HOME/.config/river/scripts/screenRecored.sh"
+riverctl map normal $mod+Shift S spawn "$HOME/.config/river/scripts/screenShoot.sh"
+riverctl map normal $mod+Shift R spawn "$HOME/.config/river/scripts/screenRecored.sh"
+# MUSIC Bidings:           #
+#==========================#
+riverctl map normal $mod4 P spawn "mocp --toggle-pause"
+riverctl map normal $mod4 N spawn "mocp --next"
+riverctl map normal $mod4 B spawn "mocp --previous"
+riverctl map normal $mod4 Q spawn "mocp --exit"
+riverctl map -repeat normal $mod4 Left spawn "mocp --seek -10"
+riverctl map -repeat normal $mod4 Right spawn "mocp --seek +10"
+riverctl map -repeat normal $mod4 Period spawn "mocp --volume +10"
+riverctl map -repeat normal $mod4 Comma spawn "mocp --volume -10"
+# Window Bindings:         #
+#==========================#
+riverctl map normal $mod+Control Q exit
+riverctl map normal $mod+Shift C close
+riverctl map normal $mod Q close
+riverctl map normal $mod+Shift Space toggle-float
+riverctl map normal $mod F toggle-fullscreen
+
+riverctl map normal $mod H focus-view left
+riverctl map normal $mod J focus-view down
+riverctl map normal $mod K focus-view up
+riverctl map normal $mod L focus-view right
+riverctl map normal $mod+Shift H swap left
+riverctl map normal $mod+Shift J swap down
+riverctl map normal $mod+Shift K swap up
+riverctl map normal $mod+Shift L swap right
+riverctl map normal $mod Period focus-view next
+riverctl map normal $mod Comma focus-view previous
+riverctl map normal $mod+Shift Period swap next
+riverctl map normal $mod+Shift Comma swap previous
+riverctl map normal $mod S zoom
+# Window Floating Bidings: #
+#==========================#
+riverctl map -repeat normal $mod4 H move left 100
+riverctl map -repeat normal $mod4 J move down 100
+riverctl map -repeat normal $mod4 K move up 100
+riverctl map -repeat normal $mod4 L move right 100
+riverctl map -repeat normal $mod4+Shift H snap left
+riverctl map -repeat normal $mod4+Shift J snap down
+riverctl map -repeat normal $mod4+Shift K snap up
+riverctl map -repeat normal $mod4+Shift L snap right
+riverctl map -repeat normal $mod4+Control H resize horizontal -100
+riverctl map -repeat normal $mod4+Control J resize vertical 100
+riverctl map -repeat normal $mod4+Control K resize vertical -100
+riverctl map -repeat normal $mod4+Control L resize horizontal 100
+# Mouse Binding:           #
+#==========================#
+riverctl map-pointer normal $mod BTN_LEFT move-view
+riverctl map-pointer normal $mod BTN_RIGHT resize-view
+riverctl map-pointer normal $mod BTN_MIDDLE zoom
+riverctl map-pointer normal $mod+Shift BTN_MIDDLE toggle-float
+# Tags Binding:            #
+#==========================#
+for i in $(seq 1 9); do
+	tags=$((1 << ($i - 1)))
+	riverctl map normal $mod $i set-focused-tags $tags
+	riverctl map normal $mod+Shift $i set-view-tags $tags
+	riverctl map normal $mod+Control $i toggle-focused-tags $tags
+	riverctl map normal $mod+Shift+Control $i toggle-view-tags $tags
+done
+all_tags=$(((1 << 32) - 1))
+riverctl map normal $mod 0 set-focused-tags $all_tags
+riverctl map normal $mod+Shift 0 set-view-tags $all_tags
+# Tags.previous_tag:       #
+#==========================#
+riverctl map normal $mod Tab focus-previous-tags
+riverctl map normal $mod+Shift Tab send-to-previous-tags
+# Tags scratchpad:         #
+#==========================#
+scratch_tag=$((1 << 10))
+riverctl map normal $mod Equal toggle-focused-tags ${scratch_tag}
+riverctl map normal $mod Minus set-view-tags ${scratch_tag}
+all_but_scratch_tag=$((((1 << 9) - 1) ^ $scratch_tag))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+# Meltimedia Binding:      #
+#==========================#
+for mode in normal locked; do
+	# Control pulse audio volume with
+	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+	riverctl map $mode None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	# Control screen backlight brightness with brightnessctl
+	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +10%"
+	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 10%-"
+done
+# Mode Binding:            #
+#==========================#
+riverctl declare-mode passthrough
+riverctl map normal $mod+Control P enter-mode passthrough
+riverctl map passthrough $mod+Control P enter-mode normal
+riverctl map normal $mod F11 enter-mode passthrough
+riverctl map passthrough $mod F11 enter-mode normal
+#==========================#
+# Layouts configurations:  #
+#==========================#
+riverctl default-attach-mode top
+riverctl default-layout rivertile &
+rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+# Layouts Binding:         #
+#==========================#
+# RiverTile Layouts :      #
+#==========================#
+riverctl map -repeat normal $mod+Control H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map -repeat normal $mod+Control L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal $mod+Control Comma send-layout-cmd rivertile "main-count +1"
+riverctl map normal $mod+Control Period send-layout-cmd rivertile "main-count -1"
+riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top"
+riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
+riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
+riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
