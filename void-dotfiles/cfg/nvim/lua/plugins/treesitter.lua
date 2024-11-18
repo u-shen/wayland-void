@@ -41,7 +41,6 @@ return {
 				"javascript",
 				"html",
 				"css",
-				"scss"
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
@@ -53,6 +52,21 @@ return {
 			require("nvim-treesitter.configs").setup(opts)
 			-- Use the bash ts parser for zsh
 			vim.treesitter.language.register("bash", "zsh")
+		end,
+	},
+
+	-----------------------------------------------------------
+	-- nvim-treesitter-context
+	-----------------------------------------------------------
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			require("treesitter-context").setup({
+				max_lines = 3,
+			})
+			vim.cmd([[ highlight TreesitterContext guibg=#202020 ]])
 		end,
 	},
 
@@ -129,12 +143,49 @@ return {
 	},
 
 	-----------------------------------------------------------
+	-- rainbow-delimiters.nvim
+	-----------------------------------------------------------
+	{
+		"hiphish/rainbow-delimiters.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+	},
+
+	-----------------------------------------------------------
 	-- indentition
 	-----------------------------------------------------------
 	{
+		"nvimdev/indentmini.nvim",
+		config = function()
+			vim.cmd.highlight("IndentLine guifg=#32302f")
+			vim.cmd.highlight("IndentLineCurrent guifg=#504945")
+			require("indentmini").setup()
+		end,
+	},
+	{
 		"nmac427/guess-indent.nvim",
 		config = function()
-			require("guess-indent").setup({})
+			require("guess-indent").setup({
+				auto_cmd = true,
+				override_editorconfig = true,
+				on_tab_options = {
+					["expandtab"] = true,
+				},
+				on_space_options = {
+					["expandtab"] = true,
+					["tabstop"] = "detected",
+					["softtabstop"] = "detected",
+					["shiftwidth"] = "detected",
+				},
+			})
 		end,
+	},
+
+	-----------------------------------------------------------
+	-- Current Word
+	-----------------------------------------------------------
+	{
+		"dominikduda/vim_current_word",
+		enabled = true,
 	},
 }

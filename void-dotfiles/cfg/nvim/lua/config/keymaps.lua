@@ -17,8 +17,6 @@ bind("c", "QA", "qa", opts)
 bind("c", "wA!", "wqa", opts)
 bind("n", "<C-s>", ":w<CR>", opts)
 bind("i", "<C-s>", "<ESC> :w<CR>", opts)
-bind('n', 'q', ':q<CR>', opts)
-bind('n', 'Q', ':qa<CR>', opts)
 -----------------------------------------------------------
 -- leader movements
 -----------------------------------------------------------

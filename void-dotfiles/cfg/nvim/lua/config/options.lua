@@ -4,6 +4,30 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 -----------------------------------------------------------
+-- SHELL
+-----------------------------------------------------------
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+	local opt = vim.opt
+	-- use git-bash for `:!`, `:ter`
+	-- windows only, convert \ to / when expanding file names
+	opt.shellslash = true
+	-- defaults to cmd.exe
+	opt.shell = vim.fs.normalize("bash.exe")
+	-- opt.shell = "bash.exe" -- WARN: sometimes mistakenly points to wsl bash
+
+	-- defaults to "/s /c" for cmd.exe
+	opt.shellcmdflag = "-c"
+	-- default value works
+	opt.shellpipe = "2>&1| tee"
+	-- Windows: may default to "\"" when 'shell' contains 'sh'
+	opt.shellquote = ""
+	opt.shellxquote = ""
+	-- defaults to ">", 'bash' uses:
+	opt.shellredir = ">%s 2>&1"
+	-- defualt value works
+	opt.shellxescape = ""
+end
+-----------------------------------------------------------
 -- General
 -----------------------------------------------------------
 vim.opt.termbidi = true
@@ -18,7 +42,7 @@ vim.opt.undolevels = 10000
 -----------------------------------------------------------
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.numberwidth = 1
+vim.opt.numberwidth = 4
 vim.o.cursorline = false
 vim.opt.showmatch = true
 vim.opt.foldmethod = "marker"
@@ -55,8 +79,8 @@ vim.opt.listchars:append("space:⋅")
 -----------------------------------------------------------
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.shiftround = true
 -------------------------------------------------------------
 -- Use ripgrep as grep tool:

@@ -7,16 +7,16 @@ return {
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<TAB>",      "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-			{ "<S-Tab>",    "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-			{ "[b",         "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-			{ "]b",         "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-			{ "[B",         "<cmd>BufferLineMovePrev<cr>",  desc = "Move buffer prev" },
-			{ "]B",         "<cmd>BufferLineMoveNext<cr>",  desc = "Move buffer next" },
-			{ "<leader>bp", "<Cmd>BufferLinePick<CR>",      desc = "Choose Buffer" },
+			{ "<TAB>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+			{ "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+			{ "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+			{ "<leader>bp", "<Cmd>BufferLinePick<CR>", desc = "Choose Buffer" },
 			{ "<leader>bc", "<Cmd>BufferLinePickClose<CR>", desc = "Choose Buffer to Close" },
-			{ "<leader>bl", "<Cmd>BufferLineMoveNext<CR>",  desc = "Move Buffer Right" },
-			{ "<leader>bh", "<Cmd>BufferLineMovePrev<CR>",  desc = "Move Buffer Left" },
+			{ "<leader>bl", "<Cmd>BufferLineMoveNext<CR>", desc = "Move Buffer Right" },
+			{ "<leader>bh", "<Cmd>BufferLineMovePrev<CR>", desc = "Move Buffer Left" },
 		},
 		opts = {
 			options = {
@@ -41,7 +41,7 @@ return {
 				end,
 				max_name_length = 18,
 				max_prefix_length = 18,
-				tab_size = 20,
+				tab_size = 17,
 				truncate_names = true,
 				diagnostics = "nvim_lsp",
 				diagnostics_update_in_insert = false,
@@ -119,7 +119,7 @@ return {
 	{
 		"ojroques/nvim-bufdel",
 		keys = {
-			{ "<leader>bd", "<Cmd>BufDel<CR>",       desc = "Close Current Buffer" },
+			{ "<leader>bd", "<Cmd>BufDel<CR>", desc = "Close Current Buffer" },
 			{ "<leader>bo", "<Cmd>BufDelOthers<CR>", desc = "Close Others Buffers" },
 		},
 		opts = {

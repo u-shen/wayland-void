@@ -5,10 +5,10 @@ return {
 	"nvim-telescope/telescope.nvim",
 	branch = "master",
 	dependencies = {
+		"nvim-lua/popup.nvim",
+		"jvgrootveld/telescope-zoxide",
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
-		"jvgrootveld/telescope-zoxide",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	keys = {
 		{
@@ -86,20 +86,21 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local z_utils = require("telescope._extensions.zoxide.utils")
 		local TelescopeColor = {
 			TelescopeMatching = { fg = "#d8a657" },
-			TelescopeSelection = { fg = "#0d0e0f", bg = "#689d6a", bold = true },
+			TelescopeSelection = { fg = "#ebdbb2", bg = "#3c3836", bold = true },
 
-			TelescopePromptPrefix = { bg = "#0d0e0f" },
-			TelescopePromptNormal = { bg = "#0d0e0f" },
-			TelescopeResultsNormal = { bg = "#0d0e0f" },
-			TelescopePreviewNormal = { bg = "#0d0e0f" },
-			TelescopePromptBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
-			TelescopeResultsBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
-			TelescopePreviewBorder = { bg = "#0d0e0f", fg = "#0d0e0f" },
-			TelescopePromptTitle = { bg = "#ea6962", fg = "#0d0e0f" },
-			TelescopeResultsTitle = { fg = "#0d0e0f" },
-			TelescopePreviewTitle = { bg = "#a9b665", fg = "#0d0e0f" },
+			TelescopePromptPrefix = { bg = "#1d2021" },
+			TelescopePromptNormal = { bg = "#1d2021" },
+			TelescopeResultsNormal = { bg = "#1d2021" },
+			TelescopePreviewNormal = { bg = "#1d2021" },
+			TelescopePromptBorder = { bg = "#1d2021", fg = "#1d2021" },
+			TelescopeResultsBorder = { bg = "#1d2021", fg = "#1d2021" },
+			TelescopePreviewBorder = { bg = "#1d2021", fg = "#1d2021" },
+			TelescopePromptTitle = { bg = "#ea6962", fg = "#1d2021" },
+			TelescopeResultsTitle = { fg = "#1d2021" },
+			TelescopePreviewTitle = { bg = "#a9b665", fg = "#1d2021" },
 		}
 
 		for hl, col in pairs(TelescopeColor) do
@@ -107,6 +108,29 @@ return {
 		end
 
 		telescope.setup({
+			-- (other Telescope configuration...)
+			extensions = {
+				zoxide = {
+					prompt_title = "[ Walking on the shoulders of TJ ]",
+					mappings = {
+						default = {
+							after_action = function(selection)
+								print("Update to (" .. selection.z_score .. ") " .. selection.path)
+							end,
+						},
+						["<C-s>"] = {
+							before_action = function(selection)
+								print("before C-s")
+							end,
+							action = function(selection)
+								vim.cmd.edit(selection.path)
+							end,
+						},
+						-- Opens the selected entry in a new split
+						["<C-q>"] = { action = z_utils.create_basic_command("split") },
+					},
+				},
+			},
 			defaults = {
 				layout_strategy = "vertical",
 				layout_config = {
@@ -253,34 +277,6 @@ return {
 				dynamic_preview_title = true,
 				path_display = { "truncate" },
 			},
-			extensions = {
-				fzf = {
-					fuzzy = true, -- false will only do exact matching
-					override_generic_sorter = true, -- override the generic sorter
-					override_file_sorter = true, -- override the file sorter
-					case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-					-- the default case_mode is "smart_case"
-				},
-				zoxide = {
-					list_command = "zoxide query -ls",
-					prompt_title = "[ CD INTO DIRECTORY ]",
-					mappings = {
-						default = {
-							after_action = function(selection)
-								print("Update to (" .. selection.z_score .. ") " .. selection.path)
-							end,
-						},
-						["<C-s>"] = {
-							before_action = function(selection)
-								print("before C-s")
-							end,
-							action = function(selection)
-								vim.cmd.edit(selection.path)
-							end,
-						},
-					},
-				},
-			},
 			pickers = {
 				find_files = {
 					theme = "dropdown",
@@ -305,7 +301,5 @@ return {
 				},
 			},
 		})
-		telescope.load_extension("fzf")
-		telescope.load_extension("zoxide")
 	end,
 }
