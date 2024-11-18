@@ -1,0 +1,75 @@
+# ===================================================#
+# General:                                           #
+# ===================================================#
+general.working_directory = "C:/Users/LLI"
+general.live_config_reload = true
+[terminal.shell]
+program = "C:/msys64/msys2_shell.cmd"
+args = ["-defterm -here -use-full-path -no-start -mingw64 -shell bash"]
+[window]
+opacity = 0.95
+padding = {x= 10, y=10}
+dynamic_padding = true
+decorations = "None"
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 10
+[scrolling]
+history = 50000
+multiplier = 3
+[cursor]
+vi_mode_style = {shape = "Block", blinking = "Off"}
+[terminal]
+osc52 = "CopyPaste"
+# ===================================================#
+# colorsscheme:                                      #
+# ===================================================#
+[colors.primary]
+background = '#282828'
+foreground = '#d4be98'
+[colors.normal]
+black   = '#3c3836'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'
+[colors.bright]
+black   = '#3c3836'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'
+# ===================================================#
+# keybidings:                                        #
+# ===================================================#
+[keyboard]
+bindings = [
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "Paste", action = "Paste" },
+  { key = "Copy", action = "Copy" },
+  { key = "Insert", mods = "Shift", action = "PasteSelection" },
+  { key = "F", mods = "Control|Shift", action = "SearchForward", mode = "~Search" },
+  { key = "B", mods = "Control|Shift", action = "SearchBackward", mode = "~Search" },
+  { key = "Key0", mods = "Control", action = "ResetFontSize" },
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "L", mods = "Control", action = "ClearLogNotice" },
+  { key = "L", mods = "Control", chars = "\f" },
+  { key = "PageUp", mods = "Shift", action = "ScrollPageUp", mode = "~Alt" },
+  { key = "PageDown", mods = "Shift", action = "ScrollPageDown", mode = "~Alt" },
+  { key = "Up", mods = "Shift", action = "ScrollLineUp", mode = "~Alt" },
+  { key = "Down", mods = "Shift", action = "ScrollLineDown", mode = "~Alt" },
+  { key = "Home", mods = "Shift", action = "ScrollToTop", mode = "~Alt" },
+  { key = "End", mods = "Shift", action = "ScrollToBottom", mode = "~Alt" },
+  { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" },
+]

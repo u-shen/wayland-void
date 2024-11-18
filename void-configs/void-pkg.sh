@@ -48,3 +48,5 @@ sudo xbps-install -Sy \
     # FONTS:
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji \
     font-awesome dejavu-fonts-ttf \
+    # theme
+    arc-theme papirus-icon-theme
