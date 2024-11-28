@@ -132,7 +132,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[]          = { "foot", NULL };
-static const char *termbidi[]         = { "wezterm", NULL };
+static const char *termbidi[]         = { "alacritty", NULL };
 static const char *browser[]          = { "firefox", NULL };
 static const char *browserGO[]        = { "chromium", NULL };
 static const char *fileGui[]          = { "pcmanfm", NULL };
@@ -179,8 +179,10 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_D,     	   spawn,          {.v = swayNc} },
 	{ MODKEY,                    XKB_KEY_h,          focusdir,       {.ui = 0} },
 	{ MODKEY,                    XKB_KEY_l,          focusdir,       {.ui = 1} },
-	{ MODKEY,                    XKB_KEY_k,          focusdir,       {.ui = 2} },
-	{ MODKEY,                    XKB_KEY_j,          focusdir,       {.ui = 3} },
+	// { MODKEY,                    XKB_KEY_k,          focusdir,       {.ui = 2} },
+	// { MODKEY,                    XKB_KEY_j,          focusdir,       {.ui = 3} },
+	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
+	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_u,          incnmaster,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_h,          setmfact,       {.f = -0.05f} },
