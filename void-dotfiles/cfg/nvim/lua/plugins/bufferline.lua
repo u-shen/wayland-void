@@ -50,6 +50,14 @@ return {
 					return " " .. icon .. count
 				end,
 				offsets = {
+					{ filetype = "aerial", text = "Document Symbols" },
+					{
+						filetype = "NvimTree",
+						text = "File Explorer",
+						text_align = "center",
+						highlight = "Directory",
+						padding = 0,
+					},
 					{
 						filetype = "neo-tree",
 						text = "File Explorer",
@@ -76,19 +84,19 @@ return {
 						local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
 
 						if error ~= 0 then
-							table.insert(result, { text = "  " .. error, fg = "#EC5241" })
+							table.insert(result, { text = "  " .. error, fg = "#ea6962" })
 						end
 
 						if warning ~= 0 then
-							table.insert(result, { text = "  " .. warning, fg = "#EFB839" })
+							table.insert(result, { text = "  " .. warning, fg = "#d8a657" })
 						end
 
 						if hint ~= 0 then
-							table.insert(result, { text = "  " .. hint, fg = "#A3BA5E" })
+							table.insert(result, { text = "  " .. hint, fg = "#a9b665" })
 						end
 
 						if info ~= 0 then
-							table.insert(result, { text = "  " .. info, fg = "#7EA9A7" })
+							table.insert(result, { text = "  " .. info, fg = "#7daea3" })
 						end
 						return result
 					end,
@@ -125,6 +133,47 @@ return {
 		opts = {
 			next = "tabs",
 			quit = true, -- quit Neovim when last buffer is closed
+		},
+	},
+	-----------------------------------------------------------
+	-- snipe
+	-----------------------------------------------------------
+	{
+		"leath-dub/snipe.nvim",
+		keys = {
+			{
+				"gb",
+				function()
+					require("snipe").open_buffer_menu()
+				end,
+				desc = "Open Snipe buffer menu",
+			},
+		},
+		opts = {
+			ui = {
+				max_height = -1,
+				position = "center",
+				open_win_override = {
+					border = "rounded",
+				},
+				preselect_current = true,
+				text_align = "file-first",
+			},
+			hints = {
+				-- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
+				dictionary = "sadflewcmpghio",
+			},
+			navigate = {
+				next_page = "J",
+				prev_page = "K",
+				under_cursor = "<cr>",
+				cancel_snipe = "<esc>",
+				close_buffer = "D",
+				open_vsplit = "S",
+				open_split = "H",
+				change_tag = "C",
+			},
+			sort = "last",
 		},
 	},
 }

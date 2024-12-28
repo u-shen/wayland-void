@@ -7,7 +7,7 @@ return {
 	-----------------------------------------------------------
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "windwp/nvim-ts-autotag" },
+		dependencies = { "windwp/nvim-ts-autotag", "nvim-treesitter/nvim-treesitter-textobjects" },
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
@@ -15,7 +15,8 @@ return {
 				-- 'base',
 				"lua",
 				"luadoc",
-				"luap",
+				"query",
+				"c",
 				"cpp",
 				"markdown",
 				"markdown_inline",
@@ -23,30 +24,63 @@ return {
 				"git_rebase",
 				"gitcommit",
 				"gitignore",
-				-- 'gitattributes',
+				"gitattributes",
 				"diff",
 				"vim",
 				"vimdoc",
-				-- 'regex',
+				"regex",
 				"bash",
+				"powershell",
 				"toml",
+				"yaml",
 				"ssh_config",
 				"zathurarc",
+				"jq",
 				"json",
+				"json5",
 				"printf",
 				"ini",
 				-- 'fullstack'
-				"tsx",
-				"typescript",
 				"javascript",
+				"typescript",
+				"tsx",
 				"html",
 				"css",
+				"scss",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
 			auto_install = true,
-			context_commentstring = { enable = true, enable_autocmd = false },
+			context_commentstring = { enable = true, enable_autocmd = true },
 			matchup = { enable = true, include_match_words = true, enable_quotes = true },
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<leader>ss", -- set to `false` to disable one of the mappings
+					node_incremental = "<leader>si",
+					scope_incremental = "<leader>sc",
+					node_decremental = "<leader>sd",
+				},
+			},
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true,
+					keymaps = {
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+						["ac"] = "@class.outer",
+						["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+						["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+					},
+					selection_modes = {
+						["@parameter.outer"] = "v", -- charwise
+						["@function.outer"] = "V", -- linewise
+						["@class.outer"] = "<c-v>", -- blockwise
+					},
+					include_surrounding_whitespace = true,
+				},
+			},
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
@@ -64,9 +98,10 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("treesitter-context").setup({
+				mode = "cursor",
 				max_lines = 3,
 			})
-			vim.cmd([[ highlight TreesitterContext guibg=#202020 ]])
+			vim.cmd([[ highlight TreesitterContext guibg=#282828 ]])
 		end,
 	},
 
@@ -114,7 +149,7 @@ return {
 				desc = "Join node under cursor",
 			},
 			{
-				"<leader>s",
+				"<leader>k",
 				function()
 					return require("treesj").split()
 				end,
@@ -152,40 +187,79 @@ return {
 	},
 
 	-----------------------------------------------------------
+	-- Current Wornd
+	-----------------------------------------------------------
+	{
+		"RRethy/vim-illuminate",
+		event = "BufReadPost",
+		enabled = true,
+		config = function()
+			require("illuminate").configure({
+				filetypes_denylist = { "alpha", "dashboard", "neo-tree", "toggleterm", "aerial" },
+				min_count_to_highlight = 2,
+			})
+
+			if vim.g.colors_name ~= "serenity" then
+				vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+				vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+				vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+			end
+		end,
+	},
+	-----------------------------------------------------------
 	-- indentition
 	-----------------------------------------------------------
 	{
-		"nvimdev/indentmini.nvim",
+		-- indent guides for Neovim
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			vim.cmd.highlight("IndentLine guifg=#32302f")
-			vim.cmd.highlight("IndentLineCurrent guifg=#504945")
-			require("indentmini").setup()
+			local ibl = require("ibl")
+			ibl.setup({
+				indent = {
+					char = "│",
+					tab_char = "│",
+					-- highlight = highlight,
+				},
+				scope = {
+					enabled = false,
+				},
+				vim.opt.listchars:append("space: "),
+			})
+		end,
+	},
+	{
+		"echasnovski/mini.indentscope",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			symbol = "│",
+			options = { try_as_border = true },
+		},
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"help",
+					"alpha",
+					"dashboard",
+					"neo-tree",
+					"NvimTree",
+					"Trouble",
+					"lazy",
+					"mason",
+					"notify",
+					"toggleterm",
+					"lazyterm",
+				},
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
 		end,
 	},
 	{
 		"nmac427/guess-indent.nvim",
 		config = function()
-			require("guess-indent").setup({
-				auto_cmd = true,
-				override_editorconfig = true,
-				on_tab_options = {
-					["expandtab"] = true,
-				},
-				on_space_options = {
-					["expandtab"] = true,
-					["tabstop"] = "detected",
-					["softtabstop"] = "detected",
-					["shiftwidth"] = "detected",
-				},
-			})
+			require("guess-indent").setup({})
 		end,
-	},
-
-	-----------------------------------------------------------
-	-- Current Word
-	-----------------------------------------------------------
-	{
-		"dominikduda/vim_current_word",
-		enabled = true,
 	},
 }

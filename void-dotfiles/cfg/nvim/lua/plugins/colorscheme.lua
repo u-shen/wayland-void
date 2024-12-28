@@ -2,23 +2,21 @@
 -- Colorscheme
 -----------------------------------------------------------
 return {
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false,
-		enabled = true,
-		priority = 1000,
-		config = function()
-			vim.g.gruvbox_material_background = "medium"
-			vim.g.gruvbox_material_inlay_hints_background = "dimmed"
-			vim.g.gruvbox_material_float_style = "dim"
-			vim.g.gruvbox_material_current_word = "grey background"
-			vim.g.gruvbox_material_transparent_background = 0
-			vim.g.gruvbox_material_better_performance = 1
-			vim.g.gruvbox_material_diagnostic_line_highlight = 1
-			vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-			vim.cmd([[
-			colorscheme gruvbox-material
-			]])
-		end,
-	},
+	"sainnhe/gruvbox-material",
+	priority = 1000,
+	config = function()
+		vim.o.background = "dark" -- or "light" for light mode
+		vim.cmd("let g:gruvbox_material_background= 'hard'")
+		vim.cmd("let g:gruvbox_material_transparent_background=0")
+		vim.cmd("let g:gruvbox_material_diagnostic_line_highlight=1")
+		vim.cmd("let g:gruvbox_material_diagnostic_virtual_text='colored'")
+		vim.cmd("let g:gruvbox_material_enable_bold=1")
+		vim.cmd("let g:gruvbox_material_enable_italic=1")
+		vim.cmd("let g:gruvbox_material_better_performance=1")
+		vim.cmd([[colorscheme gruvbox-material]])
+		-- changing bg and border colors
+		vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+	end,
 }

@@ -64,7 +64,7 @@ return {
 		{
 			"<leader>fd",
 			function()
-				require("telescope").extensions.zoxide.list()
+				require("telescope").extensions.zoxide.list(require("telescope.themes").get_ivy({}))
 			end,
 			desc = "Change Into Directory",
 		},
@@ -91,16 +91,16 @@ return {
 			TelescopeMatching = { fg = "#d8a657" },
 			TelescopeSelection = { fg = "#ebdbb2", bg = "#3c3836", bold = true },
 
-			TelescopePromptPrefix = { bg = "#1d2021" },
-			TelescopePromptNormal = { bg = "#1d2021" },
-			TelescopeResultsNormal = { bg = "#1d2021" },
-			TelescopePreviewNormal = { bg = "#1d2021" },
-			TelescopePromptBorder = { bg = "#1d2021", fg = "#1d2021" },
-			TelescopeResultsBorder = { bg = "#1d2021", fg = "#1d2021" },
-			TelescopePreviewBorder = { bg = "#1d2021", fg = "#1d2021" },
-			TelescopePromptTitle = { bg = "#ea6962", fg = "#1d2021" },
-			TelescopeResultsTitle = { fg = "#1d2021" },
-			TelescopePreviewTitle = { bg = "#a9b665", fg = "#1d2021" },
+			TelescopePromptPrefix = { bg = "#282828" },
+			TelescopePromptNormal = { bg = "#282828" },
+			TelescopeResultsNormal = { bg = "#282828" },
+			TelescopePreviewNormal = { bg = "#282828" },
+			TelescopePromptBorder = { bg = "#282828", fg = "#282828" },
+			TelescopeResultsBorder = { bg = "#282828", fg = "#282828" },
+			TelescopePreviewBorder = { bg = "#282828", fg = "#282828" },
+			TelescopePromptTitle = { bg = "#ea6962", fg = "#282828" },
+			TelescopeResultsTitle = { fg = "#282828" },
+			TelescopePreviewTitle = { bg = "#a9b665", fg = "#282828" },
 		}
 
 		for hl, col in pairs(TelescopeColor) do
@@ -111,7 +111,7 @@ return {
 			-- (other Telescope configuration...)
 			extensions = {
 				zoxide = {
-					prompt_title = "[ Walking on the shoulders of TJ ]",
+					prompt_title = "[ 🙉 Walking on the shoulders of TJ ]",
 					mappings = {
 						default = {
 							after_action = function(selection)
@@ -279,22 +279,22 @@ return {
 			},
 			pickers = {
 				find_files = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				oldfiles = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				grep_string = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				live_grep = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				registers = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				diagnostics = {
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				buffers = {
 					sort_lastused = true,

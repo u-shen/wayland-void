@@ -1,8 +1,8 @@
 #!/bin/sh
 
 ## Set GTK Themes, Icons, Cursor and Fonts
-THEME='Arc-Dark'
-ICONS='papirus-icon-theme'
+THEME='Gruvbox-Material-Dark'
+ICONS='Papirus-Dark'
 FONT='JetBrainsMono NF 10'
 CURSOR='Bibata-Modern-Classic'
 SCHEMA='gsettings set org.gnome.desktop.interface'
