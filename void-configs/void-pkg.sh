@@ -5,7 +5,7 @@ sudo xbps-install -Sy \
     # SYSTEM:
     base-devel elogind \
     # VOID:
-    void-repo-nonfree xtools \
+    xtools \
     # TERMINAL:
     foot alacritty \
     # COMPILE:
