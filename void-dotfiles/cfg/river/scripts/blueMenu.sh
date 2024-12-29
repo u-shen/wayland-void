@@ -330,7 +330,7 @@ run_dmenu() {
             DMENU_BLUETOOTH_LAUNCHER="fuzzel --dmenu"
             ;;
     esac
-    $DMENU_BLUETOOTH_LAUNCHER -i -f "JetBrains Mono Nerd Font 12" -p "BLUETOOTH MENU: " "${dmenu_args[@]}"
+    $DMENU_BLUETOOTH_LAUNCHER -i -f "JetBrains Mono Nerd Font 10" -p "BLUETOOTH MENU: " "${dmenu_args[@]}"
 }
 
 print_help() {

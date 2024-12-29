@@ -11,7 +11,7 @@ sudo xbps-install -Sy \
     # COMPILE:
     ninja meson pkg-config cairo cairo-devel pango pango-devel fcft fcft-devel \
     # COMPOSITOR:
-    wayland wayland-protocols xorg-server-xwayland wlroots wlroots-devel \
+    wayland wayland-protocols xorg-server-xwayland wlroots0.18 wlroots0.18-devel \
     pkg-config libxkbcommon libxkbcommon-devel libevdev libevdev-devel pixman pixman-devel \
     # COMPOSITOR-TOOLS:
     fuzzel wmenu wlr-randr wvkbd hyprpicker wbg SwayNotificationCenter swaylock swayidle \
@@ -46,7 +46,7 @@ sudo xbps-install -Sy \
     # PROGRAMMING LANGUAGE:
     nodejs python3 python3-pip python3-devel \
     # FONTS:
-    noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji \
+    noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-cjk-sans noto-fonts-emoji \
     font-awesome dejavu-fonts-ttf \
     # theme
     gtk-engine-murrine papirus-icon-theme

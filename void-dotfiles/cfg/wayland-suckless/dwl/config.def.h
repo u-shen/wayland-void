@@ -131,8 +131,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]          = { "foot", NULL };
-static const char *termbidi[]         = { "alacritty", NULL };
+static const char *termcmd[]          = { "alacritty", NULL };
+static const char *termbidi[]         = { "foot", NULL };
 static const char *browser[]          = { "firefox", NULL };
 static const char *browserGO[]        = { "chromium", NULL };
 static const char *fileGui[]          = { "pcmanfm", NULL };
@@ -160,8 +160,8 @@ static const Key keys[] = {
   { MODKEY,                    XKB_KEY_d,          spawn,          {.v = menuGui} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_backslash,  spawn,          {.v = termbidi} },
-	{ MODKEY,                    XKB_KEY_w,          spawn,          {.v = browserGO} },
-	{ MODKEY,                    XKB_KEY_g,          spawn,          {.v = browser} },
+	{ MODKEY,                    XKB_KEY_g,          spawn,          {.v = browserGO} },
+	{ MODKEY,                    XKB_KEY_w,          spawn,          {.v = browser} },
 	{ MODKEY,                    XKB_KEY_n,          spawn,          {.v = fileCli} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_N,          spawn,          {.v = fileGui} },
 	{ MODKEY,                    XKB_KEY_o,          spawn,          {.v = onScreenKeyboard} },

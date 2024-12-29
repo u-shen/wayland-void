@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Set GTK Themes, Icons, Cursor and Fonts
-THEME='Gruvbox-Material-Dark'
+THEME='Gruvbox-Dark'
 ICONS='Papirus-Dark'
 FONT='JetBrainsMono NF 10'
 CURSOR='Bibata-Modern-Classic'
