@@ -23,7 +23,7 @@ sudo xbps-install -Sy \
     obs xdg-desktop-portal-wlr \
     # COMMAND LINE TOOLS:
     xdg-user-dirs xdg-utils psmisc bash-completion opendoas btop \
-    fastfetch nnn yazi yt-dlp aria2 ffmpeg libsixel-util rsync eza bat glow starship wl-clipboard trash-cli tealdeer man-db \
+    fastfetch nnn yazi yt-dlp aria2 ffmpeg chafa libsixel-util rsync eza bat glow starship wl-clipboard trash-cli tealdeer man-db \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl ImageMagick \
     # Graphical TOOLS:
     mpv imv zathura zathura-pdf-mupdf \

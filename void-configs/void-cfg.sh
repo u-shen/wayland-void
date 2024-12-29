@@ -37,6 +37,7 @@ echo "########################################"
 echo "######     managment Services   ########"
 echo "########################################"
 sudo rm /var/service/acpid 2>/dev/null
+sudo rm /var/service/wpa_supplicant 2>/dev/null
 sudo ln -s /etc/sv/elogind /var/service/
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/
