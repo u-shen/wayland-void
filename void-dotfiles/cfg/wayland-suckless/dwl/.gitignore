@@ -1,4 +1,6 @@
 dwl
+*.orig
+*.rej
 *.o
 *-protocol.c
 *-protocol.h
