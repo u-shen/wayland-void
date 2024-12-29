@@ -15,6 +15,7 @@ done
 echo "=========> In ~/.local/share <============="
 ln -sf ~/.local/wayland-void/void-dotfiles/fonts ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/themes ~/.local/share/
+ln -sf ~/.local/wayland-void/void-dotfiles/icons ~/.local/share/
 echo "===============> In ~/ <==================="
 ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bashrc ~/

@@ -13,6 +13,7 @@ export QT_SCALE_FACTOR=1
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export WLR_NO_HARDWARE_CURSORS=1
 export MOZ_ENABLE_WAYLAND=1
+export XCURSOR_THEME=Breez_Hacked
 
 ####################################
 ####---------- EXPORTS ----------###

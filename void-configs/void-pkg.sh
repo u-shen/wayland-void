@@ -49,4 +49,4 @@ sudo xbps-install -Sy \
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-cjk-sans noto-fonts-emoji \
     font-awesome dejavu-fonts-ttf \
     # theme
-    gtk-engine-murrine papirus-icon-theme
+    gtk-engine-murrine breeze-hacked-cursor-theme papirus-icon-theme
