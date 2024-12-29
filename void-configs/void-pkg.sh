@@ -14,7 +14,7 @@ sudo xbps-install -Sy \
     wayland wayland-protocols xorg-server-xwayland wlroots0.18 wlroots0.18-devel \
     pkg-config libxkbcommon libxkbcommon-devel libevdev libevdev-devel pixman pixman-devel \
     # COMPOSITOR-TOOLS:
-    fuzzel wmenu wlr-randr wvkbd hyprpicker wbg SwayNotificationCenter swaylock swayidle \
+    fuzzel wmenu nwg-look wlr-randr wvkbd hyprpicker wbg SwayNotificationCenter swaylock swayidle \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
     # SCREENSHOOT TOOLS:
