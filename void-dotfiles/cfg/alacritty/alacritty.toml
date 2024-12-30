@@ -12,7 +12,7 @@ normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
-size = 10
+size = 9
 [scrolling]
 history = 50000
 multiplier = 3

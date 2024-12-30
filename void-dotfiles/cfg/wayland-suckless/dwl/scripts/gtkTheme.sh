@@ -3,7 +3,7 @@
 ## Set GTK Themes, Icons, Cursor and Fonts
 THEME='Gruvbox-Dark'
 ICONS='Papirus-Dark'
-FONT='JetBrainsMono NF 10'
+FONT='JetBrainsMono NF 9'
 CURSOR='Breeze_Hacked'
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
