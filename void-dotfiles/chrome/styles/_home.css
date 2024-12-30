@@ -1,14 +1,11 @@
 /* Wallapaper edition. Change wallpaper.jpg to wallpaper.png if used different file extension */
 @-moz-document url("about:home"),
 url("about:newtab") {
-
-  
-
   body {
-   background: var(--baseBG) !important;
-   position: relative;
-}
-body::before {
+    background: var(--baseBG) !important;
+    position: relative;
+  }
+  body::before {
     content: "";
     position: fixed;
     top: 0;
@@ -19,7 +16,7 @@ body::before {
     filter: grayscale(100%) brightness(40%);
     z-index: -1;
     pointer-events: none;
-}
+  }
 
   .outer-wrapper .search-wrapper .search-handoff-button {
     backdrop-filter: blur(24px) !important;
@@ -36,16 +33,16 @@ body::before {
   #root .outer-wrapper .body-wrapper .tile {
     backdrop-filter: unset !important;
     border-top: 0px solid hsla(0, 0%, 100%, 0) !important;
-/*    border-bottom: 0px solid hsla(0, 0%, 100%, 0) !important; */
+    /*    border-bottom: 0px solid hsla(0, 0%, 100%, 0) !important; */
     background-color: hsla(0, 0%, 11%, 0.6) !important;
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
     border: 0px !important;
-      box-shadow: unset !important;
+    box-shadow: unset !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
     width: 100% !important;
-/*     border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important; */
+    /*     border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important; */
   }
 
   .outer-wrapper .top-sites-list .top-site-outer {
@@ -57,7 +54,7 @@ body::before {
     background-color: transparent !important;
   }
 
-  .outer-wrapper .top-site-outer .top-site-inner>a {
+  .outer-wrapper .top-site-outer .top-site-inner > a {
     padding: 0px !important;
   }
 
@@ -74,12 +71,12 @@ body::before {
 
   #root .outer-wrapper .body-wrapper .top-site-button:hover .tile {
     border-top: 0px !important;
-/*    background-color: hsla(0, 0%, 16%, 0.4) !important; */
+    /*    background-color: hsla(0, 0%, 16%, 0.4) !important; */
   }
 
   .outer-wrapper .top-site-outer .top-site-button .title {
     opacity: 0.8 !important;
-/*    text-shadow: 0px 0px 1px #000 !important; */
+    /*    text-shadow: 0px 0px 1px #000 !important; */
     /* text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black; */
   }
 
@@ -108,7 +105,9 @@ body::before {
     transform: scale(1.2);
   }
 
-  .outer-wrapper .top-sites-list:not(.dnd-active) .top-site-outer:is(.active, :focus) {
+  .outer-wrapper
+    .top-sites-list:not(.dnd-active)
+    .top-site-outer:is(.active, :focus) {
     z-index: 8;
     position: relative;
     background-color: transparent !important;
@@ -118,7 +117,6 @@ body::before {
 .top-site-icon {
   background-color: transparent !important;
 }
-
 
 #appcontent {
   @media (-moz-bool-pref: "sidebar.revamp") {
@@ -131,7 +129,7 @@ body::before {
   }
 }
 
-#tabbrowser-tabbox { 
+#tabbrowser-tabbox {
   outline: none !important;
   box-shadow: none !important;
 }
