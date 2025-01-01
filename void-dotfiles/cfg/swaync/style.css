@@ -1,15 +1,15 @@
-@define-color cc-bg #0d0e0f;
+@define-color cc-bg #141617;
 @define-color noti-bg #141617;
-@define-color noti-bg-darker #0d0e0f;
-@define-color noti-bg-hover #0d0e0f;
-@define-color noti-bg-focus #0d0e0f;
-@define-color noti-close-bg #0d0e0f;
+@define-color noti-bg-darker #141617;
+@define-color noti-bg-hover #141617;
+@define-color noti-bg-focus #141617;
+@define-color noti-close-bg #141617;
 @define-color noti-close-bg-hover #2E3030;
 @define-color text-color #d4be98;
 @define-color text-color-disabled #928374;
-@define-color bg-selected #1B1D1D;
+@define-color bg-selected #1d2021;
 
-@define-color black     #0d0e0f;
+@define-color black     #1d2021;
 @define-color blue      #7daea3;
 @define-color green     #a9b665;
 @define-color yellow    #000000;
@@ -83,7 +83,7 @@
   border: none;
   color: @text-color;
   transition: all 0.15s ease-in-out;
-  font-size: 10.5pt;
+  font-size: 8pt;
 }
 
 .notification-default-action:hover,
@@ -120,7 +120,7 @@
 
 .notification-group-headers {
   font-weight: bold;
-  font-size: 10.5pt;
+  font-size: 8pt;
   color: @white;
 }
 
@@ -190,7 +190,7 @@
 }
 
 .summary {
-  font-size: 10.5pt;
+  font-size: 8pt;
   font-weight: bold;
   font-style: italic;
   background: transparent;
@@ -200,7 +200,7 @@
 }
 
 .time {
-  font-size: 10.5pt;
+  font-size: 8pt;
   font-weight: bold;
   font-style: italic;
   background: transparent;
@@ -210,7 +210,7 @@
 }
 
 .body {
-  font-size: 10.5pt;
+  font-size: 8pt;
   font-weight: normal;
   background: transparent;
   color: @text-color;
@@ -252,7 +252,7 @@
 .widget-title {
   color: @red;
   margin: 20px 20px 5px 20px;
-  font-size: 10.5pt;
+  font-size: 8pt;
   font-weight: bold;
   font-style: italic;
   /* text-shadow: 0 0 3px @red; */
@@ -280,18 +280,18 @@
 .widget-dnd {
   color: @green;
   margin: 0px 20px 0px 20px;
-  font-size: 10.5pt;
+  font-size: 8pt;
   font-weight: bold;
   font-style: italic;
 }
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 999px;
+  border-radius: 99px;
   background: @black;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  padding: 4px 10px;
+  padding: 2px 4px;
   transition: all 0.1s ease-in-out;
 }
 
@@ -312,7 +312,7 @@
 }
 
 .widget-label > label {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: @braqua;
 }
 
@@ -333,15 +333,15 @@
 
 .widget-mpris-title {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .widget-mpris-subtitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .widget-buttons-grid {
-  font-size: x-large;
+  font-size: large;
   padding: 8px;
   margin: 20px 10px 10px;
   border: 1px solid @noti-close-bg;
@@ -380,7 +380,7 @@
   margin: 10px;
   border: 1px solid @noti-close-bg;
   border-radius: 8px;
-  font-size: x-large;
+  font-size: large;
   color: @brgreen;
 }
 
@@ -403,13 +403,13 @@
   margin: 10px;
   border: 1px solid @noti-close-bg;
   border-radius: 8px;
-  font-size: x-large;
+  font-size: large;
   color: @brgreen;
 }
 
 .widget-inhibitors {
   margin: 8px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .widget-inhibitors > button {
