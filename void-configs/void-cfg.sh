@@ -63,6 +63,9 @@ rfkill unblock bluetooth
 # Using doas Like sudo Without Password: #
 #========================================#
 sudo bash -c "echo 'permit nopass lli as root' > /etc/doas.conf"
+# Add the Flathub repository:            #
+#========================================#
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 # Added Execute To Binary File:    #
 #==================================#
 sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/bin/
