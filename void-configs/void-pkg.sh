@@ -6,8 +6,8 @@ sudo xbps-install -Sy \
     base-devel elogind \
     # VOID:
     xtools \
-    # TERMINAL:
-    foot alacritty \
+    # SHELL:
+    alacritty nushell carapace \
     # COMPILE:
     ninja meson pkg-config cairo cairo-devel pango pango-devel fcft fcft-devel \
     # COMPOSITOR:
