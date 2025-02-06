@@ -1,10 +1,6 @@
--------------------------------
--- caching needs to be first:
--------------------------------
-vim.loader.enable()
-------------------------------
+----------------------------
 -- Basics Configuration:
-------------------------------
+----------------------------
 require("config/options")
 require("config/keymaps")
 require("config/autocmds")
@@ -23,12 +19,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-------------------------------
+----------------------------
 -- Plugins Trigger:
-------------------------------
+----------------------------
 require("lazy").setup("plugins", {
 	ui = {
-		border = "single",
+		border = "double",
 		size = {
 			width = 0.8,
 			height = 0.8,

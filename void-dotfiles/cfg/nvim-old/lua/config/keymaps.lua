@@ -6,7 +6,6 @@ local opts = { noremap = true, silent = true }
 -----------------------------------------------------------
 -- Basic Keymaps:
 -----------------------------------------------------------
-bind("n", "<Leader>w", ":write<CR>", opts)
 bind("n", ";", ":")
 bind("n", "U", "<C-r>", opts)
 bind("n", "<leader>c", ":nohl<CR>", opts)
@@ -20,17 +19,17 @@ bind("n", "<C-s>", ":w<CR>", opts)
 bind("i", "<C-s>", "<ESC> :w<CR>", opts)
 bind("n", "<C-c>", "ciw", opts)
 -----------------------------------------------------------
+-- leader movements
+-----------------------------------------------------------
+bind("n", "<Leader>w", ":write<CR>", {})
+bind("n", "<Leader>qq", ":quitall<CR>", {})
+-----------------------------------------------------------
 -- Always In Middle When Scrooling By Page
 -----------------------------------------------------------
 bind("n", "<C-u>", "<C-u>zz", opts)
 bind("n", "<C-d>", "<C-d>zz", opts)
 bind("n", "<C-b>", "<C-b>zz", opts)
 bind("n", "<C-f>", "<C-f>zz", opts)
------------------------------------------------------------
--- Bufferline Keys
------------------------------------------------------------
-bind("n", "<Tab>", ":bnext<CR>", opts)
-bind("n", "<S-Tab>", ":bprev<CR>", opts)
 -----------------------------------------------------------
 -- turn off direction keyboard, force using `hjkl` !!!
 -----------------------------------------------------------
