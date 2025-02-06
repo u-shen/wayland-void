@@ -27,7 +27,7 @@ sudo xbps-install -Sy \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl ImageMagick \
     # Graphical TOOLS:
     mpv imv zathura zathura-pdf-mupdf \
-    chromium firefox thunderbird pcmanfm gimp shotcut \
+    chromium firefox thunderbird pcmanfm gimp shotcut telegram-desktop \
     kvantum flatpak \
     # STORAGE TOOLS:
     gptfdisk parted gparted udiskie simple-mtpfs \

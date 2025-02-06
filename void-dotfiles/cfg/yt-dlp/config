@@ -27,11 +27,6 @@
 --downloader aria2c
 
 # ----------------------------------------------------------- #
-# Arguments to aria2c:                                        #
-# ----------------------------------------------------------- #
---external-downloader-args aria2c:"-c -j 3 -x 3 -s 3 -k 1M"
-
-# ----------------------------------------------------------- #
 # Ignore download and postprocessing errors:                  #
 # ----------------------------------------------------------- #
 --ignore-errors
@@ -54,4 +49,4 @@
 # ----------------------------------------------------------- #
 # Output to vids:                                             #
 # ----------------------------------------------------------- #
---output "~/vids/programming/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
+--output "~/Videos/programming/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"

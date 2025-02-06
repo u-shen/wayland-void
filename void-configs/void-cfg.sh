@@ -17,7 +17,7 @@ ln -sf ~/.local/wayland-void/void-dotfiles/fonts ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/themes ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/icons ~/.local/share/
 echo "===============> In ~/ <==================="
-ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/
+ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/Pictures/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bashrc ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bash_profile ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/others/.npmrc ~/
@@ -27,11 +27,11 @@ echo "============> In /etc ~/ <================="
 #=============================================#
 sudo ln -sf ~/.local/wayland-void/void-dotfiles/etc/grub/grub /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-echo "#########################################"
-echo "######    Directory In HOME       #######"
-echo "#########################################"
-mkdir -p ~/{desk,dl,dox,prjcts,vids,music,pub}
-rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2>/dev/null
+# echo "#########################################"
+# echo "######    Directory In HOME       #######"
+# echo "#########################################"
+# mkdir -p ~/{desk,dl,dox,prjcts,vids,music,pub}
+# rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2>/dev/null
 
 echo "########################################"
 echo "######     managment Services   ########"
