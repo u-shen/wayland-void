@@ -27,10 +27,6 @@ $env.config = {
   rm: {
       always_trash: true
   }
-  filesize: {
-      metric: true
-      format: "auto"
-  }
   table: {
     mode: heavy
     index_mode: always
@@ -47,7 +43,7 @@ $env.config = {
       max_size: 100_000
       sync_on_enter: true
       file_format: "sqlite"
-      isolation: true
+      isolation: false
   }
   completions: {
       case_sensitive: false
@@ -139,10 +135,10 @@ def create_left_prompt [] {
 # Use nushell functions to define your right and left prompt
 $env.PROMPT_COMMAND = { || create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
-$env.PROMPT_INDICATOR = " "
-$env.PROMPT_INDICATOR_VI_INSERT = "∮ "
-$env.PROMPT_INDICATOR_VI_NORMAL = "∯ "
-$env.PROMPT_MULTILINE_INDICATOR = "≎ "
+$env.PROMPT_INDICATOR = ""
+$env.PROMPT_INDICATOR_VI_INSERT = ""
+$env.PROMPT_INDICATOR_VI_NORMAL = ""
+$env.PROMPT_MULTILINE_INDICATOR = ""
 # =============================================================================== #
 # --------------------------------END OF FILE------------------------------------ #
 # =============================================================================== #

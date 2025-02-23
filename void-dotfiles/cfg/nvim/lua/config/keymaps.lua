@@ -7,19 +7,13 @@ local opts = { noremap = true, silent = true }
 -- Basic Keymaps:
 -----------------------------------------------------------
 bind("n", "<Leader>w", ":write<CR>", opts)
-bind("n", ";", ":")
-bind("n", "U", "<C-r>", opts)
-bind("n", "<leader>c", ":nohl<CR>", opts)
-bind("n", "<ESC>", ":nohl<CR>", opts)
-bind("c", "W", "w", opts)
-bind("c", "WQ", "wq", opts)
-bind("c", "Wq", "wq", opts)
-bind("c", "QA", "qa", opts)
-bind("c", "wA!", "wqa", opts)
-bind("n", "<C-s>", ":w<CR>", opts)
-bind("n", "<leader>qq", ":qa<CR>", opts)
-bind("i", "<C-s>", "<ESC> :w<CR>", opts)
+bind("n", "<C-s>", ":up<CR>", opts)
+bind("i", "<C-s>", "<ESC> :up<CR>", opts)
 bind("n", "<C-c>", "ciw", opts)
+bind("n", "U", "<C-r>", opts)
+bind("n", "<leader>qq", ":qa<CR>", opts)
+bind("n", "<ESC>", ":nohl<CR>", opts)
+bind("n", ";", ":")
 -----------------------------------------------------------
 -- Always In Middle When Scrooling By Page
 -----------------------------------------------------------
@@ -33,6 +27,7 @@ bind("n", "<C-f>", "<C-f>zz", opts)
 bind("n", "<Tab>", ":bnext<CR>", opts)
 bind("n", "<S-Tab>", ":bprev<CR>", opts)
 bind("n", "<leader>bd", ":bd<CR>", opts)
+bind("n", "<leader>bb", ":silent up|%bd!<CR><C-O>:bd#<CR>", opts)
 -----------------------------------------------------------
 -- turn off direction keyboard, force using `hjkl` !!!
 -----------------------------------------------------------
@@ -40,7 +35,7 @@ bind("n", "<Left>", "<Nop>", opts)
 bind("n", "<Right>", "<Nop>", opts)
 bind("n", "<Up>", "<Nop>", opts)
 bind("n", "<Down>", "<Nop>", opts)
-bind({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+bind({ "n", "v" }, "<Space>", "<Nop>", opts)
 -----------------------------------------------------------
 -- Move around splits using Ctrl + {h,j,k,l}
 -----------------------------------------------------------
@@ -73,3 +68,10 @@ bind("v", "gl", "$", opts)
 -----------------------------------------------------------
 bind("v", "J", ":m '>+1<CR>gv=gv", opts)
 bind("v", "K", ":m '<-2<CR>gv=gv", opts)
+-----------------------------------------------------------
+-- Toggle Custom Terminal:
+-----------------------------------------------------------
+bind({ 'n', 't' }, "<C-t>", ToggleTerminal, opts)
+bind("t", "<Esc>", "<C-\\><C-n>", opts)
+bind("t", "<C-k>", "<Cmd>wincmd k<CR>", opts)
+bind("t", "<C-j>", "<Cmd>wincmd j<CR>", opts)

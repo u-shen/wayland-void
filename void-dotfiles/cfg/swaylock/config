@@ -4,7 +4,7 @@
 font=JetBrainsMono Nerd Font
 font-size=20
 ignore-empty-password
-image=~/pix/wallpapers/LOCK.png
+image=~/Pictures/pix/wallpapers/LOCK.png
 scaling=fill
 daemonize
 show-failed-attempts

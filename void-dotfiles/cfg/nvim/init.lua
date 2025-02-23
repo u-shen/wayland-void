@@ -6,8 +6,8 @@ vim.loader.enable()
 -- Basics Configuration:
 ------------------------------
 require("config/options")
-require("config/keymaps")
 require("config/autocmds")
+require("config/keymaps")
 ----------------------------
 -- Plugins Bootstrap:
 ----------------------------
@@ -27,11 +27,37 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins Trigger:
 ------------------------------
 require("lazy").setup("plugins", {
+  concurrency = 4,
+  performance = {
+    cache = {
+      enabled = true,
+    },
+    reset_packpath = true,
+    rtp = {
+      disabled_plugins = {
+        "osc52",
+        "parser",
+        "gzip",
+        "netrwPlugin",
+        "health",
+        "man",
+        "matchit",
+        "rplugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "shadafile",
+        "spellfile",
+        "editorconfig",
+      },
+    },
+  },
   ui = {
-    border = "single",
+    border = "double",
     size = {
-      width = 0.8,
-      height = 0.8,
+      width = 0.9,
+      height = 0.9,
     },
   },
   checker = {

@@ -11,11 +11,11 @@ return {
     local lspconfig = require("lspconfig")
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     -- Managing language servers individually
-    -- html
+    -- Html
     lspconfig.html.setup({
       capabilities = capabilities,
     })
-    -- CSS
+    -- Css
     lspconfig.cssls.setup({
       capabilities = capabilities,
     })
@@ -23,13 +23,17 @@ return {
     lspconfig.tailwindcss.setup({
       capabilities = capabilities
     })
-    -- emmet language server
+    -- Emmet Language Server
     lspconfig.emmet_language_server.setup({
       capabilities = capabilities,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" },
     })
-    -- tsserver
+    -- Tsserver
     lspconfig.ts_ls.setup({
+      capabilities = capabilities,
+    })
+    -- Prisma
+    lspconfig.prismals.setup({
       capabilities = capabilities,
     })
     -- Lua
@@ -42,15 +46,6 @@ return {
           },
         },
       },
-    })
-    -- eslint
-    lspconfig.eslint.setup({
-      on_attach = function(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          command = "EslintFixAll",
-        })
-      end,
     })
   end,
 }

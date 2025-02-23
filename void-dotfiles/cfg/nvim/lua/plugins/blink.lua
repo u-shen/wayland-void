@@ -3,9 +3,20 @@
 -----------------------------------------------------------
 return {
   "saghen/blink.cmp",
-  dependencies = "rafamadriz/friendly-snippets",
+  event = { "LspAttach" },
   version = "*",
   opts = {
+    cmdline = {
+      keymap = {
+        preset = "none",
+        ["<CR>"] = { "select_accept_and_enter", "fallback" },
+        ["<c-k>"] = { "select_prev", "fallback" },
+        ["<c-j>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "hide", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+      },
+    },
     keymap = {
       preset = "enter",
       ["<CR>"] = {},
@@ -48,7 +59,7 @@ return {
       menu = {
         scrollbar = false,
         auto_show = true,
-        min_width = 40,
+        min_width = 25,
         border = {
           { "󱐋", "WarningMsg" },
           "─",
@@ -59,9 +70,9 @@ return {
           "╰",
           "│",
         },
-        winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CursorLine,Search:None",
+        winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CurSearch,Search:None",
         draw = {
-          treesitter = { "lsp" },
+          treesitter = { "lsp", "snippets" },
           columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind", gap = 1 } },
           components = {
             kind = {
@@ -76,9 +87,9 @@ return {
       },
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 200,
+        auto_show_delay_ms = 500,
         window = {
-          winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CursorLine,Search:None",
+          winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CurSearch,Search:None",
           desired_min_height = 30,
           max_width = 90,
           min_width = 40,
@@ -130,29 +141,7 @@ return {
       },
     },
     sources = {
-      default = { 'snippets', 'lsp', 'path', 'buffer' },
-      providers = {
-        snippets = {
-          min_keyword_length = 1,
-          score_offset = 4,
-        },
-        lsp = {
-          min_keyword_length = 0,
-          score_offset = 3,
-          name = "LSP",
-          module = "blink.cmp.sources.lsp",
-          fallbacks = {},
-        },
-        path = {
-          min_keyword_length = 0,
-          score_offset = 2,
-        },
-        buffer = {
-          min_keyword_length = 1,
-          score_offset = 1,
-        },
-      },
-      cmdline = {},
+      default = { 'lsp', 'path', 'buffer' },
     },
     signature = {
       enabled = true,
@@ -167,7 +156,7 @@ return {
           "╰",
           "│",
         },
-        winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CursorLine,Search:None",
+        winhighlight = "Normal:Normal,FloatBorder:Comment,CursorLine:CurSearch,Search:None",
       },
     },
   },

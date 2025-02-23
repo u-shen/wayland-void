@@ -10,10 +10,15 @@ vim.g.mapleader = " "
 -- General
 -----------------------------------------------------------
 vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamed,unnamedplus"
 end)
+
+vim.opt.compatible    = false
 vim.opt.swapfile      = false
-vim.opt.completeopt   = { "menu", "menuone", "noselect" }
+vim.opt.writebackup   = false
+vim.opt.backup        = false
+vim.opt.completeopt   = { "menu", "menuone", "preview" }
+vim.o.shada           = "'100,<50,s10,:1000,/100,@100,h"
 vim.opt.undofile      = true
 vim.opt.undolevels    = 100
 vim.opt.timeoutlen    = 300
@@ -27,9 +32,12 @@ vim.opt.shellredir    = "out+err> %s"
 vim.opt.shellxescape  = ""
 vim.opt.shellxquote   = ""
 vim.opt.shellquote    = ""
+vim.o.fillchars       = 'eob: '
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
+vim.opt.number        = true
+vim.opt.numberwidth   = 5
 vim.opt.splitright    = true
 vim.opt.splitbelow    = true
 vim.opt.termguicolors = true
@@ -38,9 +46,9 @@ vim.opt.smartcase     = true
 vim.opt.hlsearch      = true
 vim.opt.confirm       = true
 vim.opt.laststatus    = 0
+vim.opt.cmdheight     = 0
 vim.opt.wrap          = false
 vim.opt.showmode      = false
-vim.opt.fillchars     = { eob = " " }
 vim.opt.ruler         = false
 vim.wo.signcolumn     = "no"
 --------------------------------------------------------
@@ -63,10 +71,17 @@ vim.opt.updatetime    = 250
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
--- Disable nvim intro
 vim.opt.shortmess:append("sI")
 -- Disable builtin plugins
 local disabled_built_ins = {
+  "osc52",
+  "parser",
+  "health",
+  "man",
+  "tohtml",
+  "shadafile",
+  "spellfile",
+  "editorconfig",
   "2html_plugin",
   "getscript",
   "getscriptPlugin",

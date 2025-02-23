@@ -20,8 +20,8 @@ return {
           package_uninstalled = "✗",
         },
         border = "double",
-        width = 0.8,
-        height = 0.8,
+        width = 0.9,
+        height = 0.9,
       },
     })
 
@@ -30,11 +30,6 @@ return {
       -- auto installation
       automatic_installation = true,
     })
-    -- mason_lspconfig.setup_handlers({
-    -- 	function(server_name)
-    -- 		require("lspconfig")[server_name].setup({})
-    -- 	end,
-    -- })
 
     -- mason-tool-installer
     mason_tool_installer.setup({
@@ -46,14 +41,9 @@ return {
         { "emmet-language-server" },
         { "typescript-language-server" },
         { "lua-language-server" },
+        { "prisma-language-server" },
         { "prettier" },
-        { "eslint-lsp" },
       },
-
-      auto_update = true,
-      run_on_start = true,
-      start_delay = 3000,
-      debounce_hours = 5,
     })
   end,
 }
