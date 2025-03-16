@@ -17,7 +17,6 @@ ln -sf ~/.local/wayland-void/void-dotfiles/fonts ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/themes ~/.local/share/
 ln -sf ~/.local/wayland-void/void-dotfiles/icons ~/.local/share/
 echo "===============> In ~/ <==================="
-ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/Pictures/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bashrc ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/bsh/.bash_profile ~/
 ln -sf ~/.local/wayland-void/void-dotfiles/others/.npmrc ~/
@@ -30,8 +29,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # echo "#########################################"
 # echo "######    Directory In HOME       #######"
 # echo "#########################################"
-# mkdir -p ~/{desk,dl,dox,prjcts,vids,music,pub}
-# rm -rf ~/Desktop/ Documents/ Downloads/ Music/ Pictures/ Public/ Templates/ Videos/ 2>/dev/null
+LC_ALL=C.UTF-8 xdg-user-dirs-update --force
+mkdir -p ~/Projects
+ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/Pictures/
 
 echo "########################################"
 echo "######     managment Services   ########"
@@ -59,7 +59,7 @@ sudo mkdir -p /etc/alsa/conf.d
 sudo ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
 sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 ## Unblock Bluetooth
-rfkill unblock bluetooth
+sudo rfkill unblock bluetooth
 # Using doas Like sudo Without Password: #
 #========================================#
 sudo bash -c "echo 'permit nopass lli as root' > /etc/doas.conf"

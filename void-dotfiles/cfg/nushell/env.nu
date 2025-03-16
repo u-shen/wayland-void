@@ -7,17 +7,6 @@ $env.EDITOR = "nvim"
 $env.VISUAL = $env.EDITOR
 $env.PAGER = "less"
 $env.TERMINAL = "alacritty"
-export-env { load-env {
-    XDG_CACHE_HOME: ($env.USERPROFILE | path join ".cache")
-    XDG_DOCUMENTS_DIR: ($env.USERPROFILE | path join "Documents")
-    XDG_DOWNLOAD_DIR: ($env.USERPROFILE | path join "Downloads")
-    XDG_MUSIC_DIR: ($env.USERPROFILE | path join "Music")
-    XDG_PICTURES_DIR: ($env.USERPROFILE | path join "Pictures")
-    XDG_VIDEOS_DIR: ($env.USERPROFILE | path join "Videos")
-}}
-export-env { load-env {
-    BUN_INSTALL_CACHE_DIR: ($env.XDG_CACHE_HOME | path join "bun" "install" "cache")
-}}
 # =============================================================================== #
 #  FZF:                                                                           #
 # =============================================================================== #
