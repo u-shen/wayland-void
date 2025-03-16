@@ -18,9 +18,26 @@ max_width = 1200
 max_height = 1800
 image_quality = 90
 [opener]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+edit = [
+	{ run = "nvim %*",   block = true, for = "windows" },
+	{ run = "nvim %*",   orphan = true, for = "windows" },
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+]
+play = [
+	{ run = 'mpv.exe %*', orphan = true, for = "windows" },
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
 extract = [
 	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
 	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+]
+archive = [
+	{ run = 'unar "$1"', desc = "Extract here" },
+	{ run = 'unar "%1"', desc = "Extract here", for = "windows" },
+	{ run = '/Applications/MacZip.app/Contents/MacOS/MacZip "$1"', orphan = true, desc = "MacZip" },
 ]
 [open]
 rules = [
@@ -45,7 +62,6 @@ rules = [
 
 	{ name = "*", use = [ "open", "reveal" ] },
 ]
-
 [plugin]
 prepend_previewers = [
 	# Archive previewer
@@ -56,7 +72,6 @@ prepend_previewers = [
 	{ mime = "application/x-rar",           run = "ouch" },
 	{ mime = "application/x-xz",            run = "ouch" },
 ]
-
 [[plugin.prepend_fetchers]]
 id   = "git"
 name = "*"
