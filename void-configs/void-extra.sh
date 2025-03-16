@@ -5,7 +5,7 @@
 packages=(
     # PACKAGE MANAGER:                             #
     # =============================================#
-    # "bun"
+    "bun"
     "yarn"
     "pnpm"
     # LANGUAGE SERVER PROTOCOL:                    #
