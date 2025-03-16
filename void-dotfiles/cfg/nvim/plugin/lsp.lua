@@ -13,7 +13,7 @@ local servers = {
     root_markers = { 'package.json', '.git' }
   },
   biome = {
-    cmd = { 'biome.cmd', 'lsp-proxy' },
+    cmd = { 'biome', 'lsp-proxy' },
     filetypes = {
       'astro',
       'css',
