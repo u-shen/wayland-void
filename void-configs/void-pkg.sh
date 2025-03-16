@@ -45,6 +45,8 @@ sudo xbps-install -Sy \
     bluez bluez-alsa libspa-bluetooth blueman \
     # PROGRAMMING LANGUAGE:
     nodejs python3 python3-pip python3-devel \
+    # LSP:
+    lua-language-server \
     # FONTS:
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-cjk-sans noto-fonts-emoji \
     font-awesome dejavu-fonts-ttf \
