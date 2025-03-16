@@ -61,7 +61,6 @@ alias yt-concats = yt-dlp --ignore-config --downloader aria2c --output "~/Videos
 alias yt-music = yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music
 alias man = tldr
 alias cat = bat
-alias htop = ntop -u LLI -s CPU%
 alias cls = clear
 alias chrome = start chrome
 alias firefox = start firefox

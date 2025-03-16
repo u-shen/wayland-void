@@ -11,10 +11,10 @@ sudo xbps-install -Sy \
     # COMPILE:
     ninja meson pkg-config cairo cairo-devel pango pango-devel fcft fcft-devel \
     # COMPOSITOR:
-    wayland wayland-protocols xorg-server-xwayland wlroots0.18 wlroots0.18-devel \
+    wayland wayland-protocols xorg-server-xwayland wlroots wlroots-devel \
     pkg-config libxkbcommon libxkbcommon-devel libevdev libevdev-devel pixman pixman-devel \
     # COMPOSITOR-TOOLS:
-    fuzzel wmenu nwg-look wlr-randr wvkbd hyprpicker wbg SwayNotificationCenter swaylock swayidle \
+    fuzzel wmenu wlr-randr wvkbd wbg SwayNotificationCenter swaylock swayidle \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
     # SCREENSHOOT TOOLS:
@@ -22,12 +22,12 @@ sudo xbps-install -Sy \
     # SCREENSHARING TOOLS:
     obs xdg-desktop-portal-wlr \
     # COMMAND LINE TOOLS:
-    xdg-user-dirs xdg-utils psmisc bash-completion opendoas btop \
-    fastfetch nnn yazi yt-dlp aria2 ffmpeg chafa libsixel-util rsync eza bat glow starship wl-clipboard trash-cli tealdeer man-db \
+    xdg-user-dirs xdg-utils psmisc bash-completion opendoas htop \
+    fastfetch yazi yt-dlp aria2 ffmpeg chafa libsixel-util rsync eza bat glow starship wl-clipboard trash-cli tealdeer man-db \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl ImageMagick \
     # Graphical TOOLS:
     mpv imv zathura zathura-pdf-mupdf \
-    chromium firefox thunderbird pcmanfm gimp shotcut telegram-desktop \
+    chromium firefox thunderbird pcmanfm gimp shotcut \
     kvantum flatpak \
     # STORAGE TOOLS:
     gptfdisk parted gparted udiskie simple-mtpfs \
