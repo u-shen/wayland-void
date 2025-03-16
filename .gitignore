@@ -27,6 +27,7 @@ void-dotfiles/music/.moc/softmixer
 void-dotfiles/music/.moc/playlist.m3u
 void-dotfiles/cfg/qutebrowser/qsettings/
 void-dotfiles/cfg/lazygit/state.yml
+void-dotfiles/cfg/pcmanfm/default/pcmanfm.conf
 
 # Byte-compiled / optimized / DLL files
 lazy-lock.json
