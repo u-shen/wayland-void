@@ -8,7 +8,7 @@ local servers = {
     root_markers = { '.luarc.json' },
   },
   css = {
-    cmd = { 'vscode-css-language-server.cmd', '--stdio' },
+    cmd = { 'vscode-css-language-server', '--stdio' },
     filetypes = { 'css', 'scss', 'less' },
     root_markers = { 'package.json', '.git' }
   },
@@ -31,7 +31,7 @@ local servers = {
     root_markers = { 'biome.json' }
   },
   typescript = {
-    cmd = { 'typescript-language-server.cmd', '--stdio' },
+    cmd = { 'typescript-language-server', '--stdio' },
     filetypes = {
       'javascript',
       'javascriptreact',
@@ -48,7 +48,7 @@ local servers = {
     }
   },
   tailwind = {
-    cmd = { "tailwindcss-language-server.cmd", "--stdio" },
+    cmd = { "tailwindcss-language-server", "--stdio" },
     filetypes = {
       "html",
       "javascript",
