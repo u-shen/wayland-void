@@ -158,21 +158,6 @@ alias man="tldr"
 alias cat="bat"
 alias cls="clear"
 #####################################
-###------- NNN File Manager ------###
-#####################################
-export NNN_USE_EDITOR=1
-export NNN_TRASH=1
-export NNN_OPTS='RUc'
-export NNN_COLORS='2134'
-export NNN_CONTEXT_COLORS="2135"
-export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_TERMINAL="foot"
-export NNN_FIFO="/tmp/nnn.fifo"
-export NNN_OPENER="$HOME/.config/nnn/plugins/nuke"
-export NNN_PLUG="m:nmount;M:mtpmount;e:suedit;n:bulknew;P:rsynccp;z:autojump;o:fzopen;f:fzcd;c:mp3conv;b:boom;l:imgview;k:pskill;p:preview-tui;x:xdgdefault;*:togglex"
-export NNN_BMS="m:/run/media/$USER;M:/run/user/$UID/gvfs;w:$HOME/pix/wallpapers;v:$HOME/vids/programming/;n:$HOME/.config/nvim;d:$HOME/.local/wayland-void/"
-#####################################
 ###-----Source fzf keybindingd----###
 #####################################
 eval "$(fzf --bash)"
@@ -192,10 +177,10 @@ _fzf_compgen_dir() {
 }
 alias run_in_nvim="fzf --multi --bind 'enter:become(nvim {+})'"
 alias run_in_mpv="fd 'mp4' | fzf --multi --bind 'enter:become(mpv {+})'"
-alias run_in_nnn="fd -t d | fzf --bind 'enter:become(nnn {+})'"
+alias run_in_yazi="fd -t d | fzf --bind 'enter:become(yazi {+})'"
 bind '"\C-v":"run_in_nvim\n"'
 bind '"\C-p":"run_in_mpv\n"'
-bind '"\C-n":"run_in_nnn\n"'
+bind '"\C-n":"run_in_yazi\n"'
 #####################################
 ###-------Tab Completions --------###
 #####################################
