@@ -306,7 +306,7 @@ now(function()
       insert = function(snippet)
         return require('mini.snippets').default_insert(snippet, {
           empty_tabstop = '',
-          empty_tabstop_final = '†'
+          empty_tabstop_final = ''
         })
       end
     },
