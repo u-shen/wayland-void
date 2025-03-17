@@ -301,7 +301,15 @@ now(function()
       jump_prev = '<C-h>',
       stop = '<C-c>',
     },
-    expand   = { match = match_strict },
+    expand   = {
+      match = match_strict,
+      insert = function(snippet)
+        return require('mini.snippets').default_insert(snippet, {
+          empty_tabstop = '',
+          empty_tabstop_final = '†'
+        })
+      end
+    },
   })
   -- Expand Snippets Or complete by Tab ===============================================
   expand_or_complete = function()
@@ -316,10 +324,10 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  -- local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
-  -- for _, config in ipairs(lsp_configs) do
-  --   vim.lsp.enable(config)
-  -- end
+  local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
+  for _, config in ipairs(lsp_configs) do
+    vim.lsp.enable(config)
+  end
   require("mini.completion").setup({
     mappings = {
       force_twostep = '<C-n>',
@@ -362,7 +370,7 @@ now(function()
   end)
   vim.o.completeopt = 'menuone,noselect'
   if vim.fn.has('nvim-0.11') == 1 then
-    vim.o.completeopt = "menu,menuone,popup,fuzzy"
+    vim.o.completeopt = "menu,menuone,noselect,popup,fuzzy"
   end
   vim.o.complete           = '.,b,kspell'
   vim.opt.compatible       = false

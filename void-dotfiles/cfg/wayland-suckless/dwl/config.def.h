@@ -136,10 +136,10 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[]          = { "alacritty", NULL };
 static const char *termbidi[]         = { "foot", NULL };
-static const char *browser[]          = { "firefox", NULL };
-static const char *browserGO[]        = { "chromium", NULL };
 static const char *fileGui[]          = { "pcmanfm", NULL };
 static const char *menuGui[]       		= { "fuzzel", NULL };
+static const char *browser[]          = { "firefox", NULL };
+static const char *browserGO[]        = { "chromium", "--ozone-platform-hint=auto", NULL };
 static const char *menucmd[]          = { "wmenu-run", "-il", "10", "-p", "LAUNCH:",  "-N", "1d2021","-n", "ebdbb2","-S","689d6a", "-s","0d0e0f", "-M", "689d6a", "-m" ,"1d2021", NULL };
 static const char *fileCli[]          = { "alacritty", "-e", "yazi",  NULL };
 static const char *onScreenKeyboard[] = { "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/onScreenKeyboard.sh", NULL};

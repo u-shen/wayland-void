@@ -1,56 +1,47 @@
 --          ╔═════════════════════════════════════════════════════════╗
---          ║              Toggle Floating Terminal                   ║
+--          ║                   Toggle Terminal                       ║
 --          ╚═════════════════════════════════════════════════════════╝
-local group = vim.api.nvim_create_augroup("terminal", { clear = true })
+local terminal_buffers = {}
 
-vim.api.nvim_create_autocmd("TermOpen", {
-  desc = "terminal options",
-  group = group,
-  callback = function()
-    vim.o.number = false
-    vim.opt_local.buflisted = false
-    vim.cmd.startinsert()
-  end,
-})
+local function toggle_terminal()
+  local current_tab = vim.api.nvim_get_current_tabpage()
+  local windows = vim.api.nvim_tabpage_list_wins(current_tab)
+  local terminal_bufnr = terminal_buffers[current_tab]
 
-local floating_terminal_state = {
-  buf = -1,
-  win = -1,
-  insert = nil,
-  winview = nil,
-}
-
-vim.keymap.set({ "n", "t" }, "<C-t>", function()
-  if not vim.api.nvim_win_is_valid(floating_terminal_state.win) then
-    if not vim.api.nvim_buf_is_valid(floating_terminal_state.buf) then
-      floating_terminal_state.buf = vim.api.nvim_create_buf(false, true)
+  -- Check if terminal exists and is valid for current tab
+  if terminal_bufnr and vim.api.nvim_buf_is_valid(terminal_bufnr) then
+    -- Check if terminal window is open in current tab
+    local found = false
+    for _, win in ipairs(windows) do
+      if vim.api.nvim_win_get_buf(win) == terminal_bufnr then
+        vim.api.nvim_win_close(win, true)
+        found = true
+      end
     end
-    local height = math.floor(vim.o.lines * 0.85)
-    local width = math.floor(vim.o.columns * 0.85)
-    floating_terminal_state.win =
-        vim.api.nvim_open_win(floating_terminal_state.buf, true, {
-          relative = "editor",
-          border = "rounded",
-          height = height,
-          width = width,
-          row = math.floor((vim.o.lines - height) / 3),
-          col = math.floor((vim.o.columns - width) / 2),
-        })
-    vim.wo[floating_terminal_state.win].winhl = "Normal:MyHighlight"
 
-    if vim.bo[floating_terminal_state.buf].buftype ~= "terminal" then
-      vim.cmd.terminal()
-    elseif floating_terminal_state.insert then
-      vim.cmd.startinsert()
-    else
-      vim.fn.winrestview(floating_terminal_state.winview)
+    if not found then
+      -- Create new window for existing terminal buffer
+      vim.cmd('botright 10 split')
+      vim.api.nvim_win_set_buf(0, terminal_bufnr)
+      vim.wo.number = false
+      vim.wo.relativenumber = false
+      vim.wo.signcolumn = 'no'
     end
   else
-    floating_terminal_state.insert = (vim.api.nvim_get_mode().mode == "t")
-    if not floating_terminal_state.insert then
-      floating_terminal_state.winview = vim.fn.winsaveview()
-    end
+    -- Create new terminal buffer and window
+    terminal_buffers[current_tab] = vim.api.nvim_create_buf(false, false)
+    vim.fn.termopen(vim.o.shell)
 
-    vim.api.nvim_win_hide(floating_terminal_state.win)
+    vim.cmd('botright 10 split')
+    vim.api.nvim_win_set_buf(0, terminal_buffers[current_tab])
+
+    -- Configure window appearance
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+    vim.wo.signcolumn = 'no'
+    vim.wo.winfixheight = true
   end
-end, { desc = "toggle floating terminal" })
+end
+
+-- Set key mapping for normal mode
+vim.keymap.set('n', '<C-t>', toggle_terminal)

@@ -202,5 +202,5 @@ bind "set completion-ignore-case on"
 ###---------- System Path  -------###
 #####################################
 NPM_PACKAGES="${HOME}/.local/share/npm-packages"
-export PATH="$HOME/.config/bin:$HOME/.cargo/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:$PATH"
+export PATH="$HOME/.config/bin:$HOME/.config/bin/nvim/bin/:$HOME/.cargo/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:$PATH"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
