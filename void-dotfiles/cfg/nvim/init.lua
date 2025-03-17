@@ -344,12 +344,14 @@ end)
 --          │                     Neovim Colorscheme                  │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
-  vim.cmd("colorscheme minigruv")
+  vim.cmd("colorscheme mini-gruvbox")
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Neovim Options                      │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
+  -- Enable all filetype plugins: ===============================================
+  vim.cmd('filetype plugin indent on')
   -- Diagnostics ================================================================
   vim.diagnostic.config({ signs = false, virtual_text = false, update_in_insert = false })
   -- Global:  =================================================================
@@ -368,10 +370,7 @@ now(function()
   vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus'
   end)
-  vim.o.completeopt = 'menuone,noselect'
-  if vim.fn.has('nvim-0.11') == 1 then
-    vim.o.completeopt = "menu,menuone,noselect,popup,fuzzy"
-  end
+  vim.o.completeopt        = 'menuone,noselect,fuzzy'
   vim.o.complete           = '.,b,kspell'
   vim.opt.compatible       = false
   vim.opt.swapfile         = false

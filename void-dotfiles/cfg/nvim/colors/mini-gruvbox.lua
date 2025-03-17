@@ -77,5 +77,5 @@ vim.api.nvim_set_hl(0, "MiniCursorword", { bg = palette.base02 })
 vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "MiniCursorword" })
 -- Indentscope =================================================================
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.base0E })
--- Indentscope =================================================================
+-- Mini-Snippets ===============================================================
 vim.api.nvim_set_hl(0, 'MiniSnippetsFinal', { link = "Comment" })
