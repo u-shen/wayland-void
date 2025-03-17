@@ -38,6 +38,7 @@ alias pi = doas xbps-install -S
 alias pr = doas xbps-remove -R
 alias pq = xbps-query -Rs
 alias pl = xbps-query -l
+alias pc = doas xbps-remove -Oo
 alias pclean = doas rm -rf /var/cache/xbps/*
 # BUN Package Manager
 alias buna = bun add
