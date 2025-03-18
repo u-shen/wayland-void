@@ -359,7 +359,6 @@ now(function()
   vim.g.maplocalleader = vim.keycode("<cr>")
   -- Shell: =-================================================================
   vim.opt.sh           = "nu"
-  -- vim.opt.shellslash   = true
   vim.opt.shelltemp    = false
   vim.opt.shellcmdflag = "--stdin --no-newline -c"
   vim.opt.shellredir   = "out+err> %s"

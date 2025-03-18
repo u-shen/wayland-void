@@ -14,7 +14,7 @@ static const unsigned int gappx            = 1;  /* gap pixel between windows */
 static const unsigned int borderpx         = 1;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x1d2021ff);
 static const float bordercolor[]           = COLOR(0x3c3836ff);
-static const float focuscolor[]            = COLOR(0x689d6aff);
+static const float focuscolor[]            = COLOR(0x8a9a7bff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
