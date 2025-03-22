@@ -393,7 +393,7 @@ now(function()
   vim.opt.shellquote            = ""
   -- General: ================================================================
   vim.opt.clipboard             = 'unnamedplus'
-  vim.opt.completeopt           = 'menuone,noselect'
+  vim.o.completeopt             = 'menuone,noselect,fuzzy'
   vim.opt.complete              = '.,b,kspell'
   vim.opt.compatible            = false
   vim.opt.swapfile              = false
