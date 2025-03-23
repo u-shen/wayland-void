@@ -11,10 +11,10 @@ sudo xbps-install -Sy \
     # COMPILE:
     ninja meson pkg-config cairo cairo-devel pango pango-devel fcft fcft-devel \
     # COMPOSITOR:
-    wayland wayland-protocols xorg-server-xwayland wlroots wlroots-devel \
+    wayland wayland-protocols xorg-server-xwayland wlroots0.18 wlroots0.18-devel \
     pkg-config libxkbcommon libxkbcommon-devel libevdev libevdev-devel pixman pixman-devel \
     # COMPOSITOR-TOOLS:
-    fuzzel wmenu wlr-randr wvkbd wbg SwayNotificationCenter swaylock swayidle \
+    wmenu wlr-randr wvkbd wbg SwayNotificationCenter swaylock swayidle \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
     # SCREENSHOOT TOOLS:
