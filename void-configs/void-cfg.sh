@@ -29,15 +29,13 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # echo "#########################################"
 # echo "######    Directory In HOME       #######"
 # echo "#########################################"
-LC_ALL=C.UTF-8 xdg-user-dirs-update --force
-mkdir -p ~/{Projects,Pictures}
+LC_ALL=C.UTF-8 xdg-user-dirs-update --force 2> /dev/null
+mkdir -p ~/{Projects,Pictures,Desktop,Documents,Downloads,Music,Public,Templates,Videos}
 ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/Pictures/
 
 echo "########################################"
 echo "######     managment Services   ########"
 echo "########################################"
-sudo rm /var/service/acpid 2>/dev/null
-sudo rm /var/service/wpa_supplicant 2>/dev/null
 sudo ln -s /etc/sv/elogind /var/service/
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/
@@ -58,21 +56,6 @@ sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pip
 sudo mkdir -p /etc/alsa/conf.d
 sudo ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
 sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
-## Unblock Bluetooth
-sudo rfkill unblock bluetooth
 # Using doas Like sudo Without Password: #
 #========================================#
 sudo bash -c "echo 'permit nopass lli as root' > /etc/doas.conf"
-# Add the Flathub repository:            #
-#========================================#
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-# Added Execute To Binary File:    #
-#==================================#
-sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/bin/
-sudo chmod -R +x ~/.local/wayland-void/void-dotfiles/cfg/nnn/plugins/
-# echo "########################################"
-# echo "#####    Compile  Compositor     #######"
-# echo "########################################"
-cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwl/ && make clean install
-cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwlb/ && make clean install
-# echo "###########     DONE    #################"

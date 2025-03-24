@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo xbps-install -Sy \
     # SYSTEM:
-    base-devel elogind xtools \
+    base-devel elogind xtools mesa-dri \
     # SHELL:
     alacritty \
     # COMPOSITOR:
@@ -19,7 +19,7 @@ sudo xbps-install -Sy \
     # Graphical TOOLS:
     mpv imv zathura zathura-pdf-mupdf \
     chromium firefox thunderbird pcmanfm gimp shotcut \
-    kvantum flatpak \
+    kvantum \
     # STORAGE TOOLS:
     gptfdisk parted gparted udiskie simple-mtpfs \
     gvfs gvfs-mtp gvfs-smb gvfs-afc gvfs-gphoto2 \
