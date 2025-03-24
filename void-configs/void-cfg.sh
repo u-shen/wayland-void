@@ -30,7 +30,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # echo "######    Directory In HOME       #######"
 # echo "#########################################"
 LC_ALL=C.UTF-8 xdg-user-dirs-update --force 2> /dev/null
-mkdir -p ~/{Projects,Pictures,Desktop,Documents,Downloads,Music,Public,Templates,Videos}
+mkdir -p ~/{Projects,Pictures,Desktop,Documents,Downloads,Music,Public,Videos}
 ln -sf ~/.local/wayland-void/void-dotfiles/pix ~/Pictures/
 
 echo "########################################"
