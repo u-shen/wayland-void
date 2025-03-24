@@ -120,13 +120,12 @@ riverctl rule-add -app-id "*" ssd
 # Programme Bindings:      #
 #==========================#
 riverctl map normal $mod Return spawn "$terminal"
-riverctl map normal $mod Backslash spawn "$termbidi"
 riverctl map normal $mod W spawn "$browser"
 riverctl map normal $mod G spawn "$browser_GO"
 riverctl map normal $mod P spawn "$menu"
-riverctl map normal $mod D spawn "$menu_gui"
+riverctl map normal $mod D spawn "$menu"
 riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/onScreenKeyboard.sh"
-riverctl map normal $mod N spawn "$termbidi start --class=file_manager_cli $file_manager_cli"
+riverctl map normal $mod N spawn "$terminal -e $file_manager_cli"
 riverctl map normal $mod+Shift N spawn "$file_manager_gui"
 riverctl map normal $mod+Shift D spawn "$swaync_dashboard"
 riverctl map normal $mod+Shift Return spawn "$terminal --app-id=foot_float"
