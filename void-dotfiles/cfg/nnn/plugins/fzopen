@@ -18,7 +18,7 @@
 # Author: Arun Prakash Jana
 
 NUKE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/plugins/nuke"
-USE_NUKE=1
+USE_NUKE=0
 
 # shellcheck disable=SC1090,SC1091
 . "$(dirname "$0")"/.nnn-plugin-helper

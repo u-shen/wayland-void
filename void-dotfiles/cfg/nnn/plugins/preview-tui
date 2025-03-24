@@ -21,7 +21,7 @@
 #   - man
 #   - optional: bsdtar or atool for additional archive preview
 #   - optional: bat for code syntax highlighting
-#   - optional: ueberzug, kitty terminal, wezterm terminal, img2sixel, viu, catimg or chafa for images
+#   - optional: ueberzug, kitty terminal, wezterm terminal, img2sixel, viu, catimg, timg or chafa for images
 #   - optional: convert(ImageMagick) for playing gif preview (mandatory for kitty image previews)
 #   - optional: mpv for gif and video
 #       Also requires a terminal supporting the sixel (https://www.arewesixelyet.com/)
@@ -44,6 +44,7 @@
 #   - optional: pistol file viewer (https://github.com/doronbehar/pistol).
 #       1. install pistol
 #       2. set/export $NNN_PISTOL as 1
+#   - optional: librsvg for rsvg-convert
 #
 # Usage:
 #   You need to set a NNN_FIFO path and a key for the plugin with NNN_PLUG,
@@ -94,7 +95,7 @@
 #   'no_focus [title="preview-tui"]' to your i3 config file.
 #
 # Shell: Bash (for environment manipulation through arrays)
-# Authors: Todd Yamakawa, Léo Villeveygoux, @Recidiviste, Mario Ortiz Manero, Luuk van Baal, @WanderLanz
+# Authors: Todd Yamakawa, Léo Villeveygoux, @Recidiviste, Mario Ortiz Manero, Luuk van Baal, @WanderLanz, @flipflop133
 
 # Configurable environment variables:
 NNN_SPLIT=${NNN_SPLIT:-}                                   # permanent split direction
@@ -111,7 +112,7 @@ ENVVARS=(
   "NNN_PREVIEWWIDTH=${NNN_PREVIEWWIDTH:-1920}"             # width of generated preview images
   "NNN_PREVIEWHEIGHT=${NNN_PREVIEWHEIGHT:-1080}"           # height of generated preview images
   "NNN_PREVIEWDIR=${NNN_PREVIEWDIR:-$TMPDIR/nnn/previews}" # location of generated preview images
-  "NNN_PREVIEWIMGPROG=${NNN_PREVIEWIMGPROG:-}"             # program used to preview images
+  "NNN_PREVIEWIMGPROG=${NNN_PREVIEWIMGPROG:-}"             # command used to preview images
   "NNN_PREVIEWVIDEO=${NNN_PREVIEWVIDEO:-}"                 # mpv backend used to preview video
 )
 # Non-configurable environment variables
@@ -259,7 +260,7 @@ fifo_pager() {
         fi
     )
 
-    rm "$FIFOPATH"
+    rm -- "$FIFOPATH"
 }
 
 # Binary file: show file info inside the pager
@@ -301,7 +302,7 @@ handle_ext() {
         md) if exists glow; then
                 fifo_pager glow -s dark "$1"
             elif exists lowdown; then
-                fifo_pager lowdown -Tterm "$1"
+                fifo_pager lowdown -Tterm --term-width="$cols" --term-column="$cols" "$1"
             else
                 fifo_pager pager "$1"
             fi ;;
@@ -321,6 +322,12 @@ handle_ext() {
                 fifo_pager atool -l "$1"
             elif exists bsdtar; then
                 fifo_pager bsdtar -tvf "$1"
+            fi ;;
+        json)
+            if exists jq; then
+                fifo_pager jq --color-output '.' "$1"
+            else
+                fifo_pager pager "$1"
             fi ;;
         *) if [ "$3" = "bin" ]; then
                fifo_pager print_bin_info "$1"
@@ -368,9 +375,9 @@ preview_file() {
         elif exists tree; then
             fifo_pager tree --filelimit "$(find . -maxdepth 1 | wc -l)" -L 3 -C -F --dirsfirst --noreport
         elif exists exa; then
-            exa -G --group-directories-first --colour=always
+            fifo_pager exa -T --group-directories-first --colour=always -L 3
         elif exists eza; then # eza is a community fork of exa (exa is unmaintained)
-            eza -G --group-directories-first --colour=always
+            fifo_pager eza -T --group-directories-first --colour=always -L 3
         else
             fifo_pager ls -F --group-directories-first --color=always
         fi
@@ -416,14 +423,16 @@ generate_preview() {
                  else
                     image_preview "$1" "$2" "$3" && return
                  fi ;;
-            image) if exists convert; then
+            image) if exists rsvg-convert && [[ "${3##*.}" == "svg" ]]; then
+                       rsvg-convert -a -w "$NNN_PREVIEWWIDTH" -h "$NNN_PREVIEWHEIGHT" -f png -o "$NNN_PREVIEWDIR/$3.png" "$3"
+                   elif exists convert; then
                        convert "$3" -flatten -resize "$NNN_PREVIEWWIDTH"x"$NNN_PREVIEWHEIGHT"\> "$NNN_PREVIEWDIR/$3.jpg"
                    else
                        image_preview "$1" "$2" "$3" && return
                    fi ;;
             office) libreoffice --convert-to jpg "$3" --outdir "$NNN_PREVIEWDIR/${3%/*}"
                     filename="$(printf "%s" "${3##*/}" | cut -d. -f1)"
-                    mv "$NNN_PREVIEWDIR/${3%/*}/$filename.jpg" "$NNN_PREVIEWDIR/$3.jpg" ;;
+                    mv -- "$NNN_PREVIEWDIR/${3%/*}/$filename.jpg" "$NNN_PREVIEWDIR/$3.jpg" ;;
             pdf) pdftoppm -jpeg -f 1 -singlefile "$3" "$NNN_PREVIEWDIR/$3" ;;
             djvu) ddjvu -format=ppm -page=1 "$3" "$NNN_PREVIEWDIR/$3.jpg" ;;
             video) video_preview "$1" "$2" "$3" && return ;;
@@ -431,6 +440,8 @@ generate_preview() {
     fi
     if [ -f "$NNN_PREVIEWDIR/$3.jpg" ]; then
         image_preview "$1" "$2" "$NNN_PREVIEWDIR/$3.jpg"
+    elif [[ "${3##*.}" == "svg" ]] && [ -f "$NNN_PREVIEWDIR/$3.png" ]; then
+        image_preview "$1" "$2" "$NNN_PREVIEWDIR/$3.png"
     else
         fifo_pager print_bin_info "$3"
     fi
@@ -447,14 +458,8 @@ image_preview() {
         wezterm imgcat "$3" &
     elif exists ueberzug && [[ "$NNN_PREVIEWIMGPROG" == +(|ueberzug) ]]; then
         ueberzug_layer "$1" "$2" "$3" && return
-    elif exists catimg && [[ "$NNN_PREVIEWIMGPROG" == +(|catimg) ]]; then
-        catimg "$3" &
-    elif exists viu && [[ "$NNN_PREVIEWIMGPROG" == +(|viu) ]]; then
-        viu -t "$3" &
-    elif exists chafa && [[ "$NNN_PREVIEWIMGPROG" == +(|chafa) ]]; then
-        chafa "$3" &
-    elif exists img2sixel && [[ "$NNN_PREVIEWIMGPROG" == +(|img2sixel) ]]; then
-        img2sixel -g "$3" &
+    elif exists "${NNN_PREVIEWIMGPROG%% *}"; then # can include command flags; only check first word
+        $NNN_PREVIEWIMGPROG "$3" &
     else
         fifo_pager print_bin_info "$3" && return
     fi
@@ -467,7 +472,7 @@ video_preview() {
     if [ -n "$NNN_PREVIEWVIDEO" ]; then
         mpv --no-config --really-quiet --vo="$NNN_PREVIEWVIDEO" --profile=sw-fast --loop-file --no-audio "$4" "$3" &
     else
-        ffmpegthumbnailer -m -s0 -i "$3" -o "$NNN_PREVIEWDIR/$3.jpg" || rm "$NNN_PREVIEWDIR/$3.jpg" &
+        ffmpegthumbnailer -m -s0 -i "$3" -o "$NNN_PREVIEWDIR/$3.jpg" || rm -- "$NNN_PREVIEWDIR/$3.jpg" &
     fi
     printf "%s" "$!" > "$PREVIEWPID"
 }
@@ -517,7 +522,7 @@ if [ "$PREVIEW_MODE" -eq 1 ] 2>/dev/null; then
     printf "%s" "$!" > "$FIFOPID"
     printf "%s" "$PWD/$1" > "$CURSEL"
     trap 'winch_handler' WINCH
-    trap 'rm "$PREVIEWPID" "$CURSEL" "$FIFO_UEBERZUG" "$FIFOPID" "$POSOFFSET" 2>/dev/null' INT HUP EXIT
+    trap 'rm -- "$PREVIEWPID" "$CURSEL" "$FIFO_UEBERZUG" "$FIFOPID" "$POSOFFSET" 2>/dev/null' INT HUP EXIT
     while kill -s 0 $WAITPID; do
       wait $WAITPID 2>/dev/null
     done

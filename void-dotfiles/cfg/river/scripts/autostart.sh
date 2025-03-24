@@ -2,11 +2,10 @@
 #==========================#
 # Background Daemon:       #
 #==========================#
-killall wbg;wbg ~/pix/wallpapers/WITCHER.png &
+killall wbg;wbg ~/Pictures/pix/wallpapers/THE-WITCHER.png &
 #==========================#
 #  App Daemon              #
 #==========================#
-killall waybar; waybar &
 killall swaync; swaync &
 killall udiskie;udiskie &
 killall pipewire;pipewire &

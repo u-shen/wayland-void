@@ -20,7 +20,7 @@ export XCURSOR_THEME=Breez_Hacked
 ####################################
 export HISTFILESIZE=5000
 export HISTCONTROL=ignoreboth:erasedups
-export TERMINAL="foot"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export PAGER="less"
 export EDITOR="nvim"
@@ -157,30 +157,28 @@ alias yt-music='yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music
 alias man="tldr"
 alias cat="bat"
 alias cls="clear"
+
 #####################################
 ###-----Source fzf keybindingd----###
 #####################################
 eval "$(fzf --bash)"
-export FZF_DEFAULT_OPTS="--height=40% --border --multi --info inline-right --layout reverse --marker ▏ --pointer ▌ --prompt '▌ ' --highlight-line --color gutter:-1,selected-bg:238,selected-fg:146,current-fg:189"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --no-hidden --strip-cwd-prefix --exclude .git"
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-alias run_in_nvim="fzf --multi --bind 'enter:become(nvim {+})'"
-alias run_in_mpv="fd 'mp4' | fzf --multi --bind 'enter:become(mpv {+})'"
-alias run_in_yazi="fd -t d | fzf --bind 'enter:become(yazi {+})'"
-bind '"\C-v":"run_in_nvim\n"'
-bind '"\C-p":"run_in_mpv\n"'
-bind '"\C-n":"run_in_yazi\n"'
+
+#####################################
+ ###------- NNN File Manager ------###
+ #####################################
+export NNN_USE_EDITOR=1
+export NNN_TRASH=1
+export NNN_OPTS='RUc'
+export NNN_COLORS='2134'
+export NNN_CONTEXT_COLORS="2135"
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
+export NNN_TERMINAL="alacritty"
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_OPENER="$HOME/.config/nnn/plugins/nuke"
+export NNN_PLUG="m:nmount;M:mtpmount;e:suedit;n:bulknew;P:rsynccp;z:autojump;o:fzopen;f:fzcd;c:mp3conv;b:boom;l:imgview;p:preview-tui;x:xdgdefault;*:togglex"
+export NNN_BMS="m:/run/media/$USER;M:/run/user/$UID/gvfs;w:$HOME/pix/wallpapers;v:$HOME/vids/programming/;n:$HOME/.config/nvim;d:$HOME/.local/wayland-void/"
+
 #####################################
 ###-------Tab Completions --------###
 #####################################

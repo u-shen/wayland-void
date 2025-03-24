@@ -66,7 +66,7 @@
 
 # set to 1 to enable GUI apps and/or BIN execution
 GUI="${GUI:-1}"
-BIN="${BIN:-0}"
+BIN="${BIN:-1}"
 
 set -euf -o noclobber -o noglob -o nounset
 IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}" # protect trailing \n
@@ -226,7 +226,8 @@ handle_extension() {
                 glow -sdark "${FPATH}" | eval "$PAGER"
                 exit 0
             elif type lowdown >/dev/null 2>&1; then
-                lowdown -Tterm "${FPATH}" | eval "$PAGER"
+                cols=$(tput cols)
+                lowdown -Tterm --term-width="$cols" --term-column="$cols" "${FPATH}" | eval "$PAGER"
                 exit 0
             fi
             ;;
@@ -271,13 +272,13 @@ abspath() {
 listimages() {
     find -L "///${1%/*}" -maxdepth 1 -type f -print0 |
         grep -izZE '\.(jpe?g|png|gif|webp|tiff|bmp|ico|svg)$' |
-        sort -z | tee "$tmp"
+        sort -zV | tee "$tmp"
 }
 
 load_dir() {
     abspath "$2"
     tmp="${TMPDIR:-/tmp}/nuke_$$"
-    trap 'rm -f $tmp' EXIT
+    trap 'rm -f -- "$tmp"' EXIT
     count="$(listimages "$abs_target" | grep -a -m 1 -ZznF "$abs_target" | cut -d: -f1)"
 
     if [ -n "$count" ]; then
@@ -402,7 +403,7 @@ handle_multimedia() {
         #                  "${FPATH}";
         #     then
         #         convert -- "${preview_png}" "${IMAGE_CACHE_PATH}" \
-        #             && rm "${preview_png}" \
+        #             && rm -- "${preview_png}" \
         #             && exit 6
         #     else
         #         exit 1

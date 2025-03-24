@@ -7,9 +7,9 @@ selected=$(echo -e "$options" | wmenu -il 6 -f "JetBrainsMono NF 10" -p "POWER M
 case "$selected" in
 	"POWER OFF") doas poweroff ;;
 	"REBOOT") doas reboot ;;
-	"SLEEP") doas zzz ;;
+	"SUSPEND") doas zzz ;;
 	"HIBERNATE") doas zzz ;;
 	"LOCK") swaylock ;;
-	"LOG OUT") riverctl exit ;;
+	"LOG OUT") pkill dwl ;;
 	*) exit 1 ;;
 esac

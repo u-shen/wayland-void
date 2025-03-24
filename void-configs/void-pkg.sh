@@ -1,20 +1,13 @@
 #!/bin/sh
 sudo xbps-install -Sy \
-    # DRIVERS:
-    mesa-dri vulkan-loader mesa-vulkan-intel intel-video-accel \
     # SYSTEM:
     base-devel elogind \
     # VOID:
     xtools \
     # SHELL:
-    alacritty nushell carapace \
-    # COMPILE:
-    ninja meson pkg-config cairo cairo-devel pango pango-devel fcft fcft-devel \
-    # COMPOSITOR:
-    wayland wayland-protocols xorg-server-xwayland wlroots0.18 wlroots0.18-devel \
-    pkg-config libxkbcommon libxkbcommon-devel libevdev libevdev-devel pixman pixman-devel \
+    alacritty \
     # COMPOSITOR-TOOLS:
-    wmenu wlr-randr wvkbd wbg SwayNotificationCenter swaylock swayidle \
+    river waylock swayidle SwayNotificationCenter wmenu wlr-randr wvkbd wbg \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
     # SCREENSHOOT TOOLS:

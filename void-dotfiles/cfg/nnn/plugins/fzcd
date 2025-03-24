@@ -56,9 +56,9 @@ if [ -n "$LIST" ]; then
             fi
         done < "$LIST"
 
-        # sel=$(xargs -d '\n' < "$tmpfile" -I{} find {} -type f -printf "%H//%P\n" | sed '/.*\/\/\(\..*\|.*\/\..*\)/d; s:/\+:/:g' | fzf --delimiter / --tiebreak=begin --info=hidden)
+        sel=$(xargs -d '\n' < "$tmpfile" -I{} find {} -type f -printf "%H//%P\n" | sed '/.*\/\/\(\..*\|.*\/\..*\)/d; s:/\+:/:g' | fzf --delimiter / --tiebreak=begin --info=hidden)
         # Alternative for 'fd'
-        sel=$(xargs -d '\n' < "$tmpfile" fd . | fzf --delimiter / --tiebreak=begin --info=hidden)
+        # sel=$(xargs -d '\n' < "$tmpfile" fd . | fzf --delimiter / --tiebreak=begin --info=hidden)
 
         rm -- "$tmpfile"
     else
