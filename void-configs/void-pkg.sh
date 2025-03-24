@@ -1,12 +1,10 @@
 #!/bin/sh
 sudo xbps-install -Sy \
     # SYSTEM:
-    base-devel elogind \
-    # VOID:
-    xtools \
+    base-devel elogind xtools \
     # SHELL:
     alacritty \
-    # COMPOSITOR-TOOLS:
+    # COMPOSITOR:
     river waylock swayidle mako wmenu wlr-randr wvkbd wbg \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
