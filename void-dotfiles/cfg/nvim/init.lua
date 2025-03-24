@@ -343,10 +343,10 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
-  for _, config in ipairs(lsp_configs) do
-    vim.lsp.enable(config)
-  end
+  -- local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
+  -- for _, config in ipairs(lsp_configs) do
+  --   vim.lsp.enable(config)
+  -- end
   require("mini.completion").setup({
     mappings = {
       force_twostep = '<C-n>',
@@ -393,7 +393,7 @@ now(function()
   vim.opt.shellquote            = ""
   -- General: ================================================================
   vim.opt.clipboard             = 'unnamedplus'
-  vim.o.completeopt             = 'menuone,noselect,fuzzy'
+  -- vim.o.completeopt             = 'menuone,noselect,fuzzy'
   vim.opt.complete              = '.,b,kspell'
   vim.opt.compatible            = false
   vim.opt.swapfile              = false
