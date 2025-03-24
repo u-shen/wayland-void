@@ -14,10 +14,9 @@ swaync_dashboard="swaync-client -t"
 file_manager_cli="yazi"
 file_manager_gui="pcmanfm"
 browser="firefox"
-browser_VI="qutebrowser"
 browser_GO="chromium"
-menu="wmenu_run"
 menu_gui="fuzzel"
+menu="wmenu-run -N 181616 -n ebdbb2 -S 689d6a -s 181616 -il '10'"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
 
 #==========================#
