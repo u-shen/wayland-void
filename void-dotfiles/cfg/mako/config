@@ -1,0 +1,37 @@
+#==========================#
+# MAKO:                    #
+#==========================#
+font=JetBrainsMono NF 11
+format=<b>%a ⏵</b> %s\n%b
+sort=-time
+output=eDP-1
+layer=overlay
+anchor=top-left
+background-color=#181616
+width=300
+height=110
+margin=5
+padding=0,5,10
+border-size=2
+border-color=#689d6a
+border-radius=0
+icons=0
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=1
+
+[urgency=normal]
+border-color=#689d6a
+
+[urgency=high]
+border-color=#cc241d
+default-timeout=0
+
+[app-name=lightcord]
+border-color=#458588
+
+[summary~="log-.*"]
+border-color=#98971a
+
+[app-name=lightcord summary~="(.*(^| )orz|ORZ|sto|STO|otl|OTL( |$).*)"]
+invisible=1

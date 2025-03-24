@@ -7,7 +7,7 @@ sudo xbps-install -Sy \
     # SHELL:
     alacritty \
     # COMPOSITOR-TOOLS:
-    river waylock swayidle SwayNotificationCenter wmenu wlr-randr wvkbd wbg \
+    river waylock swayidle mako wmenu wlr-randr wvkbd wbg \
     # WAYLAND QT APP:
     qt5ct qt5-wayland qt6-wayland \
     # SCREENSHOOT TOOLS:
