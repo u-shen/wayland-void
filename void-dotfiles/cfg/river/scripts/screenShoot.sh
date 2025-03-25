@@ -9,10 +9,10 @@ choice="$(echo -e "$options" | wmenu -il 3 -f "JetBrainsMono NF 10" -p "SCREENSH
 
 case $choice in
     $screenshot_all_displays)
-        grim $(xdg-user-dir PICTURES)/screenshots/$(date +'%F_%H:%M:%S_GRIM.png') && notify-send -h int:value:100  "DONE SCREENSHOOT ALL DISPLAY TOOKEN"
+        grim $(xdg-user-dir Pictures)/Pictures/pix/screenshots/$(date +'%F_%H:%M:%S_GRIM.png') && notify-send -h int:value:100  "DONE SCREENSHOOT ALL DISPLAY TOOKEN"
         ;;
     $screenshot_area_of_display)
-        grim -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshots/$(date +'%F_%H:%M:%S_GRIM_AREA.png') && notify-send -h int:value:100 "DONE SCREENSHOOT REGION OF DISPLAY TOOKEN"
+        grim -g "$(slurp)" $(xdg-user-dir Pictures)/Pictures/pix/screenshots/$(date +'%F_%H:%M:%S_GRIM_AREA.png') && notify-send -h int:value:100 "DONE SCREENSHOOT REGION OF DISPLAY TOOKEN"
         ;;
     $screenshot_area_and_edit)
         grim -g "$(slurp)" - | swappy -f - && notify-send -h int:value:100 "NOTION AREA TOKEN"
