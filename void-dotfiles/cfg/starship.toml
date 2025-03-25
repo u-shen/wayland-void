@@ -91,8 +91,8 @@ truncation_symbol = "…/"
 format = '[[ $symbol$percentage ](fg:color_fg0 bg:color_bg3)]($style)'
 full_symbol = '󰁹 '
 charging_symbol = '󰂄 '
-unknown_symbol = ''
-empty_symbol = '󰂎'
+empty_symbol = '󰂎 '
+unknown_symbol = ' '
 discharging_symbol = '💀 '
 
 [[battery.display]]
