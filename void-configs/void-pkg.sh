@@ -22,7 +22,7 @@ sudo xbps-install -Sy \
     gvfs gvfs-mtp gvfs-smb gvfs-afc gvfs-gphoto2 \
     # NETWORKING TOOLS:
     NetworkManager network-manager-applet linux-wifi-hotspot \
-    net-tools wireless_tools bind-utils iputils inetutils-telnet ethtool \
+    net-tools wireless_tools bind-utils iputils inetutils-telnet \
     # WAYLAND QT Tools:
     qt5ct qt5-wayland qt6-wayland kvantum  \
     # SOUNDS TOOLS:
