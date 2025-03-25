@@ -637,6 +637,7 @@ later(function()
       ["http"] = "http",
     },
     filename = {
+      ["xhtml"] = "html",
       ["tsconfig.json"] = "jsonc",
       [".env"] = "env",
       [".envrc"] = "sh",
