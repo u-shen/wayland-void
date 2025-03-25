@@ -71,7 +71,7 @@ riverctl rule-add -title "wlroots*" fullscreen
 # Floating Rules:          #
 #==========================#
 riverctl rule-add -title "Virtual Machine*" float
-riverctl rule-add -app-id "foot_float" float
+riverctl rule-add -app-id "alacritty_float" float
 riverctl rule-add -app-id "termbidi_float" float
 riverctl rule-add -app-id "man_page" float
 riverctl rule-add -app-id "file_manager_cli" float
@@ -84,7 +84,7 @@ riverctl rule-add -app-id "imv" float
 # Dimensions Rules:        #
 #==========================#
 riverctl rule-add -title "Virtual Machine*" dimensions 600 400
-riverctl rule-add -app-id "foot_float" dimensions 1200 800
+riverctl rule-add -app-id "alacritty_float" dimensions 1200 800
 riverctl rule-add -app-id "man_page" dimensions 900 1080
 riverctl rule-add -app-id "termbidi_float" dimensions 1200 800
 riverctl rule-add -app-id "file_manager_cli" dimensions 1200 800
@@ -126,7 +126,7 @@ riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/ri
 riverctl map normal $mod N spawn "$terminal -e $file_manager_cli"
 riverctl map normal $mod+Shift N spawn "$file_manager_gui"
 riverctl map normal $mod+Shift D spawn "$swaync_dashboard"
-riverctl map normal $mod+Shift Return spawn "$terminal --app-id=foot_float"
+riverctl map normal $mod+Shift Return spawn "$terminal --class alacritty_float"
 riverctl map normal $mod+Shift Backslash spawn "$termbidi start --class termbidi_float"
 riverctl map normal $mod+Shift P spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/powerMenu.sh"
 riverctl map normal $mod+Shift W spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/wifiMenu.py"
