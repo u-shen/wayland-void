@@ -8,6 +8,7 @@ output=eDP-1
 layer=overlay
 anchor=top-right
 background-color=#181616
+progress-color=#689d6a
 width=300
 height=110
 margin=5

@@ -10,7 +10,7 @@ mod="Mod1"
 mod4="Mod4"
 terminal="alacritty"
 termbidi="foot"
-swaync_dashboard="swaync-client -t"
+notification_dismiss="makoctl dismiss --all"
 file_manager_cli="nnn"
 file_manager_gui="pcmanfm"
 browser="firefox"
@@ -125,7 +125,7 @@ riverctl map normal $mod D spawn "$menu"
 riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/onScreenKeyboard.sh"
 riverctl map normal $mod N spawn "$terminal -e $file_manager_cli"
 riverctl map normal $mod+Shift N spawn "$file_manager_gui"
-riverctl map normal $mod+Shift D spawn "$swaync_dashboard"
+riverctl map normal $mod+Shift D spawn "$notification_dismiss"
 riverctl map normal $mod+Shift Return spawn "$terminal --class alacritty_float"
 riverctl map normal $mod+Shift Backslash spawn "$termbidi start --class termbidi_float"
 riverctl map normal $mod+Shift P spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/powerMenu.sh"
@@ -213,13 +213,13 @@ riverctl spawn-tagmask ${all_but_scratch_tag}
 #==========================#
 for mode in normal locked; do
 	# Control pulse audio volume with
-	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-	riverctl map $mode None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && wp-vol"
+	riverctl map $mode None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wp-vol"
+	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wp-vol"
+	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && wp-vol"
 	# Control screen backlight brightness with brightnessctl
-	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +10%"
-	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 10%-"
+	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +10% && wp-light"
+	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 10%- && wp-light"
 done
 # Mode Binding:            #
 #==========================#
