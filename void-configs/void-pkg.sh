@@ -6,10 +6,8 @@ sudo xbps-install -Sy \
     alacritty \
     # COMPOSITOR:
     river sandbar waylock swayidle mako wmenu wlr-randr wvkbd wbg \
-    # SCREENSHOOT TOOLS:
-    grim slurp swappy \
     # SCREENSHARING TOOLS:
-    obs xdg-desktop-portal-wlr \
+    grim slurp swappy xdg-desktop-portal-wlr \
     # COMMAND LINE TOOLS:
     xdg-user-dirs xdg-utils man-db opendoas trash-cli  htop aria2 ffmpeg ImageMagick \
     nnn fastfetch yt-dlp chafa rsync eza bat glow starship wl-clipboard tealdeer  \
