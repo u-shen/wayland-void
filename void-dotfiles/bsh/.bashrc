@@ -162,6 +162,9 @@ alias cls="clear"
 ###-----Source fzf keybindingd----###
 #####################################
 eval "$(fzf --bash)"
+export FZF_DEFAULT_OPTS="--input-border --style=full --height=40% --border --layout reverse --preview-window right,80%"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type=d --no-hidden --strip-cwd-prefix --exclude .git"
 
 #####################################
  ###------- NNN File Manager ------###
