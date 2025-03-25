@@ -67,7 +67,7 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 Pop = ""
-Void = " "
+Void = " "
 
 [username]
 show_always = true
