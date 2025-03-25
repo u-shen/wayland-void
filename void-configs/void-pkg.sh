@@ -5,9 +5,7 @@ sudo xbps-install -Sy \
     # SHELL:
     alacritty \
     # COMPOSITOR:
-    river waylock swayidle mako wmenu wlr-randr wvkbd wbg \
-    # WAYLAND QT APP:
-    qt5ct qt5-wayland qt6-wayland \
+    river sandbar waylock swayidle mako wmenu wlr-randr wvkbd wbg \
     # SCREENSHOOT TOOLS:
     grim slurp swappy \
     # SCREENSHARING TOOLS:
@@ -30,6 +28,8 @@ sudo xbps-install -Sy \
     at cronie \
     # TIME DATE PROTOCOOLS (NTP)
     tzutils chrony \
+    # WAYLAND QT Tools:
+    qt5ct qt5-wayland qt6-wayland \
     # SOUNDS TOOLS:
     pipewire wireplumber alsa-pipewire alsa-utils pamixer pavucontrol \
     # BLUETOOTHS TOOLS
