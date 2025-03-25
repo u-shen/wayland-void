@@ -106,12 +106,10 @@ sec=0
 while true; do
 	sleep 1 &
 	wait && {
-		[ $((sec % 15)) -eq 0 ] && memory
-		[ $((sec % 15)) -eq 0 ] && cpu
-		[ $((sec % 15)) -eq 0 ] && disk
-		[ $((sec % 60)) -eq 0 ] && bat
-		[ $((sec % 5)) -eq 0 ] && vol
-		[ $((sec % 5)) -eq 0 ] && datetime
+		[ $((sec % 15)) -eq 0 ] && network
+		[ $((sec % 60)) -eq 0 ] && battery
+		[ $((sec % 5)) -eq 0 ] && volume_pulse
+		[ $((sec % 5)) -eq 0 ] && clock
 
 		[ $((sec % 5)) -eq 0 ] && display
 

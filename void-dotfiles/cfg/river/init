@@ -13,9 +13,7 @@ termbidi="foot"
 notification_dismiss="makoctl dismiss --all"
 file_manager_cli="nnn"
 file_manager_gui="pcmanfm"
-browser="firefox"
-browser_GO="chromium"
-menu_gui="fuzzel"
+browser="chromium"
 menu="wmenu-run -N 181616 -n ebdbb2 -S 689d6a -s 181616 -il '10'"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
 
@@ -121,7 +119,6 @@ riverctl rule-add -app-id "*" ssd
 #==========================#
 riverctl map normal $mod Return spawn "$terminal"
 riverctl map normal $mod W spawn "$browser"
-riverctl map normal $mod G spawn "$browser_GO"
 riverctl map normal $mod P spawn "$menu"
 riverctl map normal $mod D spawn "$menu"
 riverctl map normal $mod O spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/onScreenKeyboard.sh"
