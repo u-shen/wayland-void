@@ -18,7 +18,7 @@ border-color=#689d6a
 border-radius=0
 icons=0
 max-icon-size=64
-default-timeout=5000
+default-timeout=500
 ignore-timeout=1
 
 [urgency=normal]
