@@ -17,7 +17,7 @@ packages=(
     "@biomejs/biome"
 )
 # ================================================#
-# NPM Packages:                                    #
+# NPM Packages:                                   #
 # ================================================#
 for package in "${packages[@]}"; do
     echo "Installing $package..."
