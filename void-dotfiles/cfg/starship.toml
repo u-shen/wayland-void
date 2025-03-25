@@ -22,7 +22,7 @@ $kotlin\
 $haskell\
 $python\
 [](fg:color_blue bg:color_bg3)\
-$docker_context\
+$battery\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
@@ -86,6 +86,18 @@ truncation_symbol = "…/"
 "Music" = "󰝚 "
 "Pictures" = " "
 "Developer" = "󰲋 "
+
+[battery]
+format = '[[ $symbol$percentage ](fg:color_fg0 bg:color_bg3)]($style)'
+full_symbol = '󰁹 '
+charging_symbol = '󰂄 '
+unknown_symbol = ''
+empty_symbol = '󰂎'
+discharging_symbol = '💀 '
+
+[[battery.display]]
+threshold = 100
+style = "white"
 
 [git_branch]
 symbol = ""
