@@ -245,3 +245,7 @@ riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top
 riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
 riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
 riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
+#==========================#
+# Screen Sharing :         #
+#==========================#
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
