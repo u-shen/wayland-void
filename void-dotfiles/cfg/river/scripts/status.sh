@@ -6,7 +6,7 @@ clock() {
 	dte=$(date +"%D")
 	time=$(date +"%I:%M%p")
 
-	echo " $dte 󰥔 $time"
+	clock=" $dte 󰥔 $time"
 }
 #==========================
 # Date:
@@ -54,7 +54,7 @@ battery () {
 	else
 		bat_status=" "
 	fi
-	echo "$bat_status $bat_capacity%"
+	battery="$bat_status $bat_capacity%"
 }
 
 #==========================
@@ -65,21 +65,21 @@ volume_pulse() {
 	vol=$(pactl list sinks | grep Volume: | awk 'FNR == 1 { print $5 }' | cut -f1 -d '%')
 
 	if [ "$muted" = "yes" ]; then
-		echo " muted"
+		volume_pulse=" muted"
 	else
 		if [ "$vol" -ge 65 ]; then
-			echo " $vol%"
+			volume_pulse=" $vol%"
 		elif [ "$vol" -ge 40 ]; then
-			echo " $vol%"
+			volume_pulse=" $vol%"
 		elif [ "$vol" -ge 0 ]; then
-			echo " $vol%"
+			volume_pulse=" $vol%"
 		fi
 	fi
 
 }
 
 #==========================
-# NETWORK:
+# NETWORK
 #==========================
 network() {
     if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
@@ -88,14 +88,14 @@ network() {
         [ "$(cat /sys/class/net/w*/flags 2>/dev/null)" = '0x1003' ] && wifiicon="󱚿 " || wifiicon="󰖪 "
     fi
     [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ] && ethericon="󰩠" || ethericon="󰅗"
-    echo "$wifiicon"
+    network="$wifiicon"
 }
 
 #==========================
 # Display:
 #==========================
 display() {
-        echo "all status [ $(network) ] [ $(volume_pulse) ] [ $(battery) ] [ $(clock) ]"
+	echo "all status [ $network ] [ $battery ] [ $volume_pulse ] [ $clock ]" >"$FIFO"
 }
 
 printf "%s" "$$" > "$XDG_RUNTIME_DIR/status_pid"
