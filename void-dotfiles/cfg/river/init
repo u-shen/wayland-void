@@ -96,12 +96,12 @@ riverctl rule-add -app-id "mpv" dimensions 1500 800
 riverctl rule-add -app-id "vimiv" dimensions 1500 900
 # Position Rules:          #
 #==========================#
-riverctl rule-add -title "Virtual Machine*" position 1400 45
-riverctl rule-add -app-id "man_page" position 1400 45
-riverctl rule-add -app-id "nm-applet" position 1400 45
-riverctl rule-add -app-id "blueman-manager" position 1400 45
-riverctl rule-add -app-id "wihotspot-gui" position 1400 45
-riverctl rule-add -app-id "pavucontrol" position 1115 45
+riverctl rule-add -title "Virtual Machine*" position 1400 20
+riverctl rule-add -app-id "man_page" position 1400 20
+riverctl rule-add -app-id "nm-applet" position 1400 20
+riverctl rule-add -app-id "blueman-manager" position 1400 20
+riverctl rule-add -app-id "wihotspot-gui" position 1400 20
+riverctl rule-add -app-id "pavucontrol" position 1115 20
 # Tags Rules:              #
 #==========================#
 # 2147483664 => tags 5
