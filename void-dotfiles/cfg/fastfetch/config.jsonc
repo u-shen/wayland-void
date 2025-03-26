@@ -5,8 +5,9 @@
     },
     "modules": [
         {
-            "type": "custom",
-            "format": "\u001b[36m    コンピューター"
+            "type": "colors",
+            "paddingLeft": 15,
+            "symbol": "star"
         },
         {
             "type": "custom",
