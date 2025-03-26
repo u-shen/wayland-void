@@ -88,17 +88,21 @@ eval "$(zoxide init bash)"
 #####################################
 ###------------ ALIASES ----------###
 #####################################
-# Changing "ls" to "eza"
+# Changing "ls" to "eza":           #
+#####################################
 alias ls="eza --long --group --icons=auto --git --sort=name --group-directories-first"
 alias ll="eza --long --group --icons=auto --git --sort=name --group-directories-first"
 alias lt="eza --long --group --icons=auto --git --only-dirs --tree --level=3 --sort=modified"
-# Cd To Zoxide
+# Cd To Zoxide:                     #
+#####################################
 alias cd="z"
 alias cdf="zi"
-# Fetch (System Info)
+# Fetch (System Info):              #
+#####################################
 alias fetch="fastfetch"
 alias neofetch="fastfetch"
-## NeoVim To Vim
+## NeoVim To Vim:                   #
+#####################################
 alias v="nvim"
 alias vi="nvim"
 alias nv="nvim"
@@ -106,7 +110,8 @@ alias vn="nvim"
 alias vim="nvim"
 alias vid="nohup neovide 2>/dev/null 1>&2 &"
 alias nvd="nohup neovide 2>/dev/null 1>&2 &"
-# Github Command
+# Git Command:                      #
+#####################################
 alias g="git"
 alias gi="git init"
 alias gs="g status -s"
@@ -117,7 +122,8 @@ alias gd="g diff"
 alias gl="g log --oneline --graph --all -10"
 alias gp="g push -uf origin main"
 alias lg="lazygit"
-## Xbps Pkg Manager
+## Xbps Pkg Manager:                #
+#####################################
 alias pu="doas xbps-install -Syu xbps && doas xbps-install -Su"
 alias pi="doas xbps-install -S"
 alias pr="doas xbps-remove -R"
@@ -125,25 +131,22 @@ alias pq="xbps-query -Rs"
 alias pl="xbps-query -l"
 alias pc="doas xbps-remove -Oo"
 alias pclean="doas rm -rf /var/cache/xbps/*"
-## Flatpak PKG Manager
-alias flat-update="flatpak update -y"
-alias flat-install="flatpak install -y --or-update flathub"
-alias flat-remove="flatpak uninstall -y --force-remove --delete-data --noninteractive"
-alias flat-orphans-remove="flatpak uninstall -y --unused --noninteractive"
-alias flat-all-remove="flatpak uninstall -y --all --delete-data --noninteractive"
-## Power Management
+## Power Management:                #
+#####################################
 alias poweroff="doas poweroff"
 alias shutdown="doas shutdown"
 alias reboot="doas reboot"
 alias zzz="doas zzz"
-## For Configs Files
+## For Configs Files:               #
+#####################################
 alias sucks="cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/"
 alias dots="cd ~/.local/wayland-void/"
 alias riverc="nvim ~/.config/river/init"
 alias swayc="nvim ~/.config/sway/config"
 alias bashc="nvim ~/.bashrc"
 alias starc="nvim ~/.config/starship.toml"
-# Others Usfeual Alias
+# Others Usfeual Alias:             #
+#####################################
 alias yt-concats='yt-dlp --concat-playlist always -S "codec:h264"'
 alias yt-music='yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music'
 alias man="tldr"
@@ -177,18 +180,11 @@ export NNN_BMS="m:/run/media/$USER;M:/run/user/$UID/gvfs;w:$HOME/pix/wallpapers;
 #####################################
 ###-------Tab Completions --------###
 #####################################
-# If there are multiple matches for completion, Tab should cycle through them
 bind 'TAB:menu-complete'
-# And Shift-Tab should cycle backwards
 bind '"\e[Z": menu-complete-backward'
-# Display a list of the matching files
 bind "set show-all-if-ambiguous off"
-# Perform partial (common) completion on the first Tab press, only start
-# cycling full results on the second Tab press (from bash version 5)
 bind "set menu-complete-display-prefix on"
-# Ignore Hidden Files
 bind 'set match-hidden-files off'
-#ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
 
 #####################################
