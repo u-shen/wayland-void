@@ -4,7 +4,7 @@ FIFO="$XDG_RUNTIME_DIR/sandbar"
 [ -e "$FIFO" ] && rm -f "$FIFO"
 mkfifo "$FIFO"
 
-while cat "$FIFO"; do :; done | sandbar \
+pkill sandbar; while cat "$FIFO"; do :; done | sandbar \
   -tags 9 " " " " " " " " " " " " " " " " " " \
 	-no-layout -hide-normal-mode \
 	-active-fg-color "#181616" \

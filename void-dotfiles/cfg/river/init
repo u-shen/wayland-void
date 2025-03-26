@@ -44,7 +44,7 @@ riverctl input $touchpad pointer-accel 0.1
 #==========================#
 # Misc configurations:     #
 #==========================#
-riverctl border-width 1
+riverctl border-width 2
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 riverctl hide-cursor timeout 5000
@@ -232,7 +232,7 @@ riverctl map passthrough $mod F11 enter-mode normal
 #==========================#
 riverctl default-attach-mode top
 riverctl default-layout rivertile &
-rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+rivertile -view-padding 2 -outer-padding 2 -main-ratio 0.5 &
 # Layouts Binding:         #
 #==========================#
 # RiverTile Layouts :      #
