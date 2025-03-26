@@ -9,4 +9,4 @@ PCT=$(echo $BRIGHTNESS $MAX_BRIGHTNESS  | awk '{printf "%4.0f\n",($1/$2)*100}' |
 LC_ALL=C
 
 # Send the notification with the icon:
-notify-send -a 'wp-light' -h int:value:$PCT "Light: ${PCT}%"
+makoctl dismiss --all && notify-send -a 'wp-light' -h int:value:$PCT "Light: ${PCT}%"

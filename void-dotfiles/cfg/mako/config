@@ -18,8 +18,11 @@ border-color=#8a9a7b
 border-radius=0
 icons=0
 max-icon-size=64
-default-timeout=500
+default-timeout=5000
 ignore-timeout=1
+
+[urgency=low]
+border-color=#ebdbb2
 
 [urgency=normal]
 border-color=#8a9a7b
@@ -28,8 +31,8 @@ border-color=#8a9a7b
 border-color=#c4746e
 default-timeout=0
 
-[app-name=lightcord]
-border-color=#8ba4b0
+[app-name=chromium]
+border-color=#8a9a7b
 
 [summary~="log-.*"]
 border-color=#87a987
