@@ -117,16 +117,13 @@ alias gd="g diff"
 alias gl="g log --oneline --graph --all -10"
 alias gp="g push -uf origin main"
 alias lg="lazygit"
-# Img Viewr libsixel
-alias sx="img2sixel --width=40% --height=30%"
-alias sxl="lsix"
-alias sxg="vimiv --recursive"
 ## Xbps Pkg Manager
 alias pu="doas xbps-install -Syu xbps && doas xbps-install -Su"
 alias pi="doas xbps-install -S"
 alias pr="doas xbps-remove -R"
 alias pq="xbps-query -Rs"
 alias pl="xbps-query -l"
+alias pc="doas xbps-remove -Oo"
 alias pclean="doas rm -rf /var/cache/xbps/*"
 ## Flatpak PKG Manager
 alias flat-update="flatpak update -y"
@@ -140,17 +137,12 @@ alias shutdown="doas shutdown"
 alias reboot="doas reboot"
 alias zzz="doas zzz"
 ## For Configs Files
-alias recompile="cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/dwl && doas make clean install"
 alias sucks="cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/"
 alias dots="cd ~/.local/wayland-void/"
-alias nvimc="nvim ~/.config/nvim/init.lua"
 alias riverc="nvim ~/.config/river/init"
 alias swayc="nvim ~/.config/sway/config"
-alias footc="nvim ~/.config/foot/foot.ini"
 alias bashc="nvim ~/.bashrc"
 alias starc="nvim ~/.config/starship.toml"
-alias code='flatpak run com.visualstudio.code'
-alias act='source ~/vids/3_PYTHON/LEARN-VENV/bin/activate && cd ~/vids/3_PYTHON/BOOK/ && jupyter notebook'
 # Others Usfeual Alias
 alias yt-concats='yt-dlp --concat-playlist always -S "codec:h264"'
 alias yt-music='yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music'
