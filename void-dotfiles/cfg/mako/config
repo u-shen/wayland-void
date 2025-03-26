@@ -1,7 +1,7 @@
 #==========================#
 # MAKO:                    #
 #==========================#
-font=JetBrainsMono NF 11
+font=JetBrainsMono NF 9
 format=<b>%a ⏵</b> %s\n%b
 sort=-time
 output=eDP-1
@@ -31,7 +31,7 @@ border-color=#8a9a7b
 border-color=#c4746e
 default-timeout=0
 
-[app-name=chromium]
+[app-name=Chromium]
 border-color=#8a9a7b
 
 [summary~="log-.*"]
