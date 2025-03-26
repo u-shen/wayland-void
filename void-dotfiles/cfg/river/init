@@ -14,7 +14,7 @@ notification_dismiss="makoctl dismiss --all"
 file_manager_cli="nnn"
 file_manager_gui="pcmanfm"
 browser="chromium"
-menu="wmenu-run -N 181616 -n ebdbb2 -S 689d6a -s 181616 -il '10'"
+menu="wmenu-run -N 181616 -n ebdbb2 -S 689d6a -s 181616 -M 689d6a -m 1d2021  -il '10' -p 'LAUNCH MENU:'"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
 
 #==========================#
