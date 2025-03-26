@@ -8,13 +8,13 @@ output=eDP-1
 layer=overlay
 anchor=top-right
 background-color=#181616
-progress-color=#689d6a
+progress-color=#8a9a7b
 width=300
 height=110
 margin=5
 padding=0,5,10
 border-size=2
-border-color=#689d6a
+border-color=#8a9a7b
 border-radius=0
 icons=0
 max-icon-size=64
@@ -22,10 +22,10 @@ default-timeout=500
 ignore-timeout=1
 
 [urgency=normal]
-border-color=#689d6a
+border-color=#8a9a7b
 
 [urgency=high]
-border-color=#cc241d
+border-color=#8a9a7b
 default-timeout=0
 
 [app-name=lightcord]

@@ -50,7 +50,7 @@ if palette then
       ['echasnovski/mini.nvim'] = true,
     },
   })
-  vim.g.colors_name = "minigruv"
+  vim.g.colors_name = "minibase-kanagawa"
 end
 -- Pmenu: =====================================================================
 vim.api.nvim_set_hl(0, "Pmenu", { bg = palette.base01, fg = palette.base04 })
