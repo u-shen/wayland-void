@@ -60,11 +60,11 @@ invisible=1
 #==========================#
 # DISTRUBE RULES:          #
 #==========================#
-[mode=do-not-disturb]
+[mode=hide]
 invisible=1
 
-[mode=do-not-disturb app-name=wp-vol]
+[mode=hide app-name=wp-vol]
 invisible=0
 
-[mode=do-not-disturb app-name=wp-light]
+[mode=hide app-name=wp-light]
 invisible=0
