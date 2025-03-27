@@ -1,5 +1,8 @@
+#===============
+# SWAPPY_AREA: #
+#===============
 [Default]
-save_dir=$HOME/pix/screenshots/
+save_dir=$HOME/Pictures/pix/screenshots/
 save_filename_format=%Y%m%d-%H%M%S_swappy_area.png
 show_panel=false
 line_size=5
