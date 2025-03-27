@@ -15,12 +15,16 @@ margin=5
 padding=0,5,10
 border-size=2
 border-color=#8a9a7b
+text-color=#ebdbb2
 border-radius=0
-icons=0
-max-icon-size=64
+icons=1
+max-icon-size=32
 default-timeout=5000
 ignore-timeout=1
 
+#==========================#
+# LEVEL:                   #
+#==========================#
 [urgency=low]
 border-color=#ebdbb2
 
@@ -31,11 +35,36 @@ border-color=#8a9a7b
 border-color=#c4746e
 default-timeout=0
 
-[app-name=Chromium]
-border-color=#8a9a7b
-
+#==========================#
+# SUMMARY RULES:           #
+#==========================#
 [summary~="log-.*"]
 border-color=#87a987
 
+#==========================#
+# APP NAME RULES:          #
+#==========================#
+[app-name=Chromium]
+default-timeout=2000
+border-color=#8a9a7b
+
+[app-name=wp-vol]
+history=0
+
+[app-name=wp-light]
+history=0
+
 [app-name=lightcord summary~="(.*(^| )orz|ORZ|sto|STO|otl|OTL( |$).*)"]
 invisible=1
+
+#==========================#
+# DISTRUBE RULES:          #
+#==========================#
+[mode=do-not-disturb]
+invisible=1
+
+[mode=do-not-disturb app-name=wp-vol]
+invisible=0
+
+[mode=do-not-disturb app-name=wp-light]
+invisible=0
