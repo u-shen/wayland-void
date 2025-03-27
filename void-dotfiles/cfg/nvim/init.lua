@@ -343,10 +343,10 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  -- local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
-  -- for _, config in ipairs(lsp_configs) do
-  --   vim.lsp.enable(config)
-  -- end
+  local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
+  for _, config in ipairs(lsp_configs) do
+    vim.lsp.enable(config)
+  end
   require("mini.completion").setup({
     mappings = {
       force_twostep = '<C-n>',
@@ -375,6 +375,7 @@ now(function()
     virtual_text = false,
     severity_sort = false,
     update_in_insert = false,
+    virtual_lines = false,
   })
   -- Global:  =================================================================
   vim.g.mapleader               = vim.keycode("<space>")
@@ -384,7 +385,7 @@ now(function()
   vim.opt.grepformat            = "%f:%l:%c:%m,%f:%l:%m"
   -- General: ================================================================
   vim.opt.clipboard             = 'unnamedplus'
-  -- vim.o.completeopt             = 'menuone,noselect,fuzzy'
+  vim.o.completeopt             = 'menuone,noselect,fuzzy'
   vim.opt.complete              = '.,b,kspell'
   vim.opt.compatible            = false
   vim.opt.swapfile              = false
