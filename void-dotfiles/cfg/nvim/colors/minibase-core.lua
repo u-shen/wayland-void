@@ -1,5 +1,5 @@
 --          ╔═════════════════════════════════════════════════════════╗
---          ║                       Minibase-kanagawa                 ║
+--          ║                       Minibase-Core                     ║
 --          ╚═════════════════════════════════════════════════════════╝
 local palette
 if vim.o.background == "light" then
@@ -24,7 +24,7 @@ if vim.o.background == "light" then
 end
 if vim.o.background == "dark" then
   palette = {
-    base00 = "#181616",
+    base00 = "#141617",
     base01 = "#1b1b1b",
     base02 = "#282828",
     base03 = "#5a524c",
@@ -50,7 +50,7 @@ if palette then
       ['echasnovski/mini.nvim'] = true,
     },
   })
-  vim.g.colors_name = "minibase-kanagawa"
+  vim.g.colors_name = "Minibase-Core"
 end
 -- Pmenu: =====================================================================
 vim.api.nvim_set_hl(0, "Pmenu", { bg = palette.base01, fg = palette.base04 })

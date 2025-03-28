@@ -32,7 +32,7 @@ save_to_clipboard = true
 # colorsscheme:                                      #
 # ===================================================#
 [colors.primary]
-background = '#181616'
+background = '#141617'
 foreground = '#c5c9c5'
 
 [colors.normal]
