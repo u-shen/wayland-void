@@ -88,9 +88,9 @@ brightness() {
     if [ "$brightness_percent" -ge 70 ]; then
         brightness="󰃠 $brightness_percent%"
     elif [ "$brightness_percent" -ge 30 ]; then
-        brightness="󰃞 $brightness_percent%"
-    elif [ "$brightness_percent" -ge 0 ]; then
         brightness="󰃝 $brightness_percent%"
+    elif [ "$brightness_percent" -ge 0 ]; then
+        brightness="󰃞 $brightness_percent%"
     fi
 }
 
