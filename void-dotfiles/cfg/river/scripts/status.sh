@@ -79,6 +79,22 @@ volume_pulse() {
 }
 
 #==========================
+#brightness :
+#==========================
+brightness() {
+    brightness_current=$(brightnessctl get)
+    max=$(brightnessctl max)
+    brightness_percent=$((brightness_current * 100 / max))
+    if [ "$brightness_percent" -ge 70 ]; then
+        brightness="󰃠 $brightness_percent%"
+    elif [ "$brightness_percent" -ge 30 ]; then
+        brightness="󰃞 $brightness_percent%"
+    elif [ "$brightness_percent" -ge 0 ]; then
+        brightness="󰃝 $brightness_percent%"
+    fi
+}
+
+#==========================
 # NETWORK
 #==========================
 network() {
@@ -95,7 +111,7 @@ network() {
 # Display:
 #==========================
 display() {
-	echo "all status [ $network ] [ $battery ] [ $volume_pulse ] [ $clock ]" >"$FIFO"
+	echo "all status [ $network ] [ $battery ] [ $brightness ] [ $volume_pulse ] [ $clock ]" >"$FIFO"
 }
 
 printf "%s" "$$" > "$XDG_RUNTIME_DIR/status_pid"
@@ -109,6 +125,7 @@ while true; do
 		[ $((sec % 60)) -eq 0 ] && battery
 		[ $((sec % 5)) -eq 0 ] && network
 		[ $((sec % 5)) -eq 0 ] && volume_pulse
+		[ $((sec % 5)) -eq 0 ] && brightness
 		[ $((sec % 5)) -eq 0 ] && clock
 
 		[ $((sec % 5)) -eq 0 ] && display

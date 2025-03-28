@@ -29,6 +29,7 @@ void-dotfiles/cfg/qutebrowser/qsettings/
 void-dotfiles/cfg/lazygit/state.yml
 void-dotfiles/cfg/pcmanfm/default/pcmanfm.conf
 void-dotfiles/cfg/bin/nvim/
+void-dotfiles/cfg/bin/neovide
 
 # Byte-compiled / optimized / DLL files
 lazy-lock.json
