@@ -1,4 +1,7 @@
 #!/bin/bash
+#==========================#
+# Screenshots Menu:        #
+#==========================#
 screenshot_all_displays="DISPLAY"
 screenshot_area_of_display="REGION"
 screenshot_area_and_edit="EDITOR"

@@ -1,6 +1,6 @@
 #!/bin/sh
 #==========================#
-# My On Screen Keyboard:
+# My On Screen Keyboard:   #
 #==========================#
 pkill wvkbd || wvkbd-mobintl -l arabic --landscape-layers arabic \
     -H 200 -L 200 --fn "JetBrainsMono NF 10" \

@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
-
+#==========================#
+# Bar Sandbar:             #
+#==========================#
 FIFO="$XDG_RUNTIME_DIR/sandbar"
 [ -e "$FIFO" ] && rm -f "$FIFO"
 mkfifo "$FIFO"

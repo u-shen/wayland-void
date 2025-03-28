@@ -2,7 +2,7 @@
 #==========================#
 # Background Daemon:       #
 #==========================#
-killall wbg;wbg ~/Pictures/pix/wallpapers/NATURAL.jpeg &
+killall wbg;wbg ~/Pictures/pix/wallpapers/THE-WITCHER.png &
 #==========================#
 #  App Daemon              #
 #==========================#

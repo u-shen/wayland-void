@@ -1,5 +1,7 @@
 #!/bin/sh
-
+#==========================#
+# UI Settings:             #
+#==========================#
 ## Set GTK Themes, Icons, Cursor and Fonts
 THEME='Gruvbox-Dark'
 ICONS='Papirus-Dark'
