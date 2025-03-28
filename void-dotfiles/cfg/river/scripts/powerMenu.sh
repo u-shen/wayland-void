@@ -12,6 +12,6 @@ case "$selected" in
 	"SUSPEND") doas zzz ;;
 	"HIBERNATE") doas zzz ;;
 	"LOCK") swaylock ;;
-	"LOG OUT") pkill dwl ;;
+	"LOG OUT") riverctl exit ;;
 	*) exit 1 ;;
 esac
