@@ -1,0 +1,12 @@
+frame = "none"
+title-hidden = false
+idle = true
+tabs = true
+theme = "auto"
+[font]
+size = 9
+hinting = "full"
+edging = "antialias"
+[[font.normal]]
+family = "JetBrainsMono Nerd Font"
+style = "W600"
