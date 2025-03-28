@@ -628,6 +628,10 @@ later(function()
     vim.g.neovide_cursor_animation_length = 0.03
     vim.g.neovide_cursor_smooth_blink = true
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
+    -- Resize Fonts:  ===================================================================
+    vim.keymap.set({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>")
   end
 end)
 --          ╔═════════════════════════════════════════════════════════╗

@@ -219,8 +219,8 @@ for mode in normal locked; do
 	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 	# Control screen backlight brightness with brightnessctl
-	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +10% && wp-light"
-	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 10%- && wp-light"
+	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +1% && wp-light"
+	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 1%- && wp-light"
 done
 # Mode Binding:            #
 #==========================#
