@@ -375,7 +375,7 @@ now(function()
     severity_sort = false,
     update_in_insert = false,
     virtual_lines = false,
-    virtual_text = true,
+    virtual_text = false,
   })
   -- Global:  =================================================================
   vim.g.mapleader               = vim.keycode("<space>")
