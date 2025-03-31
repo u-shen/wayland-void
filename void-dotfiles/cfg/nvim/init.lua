@@ -25,6 +25,7 @@ end
 --          ╰─────────────────────────────────────────────────────────╯
 require("mini.deps").setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now_if_args = vim.fn.argc(-1) > 0 and now or later
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Icons                          │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -355,6 +356,34 @@ now(function()
       scroll_up = '<C-k>',
     },
   })
+end)
+--          ╔═════════════════════════════════════════════════════════╗
+--          ║                          Treesitter                     ║
+--          ╚═════════════════════════════════════════════════════════╝
+now_if_args(function()
+  add({
+    source = 'nvim-treesitter/nvim-treesitter',
+    checkout = 'master',
+    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+  })
+  local ensure_installed = {
+    'bash', 'powershell', 'c', 'cpp', 'html', 'css', 'scss', 'javascript', 'typescript', 'tsx',
+    'json', 'toml', 'yaml', 'lua', 'luadoc', 'vim', 'vimdoc', 'markdown', 'markdown_inline',
+    "git_config", "git_rebase", "gitcommit", "gitignore", "gitattributes", "diff",
+    'python', 'regex',
+  }
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = ensure_installed,
+    highlight = { enable = true },
+    indent = { enable = true },
+    incremental_selection = { enable = false },
+    textobjects = { enable = false },
+  })
+
+  -- Disable injections in 'lua' language
+  local ts_query = require('vim.treesitter.query')
+  local ts_query_set = vim.fn.has('nvim-0.9') == 1 and ts_query.set or ts_query.set_query
+  ts_query_set('lua', 'injections', '')
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                          NVIM                           ║

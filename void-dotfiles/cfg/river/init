@@ -119,6 +119,7 @@ riverctl rule-add -app-id "*" ssd
 # Programme Bindings:      #
 #==========================#
 riverctl map normal $mod Return spawn "$terminal"
+riverctl map normal $mod Backslash  spawn "$termbidi"
 riverctl map normal $mod W spawn "$browser"
 riverctl map normal $mod P spawn "$menu"
 riverctl map normal $mod D spawn "$menu"

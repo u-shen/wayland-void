@@ -45,10 +45,6 @@ end
 if palette then
   require("mini.base16").setup({
     palette = palette,
-    plugins = {
-      default = false,
-      ['echasnovski/mini.nvim'] = true,
-    },
   })
   vim.g.colors_name = "Minibase-Core"
 end
