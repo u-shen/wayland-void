@@ -297,6 +297,7 @@ now(function()
   local webHtmlPatterns = { 'web/*.json', 'html.json' }
   local lang_patterns = {
     html = webHtmlPatterns,
+    tsx = webPatterns,
     javascript = webPatterns,
     typescript = webPatterns,
     javascriptreact = webPatterns,
@@ -344,7 +345,7 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  local lsp_configs = { "lua", "html", "css", "json", "tailwind", "typescript", "biome" }
+  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "biome" }
   for _, config in ipairs(lsp_configs) do
     vim.lsp.enable(config)
   end
