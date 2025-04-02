@@ -7,15 +7,15 @@ sort=-time
 output=eDP-1
 layer=overlay
 anchor=top-right
-background-color=#151515
-progress-color=#8C977D
+background-color=#141b1e
+progress-color=#8ccf7e
 width=300
 height=110
 margin=5
 padding=0,5,10
 border-size=2
-border-color=#8C977D
-text-color=#E8E3E3
+border-color=#8ccf7e
+text-color=#ffffff
 border-radius=0
 icons=1
 max-icon-size=32
@@ -26,13 +26,13 @@ ignore-timeout=1
 # LEVELS:                  #
 #==========================#
 [urgency=low]
-border-color=#E8E3E3
+border-color=#dadada
 
 [urgency=normal]
-border-color=#8C977D
+border-color=#8ccf7e
 
 [urgency=high]
-border-color=#B66467
+border-color=#e57474
 default-timeout=0
 
 #==========================#

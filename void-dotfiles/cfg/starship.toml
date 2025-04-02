@@ -21,25 +21,24 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
-$battery\
-[](fg:color_bg3 bg:color_bg1)\
+[](fg:color_blue bg:color_aqua)\
+[](fg:color_aqua bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
-palette = 'gruvbox_dark'
+palette = 'everblush'
 command_timeout = 3600000
-[palettes.gruvbox_dark]
-color_fg0 = '#151515'
-color_bg1 = '#424242'
-color_bg3 = '#665c54'
-color_blue = '#8C977D'
-color_aqua = '#87a987'
-color_green = '#c4b28a'
-color_orange = '#B66467'
-color_purple = '#A988B0'
-color_red = '#B66467'
+[palettes.everblush]
+color_fg0 = '#141b1e'
+color_bg1 = '#232a2d'
+color_bg3 = '#e5c76b'
+color_blue = '#6cbfbf'
+color_aqua = '#8ccf7e'
+color_green = '#dadada'
+color_orange = '#e57474'
+color_purple = '#c47fd5'
+color_red = '#e57474'
 color_yellow = '#e6c384'
 
 [os]

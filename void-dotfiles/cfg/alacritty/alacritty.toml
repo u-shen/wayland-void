@@ -31,41 +31,36 @@ save_to_clipboard = true
 # ===================================================#
 # colorsscheme:                                      #
 # ===================================================#
+# Default colors
 [colors.primary]
-background =  '#151515'
-foreground= '#E8E3E3'
+  background = '0x141b1e'
+  foreground =  '0xdadada'
 
+[colors.cursor]
+  text = '0xdadada'
+  cursor = '0xdadada'
+
+# Normal colors
 [colors.normal]
-black =   '#151515'
-red =     '#B66467'
-green =   '#8C977D'
-yellow =  '#D9BC8C'
-blue =    '#8DA3B9'
-magenta = '#A988B0'
-cyan =    '#8AA6A2'
-white =   '#E8E3E3'
+  black =   '0x232a2d'
+  red =     '0xe57474'
+  green =   '0x8ccf7e'
+  yellow =  '0xe5c76b'
+  blue =     '0x67b0e8'
+  magenta = '0xc47fd5'
+  cyan =    '0x6cbfbf'
+  white =   '0xb3b9b8'
 
+# Bright colors
 [colors.bright]
-black =   '#424242'
-red =     '#B66467'
-green =   '#8C977D'
-yellow =  '#D9BC8C'
-blue =    '#8DA3B9'
-magenta = '#A988B0'
-cyan =    '#8AA6A2'
-white =   '#E8E3E3'
-
-[colors.selection]
-background = '#2d4f67'
-foreground = '#c8c093'
-
-[[colors.indexed_colors]]
-index = 16
-color = '#b6927b'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#b98d7b'
+  black =   '0x2d3437'
+  red =     '0xef7e7e'
+  green =   '0x96d988'
+  yellow =  '0xf4d67a'
+  blue =    '0x71baf2'
+  magenta = '0xce89df'
+  cyan =    '0x67cbe7'
+  white =   '0xbdc3c2'
 # ===================================================#
 # keybidings:                                        #
 # ===================================================#

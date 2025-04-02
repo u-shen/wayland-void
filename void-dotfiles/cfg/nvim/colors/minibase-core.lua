@@ -118,25 +118,6 @@ if vim.o.background == "dark" then
   --   base0E = "#e67e80",
   --   base0F = "#d699b6"
   -- }
-  -- everblush
-  -- palette = {
-  --   base00 = "#141b1e",
-  --   base01 = "#232a2d",
-  --   base02 = "#2d3437",
-  --   base03 = "#404749",
-  --   base04 = "#4f5658",
-  --   base05 = "#cacaca",
-  --   base06 = "#d2d2d2",
-  --   base07 = "#dadada",
-  --   base08 = "#e57474",
-  --   base09 = "#e19d5c",
-  --   base0A = "#e5c76b",
-  --   base0B = "#8ccf7e",
-  --   base0C = "#71baf2",
-  --   base0D = "#67cbe7",
-  --   base0E = "#c47fd5",
-  --   base0F = "#ef7d7d",
-  -- }
   -- aquarium
   -- palette = {
   --   base00 = "#20202A",
@@ -157,23 +138,42 @@ if vim.o.background == "dark" then
   --   base0F = "#eAc1c1"
   -- }
   -- paradise
+  -- palette = {
+  --   base00 = "#151515",
+  --   base01 = "#1F1F1F",
+  --   base02 = "#2E2E2E",
+  --   base03 = "#424242",
+  --   base04 = "#BBB6B6",
+  --   base05 = "#E8E3E3",
+  --   base06 = "#E8E3E3",
+  --   base07 = "#E8E3E3",
+  --   base08 = "#B66467",
+  --   base09 = "#D9BC8C",
+  --   base0A = "#D9BC8C",
+  --   base0B = "#8C977D",
+  --   base0C = "#8AA6A2",
+  --   base0D = "#8DA3B9",
+  --   base0E = "#A988B0",
+  --   base0F = "#BBB6B6",
+  -- }
+  -- everblush
   palette = {
-    base00 = "#151515",
-    base01 = "#1F1F1F",
-    base02 = "#2E2E2E",
-    base03 = "#424242",
-    base04 = "#BBB6B6",
-    base05 = "#E8E3E3",
-    base06 = "#E8E3E3",
-    base07 = "#E8E3E3",
-    base08 = "#B66467",
-    base09 = "#D9BC8C",
-    base0A = "#D9BC8C",
-    base0B = "#8C977D",
-    base0C = "#8AA6A2",
-    base0D = "#8DA3B9",
-    base0E = "#A988B0",
-    base0F = "#BBB6B6",
+    base00 = "#141b1e",
+    base01 = "#232a2d",
+    base02 = "#2d3437",
+    base03 = "#404749",
+    base04 = "#4f5658",
+    base05 = "#cacaca",
+    base06 = "#d2d2d2",
+    base07 = "#dadada",
+    base08 = "#e57474",
+    base09 = "#e19d5c",
+    base0A = "#e5c76b",
+    base0B = "#8ccf7e",
+    base0C = "#71baf2",
+    base0D = "#67cbe7",
+    base0E = "#c47fd5",
+    base0F = "#ef7d7d",
   }
 end
 if palette then
