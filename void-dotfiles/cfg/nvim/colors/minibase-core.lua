@@ -23,23 +23,157 @@ if vim.o.background == "light" then
   }
 end
 if vim.o.background == "dark" then
+  -- Tokyo Night
+  -- palette =  {
+  --   base00 = "#1A1B26",
+  --   base01 = "#3b4261",
+  --   base02 = "#3b4261",
+  --   base03 = "#545c7e",
+  --   base04 = "#565c64",
+  --   base05 = "#a9b1d6",
+  --   base06 = "#bbc5f0",
+  --   base07 = "#c0caf5",
+  --   base08 = "#f7768e",
+  --   base09 = "#ff9e64",
+  --   base0A = "#e0af68",
+  --   base0B = "#9ece6a",
+  --   base0C = "#2ac3de",
+  --   base0D = "#7aa2f7",
+  --   base0E = "#9d7cd8",
+  --   base0F = "#9abdf5"
+  -- }
+  -- Mountain
+  -- palette =  {
+  --   base00 = "#0f0f0f",
+  --   base01 = "#151515",
+  --   base02 = "#191919",
+  --   base03 = "#323232",
+  --   base04 = "#535353",
+  --   base05 = "#f0f0f0",
+  --   base06 = "#d8d8d8",
+  --   base07 = "#414141",
+  --   base08 = "#ac8a8c",
+  --   base09 = "#d3d0ad",
+  --   base0A = "#ACA98A",
+  --   base0B = "#8aac8b",
+  --   base0C = "#9EC3C4",
+  --   base0D = "#8fb4b5",
+  --   base0E = "#C49EC4",
+  --   base0F = "#9d9a7b",
+  -- }
+  -- Jellybans
+  -- palette = {
+  --   base00 = "#151515",
+  --   base01 = "#1c1c1c",
+  --   base02 = "#404040",
+  --   base03 = "#888888",
+  --   base04 = "#ddddbf",
+  --   base05 = "#e8e8d3",
+  --   base06 = "#eeeede",
+  --   base07 = "#f1f1e5",
+  --   base08 = "#cf6a4c",
+  --   base09 = "#d8ad4c",
+  --   base0A = "#d8ad4c",
+  --   base0B = "#99ad6a",
+  --   base0C = "#71b9f8",
+  --   base0D = "#597bc5",
+  --   base0E = "#c6b6ee",
+  --   base0F = "#d8ad4c",
+  -- }
+  -- Gruvbox
+  -- palette = {
+  --   base00 = "#1e2122",
+  --   base01 = "#2c2f30",
+  --   base02 = "#36393a",
+  --   base03 = "#404344",
+  --   base04 = "#d4be98",
+  --   base05 = "#c0b196",
+  --   base06 = "#c3b499",
+  --   base07 = "#c7b89d",
+  --   base08 = "#ec6b64",
+  --   base09 = "#e78a4e",
+  --   base0A = "#e0c080",
+  --   base0B = "#a9b665",
+  --   base0C = "#86b17f",
+  --   base0D = "#7daea3",
+  --   base0E = "#d3869b",
+  --   base0F = "#d65d0e"
+  -- }
+  -- everforest
+  -- palette = {
+  --   base00 = "#2b3339",
+  --   base01 = "#323c41",
+  --   base02 = "#3a4248",
+  --   base03 = "#868d80",
+  --   base04 = "#d3c6aa",
+  --   base05 = "#d3c6aa",
+  --   base06 = "#e9e8d2",
+  --   base07 = "#fff9e8",
+  --   base08 = "#7fbbb3",
+  --   base09 = "#d699b6",
+  --   base0A = "#83c092",
+  --   base0B = "#dbbc7f",
+  --   base0C = "#e69875",
+  --   base0D = "#a7c080",
+  --   base0E = "#e67e80",
+  --   base0F = "#d699b6"
+  -- }
+  -- everblush
+  -- palette = {
+  --   base00 = "#141b1e",
+  --   base01 = "#232a2d",
+  --   base02 = "#2d3437",
+  --   base03 = "#404749",
+  --   base04 = "#4f5658",
+  --   base05 = "#cacaca",
+  --   base06 = "#d2d2d2",
+  --   base07 = "#dadada",
+  --   base08 = "#e57474",
+  --   base09 = "#e19d5c",
+  --   base0A = "#e5c76b",
+  --   base0B = "#8ccf7e",
+  --   base0C = "#71baf2",
+  --   base0D = "#67cbe7",
+  --   base0E = "#c47fd5",
+  --   base0F = "#ef7d7d",
+  -- }
+  -- aquarium
+  -- palette = {
+  --   base00 = "#20202A",
+  --   base01 = "#2c2e3e",
+  --   base02 = "#3D4059",
+  --   base03 = "#313449",
+  --   base04 = "#63718b",
+  --   base05 = "#ced4df",
+  --   base06 = "#414560",
+  --   base07 = "#63718b",
+  --   base08 = "#ebb9b9",
+  --   base09 = "#e8cca7",
+  --   base0A = "#e6dfb8",
+  --   base0B = "#b1dba4",
+  --   base0C = "#b8dceb",
+  --   base0D = "#a3b8ef",
+  --   base0E = "#f6bbe7",
+  --   base0F = "#eAc1c1"
+  -- }
+  -- paradise
   palette = {
-    base00 = "#141617",
-    base01 = "#1b1b1b",
-    base02 = "#282828",
-    base03 = "#5a524c",
-    base04 = "#bdae93",
-    base05 = "#ddc7a1",
-    base06 = "#ebdbb2",
-    base07 = "#fbf1c7",
-    base08 = "#c4746e",
-    base09 = "#e46876",
-    base0A = "#c4b28a",
-    base0B = "#8a9a7b",
-    base0C = "#8ea4a2",
-    base0D = "#8ba4b0",
-    base0E = "#a292a3",
-    base0F = "#7aa89f",
+    base00 = "#151515",
+    base01 = "#1F1F1F",
+    base02 = "#2E2E2E",
+    base03 = "#424242",
+    base04 = "#BBB6B6",
+    base05 = "#E8E3E3",
+    base06 = "#E8E3E3",
+    base07 = "#E8E3E3",
+    base08 = "#B66467",
+    base09 = "#D9BC8C",
+    base0A = "#D9BC8C",
+    base0B = "#8C977D",
+    base0C = "#8AA6A2",
+    base0D = "#8DA3B9",
+    base0E = "#A988B0",
+    base0F = "#BBB6B6",
   }
 end
 if palette then

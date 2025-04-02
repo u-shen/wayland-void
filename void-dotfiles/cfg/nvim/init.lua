@@ -368,7 +368,8 @@ now_if_args(function()
     hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
   })
   local ensure_installed = {
-    'bash', 'powershell', 'c', 'cpp', 'html', 'css', 'scss', 'javascript', 'typescript', 'tsx',
+    'bash', 'powershell', 'nu', 'c', 'cpp',
+    'html', 'css', 'scss', 'javascript', 'typescript', 'tsx', 'prisma',
     'json', 'toml', 'yaml', 'lua', 'luadoc', 'vim', 'vimdoc', 'markdown', 'markdown_inline',
     "git_config", "git_rebase", "gitcommit", "gitignore", "gitattributes", "diff",
     'python', 'regex',
