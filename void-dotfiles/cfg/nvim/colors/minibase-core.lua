@@ -202,7 +202,7 @@ vim.api.nvim_set_hl(0, "MiniStarterSection",
   { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniStarterHeadeMiniStarterQueryr",
   { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
-vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = palette.base07, bg = palette.base00, bold = true, italic = true })
 -- Tabline :===================================================================
 vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniTablineHidden", { fg = palette.base03, bg = palette.base00, bold = true, italic = true })
@@ -212,6 +212,16 @@ vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { link = "MiniTablineCurren
 vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { link = "MiniTablineHidden" })
 vim.api.nvim_set_hl(0, "MiniTablineTabpagesSection", { link = "MiniTablineCurrent" })
 vim.api.nvim_set_hl(0, "MiniTablineFill", { link = "MiniTablineCurrent" })
+-- Files :======================================================================
+vim.api.nvim_set_hl(0, "MiniFilesBorder", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesBorderModified",
+  { fg = palette.base0F, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesCursorLine", { fg = palette.base0B, bg = palette.base01, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesDirectory", { fg = palette.base07, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesFile", { fg = palette.base07, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesNormal", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesTitle", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesTitleFocused", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
 -- Snippets ====================================================================
 vim.api.nvim_set_hl(0, 'MiniSnippetsCurrent', { link = "Comment" })
 vim.api.nvim_set_hl(0, 'MiniSnippetsCurrentReplace', { link = "Comment" })
