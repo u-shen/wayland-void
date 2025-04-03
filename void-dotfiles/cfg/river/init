@@ -21,6 +21,7 @@ touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
 #==========================#
 # AutoStart:               #
 #==========================#
+riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/environment.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/autostart.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/gtkTheme.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.sh > /dev/null 2>&1"

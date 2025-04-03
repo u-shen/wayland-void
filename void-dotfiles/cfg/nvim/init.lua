@@ -29,7 +29,7 @@ local now_if_args = vim.fn.argc(-1) > 0 and now or later
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Icons                          │
 --          ╰─────────────────────────────────────────────────────────╯
-later(function()
+now_if_args(function()
   require("mini.icons").setup()
   require("mini.icons").tweak_lsp_kind()
 end)
