@@ -193,6 +193,16 @@ vim.api.nvim_set_hl(0, "PmenuExtra", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "PmenuKind", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "PmenuExtraSel", { link = "PmenuSel" })
 vim.api.nvim_set_hl(0, "PmenuKindSel", { link = "PmenuSel" })
+-- Starter:====================================================================
+vim.api.nvim_set_hl(0, "MiniStarterHeader", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterItem", { fg = palette.base07, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterItemPrefix", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterQuery", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterSection",
+  { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterHeadeMiniStarterQueryr",
+  { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
 -- Tabline :===================================================================
 vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniTablineHidden", { fg = palette.base03, bg = palette.base00, bold = true, italic = true })
