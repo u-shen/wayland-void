@@ -56,6 +56,22 @@ volume_pulse() {
 }
 
 #==========================
+#brightness :
+#==========================
+brightness() {
+    brightness_current=$(brightnessctl get)
+    max=$(brightnessctl max)
+    brightness_percent=$((brightness_current * 100 / max))
+    if [ "$brightness_percent" -ge 70 ]; then
+        echo "󰃠 $brightness_percent%"
+    elif [ "$brightness_percent" -ge 30 ]; then
+        echo "󰃝 $brightness_percent%"
+    elif [ "$brightness_percent" -ge 0 ]; then
+        echo "󰃞 $brightness_percent%"
+    fi
+}
+
+#==========================
 # NETWORK
 #==========================
 network() {
@@ -73,7 +89,7 @@ network() {
 #==========================
 main() {
 	while true; do
-        echo " [ $(network) ] [ $(volume_pulse) ] [ $(battery) ] [ $(clock) ]"
+        echo " [ $(network) ] [ $(volume_pulse) ] [ $(brightness) ] [ $(battery) ] [ $(clock) ]"
 		sleep 1
 	done
 }
