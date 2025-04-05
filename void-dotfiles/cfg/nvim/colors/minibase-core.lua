@@ -174,6 +174,25 @@ if vim.o.background == "dark" then
   --   base0E = "#A988B0",
   --   base0F = "#BBB6B6",
   -- }
+  -- Kanagawa
+  -- palette = {
+  --   base00 = "#181616",
+  --   base01 = "#1b1b1b",
+  --   base02 = "#282828",
+  --   base03 = "#5a524c",
+  --   base04 = "#bdae93",
+  --   base05 = "#ddc7a1",
+  --   base06 = "#ebdbb2",
+  --   base07 = "#fbf1c7",
+  --   base08 = "#c4746e",
+  --   base09 = "#e46876",
+  --   base0A = "#c4b28a",
+  --   base0B = "#8a9a7b",
+  --   base0C = "#8ea4a2",
+  --   base0D = "#8ba4b0",
+  --   base0E = "#a292a3",
+  --   base0F = "#7aa89f",
+  -- }
   -- everblush
   palette = {
     base00 = "#141b1e",
