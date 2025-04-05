@@ -216,7 +216,7 @@ riverctl spawn-tagmask ${all_but_scratch_tag}
 #==========================#
 for mode in normal locked; do
 	# Control pulse audio volume with
-	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && wp-vol"
+	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && wp-vol"
 	riverctl map $mode None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wp-vol"
 	riverctl map $mode None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 	riverctl map $mode None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
