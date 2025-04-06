@@ -1,7 +1,3 @@
-[input]
-prepend_keymap = [
-  { on = "<Esc>",        run  = "close",                  desc = "Cancel input"}
-]
 [manager]
 prepend_keymap = [
 	{ on = ["!"], run = 'shell bash --block --confirm', desc = "Open shell here" },
