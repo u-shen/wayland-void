@@ -189,7 +189,7 @@ later(function()
         height = 20,
         width = 999,
       },
-      prompt_cursor = "▏",
+      prompt_caret = "▏",
       prompt_prefix = "» ",
     },
   })
@@ -313,7 +313,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
