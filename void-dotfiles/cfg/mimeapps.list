@@ -1,3 +1,6 @@
+# =============================================================================== #
+# Default App:                                                                    #
+# =============================================================================== #
 [Default Applications]
 application/eps=org.pwmt.zathura.desktop
 application/ogg=mpv.desktop
