@@ -27,6 +27,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
+        "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/environment.sh", NULL,
         "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/autostart.sh", NULL,
         "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/gtkTheme.sh", NULL,
         "bash", "/home/lli/.config/wayland-suckless/dwl/scripts/idle.sh", NULL,

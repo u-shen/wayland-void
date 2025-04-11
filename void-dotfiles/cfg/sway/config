@@ -36,6 +36,7 @@ set {
 # AutoStart:                                                                      #
 # =============================================================================== #
 exec_always {
+    "$HOME/.config/sway/scripts/environment.sh"
     "$HOME/.config/sway/scripts/autostart.sh"
     "$HOME/.config/sway/scripts/gtkTheme.sh"
     "$HOME/.config/sway/scripts/idle.sh"
