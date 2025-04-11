@@ -1,6 +1,6 @@
-#
-# Configuration file for GRUB.
-#
+# =============================================================================== #
+# Configuration file for GRUB:                                                    #
+# =============================================================================== #
 GRUB_DEFAULT=0
 #GRUB_HIDDEN_TIMEOUT=0
 #GRUB_HIDDEN_TIMEOUT_QUIET=false

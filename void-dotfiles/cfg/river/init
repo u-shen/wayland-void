@@ -3,9 +3,9 @@
 # First Edit 2023-08-13                    #
 # github.com/farah-xyz/wayland-void        #
 #------------------------------------------#
-#==========================#
-# Variable:                #
-#==========================#
+# =============================================================================== #
+# Variable:                                                                       #
+# =============================================================================== #
 mod="Mod1"
 mod4="Mod4"
 terminal="alacritty"
@@ -18,9 +18,9 @@ browser="chromium"
 menu="wmenu-run -N 141b1e -n dadada -S 8ccf7e -s 141b1e -M 8ccf7e -m 1d2021  -il '10' -p 'LAUNCH MENU:'"
 touchpad="pointer-2-7-SynPS/2_Synaptics_TouchPad"
 
-#==========================#
-# AutoStart:               #
-#==========================#
+# =============================================================================== #
+# AutoStart:                                                                      #
+# =============================================================================== #
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/environment.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/autostart.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/gtkTheme.sh > /dev/null 2>&1"
@@ -28,24 +28,24 @@ riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/idle.s
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/status.sh > /dev/null 2>&1"
 riverctl spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/bar.sh > /dev/null 2>&1"
 
-#==========================#
-# Input configurations:    #
-#==========================#
-# Keyboard:                #
-#==========================#
+# =============================================================================== #
+# Input configurations:                                                           #
+# =============================================================================== #
+# Keyboard:                                                                       #
+# =============================================================================== #
 riverctl keyboard-layout -options "caps:escape,grp:alt_altgr_toggle" "us,ara"
 riverctl set-repeat 80 200
-# Touchpad:                #
-#==========================#
+# Touchpad:                                                                       #
+# =============================================================================== #
 riverctl input $touchpad tap enabled
 riverctl input $touchpad events enabled
 riverctl input $touchpad natural-scroll enabled
 riverctl input $touchpad accel-profile adaptive
 riverctl input $touchpad pointer-accel 0.1
 
-#==========================#
-# Misc configurations:     #
-#==========================#
+# =============================================================================== #
+# Misc configurations:                                                            #
+# =============================================================================== #
 riverctl border-width 1
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
@@ -53,25 +53,25 @@ riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing enabled
 riverctl xcursor-theme Breeze_Hacked 25
 
-#==========================#
-# Borders colours:         #
-#==========================#
+# =============================================================================== #
+# Borders colours:                                                                #
+# =============================================================================== #
 riverctl background-color 0x141b1e
 riverctl border-color-focused 0x8ccf7e
 riverctl border-color-unfocused 0x232a2d
 riverctl border-color-urgent 0xe57474
 
-#==========================#
-# window Rules:            #
-#==========================#
-# Fullscreen Rules:        #
-#==========================#
+# =============================================================================== #
+# window Rules:                                                                   #
+# =============================================================================== #
+# Fullscreen Rules:                                                               #
+# =============================================================================== #
 riverctl rule-add -app-id "Waydroid" fullscreen
 riverctl rule-add -title "Library" fullscreen
 riverctl rule-add -title "*KVM" fullscreen
 riverctl rule-add -title "wlroots*" fullscreen
-# Floating Rules:          #
-#==========================#
+# Floating Rules:                                                                 #
+# =============================================================================== #
 riverctl rule-add -title "Virtual Machine*" float
 riverctl rule-add -app-id "alacritty_float" float
 riverctl rule-add -app-id "termbidi_float" float
@@ -83,8 +83,8 @@ riverctl rule-add -app-id "wihotspot-gui" float
 riverctl rule-add -app-id "pavucontrol" float
 riverctl rule-add -app-id "vimiv" float
 riverctl rule-add -app-id "imv" float
-# Dimensions Rules:        #
-#==========================#
+# Dimensions Rules:                                                               #
+# =============================================================================== #
 riverctl rule-add -title "Virtual Machine*" dimensions 600 400
 riverctl rule-add -app-id "alacritty_float" dimensions 1200 800
 riverctl rule-add -app-id "man_page" dimensions 900 1080
@@ -96,29 +96,29 @@ riverctl rule-add -app-id "wihotspot-gui" dimensions 800 400
 riverctl rule-add -app-id "pavucontrol" dimensions 800 400
 riverctl rule-add -app-id "mpv" dimensions 1500 800
 riverctl rule-add -app-id "vimiv" dimensions 1500 900
-# Position Rules:          #
-#==========================#
+# Position Rules:                                                                 #
+# =============================================================================== #
 riverctl rule-add -title "Virtual Machine*" position 1400 20
 riverctl rule-add -app-id "man_page" position 1400 20
 riverctl rule-add -app-id "nm-applet" position 1400 20
 riverctl rule-add -app-id "blueman-manager" position 1400 20
 riverctl rule-add -app-id "wihotspot-gui" position 1400 20
 riverctl rule-add -app-id "pavucontrol" position 1115 20
-# Tags Rules:              #
-#==========================#
+# Tags Rules:                                                                     #
+# =============================================================================== #
 # 2147483664 => tags 5
 riverctl rule-add -app-id "Waydroid" tags 2147483664
 riverctl rule-add -app-id "mypaint" tags 2147483664
 riverctl rule-add -app-id "virt-manager" tags 2147483664
-# Others Rules:            #
-#==========================#
+# Others Rules:                                                                   #
+# =============================================================================== #
 riverctl rule-add -app-id "*" ssd
 
-#==========================#
-# Key Bindings:            #
-#==========================#
-# Programme Bindings:      #
-#==========================#
+# =============================================================================== #
+# Key Bindings:                                                                   #
+# =============================================================================== #
+# Programme Bindings:                                                             #
+# =============================================================================== #
 riverctl map normal $mod Return spawn "$terminal"
 riverctl map normal $mod Backslash  spawn "$termbidi"
 riverctl map normal $mod W spawn "$browser"
@@ -136,14 +136,14 @@ riverctl map normal $mod+Shift W spawn "$HOME/.local/wayland-void/void-dotfiles/
 riverctl map normal $mod+Shift B spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/blueMenu.sh"
 riverctl map normal $mod+Shift M spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/mountMenu.sh"
 riverctl map normal $mod+Control R spawn "$HOME/.config/river/init"
-# Screenshoot Binding:     #
-#==========================#
+# Screenshoot Binding:                                                            #
+# =============================================================================== #
 riverctl map normal $mod Print spawn "$HOME/.config/river/scripts/screenShoot.sh"
 riverctl map normal $mod+Shift Print spawn "$HOME/.config/river/scripts/screenRecored.sh"
 riverctl map normal $mod+Shift S spawn "$HOME/.config/river/scripts/screenShoot.sh"
 riverctl map normal $mod+Shift R spawn "$HOME/.config/river/scripts/screenRecored.sh"
-# MUSIC Bidings:           #
-#==========================#
+# MUSIC Bidings:                                                                  #
+# =============================================================================== #
 riverctl map normal $mod4 P spawn "mocp --toggle-pause"
 riverctl map normal $mod4 N spawn "mocp --next"
 riverctl map normal $mod4 B spawn "mocp --previous"
@@ -152,8 +152,8 @@ riverctl map -repeat normal $mod4 Left spawn "mocp --seek -10"
 riverctl map -repeat normal $mod4 Right spawn "mocp --seek +10"
 riverctl map -repeat normal $mod4 Period spawn "mocp --volume +10"
 riverctl map -repeat normal $mod4 Comma spawn "mocp --volume -10"
-# Window Bindings:         #
-#==========================#
+# Window Bindings:                                                                #
+# =============================================================================== #
 riverctl map normal $mod+Control Q exit
 riverctl map normal $mod+Shift C close
 riverctl map normal $mod Q close
@@ -169,8 +169,8 @@ riverctl map normal $mod Comma focus-view previous
 riverctl map normal $mod+Shift Period swap next
 riverctl map normal $mod+Shift Comma swap previous
 riverctl map normal $mod S zoom
-# Window Floating Bidings: #
-#==========================#
+# Window Floating Bidings:                                                        #
+# =============================================================================== #
 riverctl map -repeat normal $mod4 H move left 100
 riverctl map -repeat normal $mod4 J move down 100
 riverctl map -repeat normal $mod4 K move up 100
@@ -183,14 +183,14 @@ riverctl map -repeat normal $mod4+Control H resize horizontal -100
 riverctl map -repeat normal $mod4+Control J resize vertical 100
 riverctl map -repeat normal $mod4+Control K resize vertical -100
 riverctl map -repeat normal $mod4+Control L resize horizontal 100
-# Mouse Binding:           #
-#==========================#
+# Mouse Binding:                                                                  #
+# =============================================================================== #
 riverctl map-pointer normal $mod BTN_LEFT move-view
 riverctl map-pointer normal $mod BTN_RIGHT resize-view
 riverctl map-pointer normal $mod BTN_MIDDLE zoom
 riverctl map-pointer normal $mod+Shift BTN_MIDDLE toggle-float
-# Tags Binding:            #
-#==========================#
+# Tags Binding:                                                                   #
+# =============================================================================== #
 for i in $(seq 1 9); do
 	tags=$((1 << ($i - 1)))
 	riverctl map normal $mod $i set-focused-tags $tags
@@ -201,19 +201,19 @@ done
 all_tags=$(((1 << 32) - 1))
 riverctl map normal $mod 0 set-focused-tags $all_tags
 riverctl map normal $mod+Shift 0 set-view-tags $all_tags
-# Tags.previous_tag:       #
-#==========================#
+# Tags.previous_tag:                                                              #
+# =============================================================================== #
 riverctl map normal $mod Tab focus-previous-tags
 riverctl map normal $mod+Shift Tab send-to-previous-tags
-# Tags scratchpad:         #
-#==========================#
+# Tags scratchpad:                                                                #
+# =============================================================================== #
 scratch_tag=$((1 << 10))
 riverctl map normal $mod Equal toggle-focused-tags ${scratch_tag}
 riverctl map normal $mod Minus set-view-tags ${scratch_tag}
 all_but_scratch_tag=$((((1 << 9) - 1) ^ $scratch_tag))
 riverctl spawn-tagmask ${all_but_scratch_tag}
-# Meltimedia Binding:      #
-#==========================#
+# Meltimedia Binding:                                                             #
+# =============================================================================== #
 for mode in normal locked; do
 	# Control pulse audio volume with
 	riverctl map $mode None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && wp-vol"
@@ -224,23 +224,21 @@ for mode in normal locked; do
 	riverctl map $mode None XF86MonBrightnessUp spawn "doas brightnessctl -qe set +1% && wp-light"
 	riverctl map $mode None XF86MonBrightnessDown spawn "doas brightnessctl -qe set 1%- && wp-light"
 done
-# Mode Binding:            #
-#==========================#
+# Mode Binding:                                                                   #
+# =============================================================================== #
 riverctl declare-mode passthrough
 riverctl map normal $mod+Control P enter-mode passthrough
 riverctl map passthrough $mod+Control P enter-mode normal
 riverctl map normal $mod F11 enter-mode passthrough
 riverctl map passthrough $mod F11 enter-mode normal
-#==========================#
-# Layouts configurations:  #
-#==========================#
+# =============================================================================== #
+# Layouts configurations:                                                         #
+# =============================================================================== #
 riverctl default-attach-mode top
 riverctl default-layout rivertile &
 rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
-# Layouts Binding:         #
-#==========================#
-# RiverTile Layouts :      #
-#==========================#
+# Layouts Binding:                                                                #
+# =============================================================================== #
 riverctl map -repeat normal $mod H send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map -repeat normal $mod L send-layout-cmd rivertile "main-ratio +0.05"
 riverctl map normal $mod+Control Comma send-layout-cmd rivertile "main-count +1"
@@ -249,7 +247,7 @@ riverctl map normal $mod+Control Up send-layout-cmd rivertile "main-location top
 riverctl map normal $mod+Control Right send-layout-cmd rivertile "main-location right"
 riverctl map normal $mod+Control Down send-layout-cmd rivertile "main-location bottom"
 riverctl map normal $mod+Control Left send-layout-cmd rivertile "main-location left"
-#==========================#
-# Screen Sharing :         #
-#==========================#
+# =============================================================================== #
+# Screen Sharing :                                                                #
+# =============================================================================== #
 exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river

@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
-#==========================#
-# Bar Sandbar:             #
-#==========================#
+# =============================================================================== #
+# Bar Sandbar:                                                                    #
+# =============================================================================== #
 FIFO="$XDG_RUNTIME_DIR/sandbar"
 [ -e "$FIFO" ] && rm -f "$FIFO"
 mkfifo "$FIFO"
 
+# -tags 9 " " " " " " " " " " " " " " " " " " \
 pkill sandbar; while cat "$FIFO"; do :; done | sandbar \
-  -tags 9 " " " " " " " " " " " " " " " " " " \
 	-no-layout -hide-normal-mode \
 	-active-fg-color "#141b1e" \
 	-active-bg-color "#8ccf7e" \

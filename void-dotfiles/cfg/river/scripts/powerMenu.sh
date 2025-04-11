@@ -1,7 +1,7 @@
 #!/bin/bash
-#==========================#
-# Power Menu:              #
-#==========================#
+# =============================================================================== #
+# Power Menu:                                                                     #
+# =============================================================================== #
 options=$(printf "POWER OFF\nREBOOT\nSUSPEND\nHIBERNATE\nLOCK\nLOG OUT")
 
 selected=$(echo -e "$options" | wmenu -il 6 -f "JetBrainsMono NF 10" -p "POWER MENU: " -N 141b1e -n dadada -M 8ccf7e -m 1d2021 -S 8ccf7e -s 141b1e)

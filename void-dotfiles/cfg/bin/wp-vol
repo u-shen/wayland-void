@@ -1,7 +1,7 @@
 #!/bin/sh
-#==========================
-# Volume Slider:
-#==========================
+# =============================================================================== #
+# Volume Slider:                                                                  #
+# =============================================================================== #
 # Get the volume level and convert it to a percentage
 volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 volume=$(echo "$volume" | awk '{print $2}')

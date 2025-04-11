@@ -1,9 +1,12 @@
 #!/bin/sh
+# =============================================================================== #
+# Install Packages:                                                               #
+# =============================================================================== #
 sudo xbps-install -Sy \
     # SYSTEM:
     base-devel elogind xtools mesa-dri \
     # SHELL:
-    alacritty \
+    alacritty nushell carapace \
     # COMPOSITOR:
     river sandbar waylock swayidle mako wmenu wlr-randr wvkbd wbg \
     # SCREENSHARING TOOLS:

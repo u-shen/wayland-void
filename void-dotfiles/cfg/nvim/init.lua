@@ -409,6 +409,15 @@ now(function()
   -- Use ripgrep as grep tool: ================================================
   vim.opt.grepprg               = "rg --vimgrep --no-heading"
   vim.opt.grepformat            = "%f:%l:%c:%m,%f:%l:%m"
+  -- Shell: =-================================================================
+  vim.opt.sh                    = "nu"
+  vim.opt.shellslash            = true
+  vim.opt.shelltemp             = false
+  vim.opt.shellcmdflag          = "--stdin --no-newline -c"
+  vim.opt.shellredir            = "out+err> %s"
+  vim.opt.shellxescape          = ""
+  vim.opt.shellxquote           = ""
+  vim.opt.shellquote            = ""
   -- General: ================================================================
   vim.opt.clipboard             = 'unnamedplus'
   vim.o.completeopt             = 'menuone,noselect,fuzzy'

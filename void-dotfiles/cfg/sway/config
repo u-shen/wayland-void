@@ -5,22 +5,22 @@
 # First Edit 2023-03-31                    #
 # github.com/farah-xyz/wayland-dots        #
 #------------------------------------------#
-#==========================#
-# Variable:                #
-#==========================#
+# =============================================================================== #
+# Variable:                                                                       #
+# =============================================================================== #
 set {
-    # Modifire Keys :          #
-    #==========================#
+    # Modifire Keys :                                                                 #
+    # =============================================================================== #
     $mod Mod1
     $mod4 Mod4
-    # Vim Keys:                #
-    #==========================#
+    # Vim Keys:                                                                       #
+    # =============================================================================== #
     $left  h
     $down  j
     $up    k
     $right l
-    # FAVORITE APP:            #
-    #==========================#
+    # FAVORITE APP:                                                                   #
+    # =============================================================================== #
     $terminal foot
     $termbidi wezterm
     $browser firefox
@@ -32,18 +32,18 @@ set {
     $swayNc swaync-client -t -sw
 }
 
-#==========================#
-# AutoStart:               #
-#==========================#
+# =============================================================================== #
+# AutoStart:                                                                      #
+# =============================================================================== #
 exec_always {
     "$HOME/.config/sway/scripts/autostart.sh"
     "$HOME/.config/sway/scripts/gtkTheme.sh"
     "$HOME/.config/sway/scripts/idle.sh"
 }
 
-#==========================#
-# Input configurations:    #
-#==========================#
+# =============================================================================== #
+# Input configurations:                                                           #
+# =============================================================================== #
 input "type:touchpad" {
     dwt enabled
     tap enabled
@@ -63,42 +63,42 @@ seat seat0 {
     hide_cursor 8000
 }
 
-#==========================#
-# Output configurations:   #
-#==========================#
+# =============================================================================== #
+# Output configurations:                                                          #
+# =============================================================================== #
 output eDP-1 {
     mode 1920x1080@60.008Hz
     background ~/pix/wallpapers/WITCHER.png fill
 }
 
-#==========================#
-# MISC:                    #
-#==========================#
-    # Border:                  #
-    #==========================#
+# =============================================================================== #
+# MISC:                                                                           #
+# =============================================================================== #
+    # Border:                                                                         #
+    # =============================================================================== #
     default_border pixel 2
     default_floating_border pixel 2
-    # Gaps:                    #
-    #==========================#
+    # Gaps:                                                                           #
+    # =============================================================================== #
     gaps inner  2
     gaps outer  0
-    # Smart:                   #
-    #==========================#
+    # Smart:                                                                          #
+    # =============================================================================== #
     smart_borders on
     smart_gaps on
-    # Others:                   #
-    #==========================#
+    # Others:                                                                         #
+    # =============================================================================== #
     xwayland enable
     workspace_layout default
     default_orientation horizontal
     font pango: JetBrains Mono Nerd Font Bold 11
     floating_modifier $mod normal
 
-#==========================#
-# window colours:          #
-#==========================#
-# Define Variable colours: #
-#==========================#
+# =============================================================================== #
+# window colours:                                                                 #
+# =============================================================================== #
+# Define Variable colours:                                                        #
+# =============================================================================== #
 set $bg       #282828
 set $bg_dim   #202020
 set $fg       #d4be98
@@ -109,8 +109,8 @@ set $blue     #7daea3
 set $purple   #d3869b
 set $aqua     #89b482
 set $darkgray #282828
-# Set Variable colours:    #
-#==========================#
+# Set Variable colours:                                                           #
+# =============================================================================== #
 #       Gruvbox Theme   brdr        bg          text    indictr     chld_brdr
 client.focused          $aqua       $aqua       $bg     $aqua       $aqua
 client.focused_inactive $aqua       $aqua       $bg     $aqua       $bg
@@ -119,11 +119,11 @@ client.urgent           $red        $red        $bg     $red        $red
 client.placeholder      $bg         $bg         $bg     $bg         $bg
 client.background       $bg
 
-#==========================#
-# Key Bindings:            #
-#==========================#
-# Programme:               #
-#==========================#
+# =============================================================================== #
+# Key Bindings:                                                                   #
+# =============================================================================== #
+# Programme:                                                                      #
+# =============================================================================== #
 bindsym {
     $mod+Return             exec $terminal
     $mod+Backslash          exec $termbidi
@@ -142,16 +142,16 @@ bindsym {
     $mod+Shift+m            exec "$HOME/.config/sway/scripts/mountMenu.sh"
     $mod+Shift+p            exec "$HOME/.config/sway/scripts/powerMenu.sh"
 }
-# Screenshoot Binding:     #
-#==========================#
+# Screenshoot Binding:                                                            #
+# =============================================================================== #
 bindsym {
     $mod+Shift+s            exec "$HOME/.config/sway/scripts/screenShoot.sh"
     $mod+Shift+r            exec "$HOME/.config/sway/scripts/screenRecored.sh"
     $mod+Print              exec "$HOME/.config/sway/scripts/screenShoot.sh"
     $mod+Shift+Print        exec "$HOME/.config/sway/scripts/screenRecored.sh"
 }
-# MUSIC Bidings:           #
-#==========================#
+# MUSIC Bidings:                                                                  #
+# =============================================================================== #
 bindsym {
     $mod4+p                 exec "mocp --toggle-pause"
     $mod4+n                 exec "mocp --next"
@@ -162,22 +162,22 @@ bindsym {
     $mod4+Period            exec "mocp --volume +10"
     $mod4+Comma             exec "mocp --volume -10"
 }
-# Meltimedia Binding:      #
-#==========================#
+# Meltimedia Binding:                                                             #
+# =============================================================================== #
 bindsym {
-    # Audio keybindings:       #
-    #==========================#
+    # Audio keybindings:                                                              #
+    # =============================================================================== #
     XF86AudioRaiseVolume    exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
     XF86AudioLowerVolume    exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     XF86AudioMute           exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     XF86AudioMicMute        exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-    # brightness control:      #
-    #==========================#
+    # brightness control:                                                             #
+    # =============================================================================== #
     XF86MonBrightnessUp     exec brightnessctl set +5%
     XF86MonBrightnessDown   exec brightnessctl set 5%-
 }
-# Window Bindings:         #
-#==========================#
+# Window Bindings:                                                                #
+# =============================================================================== #
 bindsym {
     $mod+Ctrl+q             exit
     $mod+Shift+c            kill
@@ -194,54 +194,54 @@ bindsym {
     $mod+a                  focus parent
     $mod+Shift+a            focus child
 }
-# Scratchpads Bidings:     #
-#==========================#
+# Scratchpads Bidings:                                                            #
+# =============================================================================== #
 bindsym {
     $mod+minus              move scratchpad
     $mod+equal              scratchpad show
 }
-# Others Bidings:          #
-#==========================#
+# Others Bidings:                                                                 #
+# =============================================================================== #
 bindsym {
-    # comma(,) period(.):      #
-    #==========================#
+    # comma(,) period(.):                                                             #
+    # =============================================================================== #
     $mod+period             workspace next
     $mod+comma              workspace prev
-    # slash(/):                #
-    #==========================#
+    # slash(/):                                                                       #
+    # =============================================================================== #
     $mod+slash              workspace back_and_forth
     $mod+tab                workspace back_and_forth
 }
-# Moving Bidings :         #
-#==========================#
+# Moving Bidings :                                                                #
+# =============================================================================== #
 bindsym {
-    # Move your focus around:  #
-    #==========================#
+    # Move your focus around:                                                         #
+    # =============================================================================== #
     $mod+$left              focus left
     $mod+$down              focus down
     $mod+$up                focus up
     $mod+$right             focus right
-    # Or use arrow Keys:       #
-    #==========================#
+    # Or use arrow Keys:                                                              #
+    # =============================================================================== #
     $mod+Left               focus left
     $mod+Down               focus down
     $mod+Up                 focus up
     $mod+Right              focus right
-    # Move the focused window: #
-    #==========================#
+    # Move the focused window:                                                        #
+    # =============================================================================== #
     $mod+Shift+$left        move left
     $mod+Shift+$down        move down
     $mod+Shift+$up          move up
     $mod+Shift+$right       move right
-    # Ditto, with arrow keys:  #
-    #==========================#
+    # Ditto, with arrow keys:                                                         #
+    # =============================================================================== #
     $mod+Shift+Left         move left
     $mod+Shift+Down         move down
     $mod+Shift+Up           move up
     $mod+Shift+Right        move right
 }
-# Resizing Bidings:        #
-#==========================#
+# Resizing Bidings:                                                               #
+# =============================================================================== #
 bindsym {
     $mod+Ctrl+h             resize shrink width  5 px or 5 ppt
     $mod+Ctrl+j             resize grow   height 5 px or 5 ppt
@@ -252,11 +252,11 @@ bindsym {
     $mod+Ctrl+Down          resize shrink height 5 px or 5 ppt
     $mod+Ctrl+Right         resize grow   width  5 px or 5 ppt
 }
-# Workspaces Bdidings:     #
-#==========================#
+# Workspaces Bdidings:                                                            #
+# =============================================================================== #
 bindsym {
-    # Switch to workspace:     #
-    #==========================#
+    # Switch to workspace:                                                            #
+    # =============================================================================== #
     $mod+1                  workspace number 1
     $mod+2                  workspace number 2
     $mod+3                  workspace number 3
@@ -267,8 +267,8 @@ bindsym {
     $mod+8                  workspace number 8
     $mod+9                  workspace number 9
     $mod+0                  workspace number 10
-    # Move focused container:  #
-    #==========================#
+    # Move focused container:                                                         #
+    # =============================================================================== #
     $mod+Shift+1            move container to workspace number 1
     $mod+Shift+2            move container to workspace number 2
     $mod+Shift+3            move container to workspace number 3
@@ -279,8 +279,8 @@ bindsym {
     $mod+Shift+8            move container to workspace number 8
     $mod+Shift+9            move container to workspace number 9
     $mod+Shift+0            move container to workspace number 10
-    # move container (follow): #
-    #==========================#
+    # move container (follow):                                                        #
+    # =============================================================================== #
     $mod+Ctrl+1             move container to workspace number 1,  workspace 1
     $mod+Ctrl+2             move container to workspace number 2,  workspace 2
     $mod+Ctrl+3             move container to workspace number 3,  workspace 3
@@ -293,12 +293,12 @@ bindsym {
     $mod+Ctrl+0             move container to workspace number 10, workspace 10
 }
 
-#==========================#
-# Mode:                    #
-#==========================#
-#==========================#
-# Status Bar:              #
-#==========================#
+# =============================================================================== #
+# Mode:                                                                           #
+# =============================================================================== #
+# =============================================================================== #
+# Status Bar:                                                                     #
+# =============================================================================== #
 bar {
     position top
     font pango:JetBrains Mono Nerd Font Bold 11
@@ -315,43 +315,15 @@ bar {
 
         }
 }
-#==========================#
-# RULES:                   #
-#==========================#
-# Inhibit Idle Rules:      #
-#==========================#
+# =============================================================================== #
+# RULES:                                                                          #
+# =============================================================================== #
+# Inhibit Idle Rules:                                                             #
+# =============================================================================== #
 for_window  [app_id=".*"]          inhabit_idle fullscreen
 for_window  [class=".*"]           inhabit_idle fullscreen
-# Inhibit Idle Rules:      #
-#==========================#
+# Inhibit Idle Rules:                                                            #
+# =============================================================================== #
 for_window [app_id="^foot_float$"] floating enable, resize set width 50 ppt height 80 ppt, move center
 for_window [app_id="^wez_float$"]  floating enable, resize set width 50 ppt height 80 ppt, move center
 for_window [app_id="^fileCli$"]    floating enable, resize set width 50 ppt height 80 ppt, move center
-
-# #==========================#
-# # EYE CANDY:               #
-# #==========================#
-# # corner:
-# #==========================#
-# corner_radius 5
-# smart_corner_radius on
-#
-# # shadows
-# #==========================#
-# shadows on
-# shadow_color $bg_dim
-# shadow_blur_radius 20
-# default_dim_inactive 0
-#
-# # blur:                    #
-# #==========================#
-# blur enable
-# blur_passes 4
-# blur_radius 4
-#
-# # layers:                  #
-# #==========================#
-# layer_effects "waybar" blur enable; shadows enable, corner_radius 5
-# layer_effects "swaync-control-center" blur enable
-# layer_effects "swaync-notification-window" blur disable
-# layer_effects "gtk-layer-shell" blur enable

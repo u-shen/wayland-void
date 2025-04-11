@@ -1,3 +1,6 @@
+/* =============================================================================== # */
+/* Sway Notification Style:                                                        # */
+/* =============================================================================== # */
 @define-color cc-bg #141617;
 @define-color noti-bg #141617;
 @define-color noti-bg-darker #141617;
@@ -9,23 +12,23 @@
 @define-color text-color-disabled #928374;
 @define-color bg-selected #1d2021;
 
-@define-color black     #1d2021;
-@define-color blue      #7daea3;
-@define-color green     #a9b665;
-@define-color yellow    #000000;
-@define-color red       #ea6962;
-@define-color purple    #c47fd5;
-@define-color aqua      #6cbfbf;
-@define-color gray      #b3b9b8;
-@define-color brgray    #80AA9E;
-@define-color brred     #F3594B;
-@define-color brgreen   #89b482;
-@define-color bryellow  #d8a657;
-@define-color brblue    #80AA9E;
-@define-color brpurple  #D3869B;
-@define-color braqua    #8CBA7F;
-@define-color white     #ddc7a1;
-@define-color bg2       #504945;
+@define-color black #1d2021;
+@define-color blue #7daea3;
+@define-color green #a9b665;
+@define-color yellow #000000;
+@define-color red #ea6962;
+@define-color purple #c47fd5;
+@define-color aqua #6cbfbf;
+@define-color gray #b3b9b8;
+@define-color brgray #80AA9E;
+@define-color brred #F3594B;
+@define-color brgreen #89b482;
+@define-color bryellow #d8a657;
+@define-color brblue #80AA9E;
+@define-color brpurple #D3869B;
+@define-color braqua #8CBA7F;
+@define-color white #ddc7a1;
+@define-color bg2 #504945;
 
 * {
   font-family: "JetBrainsMono NF";
@@ -258,7 +261,7 @@
   /* text-shadow: 0 0 3px @red; */
 }
 
-.widget-title > button {
+.widget-title>button {
   background: @black;
   font-size: initial;
   font-weight: bold;
@@ -271,7 +274,7 @@
   border-radius: 10px;
 }
 
-.widget-title > button:hover {
+.widget-title>button:hover {
   background: @red;
   color: @cc-bg;
   /* text-shadow: 0 0 3px @brgreen; */
@@ -285,7 +288,7 @@
   font-style: italic;
 }
 
-.widget-dnd > switch {
+.widget-dnd>switch {
   font-size: initial;
   border-radius: 99px;
   background: @black;
@@ -295,14 +298,15 @@
   transition: all 0.1s ease-in-out;
 }
 
-.widget-dnd > switch:checked {
+.widget-dnd>switch:checked {
   background: @green;
 }
 
-.widget-dnd > switch:checked slider {
+.widget-dnd>switch:checked slider {
   background: @cc-bg;
 }
-.widget-dnd > switch slider {
+
+.widget-dnd>switch slider {
   background: @green;
   border-radius: 999px;
 }
@@ -311,7 +315,7 @@
   margin: 10px;
 }
 
-.widget-label > label {
+.widget-label>label {
   font-size: 1rem;
   color: @braqua;
 }
@@ -350,25 +354,25 @@
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 1);
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button {
+.widget-buttons-grid>flowbox>flowboxchild>button {
   margin: 3px;
   background: transparent;
   border-radius: 10px;
   color: @text-color;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
   background: @noti-bg-hover;
   color: @brgreen;
   text-shadow: 0 0 3px @white;
 }
 
-.widget-menubar > box > .menu-button-bar > button {
+.widget-menubar>box>.menu-button-bar>button {
   border: none;
   background: transparent;
 }
 
-.topbar-buttons > button {
+.topbar-buttons>button {
   border: none;
   background: transparent;
 }
@@ -384,7 +388,7 @@
   color: @brgreen;
 }
 
-.widget-volume > box > button {
+.widget-volume>box>button {
   background: @red;
   border: 1px solid @noti-close-bg;
 }
@@ -412,7 +416,7 @@
   font-size: 1rem;
 }
 
-.widget-inhibitors > button {
+.widget-inhibitors>button {
   font-size: initial;
   color: @text-color;
   text-shadow: none;
@@ -422,6 +426,6 @@
   border-radius: 10px;
 }
 
-.widget-inhibitors > button:hover {
+.widget-inhibitors>button:hover {
   background: @noti-bg-hover;
 }

@@ -2,12 +2,12 @@
 # Nushell Config Shell:                                                           #
 # =============================================================================== #
 # =============================================================================== #
-# -------------------------------- Source OF File -----------------------------   #
+# Source OF File:                                                                 #
 # =============================================================================== #
 source alias.nu
 source colors.nu
 # =============================================================================== #
-# ----------------------------- General config File ---------------------------   #
+# General config File:                                                            #
 # =============================================================================== #
 $env.config = {
   color_config: $base16_theme
@@ -25,7 +25,7 @@ $env.config = {
       clickable_links: false
   }
   rm: {
-      always_trash: false
+      always_trash: true
   }
   table: {
     mode: heavy
@@ -88,7 +88,15 @@ $env.config = {
     modifier: alt
     keycode: char_c
     mode: [emacs, vi_normal, vi_insert]
-    event: { send: executehostcommand, cmd: 'cd (fd -t d -E .git -E node_modules | fzf --preview-window=right,40%  --preview "eza --icons --tree {}")' }
+    event: { send: executehostcommand, cmd: 'cd (fd -t d -E .git -E node_modules
+        | fzf --preview-window=right,40%
+              --style=full --height=30% --border --layout reverse --preview-window right,70%
+              --color fg:#5d6466,bg:#1e2527
+              --color bg+:#8ccf7e,fg+:#2c2f30
+              --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
+              --color pointer:#373d49,info:#606672
+              --color border:#1e2527
+              --preview "eza --icons --tree {}")' }
   }
   {
     name: fuzzy_history
@@ -108,6 +116,12 @@ $env.config = {
              --scheme history
              --read0
              --query (commandline)
+             --style=full --height=30% --border --layout reverse --preview-window right,80%
+             --color fg:#5d6466,bg:#1e2527
+             --color bg+:#8ccf7e,fg+:#2c2f30
+             --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
+             --color pointer:#373d49,info:#606672
+             --color border:#1e2527
            | decode utf-8
            | str trim
        )"
@@ -118,7 +132,7 @@ $env.config = {
 }
 
 # =============================================================================== #
-# -------------------------------- Prompt --------------------------------------- #
+# Prompt:                                                                         #
 # =============================================================================== #
 #$env.PROMPT_INDICATOR = "> "
 #$env.PROMPT_INDICATOR_VI_INSERT = "> "
@@ -126,7 +140,7 @@ $env.config = {
 #$env.PROMPT_MULTILINE_INDICATOR = "> "
 #$env.PROMPT_COMMAND_RIGHT = ""
 # =============================================================================== #
-# --------------------------------Starship Prompt ------------------------------- #
+# Starship Prompt:                                                                #
 # =============================================================================== #
 $env.STARSHIP_SHELL = "nu"
 def create_left_prompt [] {
@@ -140,7 +154,7 @@ $env.PROMPT_INDICATOR_VI_INSERT = ""
 $env.PROMPT_INDICATOR_VI_NORMAL = ""
 $env.PROMPT_MULTILINE_INDICATOR = ""
 # =============================================================================== #
-# --------------------------------END OF FILE------------------------------------ #
+# END OF FILE:                                                                    #
 # =============================================================================== #
 source ~/.cache/carapace/init.nu
 source ~/.cache/zoxide.nu

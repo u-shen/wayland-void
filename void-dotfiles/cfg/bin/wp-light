@@ -1,7 +1,7 @@
 #!/bin/bash
-#==========================
-# Light Slider:
-#==========================
+# =============================================================================== #
+# Light Slider:                                                                   #
+# =============================================================================== #
 # Get the brightness percentage:
 MAX_BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/max_brightness);
 BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/actual_brightness);

@@ -1,3 +1,6 @@
+# =============================================================================== #
+# Profile:                                                                        #
+# =============================================================================== #
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
 	# include .bashrc if it exists
@@ -5,5 +8,7 @@ if [ -n "$BASH_VERSION" ]; then
 		. "$HOME/.bashrc"
 	fi
 fi
-# If running from tty Start Compositor
+# =============================================================================== #
+# If running from tty Start Compositor:                                           #
+# =============================================================================== #
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session river >/dev/null 2>&1
