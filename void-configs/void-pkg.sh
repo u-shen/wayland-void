@@ -3,6 +3,8 @@
 # Install Packages:                                                               #
 # =============================================================================== #
 sudo xbps-install -Sy \
+    # Intel Drivers:
+    vulkan-loader mesa-vulkan-intel intel-video-accel \
     # SYSTEM:
     base-devel elogind xtools mesa-dri \
     # SHELL:
@@ -12,7 +14,7 @@ sudo xbps-install -Sy \
     # SCREENSHARING TOOLS:
     grim slurp swappy xdg-desktop-portal-wlr \
     # COMMAND LINE TOOLS:
-    xdg-user-dirs xdg-utils man-db opendoas trash-cli  htop aria2 ffmpeg ImageMagick ouch \
+    xdg-user-dirs xdg-utils man-db opendoas trash-cli htop aria2 ffmpeg ImageMagick ouch \
     yazi fastfetch yt-dlp chafa rsync eza bat glow starship wl-clipboard tealdeer  \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl \
     # Graphical TOOLS:

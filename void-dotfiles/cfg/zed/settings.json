@@ -1,0 +1,160 @@
+// # =============================================================================== #
+// # Zed Configurations:                                                             #
+// # =============================================================================== #
+{
+  "vim_mode": true,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "base_keymap": "VSCode",
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "tab_size": 2,
+  "cursor_blink": true,
+  "preferred_line_length": 80,
+  "buffer_line_height": "comfortable",
+  "confirm_quit": false,
+  "hover_popover_enabled": true,
+  "bracket_pairing": "always",
+  "formatter": "prettier",
+  "linter": "eslint",
+  "autosave": "on_focus_change",
+  "autosave_delay": 1500,
+  "autosave_on_focus_change": true,
+  "autosave_on_window_change": true,
+  "autosave_on_build": true,
+  "autosave_on_build_delay": 1500,
+  "autosave_on_build_events": ["build", "run", "debug"],
+  "autosave_on_build_events_delay": 1500,
+  "features": { "copilot": false },
+  "vim": { "enable_vim_sneak": true },
+  "file_finder": { "modal_width": "medium" },
+  "tabs": { "show_diagnostics": "errors" },
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "toolbar": { "breadcrumbs": false, "quick_actions": false },
+  "indent_guides": { "enabled": true, "coloring": "fixed" },
+  "centered_layout": { "left_padding": 0.1, "right_padding": 0.1 },
+  "theme": { "mode": "system", "light": "Everblush", "dark": "Everblush" },
+  "tab_bar": { "show": true, "show_nav_history_buttons": false, "show_tab_bar_buttons": false },
+  "preview_tabs": { "enabled": true, "enable_preview_from_file_finder": false, "enable_preview_from_code_navigation": false },
+  "inlay_hints": { "enabled": true, "typeHints": true, "parameterHints": true, "chainingHints": true },
+  "project_panel": { "button": true, "dock": "left", "git_status": true},
+  "outline_panel": { "dock": "right" },
+  "collaboration_panel": { "dock": "right" },
+  "file_types": { "Dockerfile": ["Dockerfile", "Dockerfile.*"], "JSON": ["json", "jsonc", "*.code-snippets"] },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules",
+  ],
+  "terminal": {
+    "shell": { "program": "nu" },
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "copy_on_select": false,
+    "env": { "EDITOR": "zed --wait" },
+    "font_family": "JetBrainsMonoNL Nerd Font",
+    "font_features": null,
+    "font_size": null,
+    "option_as_meta": false
+  },
+  "git": {
+    "enabled": true,
+    "autoFetch": true,
+    "autoFetchInterval": 300,
+    "autoFetchOnFocus": true,
+    "autoFetchOnWindowChange": true,
+    "autoFetchOnBuild": true,
+    "git_status": true,
+    "autoFetchOnBuildEvents": ["build", "run", "debug"],
+    "autoFetchOnBuildEventsDelay": 1500,
+    "autoFetchOnBuildDelay": 1500,
+    "git_gutter": "tracked_files"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "proseWrap": "preserve",
+    "endOfLine": "lf"
+  },
+  "scrollbar": {
+    "show": "never",
+    "cursors": false,
+    "git_diff": true,
+    "search_results": true,
+    "selected_symbol": true,
+    "diagnostics": "all"
+  },
+  "eslint": {
+    "enabled": true,
+    "autoFixOnSave": true,
+    "autoFixOnFormat": true,
+    "autoFixOnFormatDelay": 1500
+  },
+  "space g g": [
+    "task::Spawn",
+    {
+      "task_name": "lazygit",
+      "reveal_target": "center"
+    }
+  ],
+  "languages": {
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TypeScript": {
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true,
+      }
+    },
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": true
+      }
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayEnumMemberValueHints": true
+        }
+      }
+    }
+  }
+}
