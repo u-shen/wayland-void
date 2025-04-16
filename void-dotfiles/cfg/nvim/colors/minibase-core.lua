@@ -219,6 +219,9 @@ if palette then
   })
   vim.g.colors_name = "Minibase-Core"
 end
+-- General: =====================================================================
+vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.base04, bg = palette.base00 })
+vim.api.nvim_set_hl(0, 'Cursor', { fg = palette.base00, bg = "#a9b665" })
 -- Pmenu: =====================================================================
 vim.api.nvim_set_hl(0, "Pmenu", { bg = palette.base01, fg = palette.base04 })
 vim.api.nvim_set_hl(0, "PmenuSel", { bg = palette.base02, fg = palette.base07 })
@@ -278,6 +281,11 @@ vim.api.nvim_set_hl(0, 'MiniSnippetsCurrentReplace', { link = "Comment" })
 vim.api.nvim_set_hl(0, 'MiniSnippetsFinal', { link = "Comment" })
 vim.api.nvim_set_hl(0, 'MiniSnippetsUnvisited', { link = "Comment" })
 vim.api.nvim_set_hl(0, 'MiniSnippetsVisited', { link = "Comment" })
+-- Notidy =====================================================================
+vim.api.nvim_set_hl(0, 'MiniNotifyBorder', { fg = palette.base0B, bg = palette.base00 })
+vim.api.nvim_set_hl(0, 'MiniNotifyLspProgress', { link = "MiniNotifyBorder" })
+vim.api.nvim_set_hl(0, 'MiniNotifyNormal', { link = "MiniNotifyBorder" })
+vim.api.nvim_set_hl(0, 'MiniNotifyTitle', { link = "MiniNotifyBorder" })
 -- CursorWord =================================================================
 vim.api.nvim_set_hl(0, "MiniCursorword", { bg = palette.base02 })
 vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "MiniCursorword" })
