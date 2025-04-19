@@ -21,7 +21,7 @@ sudo xbps-install -Sy \
     mpv imv zathura zathura-pdf-mupdf \
     chromium pcmanfm gimp shotcut \
     # STORAGE TOOLS:
-    udiskie simple-mtpfs \
+    udiskie simple-mtpfs WoeUSB-cli \
     gvfs gvfs-mtp gvfs-smb gvfs-afc gvfs-gphoto2 \
     # NETWORKING TOOLS:
     NetworkManager network-manager-applet linux-wifi-hotspot \
