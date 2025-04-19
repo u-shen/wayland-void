@@ -21,14 +21,14 @@ set {
     $right l
     # FAVORITE APP:                                                                   #
     # =============================================================================== #
-    $terminal foot
+    $terminal alacritty
     $termbidi wezterm
-    $browser firefox
+    $browser chromium
     $browser_VI qutebrowser
-    $menu wmenu_run
-    $menuGui fuzzel
-    $fileGui nemo
-    $fileCli nnn -P z
+    $menu wmenu-run
+    $menuGui wmenu-run
+    $fileGui pcmanfm
+    $fileCli yazi
     $swayNc swaync-client -t -sw
 }
 
@@ -69,7 +69,7 @@ seat seat0 {
 # =============================================================================== #
 output eDP-1 {
     mode 1920x1080@60.008Hz
-    background ~/pix/wallpapers/WITCHER.png fill
+    background /home/lli/Pictures/pix/wallpapers/EVERBLUSH.png fill
 }
 
 # =============================================================================== #
@@ -128,7 +128,6 @@ client.background       $bg
 bindsym {
     $mod+Return             exec $terminal
     $mod+Backslash          exec $termbidi
-    $mod+q                  exec $browser_VI
     $mod+w                  exec $browser
     $mod+p                  exec $menu
     $mod+d                  exec $menuGui
@@ -147,7 +146,6 @@ bindsym {
 # =============================================================================== #
 bindsym {
     $mod+Shift+s            exec "$HOME/.config/sway/scripts/screenShoot.sh"
-    $mod+Shift+r            exec "$HOME/.config/sway/scripts/screenRecored.sh"
     $mod+Print              exec "$HOME/.config/sway/scripts/screenShoot.sh"
     $mod+Shift+Print        exec "$HOME/.config/sway/scripts/screenRecored.sh"
 }
@@ -180,9 +178,9 @@ bindsym {
 # Window Bindings:                                                                #
 # =============================================================================== #
 bindsym {
-    $mod+Ctrl+q             exit
-    $mod+Shift+c            kill
-    $mod+Ctrl+r             reload
+    $mod+control+q          exit
+    $mod+q                  kill
+    $mod+Shift+r            reload
     $mod+v                  splitv
     $mod+b                  splith
     $mod+c                  split none
@@ -302,7 +300,7 @@ bindsym {
 # =============================================================================== #
 bar {
     position top
-    font pango:JetBrains Mono Nerd Font Bold 11
+    font pango:JetBrains Mono Nerd Font Bold 10
     status_command ~/.config/sway/scripts/statusbar.sh
     tray_output eDP-1
     colors {
