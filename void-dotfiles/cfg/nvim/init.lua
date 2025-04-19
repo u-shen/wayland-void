@@ -383,6 +383,13 @@ now_if_args(function()
     textobjects = { enable = false },
   })
 end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      TS Auto Close/Rename               │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
+  add("windwp/nvim-ts-autotag")
+  require('nvim-ts-autotag').setup()
+end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                         Formatting                      ║
 --          ╚═════════════════════════════════════════════════════════╝
@@ -477,12 +484,14 @@ now(function()
   vim.opt.pumblend              = 10
   vim.opt.pumheight             = 10
   vim.opt.wrap                  = false
+  vim.opt.breakindent           = true
+  vim.opt.copyindent            = true
   vim.opt.modeline              = false
   vim.opt.showmode              = false
   vim.opt.ruler                 = false
   vim.wo.signcolumn             = "no"
   vim.opt.statuscolumn          = ""
-  vim.opt.fillchars             = "eob: "
+  vim.opt.fillchars             = { eob = " " }
   vim.opt.listchars             = {
     tab = "▏ ",
     trail = "·",
@@ -586,13 +595,14 @@ later(function()
   vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("highlight_yank", {}),
     callback = function()
-      vim.highlight.on_yank()
+      vim.highlight.on_yank({ timeout = 200 })
     end,
   })
   -- Eable FormatOnSave =============================================================
   vim.api.nvim_create_user_command("FormatEnable", function()
     vim.b.disable_autoformat = false
     vim.g.disable_autoformat = false
+    vim.notify("Format On Save Enable")
   end, {
     desc = "Re-enable autoformat-on-save",
   })
@@ -603,6 +613,7 @@ later(function()
     else
       vim.g.disable_autoformat = true
     end
+    vim.notify("Format On Save Disable")
   end, {
     desc = "Disable autoformat-on-save",
     bang = true,

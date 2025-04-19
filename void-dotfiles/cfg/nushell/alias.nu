@@ -70,3 +70,21 @@ alias yt-music = yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/musi
 alias man = tldr
 alias cat = bat
 alias cls = clear
+# =============================================================================== #
+# Functions Alias :                                                               #
+# =============================================================================== #
+# Universal Terminal alias for bun, pnpm, npm, and yarn:                          #
+# =============================================================================== #
+def p [...args] {
+    if ("bun.lockb" | path exists) {
+        bun ...$args
+    } else if ("pnpm-lock.yaml" | path exists) {
+        pnpm ...$args
+    } else if ("yarn.lock" | path exists) {
+        yarn ...$args
+    } else if ("package-lock.json" | path exists) {
+        npm ...$args
+    } else {
+        pnpm ...$args
+    }
+}
