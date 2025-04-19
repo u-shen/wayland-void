@@ -313,7 +313,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
