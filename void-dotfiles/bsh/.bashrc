@@ -160,6 +160,25 @@ alias cat="bat"
 alias cls="clear"
 
 # =============================================================================== #
+# Functions Alias :                                                               #
+# =============================================================================== #
+# Universal Terminal alias for bun, pnpm, npm, and yarn:                          #
+# =============================================================================== #
+p() {
+  if [[ -f bun.lockb ]]; then
+    command bun "$@"
+  elif [[ -f pnpm-lock.yaml ]]; then
+    command pnpm "$@"
+  elif [[ -f yarn.lock ]]; then
+    command yarn "$@"
+  elif [[ -f package-lock.json ]]; then
+    command npm "$@"
+  else
+    command pnpm "$@"
+  fi
+}
+
+# =============================================================================== #
 # Source fzf keybindingd:                                                         #
 # =============================================================================== #
 eval "$(fzf --bash)"
