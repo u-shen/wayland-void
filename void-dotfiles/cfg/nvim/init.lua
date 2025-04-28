@@ -106,7 +106,7 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require("mini.indentscope").setup({
-    symbol = "│",
+    symbol = "▎",
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
@@ -160,7 +160,7 @@ later(function()
       ["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
       ["["] = { action = "open", pair = "[]", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
       ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
-      ["("] = { action = "open", pair = "()", neigh_pattern = ".[%s%z%)]", register = { cr = false } },
+      ["("] = { action = "open", pair = "()", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
       ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
       ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
       ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
@@ -220,7 +220,7 @@ end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Files                          │
 --          ╰─────────────────────────────────────────────────────────╯
-now(function()
+now_if_args(function()
   require("mini.files").setup({
     mappings = {
       close = "q",
@@ -313,7 +313,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
@@ -346,7 +346,7 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript" }
+  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "markdown" }
   for _, config in ipairs(lsp_configs) do
     vim.lsp.enable(config)
   end
@@ -413,8 +413,15 @@ later(function()
       markdown = { "prettier" },
       graphql = { "prettier" },
       liquid = { "prettier" },
+      c = { "clang_format" },
       lua = { "stylua" },
-      python = { "isort" },
+      python = { "black" },
+      tex = { "latexindent" },
+      xml = { "xmllint" },
+      svg = { "xmllint" },
+      sql = { "sqlfluff" },
+      java = { "google-java-format" },
+      groovy = { "npm-groovy-lint" },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -437,14 +444,6 @@ end)
 --          │                     Neovim Options                      │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
-  -- Diagnostics ===============================================================
-  vim.diagnostic.config({
-    signs = false,
-    severity_sort = false,
-    update_in_insert = false,
-    virtual_lines = false,
-    virtual_text = false,
-  })
   -- Global:  =================================================================
   vim.g.mapleader               = vim.keycode("<space>")
   vim.g.maplocalleader          = vim.keycode("<cr>")
@@ -461,9 +460,10 @@ now(function()
   vim.opt.shellxquote           = ""
   vim.opt.shellquote            = ""
   -- General: ================================================================
-  vim.opt.clipboard             = 'unnamedplus'
-  vim.o.completeopt             = 'menuone,noselect,fuzzy'
-  vim.opt.complete              = '.,b,kspell'
+  vim.opt.clipboard             = "unnamedplus"
+  vim.opt.completeopt           = "menuone,noselect,fuzzy"
+  vim.opt.complete              = ".,b,kspell"
+  vim.opt.switchbuf             = "usetab"
   vim.opt.compatible            = false
   vim.opt.swapfile              = false
   vim.opt.writebackup           = false
@@ -473,7 +473,8 @@ now(function()
   vim.opt.shada                 = { "'10", "<0", "s10", "h" }
   -- UI: ====================================================================
   vim.opt.number                = true
-  vim.opt.cursorline            = true
+  vim.opt.relativenumber        = false
+  vim.opt.cursorline            = false
   vim.opt.splitright            = true
   vim.opt.splitbelow            = true
   vim.opt.termguicolors         = true
@@ -489,6 +490,9 @@ now(function()
   vim.opt.modeline              = false
   vim.opt.showmode              = false
   vim.opt.ruler                 = false
+  vim.opt.colorcolumn           = '+1'
+  vim.opt.cursorlineopt         = "screenline,number"
+  vim.opt.shortmess             = "FOSWaco"
   vim.wo.signcolumn             = "no"
   vim.opt.statuscolumn          = ""
   vim.opt.fillchars             = { eob = " " }
@@ -508,8 +512,9 @@ now(function()
   vim.opt.smartcase             = true
   vim.opt.smartindent           = true
   vim.opt.tabstop               = 2
-  vim.opt.virtualedit           = 'block'
-  vim.opt.formatoptions         = 'rqnl1j'
+  vim.opt.virtualedit           = "block"
+  vim.opt.formatoptions         = "rqnl1j"
+  vim.o.formatexpr              = "v:lua.require'conform'.formatexpr()"
   -- Fold:  ================================================================
   vim.opt.foldenable            = false
   vim.opt.foldlevel             = 99
@@ -572,6 +577,19 @@ now(function()
     vim.g["loaded_" .. plugin] = 1
   end
 end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Neovim Diagnostics                  │
+--          ╰─────────────────────────────────────────────────────────╯
+local diagnostic_opts = {
+  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+  virtual_text = { current_line = true, severity = { min = 'ERROR', max = 'ERROR' } },
+  virtual_lines = false,
+  severity_sort = false,
+  update_in_insert = false,
+}
+-- Use `later()` to avoid sourcing `vim.diagnostic` on startup
+later(function() vim.diagnostic.config(diagnostic_opts) end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Neovim automads                     │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -652,6 +670,16 @@ later(function()
     if #bufs > 0 then vim.cmd("bdelete " .. table.concat(bufs, " ")) end
     vim.cmd("silent! bdelete# | e# | bd# | '\"")
   end)
+  -- Subtitle Keys: =================================================================
+  vim.keymap.set('', 'S', function()
+    local cmd = ':%s//gcI<Left><Left><Left><Left>'
+    return vim.fn.mode() == 'n' and string.format(cmd, '%s') or string.format(cmd, 's')
+  end, { expr = true })
+  --  Magick: ===================================================================
+  vim.keymap.set("n", "ycc", "yygccp", { remap = true })
+  vim.keymap.set("n", "J", "mzJ`z:delmarks z<cr>")
+  vim.keymap.set("x", "/", "<Esc>/\\%V")
+  vim.keymap.set("x", "R", ":s###g<left><left><left>", { desc = "Start replacement in the visual selected region" })
   -- Move lines up and down in visual mode =========================================
   vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
   vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -660,8 +688,7 @@ later(function()
   vim.keymap.set("i", "<C-k>", [[pumvisible() ? "\<C-p>" : "\<C-k>"]], { expr = true })
   vim.keymap.set("i", "<C-p>", [[pumvisible() ? "\<C-e>" : "\<C-p>"]], { expr = true })
   vim.keymap.set("i", "<S-Tab>",
-    [[pumvisible() ? (complete_info().selected == -1 ? "\<C-n>\<C-y>" : "\<C-y>") : "\<S-Tab>"]],
-    { expr = true })
+    [[pumvisible() ? (complete_info().selected == -1 ? "\<C-n>\<C-y>" : "\<C-y>") : "\<S-Tab>"]], { expr = true })
   vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true })
   -- Mini Pick =====================================================================
   vim.keymap.set('n', '<leader>fd', zoxide_pick)
@@ -701,11 +728,17 @@ later(function()
     -- General Animations: ==============================================================
     vim.opt.mousescroll = "ver:10,hor:6"
     vim.opt.linespace = -1
-    vim.g.neovide_theme = "dark"
-    vim.g.neovide_refresh_rate = 60
+    vim.g.neovide_theme = "auto"
+    vim.g.neovide_refresh_rate = 165
     vim.g.neovide_fullscreen = false
+    vim.g.neovide_confirm_quit = false
     vim.g.neovide_remember_window_size = true
     vim.g.experimental_layer_grouping = true
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_detach_on_quit = "always_detach"
+    vim.g.neovide_opacity = 1
+    vim.g.neovide_normal_opacity = 1
+    vim.g.neovide_underline_stroke_scale = 1.5
     -- Padding Animations: =============================================================
     vim.g.neovide_padding_top = 0
     vim.g.neovide_padding_bottom = 0
@@ -713,28 +746,36 @@ later(function()
     vim.g.neovide_padding_left = 0
     -- Floating Animations: =============================================================
     vim.g.neovide_floating_shadow = true
-    vim.g.neovide_floating_z_height = 2
-    vim.g.neovide_floating_blur_amount_x = 4.0
-    vim.g.neovide_floating_blur_amount_y = 4.0
+    vim.g.neovide_floating_z_height = 5
+    vim.g.neovide_floating_blur_amount_x = 2.0
+    vim.g.neovide_floating_blur_amount_y = 2.0
     vim.g.neovide_light_angle_degrees = 45
-    vim.g.neovide_light_radius = 15
+    vim.g.neovide_light_radius = 5
     vim.g.floaterm_winblend = 15
+    vim.g.neovide_floating_corner_radius = 0.0
     -- Cursor Animations: ===============================================================
     vim.o.guicursor =
     "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait100-blinkoff700-blinkon700-Cursor/lCursor,sm:block-blinkwait0-blinkoff300-blinkon300"
-    vim.g.neovide_cursor_animation_length = 0.13
-    vim.g.neovide_cursor_trail_length = 0.8
-    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_scroll_animation_length = 0.1
+    vim.g.neovide_cursor_animation_length = 0.05
+    vim.g.neovide_cursor_trail_length = 0.01
     vim.g.neovide_cursor_unfocused_outline_width = 0.125
-    vim.g.neovide_scroll_animation_length = 0.3
-    -- Cursor Animations: ===============================================================
+    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_cursor_animate_command_line = true
+    vim.g.neovide_cursor_antialiasing = true
+    vim.g.neovide_cursor_animate_in_insert_mode = true
+    vim.g.neovide_cursor_animate_in_normal_mode = true
+    vim.g.neovide_cursor_animate_in_visual_mode = true
+    vim.g.neovide_cursor_animate_in_replace_mode = true
+    vim.g.neovide_cursor_animate_in_command_mode = true
+    -- VFX Animations: ==================================================================
     vim.g.neovide_cursor_vfx_mode = "pixiedust"
     vim.g.neovide_cursor_vfx_opacity = 200.0
-    vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
-    vim.g.neovide_cursor_vfx_particle_density = 7.0
     vim.g.neovide_cursor_vfx_particle_speed = 10.0
-    vim.g.neovide_cursor_vfx_particle_phase = 1.5
-    vim.g.neovide_cursor_vfx_particle_curl = 1.0
+    vim.g.neovide_cursor_vfx_particle_curl = 0.77
+    vim.g.neovide_cursor_vfx_particle_density = 3.25
+    vim.g.neovide_cursor_vfx_particle_lifetime = 1.33
+    vim.g.neovide_cursor_vfx_particle_phase = 12.1
     -- Resize Fonts:  ===================================================================
     vim.keymap.set({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
     vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
@@ -747,18 +788,22 @@ end)
 later(function()
   vim.filetype.add({
     extension = {
+      ["env"] = "dotenv",
       ["http"] = "http",
       ["json"] = "jsonc",
+      ["map"] = "json",
+      ["mdx"] = "markdown",
     },
     filename = {
       ["xhtml"] = "html",
       ["tsconfig.json"] = "jsonc",
-      [".env"] = "env",
+      [".env"] = "dotenv",
       [".envrc"] = "sh",
       ['.yamlfmt'] = 'yaml',
     },
     pattern = {
-      [".env.*"] = "env",
+      ["%.env%.[%w_.-]+"] = "dotenv",
+      [".gitconfig.*"] = "gitconfig",
     },
   })
 end)

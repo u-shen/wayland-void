@@ -3,13 +3,16 @@
 // # =============================================================================== #
 [
   {
-    "label": "Lazygit",
-    "command": "lazygit",
-    "args": [],
-    "env": {},
-    "use_new_terminal": true,
-    "allow_concurrent_runs": false
-  },
+     "label": "Lazygit",
+     "command": "lazygit",
+     "working_directory": "${ZED_WORKTREE_ROOT}",
+     "hide": "on_success",
+     "use_new_terminal": true,
+     "allow_concurrent_runs": false,
+     "shell": {
+       "program": "nu"
+     }
+   },
   {
     "label": "Zoxide",
     "command": "$dir = (zoxide query -l | fzf --style=full --height=30% --border --layout reverse --preview-window right,70%); if ($dir) { Set-Location $dir; zed .}",
@@ -28,5 +31,14 @@
     "allow_concurrent_runs": true,
     "use_new_terminal": true,
     "show_command": true
-  }
+  },
+  {
+		"label": "Format Prisma",
+		"command": "npx prisma format",
+		"args": [],
+		"reveal": "never",
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"shell": "system"
+	}
 ]

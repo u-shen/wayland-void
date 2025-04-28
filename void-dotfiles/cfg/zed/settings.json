@@ -11,8 +11,8 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_line_height": "comfortable",
-  "buffer_font_weight": 400,
   "preferred_line_length": 80,
+  "buffer_font_weight": 400,
   "buffer_font_size": 12,
   "ui_font_size": 14,
   "tab_size": 2,
@@ -23,22 +23,27 @@
   "restore_on_startup": "none",
   "when_closing_with_no_tabs": "close_window",
   "on_last_window_closed": "quit_app",
+  "current_line_highlight": "none",
   "use_system_path_prompts": false,
   "extend_comment_on_newline": false,
   "confirm_quit": false,
-  "hover_popover_enabled": true,
-  "remove_trailing_whitespace_on_save": true,
+  "hover_popover_enabled": false,
   "ensure_final_newline_on_save": false,
   "relative_line_numbers": false,
+  "remove_trailing_whitespace_on_save": true,
+  "pane_split_direction_horizontal": "down",
+  "pane_split_direction_vertical": "right",
   "wrap_guides": [],
+  "soft_wrap": "none",
   "bracket_pairing": "always",
   "formatter": "prettier",
   "linter": "eslint",
   "format_on_save": "on",
+  "code_actions_on_format": { "source.organizeImports": true },
   // # =============================================================================== #
   // # AutoSave:                                                                       #
   // # =============================================================================== #
-  "autosave": "on_focus_change",
+  "autosave": "off",
   "autosave_delay": 1500,
   "autosave_on_focus_change": true,
   "autosave_on_window_change": true,
@@ -54,7 +59,7 @@
   "show_signature_help_after_edits": false,
   "auto_signature_help": false,
   "completions": {
-    "words": "disabled",
+    "words": "fallback",
     "lsp": true,
     "lsp_fetch_timeout_ms": 0,
     "lsp_insert_mode": "replace_suffix"
@@ -83,7 +88,33 @@
     "enabled": false,
     "typeHints": true,
     "parameterHints": true,
-    "chainingHints": true
+    "chainingHints": true,
+    "toggle_on_modifiers_press": { "control": false }
+  },
+  // # =============================================================================== #
+  // # Search:                                                                         #
+  // # =============================================================================== #
+  "search": {
+    "whole_word": false,
+    "case_sensitive": false,
+    "include_ignored": false,
+    "regex": true
+  },
+  "slash_commands": {
+    "docs": { "enabled": true },
+    "project": { "enabled": true }
+  },
+  // # =============================================================================== #
+  // # Assistant:                                                                      #
+  // # =============================================================================== #
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "default_height": 640.0,
+    "version": "2",
+    "default_width": 640
   },
   // # =============================================================================== #
   // # UI:                                                                             #
@@ -100,14 +131,24 @@
     "modal_max_width": "small"
   },
   "tabs": {
+    "git_status": true,
+    "file_icons": true,
     "show_diagnostics": "errors",
     "close_position": "right",
-    "git_status": false
+    "show_close_button": "hidden"
+
   },
   "toolbar": {
     "selections_menu": false,
     "breadcrumbs": false,
     "quick_actions": false
+  },
+  "project_panel": {
+    "button": true,
+    "dock": "left",
+    "git_status": true,
+    "default_width": 246,
+    "indent_size": 16
   },
   "centered_layout": {
     "left_padding": 0.1,
@@ -129,9 +170,14 @@
     "show_tab_bar_buttons": false
   },
   "preview_tabs": {
-    "enabled": true,
+    "enabled": false,
     "enable_preview_from_file_finder": false,
     "enable_preview_from_code_navigation": false
+  },
+  "active_pane_modifiers": {
+    "magnification": 1.4,
+    "border_size": 1,
+    "inactive_opacity": 0.81247
   },
   "gutter": {
     "line_numbers": true,
@@ -143,19 +189,17 @@
     "enabled": true,
     "coloring": "fixed",
     "background_coloring": "disabled",
-    "active_line_width": 1,
-    "line_width": 1
-  },
-  "project_panel": {
-    "button": true,
-    "dock": "left",
-    "git_status": true
+    "active_line_width": 2,
+    "line_width": 0
   },
   "outline_panel": {
     "dock": "right"
   },
   "collaboration_panel": {
     "dock": "right"
+  },
+  "chat_panel": {
+    "default_width": 380
   },
   "scrollbar": {
     "show": "never",
@@ -166,12 +210,20 @@
     "diagnostics": "all"
   },
   // # =============================================================================== #
+  // # Edit predictions:                                                               #
+  // # =============================================================================== #
+  "edit_predictions": {
+    "disabled_globs": ["**/dnb.ghe.com/**", "**/gitlab.tech.dnb.no/**"],
+    "mode": "eager"
+  },
+  // # =============================================================================== #
   // # FileType:                                                                       #
   // # =============================================================================== #
   "file_types": {
     "*.mdx": ["markdown"],
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "JSON": ["json", "jsonc", "*.code-snippets"],
+    "JSONC": ["tsconfig*.json"]
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -200,7 +252,8 @@
   // # =============================================================================== #
   "terminal": {
     "shell": { "program": "nu" },
-    "alternate_scroll": "off",
+    "alternate_scroll": "on",
+    "default_height": 300,
     "working_directory": "first_project_directory",
     "blinking": "terminal_controlled",
     "copy_on_select": true,
@@ -211,7 +264,8 @@
     "option_as_meta": false,
     "toolbar": {
       "breadcrumbs": false
-    }
+    },
+    "max_scroll_history_lines": 100000
   },
   // # =============================================================================== #
   // # Git:                                                                            #
@@ -261,6 +315,15 @@
   // # Languages:                                                                      #
   // # =============================================================================== #
   "languages": {
+    "Shell Script": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": []
+        }
+      }
+    },
     "TypeScript": {
       "language_servers": ["typescript-language-server", "!vtsls", "..."],
       "show_edit_predictions": true,
@@ -295,6 +358,9 @@
       },
       "format_on_save": "on"
     },
+    "Emmet": {
+      "language_servers": ["emmet-language-server"]
+    },
     "HTML": {
       "prettier": {
         "allowed": true
@@ -312,7 +378,9 @@
     },
     "Markdown": {
       "tab_size": 2,
-      "formatter": "prettier"
+      "formatter": "prettier",
+      "preferred_line_length": 80,
+      "format_on_save": "off"
     },
     "TOML": {
       "tab_size": 2,
@@ -331,12 +399,29 @@
       "tab_size": 2,
       "preferred_line_length": 120,
       "formatter": "prettier"
-    }
+    },
+  "Prisma": {
+			"formatter": {
+				"language_server": {
+					"name": "prisma-language-server"
+				}
+			},
+			"language_servers": ["prisma-language-server", "!biome"]
+		}
   },
   // # =============================================================================== #
   // # LSP:                                                                            #
   // # =============================================================================== #
   "lsp": {
+    "emmet-language-server": {
+      "binary": {
+        "path": "C:\\Users\\lli\\scoop\\apps\\nodejs\\current\\node.exe",
+        "arguments": [
+          "C:\\Users\\lli\\scoop\\persist\\nodejs\\bin\\node_modules\\@olrtg\\emmet-language-server\\dist\\index.js",
+          "--stdio"
+        ]
+      }
+    },
     "typescript-language-server": {
       "initialization_options": {
         "preferences": {
@@ -363,6 +448,7 @@
   // # Extension:                                                                      #
   // # =============================================================================== #
   "auto_install_extensions": {
-    "html": false
+    "html": true,
+    "emmet":true
   }
 }
