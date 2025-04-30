@@ -4,40 +4,40 @@
 local palette
 if vim.o.background == "light" then
   -- palette = {
-  --   base00 = "#EFECF4",
-  --   base01 = "#E2DFE7",
-  --   base02 = "#8B8792",
-  --   base03 = "#7E7887",
-  --   base04 = "#655F6D",
-  --   base05 = "#585260",
-  --   base06 = "#26232A",
-  --   base07 = "#19171C",
-  --   base08 = "#BE4678",
-  --   base09 = "#AA573C",
-  --   base0A = "#A06E3B",
-  --   base0B = "#2A9292",
-  --   base0C = "#398BC6",
-  --   base0D = "#576DDB",
-  --   base0E = "#955AE7",
-  --   base0F = "#BF40BF",
-  -- },
+  --   base00 = "#F1E3D1",
+  --   base01 = "#DDCEBC",
+  --   base02 = "#C9B9A7",
+  --   base03 = "#B5A492",
+  --   base04 = "#A0907D",
+  --   base05 = "#64513E",
+  --   base06 = "#786653",
+  --   base07 = "#8C7B68",
+  --   base08 = "#D09700",
+  --   base09 = "#64513E",
+  --   base0A = "#993333",
+  --   base0B = "#908D6A",
+  --   base0C = "#d09700",
+  --   base0D = "#BF7979",
+  --   base0E = "#9E5581",
+  --   base0F = "#75858C",
+  -- }
   palette = {
-    base00 = "#F1E3D1",
-    base01 = "#DDCEBC",
-    base02 = "#C9B9A7",
-    base03 = "#B5A492",
-    base04 = "#A0907D",
-    base05 = "#64513E",
-    base06 = "#786653",
-    base07 = "#8C7B68",
-    base08 = "#D09700",
-    base09 = "#64513E",
-    base0A = "#993333",
-    base0B = "#908D6A",
-    base0C = "#d09700",
-    base0D = "#BF7979",
-    base0E = "#9E5581",
-    base0F = "#75858C",
+    base00 = "#EFECF4",
+    base01 = "#E2DFE7",
+    base02 = "#8B8792",
+    base03 = "#7E7887",
+    base04 = "#655F6D",
+    base05 = "#585260",
+    base06 = "#26232A",
+    base07 = "#19171C",
+    base08 = "#BE4678",
+    base09 = "#AA573C",
+    base0A = "#A06E3B",
+    base0B = "#2A9292",
+    base0C = "#398BC6",
+    base0D = "#576DDB",
+    base0E = "#955AE7",
+    base0F = "#BF40BF",
   }
 end
 if vim.o.background == "dark" then
@@ -199,7 +199,7 @@ if vim.o.background == "dark" then
     base01 = "#232a2d",
     base02 = "#2d3437",
     base03 = "#404749",
-    base04 = "#888888",
+    base04 = "#BBB6B6",
     base05 = "#cacaca",
     base06 = "#d2d2d2",
     base07 = "#dadada",
@@ -253,7 +253,7 @@ vim.api.nvim_set_hl(0, "MiniStarterHeadeMiniStarterQueryr", { link = "MiniStarte
 vim.api.nvim_set_hl(0, "MiniStarterFooter", { link = "MiniStarterHeader" })
 -- Files: ======================================================================
 vim.api.nvim_set_hl(0, "MiniFilesBorder", { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
-vim.api.nvim_set_hl(0, "MiniFilesDirectory", { fg = palette.base07, bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniFilesDirectory", { fg = palette.base04, bg = palette.base00, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniFilesCursorLine", { fg = palette.base00, bg = palette.base0B, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniFilesBorderModified",
   { fg = palette.base0F, bg = palette.base00, bold = true, italic = true })
@@ -293,11 +293,11 @@ vim.api.nvim_set_hl(0, 'MiniDiffSignChange', { fg = palette.base0C, bg = palette
 vim.api.nvim_set_hl(0, 'MiniDiffSignDelete', { fg = palette.base08, bg = palette.base00 })
 -- Completions: ================================================================
 vim.api.nvim_set_hl(0, "MiniCompletionActiveParameter",
-  { fg = palette.base0B, bg = palette.base00, bold = true, italic = true })
+  { fg = palette.base0B, bg = palette.base02, bold = true, italic = true })
 vim.api.nvim_set_hl(0, "MiniCompletionInfoBorderOutdated", { link = "Mini.MiniCompletionActiveParameter" })
 -- CursorWord: =================================================================
 vim.api.nvim_set_hl(0, "MiniCursorword", { bg = palette.base02 })
 vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "MiniCursorword" })
 -- Indentscope: ================================================================
-vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.base03 })
+vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.base0B })
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbolOff", { link = "MiniIndentscopeSymbol" })

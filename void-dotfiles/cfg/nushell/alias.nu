@@ -1,5 +1,5 @@
 # =============================================================================== #
-# Alias :                                                                         #
+# Name Alias :                                                                    #
 # =============================================================================== #
 # Changing "ls" to "eza":                                                         #
 # =============================================================================== #
@@ -25,7 +25,8 @@ alias vd = nohup neovide 2>/dev/null 1>&2 &
 alias nd = nohup neovide 2>/dev/null 1>&2 &
 # Image Viewr:                                                                    #
 # =============================================================================== #
-alias sx = imv
+alias sx = oculante
+alias imv = oculante
 # Github Command:                                                                 #
 # =============================================================================== #
 alias g = git
@@ -57,12 +58,13 @@ alias bun-run = bun run
 alias bun-dev = bun --bun run dev
 ## For Configs Files:                                                             #
 # =============================================================================== #
-alias sucks = cd ~/.local/wayland-void/void-dotfiles/cfg/wayland-suckless/
-alias dots = cd ~/.local/wayland-void/
-alias nvimc = nvim ~/.config/nvim/init.lua
-alias riverc = nvim ~/.config/river/init
-alias bashc = nvim ~/.bashrc
-alias starc = nvim ~/.config/starship.toml
+alias recompile = powershell  ~/win-void/win-configs/win-configs.ps1
+alias dots = cd ~/win-void/
+alias ahk = cd ~/win-void/win-dotfiles/cfg/ahk/
+alias bashc = nvim ~/win-void/win-dotfiles/home/.bashrc
+alias wmc = nvim ~/win-void/win-dotfiles/cfg/komorebi/komorebi.json
+alias barc = nvim ~/win-void/win-dotfiles/cfg/yasb/config.yaml
+alias nuc = nvim ~/win-void/win-dotfiles/app/roming/nushell/config.nu
 # Others Usfeual Alias:                                                           #
 # =============================================================================== #
 alias yt-concats = yt-dlp --ignore-config --downloader aria2c --output "~/Videos/PROGRAMMING/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --concat-playlist always
@@ -70,6 +72,9 @@ alias yt-music = yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/musi
 alias man = tldr
 alias cat = bat
 alias cls = clear
+# Node PKG Manager:                                                               #
+# =============================================================================== #
+alias npm = pnpm
 # =============================================================================== #
 # Functions Alias :                                                               #
 # =============================================================================== #

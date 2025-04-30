@@ -107,6 +107,9 @@ end)
 later(function()
   require("mini.indentscope").setup({
     symbol = "▎",
+    options = {
+      try_as_border = true,
+    }
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
@@ -422,6 +425,7 @@ later(function()
       sql = { "sqlfluff" },
       java = { "google-java-format" },
       groovy = { "npm-groovy-lint" },
+      ['_'] = { 'trim_whitespace' },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -729,7 +733,7 @@ later(function()
     vim.opt.mousescroll = "ver:10,hor:6"
     vim.opt.linespace = -1
     vim.g.neovide_theme = "auto"
-    vim.g.neovide_refresh_rate = 165
+    vim.g.neovide_refresh_rate = 60
     vim.g.neovide_fullscreen = false
     vim.g.neovide_confirm_quit = false
     vim.g.neovide_remember_window_size = true
