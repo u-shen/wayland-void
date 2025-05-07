@@ -1,4 +1,11 @@
 {
+  "Console Log with Metadata": {
+    "prefix": "clog",
+    "body": [
+      "console.log('${TM_LINE_NUMBER}', '${TM_FILENAME}', '->', ${1:identifier}, '$1');"
+    ],
+    "description": "Log with filename and line number"
+  },
   "Console Log Vscode": {
     "prefix": "log",
     "body": ["console.log($1)$0"],
@@ -9,55 +16,106 @@
     "body": ["console.log($1)$0"],
     "description": "Console log statement"
   },
-  "af": {
-    "prefix": "af",
-    "body": "($1) => ${2:{ ${3:} \\}}",
-    "description": "arrow function"
+  "Short Anonymous Function": {
+    "prefix": "anf",
+    "body": ["($1) => $0"],
+    "description": "Anonymous arrow function"
   },
   "Anonymous Function": {
     "prefix": "anfn",
     "body": ["($1) => {", "\t$0", "}"],
     "description": "Anonymous arrow function"
   },
-  "Short Anonymous Function": {
-    "prefix": "anf",
-    "body": ["($1) => $0"],
-    "description": "Anonymous arrow function"
+  "Immediately Invoked Function Expression": {
+    "prefix": "iife",
+    "body": ["(() => {", "\t$1", "})()$0"],
+    "description": "Immediately Invoked Function Expression"
   },
   "Export Default Function": {
     "prefix": "edfn",
     "body": ["export default function $1($2) {", "\t$0", "}"],
     "description": "Export default function"
   },
+  "React Functional Component": {
+    "prefix": "rfcn",
+    "body": [
+      "export const ${1:Component} = ({}: {}) => {",
+      "  return (",
+      "    <div>",
+      "      Hello from ${1:Component}!",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "Creates a basic React functional component"
+  },
   "React Function Component": {
     "prefix": "rfc",
-    "body": ["export default function $1() {", "\treturn <div>$0</div>", "}"],
+    "body": [
+      "export default function ${1:Component}() {",
+      "\treturn <div>Hello From ${1:Component}</div>",
+      "}"
+    ],
     "description": "Create a React function component with export default"
   },
-  "useEffect Hook": {
-    "prefix": "uef",
-    "body": ["useEffect(() => {", "\t$1", "}, [$2])$0"],
-    "description": "React useEffect hook"
+  "React Function Component Typescript": {
+    "prefix": "rfce",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}: React.FC = () => {",
+      "  return <div />;",
+      "}",
+      "",
+      "export default ${1:${TM_DIRECTORY/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}};"
+    ],
+    "description": "Create ReactJS Functional Component Typescript"
   },
-  "useCallback Hook": {
-    "prefix": "ucb",
-    "body": ["const $1 = useCallback(($2) => {", "\t$3", "}, [$4])$0"],
-    "description": "React useCallback hook"
+  "Create useState hook": {
+    "prefix": "uss",
+    "body": [
+      "const [${1:state}, set${1:State}] = useState(${2:defaultState});"
+    ],
+    "description": "Creates React useState hook"
   },
-  "useMemo Hook": {
-    "prefix": "umm",
-    "body": ["const $1 = useMemo(($2) => {", "\t$3", "}, [$4])$0"],
-    "description": "React useCallback hook"
-  },
-  "useState Hook": {
+  "Create useState hook Fallback": {
     "prefix": "ust",
-    "body": ["const [$1, set$2] = useState($3)$0"],
-    "description": "React useState hook"
+    "body": [
+      "const [${1:state}, set${1:State}] = useState(${2:defaultState});"
+    ],
+    "description": "Creates React useState hook"
   },
-  "IIFE": {
-    "prefix": "iife",
-    "body": ["(() => {", "\t$1", "})()$0"],
-    "description": "Immediately Invoked Function Expression"
+  "Create useEffect hook": {
+    "prefix": "use",
+    "body": ["useEffect(() => {", "\t$0", "}, []);"],
+    "description": "Creates React useEffect hook"
+  },
+  "Create useContext hook": {
+    "prefix": "usc",
+    "body": ["const ${1:value} = useContext(MyContext);"],
+    "description": "Creates React useContext hook"
+  },
+  "Create useReducer hook": {
+    "prefix": "usr",
+    "body": [
+      "const [${1:state}, dispatch] = useReducer(${2:reducer}, initialState);"
+    ],
+    "description": "Creates React useReducer hook"
+  },
+  "Create useRef hook": {
+    "prefix": "usr",
+    "body": ["const ${1:refContainer} = useRef(${2:initialValue});"],
+    "description": "Creates React useRef hook"
+  },
+  "Create useImperativeHandle hook": {
+    "prefix": "usi",
+    "body": ["useImperativeHandle(${1:initialValue}, () => {", "\t", "}, []);"],
+    "description": "Creates React useImperativeHandle hook"
+  },
+  "Create useLayoutEffect hook": {
+    "prefix": "usl",
+    "body": ["useLayoutEffect(() => {", "\t", "}, []);"],
+    "description": "Creates React useLayoutEffect hook"
   },
   "return": {
     "prefix": "r",
@@ -66,6 +124,11 @@
   "import": {
     "prefix": "i",
     "body": "import ${0}"
+  },
+  "Import React": {
+    "prefix": "imr",
+    "body": ["import React from 'react';"],
+    "description": "Imports React"
   },
   "Try-Catch Statement": {
     "prefix": "trycatch",

@@ -58,10 +58,10 @@ riverctl xcursor-theme Breeze_Hacked 25
 # =============================================================================== #
 # Borders colours:                                                                #
 # =============================================================================== #
-riverctl background-color 0x141b1e
-riverctl border-color-focused 0x8ccf7e
-riverctl border-color-unfocused 0x232a2d
-riverctl border-color-urgent 0xe57474
+riverctl background-color 0x151515
+riverctl border-color-focused 0x8C977D
+riverctl border-color-unfocused 0x1F1F1F
+riverctl border-color-urgent 0xB66467
 
 # =============================================================================== #
 # window Rules:                                                                   #
@@ -139,7 +139,7 @@ riverctl map normal $mod+Shift P spawn "$HOME/.local/wayland-void/void-dotfiles/
 riverctl map normal $mod+Shift W spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/wifiMenu.py"
 riverctl map normal $mod+Shift B spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/blueMenu.sh"
 riverctl map normal $mod+Shift M spawn "$HOME/.local/wayland-void/void-dotfiles/cfg/river/scripts/mountMenu.sh"
-riverctl map normal $mod+Control R spawn "$HOME/.config/river/init"
+riverctl map normal $mod+Shift R spawn "$HOME/.config/river/init"
 # Screenshoot Binding:                                                            #
 # =============================================================================== #
 riverctl map normal $mod Print spawn "$HOME/.config/river/scripts/screenShoot.sh"

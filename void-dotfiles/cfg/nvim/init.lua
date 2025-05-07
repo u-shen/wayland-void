@@ -226,13 +226,13 @@ end)
 now_if_args(function()
   require("mini.files").setup({
     mappings = {
-      close = "q",
-      go_in = "l",
       go_in_plus = "<Tab>",
-      go_out = "h",
       go_out_plus = "<C-h>",
-      reset = "gh",
       synchronize = "<C-s>",
+      reset = "gh",
+      close = "q",
+      go_in = "",
+      go_out = "",
     },
     windows = {
       max_number = 1,
@@ -316,7 +316,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
@@ -340,8 +340,8 @@ now(function()
     if #MiniSnippets.expand({ insert = false }) > 0 then
       vim.schedule(MiniSnippets.expand); return ''
     end
-    return vim.fn.pumvisible() == 1 and (vim.fn.complete_info().selected == -1 and "<C-n><C-y>" or "<C-y>") or
-        "<Tab>"
+    return vim.fn.pumvisible() == 1 and
+        (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or "<Tab>"
   end
 end)
 --          ╭─────────────────────────────────────────────────────────╮
@@ -349,12 +349,24 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "markdown" }
+  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "prisma", "markdown" }
+  vim.lsp.config("*", {
+    capabilities = {
+      textDocument = {
+        semanticTokens = {
+          multilineTokenSupport = true,
+        }
+      }
+    },
+    root_markers = {
+      '.git'
+    },
+  })
   for _, config in ipairs(lsp_configs) do
     vim.lsp.enable(config)
   end
   require("mini.completion").setup({
-    delay = { completion = 100, info = 100, signature = 50 },
+    delay = { completion = 10, info = 10, signature = 50 },
     mappings = {
       force_twostep = '<C-n>',
       force_fallback = '<C-S-n>',
@@ -454,6 +466,7 @@ now(function()
   -- Use ripgrep as grep tool: ================================================
   vim.opt.grepprg               = "rg --vimgrep --no-heading"
   vim.opt.grepformat            = "%f:%l:%c:%m,%f:%l:%m"
+  vim.opt.path                  = ".,,**"
   -- Shell: =-================================================================
   vim.opt.sh                    = "nu"
   vim.opt.shellslash            = true
@@ -465,6 +478,8 @@ now(function()
   vim.opt.shellquote            = ""
   -- General: ================================================================
   vim.opt.clipboard             = "unnamedplus"
+  vim.opt.wildmenu              = true
+  vim.opt.wildoptions           = "fuzzy,pum"
   vim.opt.completeopt           = "menuone,noselect,fuzzy"
   vim.opt.complete              = ".,b,kspell"
   vim.opt.switchbuf             = "usetab"
@@ -486,7 +501,8 @@ now(function()
   vim.opt.showmatch             = true
   vim.opt.laststatus            = 0
   vim.opt.cmdheight             = 0
-  vim.opt.pumblend              = 10
+  vim.opt.pumblend              = 15
+  vim.opt.pumwidth              = 20
   vim.opt.pumheight             = 10
   vim.opt.wrap                  = false
   vim.opt.breakindent           = true
@@ -494,6 +510,7 @@ now(function()
   vim.opt.modeline              = false
   vim.opt.showmode              = false
   vim.opt.ruler                 = false
+  vim.opt.winborder             = "single"
   vim.opt.colorcolumn           = '+1'
   vim.opt.cursorlineopt         = "screenline,number"
   vim.opt.shortmess             = "FOSWaco"
@@ -529,7 +546,7 @@ now(function()
   vim.opt.history               = 100
   vim.opt.lazyredraw            = true
   vim.opt.synmaxcol             = 200
-  vim.opt.updatetime            = 250
+  vim.opt.updatetime            = 200
   vim.opt.timeoutlen            = 300
   -- Disable health checks for these providers:. ===========================
   vim.g.loaded_python_provider  = 0
@@ -645,6 +662,9 @@ end)
 --          │                     Neovim keymaps                      │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
+  -- diagnostic: ===================================================================
+  vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+  vim.keymap.set("n", "gq", vim.diagnostic.setqflist)
   -- Basic Keymaps: ================================================================
   vim.keymap.set("n", "<C-s>", ":silent up<CR>")
   vim.keymap.set("i", "<C-s>", "<ESC> :up<CR>")
@@ -657,11 +677,6 @@ later(function()
   vim.keymap.set("n", "<C-j>", "<C-w>j")
   vim.keymap.set("n", "<C-k>", "<C-w>k")
   vim.keymap.set("n", "<C-l>", "<C-w>l")
-  -- use gl,gh to move: =============================================================
-  vim.keymap.set("n", "gh", "^")
-  vim.keymap.set("n", "gl", "$")
-  vim.keymap.set("v", "gh", "^")
-  vim.keymap.set("v", "gl", "$")
   -- Bufferline Keys: ==============================================================
   vim.keymap.set("n", "<Tab>", ":bnext<CR>")
   vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
