@@ -193,22 +193,6 @@ export FZF_DEFAULT_OPTS='
   --color border:#8C977D'
 
 # =============================================================================== #
-# NNN File Manager:                                                               #
-# =============================================================================== #
-export NNN_USE_EDITOR=1
-export NNN_TRASH=1
-export NNN_OPTS='RUc'
-export NNN_COLORS='2134'
-export NNN_CONTEXT_COLORS="2135"
-export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_TERMINAL="alacritty"
-export NNN_FIFO="/tmp/nnn.fifo"
-export NNN_OPENER="$HOME/.config/nnn/plugins/nuke"
-export NNN_PLUG="m:nmount;M:mtpmount;e:suedit;n:bulknew;P:rsynccp;z:autojump;o:fzopen;f:fzcd;l:imgview;p:preview-tui;x:xdgdefault;*:togglex"
-export NNN_BMS="m:/run/media/$USER;M:/run/user/$UID/gvfs;w:$HOME/pix/wallpapers;v:$HOME/Videos/programming/;n:$HOME/.config/nvim;d:$HOME/.local/wayland-void/"
-
-# =============================================================================== #
 # Tab Completions:                                                                #
 # =============================================================================== #
 bind 'TAB:menu-complete'
