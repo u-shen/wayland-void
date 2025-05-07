@@ -10,9 +10,8 @@ packages=(
     "pnpm"
     # LANGUAGE SERVER PROTOCOL:                                                       #
     # =============================================================================== #
-    "typescript"
-    "typescript-language-server"
     "vscode-langservers-extracted"
+    "@vtsls/language-server"
     "@olrtg/emmet-language-server"
     "@tailwindcss/language-server"
     "prettier"
