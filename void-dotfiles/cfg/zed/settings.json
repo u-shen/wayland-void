@@ -6,8 +6,10 @@
 	// # General:                                                                        #
 	// # =============================================================================== #
 	"auto_update": false,
+	"scroll_sensitivity": 1,
 	"vertical_scroll_margin": 0,
 	"horizontal_scroll_margin": 0,
+	"show_whitespaces": "none",
 	"restore_on_startup": "none",
 	"current_line_highlight": "none",
 	"extend_comment_on_newline": false,
@@ -24,7 +26,7 @@
 	"buffer_font_weight": 400,
 	"preferred_line_length": 80,
 	"ui_font_weight": 400,
-	"ui_font_size": 13,
+	"ui_font_size": 12,
 	// # =============================================================================== #
 	// # AutoSave:                                                                       #
 	// # =============================================================================== #
@@ -47,11 +49,13 @@
 		"file_icons": true,
 		"show_diagnostics": "errors",
 		"close_position": "right",
+		"activate_on_close": "history",
 		"show_close_button": "hidden"
 	},
 	// # =============================================================================== #
 	// # Completions:                                                                    #
 	// # =============================================================================== #
+	"lsp_highlight_debounce": 100,
 	"show_completions_on_input": true,
 	"show_completion_documentation": false,
 	"show_signature_help_after_edits": false,
@@ -68,17 +72,17 @@
 	"vim_mode": true,
 	"vim": {
 		"default_mode": "normal",
-		"toggle_relative_line_numbers": false,
 		"use_system_clipboard": "always",
-		"use_multiline_find": true,
-		"use_smartcase_find": false,
 		"highlight_mn_yank_duration": 100,
-		"enable_vim_sneak": true,
+		"toggle_relative_line_numbers": false,
+		"use_multiline_find": false,
+		"use_smartcase_find": false,
+		"enable_vim_sneak": false,
 		"cursor_shape": {
 			"normal": "block",
 			"insert": "bar",
 			"replace": "hollow",
-			"visual": "underline"
+			"visual": "block"
 		}
 	},
 	"command_aliases": {
@@ -90,6 +94,7 @@
 	// # Search:                                                                         #
 	// # =============================================================================== #
 	"search": {
+		"button": false,
 		"whole_word": false,
 		"case_sensitive": false,
 		"include_ignored": false,
@@ -127,6 +132,9 @@
 	"features": {
 		"copilot": false
 	},
+	"minimap": {
+		"show": "never"
+	},
 	"telemetry": {
 		"diagnostics": false,
 		"metrics": false
@@ -140,6 +148,21 @@
 		"breadcrumbs": false,
 		"quick_actions": false
 	},
+	"title_bar": {
+		"show_user_picture": false,
+		"show_branch_name": false,
+		"show_branch_icon": false,
+		"show_project_items": false,
+		"show_onboarding_banner": false
+	},
+	"scrollbar": {
+		"show": "never",
+		"cursors": false,
+		"git_diff": true,
+		"search_results": true,
+		"selected_symbol": true,
+		"diagnostics": "all"
+	},
 	"project_panel": {
 		"button": true,
 		"file_icons": true,
@@ -150,8 +173,14 @@
 		"auto_reveal_entries": false,
 		"entry_spacing": "comfortable",
 		"dock": "left",
-		"default_width": 246,
-		"indent_size": 16
+		"default_width": 200,
+		"scrollbar": {
+			"show": "never"
+		},
+		"indent_guides": {
+			"show": "never"
+		},
+		"indent_size": 12
 	},
 	"centered_layout": {
 		"left_padding": 0.1,
@@ -173,7 +202,7 @@
 		"show_tab_bar_buttons": false
 	},
 	"preview_tabs": {
-		"enabled": false,
+		"enabled": true,
 		"enable_preview_from_file_finder": false,
 		"enable_preview_from_code_navigation": false
 	},
@@ -184,12 +213,11 @@
 	},
 	"gutter": {
 		"line_numbers": true,
-		"code_actions": false,
 		"runnables": false,
 		"folds": false
 	},
 	"indent_guides": {
-		"enabled": true,
+		"enabled": false,
 		"coloring": "fixed",
 		"background_coloring": "disabled",
 		"active_line_width": 2,
@@ -199,18 +227,15 @@
 		"dock": "right"
 	},
 	"collaboration_panel": {
+		"button": false,
 		"dock": "right"
 	},
 	"chat_panel": {
+		"button": "never",
 		"default_width": 380
 	},
-	"scrollbar": {
-		"show": "never",
-		"cursors": false,
-		"git_diff": true,
-		"search_results": true,
-		"selected_symbol": true,
-		"diagnostics": "all"
+	"notification_panel": {
+		"button": false
 	},
 	// # =============================================================================== #
 	// # Edit predictions:                                                               #
@@ -298,17 +323,31 @@
 		"source.organizeImports": true
 	},
 	"prettier": {
+		"allowed": true,
 		"printWidth": 80,
 		"tabWidth": 2,
 		"useTabs": false,
 		"semi": true,
 		"singleQuote": true,
-		"trailingComma": "all",
+		"quoteProps": "as-needed",
+		"jsxSingleQuote": false,
+		"trailingComma": "none",
 		"bracketSpacing": true,
 		"jsxBracketSameLine": false,
-		"arrowParens": "avoid",
+		"arrowParens": "always",
+		"requirePragma": false,
+		"insertPragma": false,
 		"proseWrap": "preserve",
-		"endOfLine": "lf"
+		"htmlWhitespaceSensitivity": "css",
+		"endOfLine": "lf",
+		"overrides": [
+			{
+				"files": ["*.json"],
+				"options": {
+					"singleQuote": false
+				}
+			}
+		]
 	},
 	// # =============================================================================== #
 	// # Eslint:                                                                         #
@@ -454,7 +493,6 @@
 	// # =============================================================================== #
 	// # LSP:                                                                            #
 	// # =============================================================================== #
-
 	"lsp": {
 		// # =============================================================================== #
 		// # For Emmet:                                                                      #
@@ -473,7 +511,10 @@
 		// # =============================================================================== #
 		"tailwindcss-language-server": {
 			"settings": {
-				"classAttributes": ["class", "className", "ngClass", "styles"]
+				"classAttributes": ["class", "className", "ngClass", "styles"],
+				"tailwindCSS": {
+					"emmetCompletions": true
+				}
 			}
 		},
 		// # =============================================================================== #
@@ -498,20 +539,20 @@
 							"suppressWhenArgumentMatchesName": false
 						},
 						"parameterTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"variableTypes": {
-							"enabled": true,
-							"suppressWhenTypeMatchesName": true
+							"enabled": false,
+							"suppressWhenTypeMatchesName": false
 						},
 						"propertyDeclarationTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"functionLikeReturnTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"enumMemberValues": {
-							"enabled": true
+							"enabled": false
 						}
 					}
 				},
@@ -525,20 +566,20 @@
 							"suppressWhenArgumentMatchesName": false
 						},
 						"parameterTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"variableTypes": {
-							"enabled": true,
-							"suppressWhenTypeMatchesName": true
+							"enabled": false,
+							"suppressWhenTypeMatchesName": false
 						},
 						"propertyDeclarationTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"functionLikeReturnTypes": {
-							"enabled": true
+							"enabled": false
 						},
 						"enumMemberValues": {
-							"enabled": true
+							"enabled": false
 						}
 					}
 				}

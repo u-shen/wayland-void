@@ -205,7 +205,7 @@ if vim.o.background == "dark" then
     base07 = "#E8E3E3",
     base08 = "#B66467",
     base09 = "#c4b28a",
-    base0A = "#D9BC8C",
+    base0A = "#bdae93",
     base0B = "#8C977D",
     base0C = "#8AA6A2",
     base0D = "#8DA3B9",
@@ -217,19 +217,24 @@ if palette then
   require("mini.base16").setup({
     palette = palette,
   })
-  vim.g.colors_name = "Minibase-Core"
+  vim.g.colors_name = "minibase-core"
 end
 -- General: =====================================================================
+vim.api.nvim_set_hl(0, 'SignColumn', { bg = palette.base00 })
+vim.api.nvim_set_hl(0, 'Search', { fg = palette.base00, bg = palette.base09 })
+vim.api.nvim_set_hl(0, 'CurSearch', { fg = palette.base00, bg = palette.base0B })
 vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.base03, bg = palette.base00 })
 vim.api.nvim_set_hl(0, 'Cursor', { fg = palette.base00, bg = palette.base0B })
 vim.api.nvim_set_hl(0, 'FloatBorder', { fg = palette.base0B, bg = palette.base01 })
+vim.api.nvim_set_hl(0, 'FloatTitle', { link = "FloatBorder" })
+vim.api.nvim_set_hl(0, 'NormalFloat', { link = "FloatBorder" })
 -- Pmenu: =====================================================================
 vim.api.nvim_set_hl(0, "Pmenu", { bg = palette.base01, fg = palette.base0B })
 vim.api.nvim_set_hl(0, "PmenuSel", { bg = palette.base02, fg = palette.base0B })
 vim.api.nvim_set_hl(0, "PmenuMatch", { fg = palette.base09 })
 vim.api.nvim_set_hl(0, "PmenuMatchSel", { link = "PmenuMatch" })
 vim.api.nvim_set_hl(0, "PmenuSbar", { link = "Pmenu" })
-vim.api.nvim_set_hl(0, "PmenuThumb", { link = "Pmenu" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSel" })
 vim.api.nvim_set_hl(0, "PmenuExtra", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "PmenuKind", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "PmenuExtraSel", { link = "PmenuSel" })
@@ -300,3 +305,5 @@ vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "MiniCursorword" })
 -- Indentscope: ================================================================
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.base0B })
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbolOff", { link = "MiniIndentscopeSymbol" })
+-- Trailspace: ================================================================
+vim.api.nvim_set_hl(0, "MiniTrailspace", { bg = palette.base0B })

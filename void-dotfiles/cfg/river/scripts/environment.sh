@@ -4,8 +4,8 @@
 # =============================================================================== #
 export XCURSOR_THEME=Breeze_Hacked
 export XCURSOR_SIZE=18
-export XDG_CURRENT_DESKTOP=River
-export XDG_SESSION_DESKTOP=River
+export XDG_CURRENT_DESKTOP=river
+export XDG_SESSION_DESKTOP=river
 export XDG_SESSION_TYPE=wayland
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=wayland

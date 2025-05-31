@@ -1,19 +1,13 @@
 --          ╔═════════════════════════════════════════════════════════╗
---          ║                     Html LSP                            ║
+--          ║                     Bash LSP                            ║
 --          ╚═════════════════════════════════════════════════════════╝
 return {
-  cmd = { "emmet-language-server", "--stdio" },
-  filetypes = {
-    "html",
-    "css",
-    "less",
-    "sass",
-    "scss",
-    "javascriptreact",
-    "typescriptreact",
+  cmd = { "bash-language-server", "start" },
+  filetypes = { "bash", "sh", "zsh" },
+  root_markers = { ".git" },
+  settings = {
+    bashIde = {
+      globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
+    },
   },
-  init_options = {
-    showSuggestionsAsSnippets = true,
-  },
-  root_markers = { 'package.json', '.git' }
 }
