@@ -3,7 +3,7 @@
 # =============================================================================== #
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[manager]
+[mgr]
 prepend_keymap = [
 	# General
 	{ on = "A", run = "create --dir" },
@@ -25,14 +25,12 @@ prepend_keymap = [
 	{ on = "$", run = 'shell --block $SHELL' },
 	{ on = ["!"], run = 'shell nu --block --confirm' },
 	# BookMarks
-  { on   = [ "~" ], run  = 'cd "C:\\Users\lli"', desc = "Go To Downloads" },
-  { on   = [ "b", "h" ], run  = 'cd "C:\\Users\lli"', desc = "Go To Downloads" },
-  { on   = [ "b", "d" ], run  = 'cd "C:\\Users\lli\Downloads"', desc = "Go To Downloads" },
-  { on   = [ "b", "v" ], run  = 'cd "C:\\Users\lli\Videos\programming"', desc = "Go To Videos Programming" },
-  { on   = [ "b", "m" ], run  = 'cd "C:\\Users\lli\Music"', desc = "Go To Videos Programming" },
-  { on   = [ "b", "i" ], run  = 'cd "C:\\Users\lli\Pictures\pix"', desc = "Go To Pictures" },
-  { on   = [ "b", "p" ], run  = 'cd "C:\\Users\lli\Projects"', desc = "Go To Projects" },
-  { on   = [ "b", "w" ], run  = 'cd "C:\\Users\lli\win-void"', desc = "Go To Projects" }
+  { on   = [ "~" ], run  = 'cd "~"', desc = "Go To Downloads" },
+  { on   = [ "b", "h" ], run  = 'cd "~"', desc = "Go To Downloads" },
+  { on   = [ "b", "d" ], run  = 'cd "~/Downloads"', desc = "Go To Downloads" },
+  { on   = [ "b", "v" ], run  = 'cd "~/Videos/programming"', desc = "Go To Videos Programming" },
+  { on   = [ "b", "i" ], run  = 'cd "~/Pictures/pix"', desc = "Go To Pictures" },
+  { on   = [ "b", "p" ], run  = 'cd "~/Projects"', desc = "Go To Projects" }
 ]
 
 [tasks]

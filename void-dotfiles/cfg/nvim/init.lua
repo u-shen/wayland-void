@@ -37,8 +37,8 @@ end)
 --          │                     Mini.Misc                           │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
-  require('mini.misc').setup_auto_root { '.git', "package.json" }
   require('mini.misc').setup_restore_cursor()
+  require('mini.misc').setup_auto_root({ '.git', "package.json" }, vim.fs.dirname)
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.CursorWord                     │
@@ -100,6 +100,17 @@ end)
 later(function()
   require('mini.notify').setup()
   vim.notify = require('mini.notify').make_notify()
+end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Tabline                        │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
+  require('mini.align').setup({
+    mappings = {
+      start = '<Leader>=',
+      start_with_preview = '<Leader>+',
+    },
+  })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Tabline                        │
@@ -809,7 +820,7 @@ later(function()
     pattern = "MiniFilesBufferCreate",
     callback = function(args) vim.keymap.set("n", ".", toggle_dotfiles, { buffer = args.data.buf_id }) end,
   })
-  -- Qucikfix List: =================================================================
+  -- Qucikfix List: ==================================================================
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     callback = function(event)
@@ -817,8 +828,40 @@ later(function()
       vim.keymap.set('n', '<C-j>', '<cmd>cn<CR>zz<cmd>wincmd p<CR>', opts)
       vim.keymap.set('n', '<C-k>', '<cmd>cN<CR>zz<cmd>wincmd p<CR>', opts)
       vim.keymap.set('n', '<Tab>', '<CR>', opts)
-      vim.keymap.set('n', 'q', '<cmd>cclose<CR>', { buffer = true })
     end
+  })
+  -- close some filetypes with <q>: : =====================================================
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+      'PlenaryTestPopup',
+      'help',
+      'lspinfo',
+      'man',
+      'notify',
+      'qf',
+      'query',
+      'spectre_panel',
+      'startuptime',
+      'tsplayground',
+      'neotest-output',
+      'checkhealth',
+      'neotest-summary',
+      'neotest-output-panel',
+      'toggleterm',
+      'neo-tree',
+      'gitsigns-blame',
+      'AvanteAsk',
+      'AvanteInput',
+      'markdown',
+      'Trouble',
+    },
+    callback = function(event)
+      local bo = vim.bo[event.buf]
+      if bo.filetype ~= 'markdown' or bo.buftype == 'help' then
+        -- bo.buflisted = false
+        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+      end
+    end,
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
