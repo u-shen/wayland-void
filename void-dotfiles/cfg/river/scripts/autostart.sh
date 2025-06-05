@@ -2,11 +2,11 @@
 # =============================================================================== #
 # Background Daemon:                                                              #
 # =============================================================================== #
-pkill wbg;wbg ~/Pictures/pix/wallpapers/A_FOGGY_FOREST_WITH_TREES.png &
+killall wbg;wbg ~/Pictures/pix/wallpapers/BIRDSEYE.jpg &
 # =============================================================================== #
 #  App Daemon                                                                     #
 # =============================================================================== #
-pkill mako; mako &
-pkill udiskie;udiskie &
-pkill pipewire;pipewire &
-pkill pipewire-pulse;pipewire-pulse &
+killall mako; mako &
+killall udiskie;udiskie &
+killall pipewire;pipewire &
+killall pipewire-pulse;pipewire-pulse &
