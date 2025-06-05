@@ -56,7 +56,11 @@ alias bunu = bun update
 alias buni = bun install
 alias bun-run = bun run
 alias bun-dev = bun --bun run dev
-## For Configs Files:                                                             #
+# Node PKG Manager:                                                               #
+# =============================================================================== #
+alias npm = pnpm
+alias npx = pnpm dlx
+# For Configs Files:                                                              #
 # =============================================================================== #
 alias dots = cd ~/.local/wayland-void
 alias bashc = nvim ~/.bashrc
@@ -68,9 +72,6 @@ alias yt-music = yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/musi
 alias man = tldr
 alias cat = bat
 alias cls = clear
-# Node PKG Manager:                                                               #
-# =============================================================================== #
-alias npm = pnpm
 # =============================================================================== #
 # Functions Alias :                                                               #
 # =============================================================================== #

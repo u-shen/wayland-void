@@ -2,11 +2,11 @@
 # =============================================================================== #
 # Background Daemon:                                                              #
 # =============================================================================== #
-killall wbg;wbg ~/Pictures/pix/wallpapers/CATGIRL.jpg &
+pkill wbg;wbg ~/Pictures/pix/wallpapers/A_FOGGY_FOREST_WITH_TREES.png &
 # =============================================================================== #
 #  App Daemon                                                                     #
 # =============================================================================== #
-killall mako; mako &
-killall udiskie;udiskie &
-killall pipewire;pipewire &
-killall pipewire-pulse;pipewire-pulse &
+pkill mako; mako &
+pkill udiskie;udiskie &
+pkill pipewire;pipewire &
+pkill pipewire-pulse;pipewire-pulse &
