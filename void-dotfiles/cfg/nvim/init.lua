@@ -493,12 +493,24 @@ now(function()
   end
   -- enable Mini.Completion: ==============================================================
   require("mini.completion").setup({
-    delay = { completion = 100, info = 100, signature = 50 },
+    delay = { completion = 50, info = 20, signature = 10 },
     mappings = {
       force_twostep = '<C-n>',
       force_fallback = '<C-S-n>',
       scroll_down = '<C-j>',
       scroll_up = '<C-k>',
+    },
+    lsp_completion = {
+      source_func = 'omnifunc',
+      process_items = function(items, base)
+        return require('mini.completion').default_process_items(items, base, {
+          filtersort = 'fuzzy',
+          kind_priority = {
+            Text = -1,
+            Snippet = 99,
+          },
+        })
+      end,
     },
   })
 end)
