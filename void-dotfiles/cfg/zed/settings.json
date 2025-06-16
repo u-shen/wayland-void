@@ -161,7 +161,7 @@
   // ===============================================================================
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Paradise",
     "dark": "Paradise"
   },
   "icon_theme": {
@@ -370,7 +370,7 @@
         "show_type_hints": true
       }
     },
-    "Emmet": { "language_servers": ["emmet-language-server"] },
+    "Emmet": {},
     "HTML": { "prettier": { "allowed": true } },
     "CSS": { "prettier": { "allowed": true } },
     "SCSS": { "prettier": { "allowed": true } },
@@ -392,15 +392,6 @@
   // Language Server Protocol (LSP)
   // ===============================================================================
   "lsp": {
-    "emmet-language-server": {
-      "binary": {
-        "path": "C:\\Users\\lli\\scoop\\apps\\nodejs\\current\\node.exe",
-        "arguments": [
-          "C:\\Users\\lli\\scoop\\persist\\nodejs\\bin\\node_modules\\@olrtg\\emmet-language-server\\dist\\index.js",
-          "--stdio"
-        ]
-      }
-    },
     "tailwindcss-language-server": {
       "settings": {
         "classAttributes": ["class", "className", "ngClass", "styles"],
