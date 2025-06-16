@@ -1,0 +1,191 @@
+// # =============================================================================== #
+// # Code Configurations:                                                            #
+// # =============================================================================== #
+{
+  // # =============================================================================== #
+  // # Editor Settings:                                                                #
+  // # =============================================================================== #
+  "editor.fontFamily": "JetBrainsMono Nerd Font, Geist Mono, Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.snippetSuggestions": "inline",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.scrollBeyondLastLine": false,
+
+  // # =============================================================================== #
+  // # Editor: Silence Visual Noise:                                                   #
+  // # =============================================================================== #
+  "editor.matchBrackets": "never",
+  "editor.colorDecorators": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.selectionHighlight": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.occurrencesHighlight": "off",
+  "editor.renderControlCharacters": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.minimap.enabled": false,
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveBracketPair": false,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.showFoldingControls": "never",
+  "editor.glyphMargin": false,
+  "editor.folding": false,
+  "editor.renderWhitespace": "none",
+  "editor.bracketPairColorization.enabled": false,
+  "editor.hover.delay": 1500,
+  "editor.hover.enabled": true,
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+
+  // # =============================================================================== #
+  // # Workbench Settings:                                                             #
+  // # =============================================================================== #
+  "workbench.desktop.sideBar.labelFontFamily": "JetBrainsMono Nerd Font, Geist Mono, Fira Code",
+  "workbench.experimental.customSidebarFontFamily": "JetBrainsMono Nerd Font, Geist Mono, Fira Code",
+  "workbench.colorTheme": "Paradise",
+  "workbench.editor.restoreViewState": true,
+  "workbench.startupEditor": "none",
+
+  // # =============================================================================== #
+  // # Workbench: Silence Visual Noise:                                                #
+  // # =============================================================================== #
+  "workbench.tips.enabled": false,
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.showTabs": "none",
+  "workbench.editor.tabActionCloseVisibility": false,
+
+  // # =============================================================================== #
+  // # Window Settings:                                                                #
+  // # =============================================================================== #
+  "window.title": " ",
+  "window.commandCenter": false,
+  "window.restoreFullscreen": true,
+  "window.newWindowDimensions": "maximized",
+  "window.menuBarVisibility": "toggle",
+  "window.restoreWindows": "none",
+
+  // # =============================================================================== #
+  // # Files Settings:                                                                 #
+  // # =============================================================================== #
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": false,
+  "files.restoreUntitledEditors": false,
+
+  // # =============================================================================== #
+  // # Terminal Settings:                                                              #
+  // # =============================================================================== #
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.profiles.windows": {
+    "nu": {
+      "path": "nu.exe",
+      "args": ["-l"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "nu",
+
+  // # =============================================================================== #
+  // # Debug Settings:                                                                 #
+  // # =============================================================================== #
+  "debug.console.fontSize": 12,
+
+  // # =============================================================================== #
+  // # Source Control:                                                                 #
+  // # =============================================================================== #
+  "scm.diffDecorations": "none",
+  "git.decorations.enabled": false,
+  "scm.diffDecorationsGutterPattern": {
+    "added": false,
+    "modified": false
+  },
+
+  // # =============================================================================== #
+  // # Format & Autocomplete:                                                          #
+  // # =============================================================================== #
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  // # =============================================================================== #
+  // # VIM Configuration:                                                              #
+  // # =============================================================================== #
+  "vim.leader": "<space>",
+  "vim.enableNeovim": true,
+  "vim.neovimUseConfigFile": true,
+  "vim.surround": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.nohlsearch": true,
+  "vim.easymotion": false,
+  "vim.sneak": false,
+  "vim.relativenumber": false,
+  "vim.highlightedyank.enable": true,
+  "vim.useSystemClipboard": true,
+  "vim.handleKeys": {
+    "<C-a>": true,
+    "<C-f>": true,
+    "<C-d>": true,
+    "<C-x>": true,
+    "<C-v>": true,
+    "<C-c>": false,
+    "<C-y>": false
+  },
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+
+  // # =============================================================================== #
+  // # UI Elements:                                                                    #
+  // # =============================================================================== #
+  "breadcrumbs.enabled": false,
+  "problems.decorations.enabled": false,
+  "explorer.decorations.colors": false,
+  "explorer.compactFolders": false,
+
+  // # =============================================================================== #
+  // # Application Settings:                                                           #
+  // # =============================================================================== #
+  "update.mode": "none",
+  "extensions.ignoreRecommendations": true
+}

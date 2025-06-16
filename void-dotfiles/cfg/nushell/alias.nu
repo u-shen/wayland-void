@@ -67,8 +67,8 @@ alias bashc = nvim ~/.bashrc
 alias wmc = nvim ~/.config/river/init
 # Others Usfeual Alias:                                                           #
 # =============================================================================== #
-alias yt-concats = yt-dlp --ignore-config --downloader aria2c --output "~/Videos/PROGRAMMING/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --concat-playlist always
-alias yt-music = yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music
+alias yt-concats = yt-dlp --no-warnings --quiet --progress --ignore-config --downloader aria2c --output "~/Videos/PROGRAMMING/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --concat-playlist always -S "codec:h264"
+alias yt-music = yt-dlp --ignore-config --config-locations "~/.config/yt-dlp/music"
 alias man = tldr
 alias cat = bat
 alias cls = clear

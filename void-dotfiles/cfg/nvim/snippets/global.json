@@ -29,13 +29,21 @@
     "body": "$RANDOM_HEX",
     "description": "6 random Base-16 digits"
   },
+  "fix": {
+    "prefix": "fix",
+    "body": ["$LINE_COMMENT FIXME: $0"]
+  },
+  "hack": {
+    "prefix": "hack",
+    "body": ["$LINE_COMMENT HACK: $0"]
+  },
   "todo": {
     "prefix": "todo",
     "body": ["$LINE_COMMENT TODO: $0"]
   },
-  "fix": {
-    "prefix": "fix",
-    "body": ["$LINE_COMMENT FIXME: $0"]
+  "note": {
+    "prefix": "note",
+    "body": ["$LINE_COMMENT NOTE: $0"]
   },
   "bc": {
     "prefix": "block comment",
@@ -45,5 +53,35 @@
     "prefix": "picsum",
     "body": ["https://picsum.photos/200"],
     "description": "Inserts a random 200x200 placeholder image from Picsum"
+  },
+  "copyright": {
+    "prefix": "c)",
+    "body": ["Copyright (c) ${CURRENT_YEAR} ${0:Author}. All Rights Reserved."],
+    "description": "Snippet to put copyright"
+  },
+  "date": {
+    "prefix": "date",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
+    "description": "Put the date in (Y-M-D) format"
+  },
+  "random": {
+    "prefix": "random",
+    "body": ["# Random:  ${1|one,two,three|} ${2:fruit}"],
+    "description": "Random"
+  },
+  "git_username": {
+    "prefix": "gitu",
+    "body": ["${GIT_USERNAME}"],
+    "description": "git username"
+  },
+  "git_user_display": {
+    "prefix": "gud",
+    "body": ["user: ${GIT_USERNAME}"],
+    "description": "git user display"
+  },
+  "@author": {
+    "prefix": "author",
+    "body": ["@author ${GIT_USERNAME}"],
+    "description": "An author of the module or file."
   }
 }

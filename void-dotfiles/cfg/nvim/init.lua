@@ -102,7 +102,7 @@ later(function()
   vim.notify = require('mini.notify').make_notify()
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Tabline                        │
+--          │                     Mini.Align                          │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require('mini.align').setup({
@@ -110,17 +110,6 @@ later(function()
       start = '<Leader>=',
       start_with_preview = '<Leader>+',
     },
-  })
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Tabline                        │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.tabline").setup({
-    format = function(buf_id, label)
-      local suffix = vim.bo[buf_id].modified and "● " or ""
-      return MiniTabline.default_format(buf_id, label) .. suffix
-    end,
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
@@ -181,7 +170,7 @@ later(function()
       -- Highlight hex color strings (`#rrggbb`) using that color: =========================
       hex_color = require("mini.hipatterns").gen_highlighter.hex_color({
         style = "inline",
-        inline_text = "⬤ ",
+        inline_text = "■ ",
       }),
     },
   })
@@ -214,6 +203,11 @@ end)
 later(function()
   require("mini.ai").setup({
     custom_textobjects = {
+      B = require("mini.extra").gen_ai_spec.buffer(),
+      D = require("mini.extra").gen_ai_spec.diagnostic(),
+      I = require("mini.extra").gen_ai_spec.indent(),
+      L = require("mini.extra").gen_ai_spec.line(),
+      N = require("mini.extra").gen_ai_spec.number(),
       e = {
         {
           -- __-1, __-U, __-l, __-1_, __-U_, __-l_
@@ -254,12 +248,12 @@ end)
 later(function()
   require("mini.pick").setup({
     mappings = {
-      choose = "<Tab>",
-      move_down = "<C-j>",
-      move_up = "<C-k>",
-      choose_in_split = "<C-v>",
-      choose_in_vsplit = "<C-h>",
-      toggle_preview = "<C-p>",
+      choose           = "<Tab>",
+      move_down        = "<C-j>",
+      move_up          = "<C-k>",
+      toggle_preview   = "<C-p>",
+      choose_in_split  = '<C-v>',
+      choose_in_vsplit = '<C-s>',
     },
     options = {
       use_cache = true,
@@ -365,6 +359,42 @@ now_if_args(function()
   end
 end)
 --          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Tabline                        │
+--          ╰─────────────────────────────────────────────────────────╯
+now(function()
+  require("mini.tabline").setup({
+    show_icons = true,
+    tabpage_section = 'right',
+    format = function(buf_id, label)
+      local suffix = vim.bo[buf_id].modified and "● " or ""
+      return MiniTabline.default_format(buf_id, label) .. suffix
+    end,
+  })
+  -- hide when only one Tabline: =====================================================
+  local get_n_listed_bufs = function()
+    local n = 0
+    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
+      n = n + (vim.bo[buf_id].buflisted and 1 or 0)
+    end
+    return n
+  end
+  vim.api.nvim_create_autocmd({
+    'BufAdd',
+    'BufDelete',
+    'BufEnter',
+    'BufWinEnter',
+    'TabClosed',
+    'TabEnter',
+    'WinClosed',
+    'SessionLoadPost',
+  }, {
+    desc = 'Hide the tabline when empty',
+    group = group,
+    -- Schedule because 'BufDelete' is triggered when buffer is still present
+    callback = vim.schedule_wrap(function() vim.o.showtabline = get_n_listed_bufs() > 1 and 2 or 0 end),
+  })
+end)
+--          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Starter                        │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
@@ -420,9 +450,11 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- Languge Patterns: ==============================================================
+  local markdown = { 'markdown.json' }
   local webPatterns = { 'web/*.json' }
   local webHtmlPatterns = { 'web/*.json', 'html.json', "ejs.json" }
   local lang_patterns = {
+    markdown_inline = markdown,
     html = webHtmlPatterns,
     ejs = webHtmlPatterns,
     tsx = webPatterns,
@@ -441,7 +473,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
@@ -493,7 +525,11 @@ now(function()
   end
   -- enable Mini.Completion: ==============================================================
   require("mini.completion").setup({
-    delay = { completion = 50, info = 20, signature = 10 },
+    delay = { completion = 100, info = 100, signature = 50 },
+    window = {
+      info = { border = "none" },
+      signature = { border = "none" },
+    },
     mappings = {
       force_twostep = '<C-n>',
       force_fallback = '<C-S-n>',
@@ -600,15 +636,17 @@ end)
 --          │                     Neovim Colorscheme                  │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
-  vim.cmd("colorscheme minibase-core")
+  vim.cmd.colorscheme("minibase-core")
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Neovim Options                      │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
+  -- Colors =====================================================================
+  if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
   -- Global:  =================================================================
   vim.g.mapleader               = vim.keycode("<space>")
-  vim.g.maplocalleader          = vim.keycode("<cr>")
+  vim.g.maplocalleader          = vim.g.mapleader
   -- Use ripgrep as grep tool: ================================================
   vim.opt.grepprg               = "rg --vimgrep --no-heading"
   vim.opt.grepformat            = "%f:%l:%c:%m,%f:%l:%m"
@@ -626,9 +664,10 @@ now(function()
   vim.opt.clipboard             = "unnamedplus"
   vim.opt.wildmenu              = true
   vim.opt.wildoptions           = "fuzzy,pum"
-  vim.opt.completeopt           = "menuone,noselect,fuzzy"
-  vim.opt.complete              = ".,b,kspell"
+  vim.opt.completeopt           = 'menuone,noselect,fuzzy'
+  vim.opt.complete              = '.,w,b,kspell'
   vim.opt.switchbuf             = "usetab"
+  vim.opt.splitkeep             = 'screen'
   vim.opt.compatible            = false
   vim.opt.swapfile              = false
   vim.opt.writebackup           = false
@@ -636,6 +675,10 @@ now(function()
   vim.opt.spell                 = false
   vim.opt.undofile              = true
   vim.opt.shada                 = { "'10", "<0", "s10", "h" }
+  -- Spelling ================================================================
+  vim.opt.spelllang             = 'en,ru,uk'
+  vim.opt.spelloptions          = 'camel'
+  vim.opt.dictionary            = vim.fn.stdpath('config') .. '/misc/dict/english.txt'
   -- UI: ====================================================================
   vim.opt.number                = true
   vim.opt.relativenumber        = false
@@ -648,26 +691,31 @@ now(function()
   vim.opt.laststatus            = 0
   vim.opt.cmdheight             = 0
   vim.opt.pumwidth              = 20
-  vim.opt.pumblend              = 10
-  vim.opt.pumheight             = 10
+  vim.opt.pumblend              = 8
+  vim.opt.pumheight             = 8
   vim.opt.wrap                  = false
   vim.opt.breakindent           = true
   vim.opt.copyindent            = true
+  vim.opt.list                  = false
   vim.opt.modeline              = false
   vim.opt.showmode              = false
   vim.opt.ruler                 = false
-  vim.opt.winborder             = "single"
+  vim.opt.winborder             = "double"
   vim.opt.colorcolumn           = '+1'
   vim.opt.cursorlineopt         = "screenline,number"
   vim.opt.shortmess             = "FOSWaco"
   vim.wo.signcolumn             = "yes"
   vim.opt.statuscolumn          = ""
+  vim.opt.mousescroll           = "ver:3,hor:0"
+  vim.opt.guicursor             =
+  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait100-blinkoff700-blinkon700-Cursor/lCursor,sm:block-blinkwait0-blinkoff300-blinkon300"
   vim.opt.fillchars             = table.concat(
     { 'eob: ', 'fold:╌', 'horiz:═', 'horizdown:╦', 'horizup:╩', 'vert:║', 'verthoriz:╬', 'vertleft:╣', 'vertright:╠' },
     ','
   )
-  vim.o.listchars               = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
+  vim.opt.listchars             = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
   -- Editing:  ================================================================
+  vim.opt.cindent               = true
   vim.opt.autoindent            = true
   vim.opt.expandtab             = true
   vim.opt.ignorecase            = true
@@ -676,17 +724,21 @@ now(function()
   vim.opt.shiftwidth            = 2
   vim.opt.smartcase             = true
   vim.opt.smartindent           = true
+  vim.opt.gdefault              = true
   vim.opt.tabstop               = 2
+  vim.opt.softtabstop           = 2
   vim.opt.breakindentopt        = "list:-1"
   vim.opt.formatlistpat         = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
   vim.opt.virtualedit           = "block"
   vim.opt.formatoptions         = "rqnl1j"
   vim.opt.formatexpr            = "v:lua.require'conform'.formatexpr()"
-  -- Fold:  ================================================================
+  -- Folds:  ================================================================
   vim.opt.foldenable            = false
-  vim.opt.foldlevel             = 99
-  vim.opt.foldmethod            = "expr"
-  vim.opt.foldexpr              = "v:lua.vim.treesitter.foldexpr()"
+  vim.opt.foldmethod            = 'indent'
+  vim.opt.foldlevel             = 1
+  vim.opt.foldnestmax           = 10
+  vim.g.markdoptwn_folding      = 1
+  vim.opt.foldtext              = ''
   -- Memory: ================================================================
   vim.opt.hidden                = true
   vim.opt.history               = 100
@@ -963,8 +1015,13 @@ later(function()
   vim.keymap.set("n", "<leader>gh", [[<Cmd>lua MiniDiff.toggle_overlay()<CR>]])
   vim.keymap.set("n", "<leader>gx", [[<Cmd>lua MiniGit.show_at_cursor()<CR>]])
   -- Mini Files: =================================================================
-  vim.keymap.set("n", "<leader>e", function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end)
+  vim.keymap.set("n", "<leader>e", function()
+    local path = vim.bo.buftype ~= "nofile" and vim.api.nvim_buf_get_name(0) or nil
+    require("mini.files").open(path, true)
+  end)
   vim.keymap.set("n", "<leader>E", function() require("mini.files").open(vim.uv.cwd(), true) end)
+  -- Mini Misc: ==================================================================
+  vim.keymap.set("n", "<leader>bm", function() require("mini.misc").zoom() end)
   -- Mini Jump2d: ================================================================
   vim.keymap.set({ "o", "x", "n" }, "s", "<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>")
 end)
@@ -973,8 +1030,6 @@ end)
 --          ╚═════════════════════════════════════════════════════════╝
 later(function()
   if vim.g.neovide then
-    vim.o.guicursor =
-    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait100-blinkoff700-blinkon700-Cursor/lCursor,sm:block-blinkwait0-blinkoff300-blinkon300"
     vim.keymap.set({ "n", "v" }, "<C-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
     vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
     vim.keymap.set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>")
