@@ -4,7 +4,7 @@
 # =============================================================================== #
 options=$(printf "POWER OFF\nREBOOT\nSUSPEND\nHIBERNATE\nLOCK\nLOG OUT")
 
-selected=$(echo -e "$options" | wmenu -il 6 -f "JetBrainsMono NF 10" -p "POWER MENU: " -N 151515 -n dadada -M 8C977D -m 1F1F1F -S 8C977D -s 151515)
+selected=$(echo -e "$options" | wmenu -il 6 -f "JetBrainsMono NF 10" -p "POWER MENU: " -N 141b1e -n dadada -M 8ccf7e -m 232a2d -S 8ccf7e -s 141b1e)
 
 case "$selected" in
 	"POWER OFF") doas poweroff ;;
