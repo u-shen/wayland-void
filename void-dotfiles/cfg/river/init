@@ -48,7 +48,7 @@ riverctl input $touchpad pointer-accel 0.1
 # =============================================================================== #
 # Misc configurations:                                                            #
 # =============================================================================== #
-riverctl border-width 1
+riverctl border-width 2
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 riverctl hide-cursor timeout 5000
