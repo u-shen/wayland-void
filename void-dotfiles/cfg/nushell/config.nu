@@ -41,8 +41,8 @@ $env.config = {
     header_on_separator: false
   }
   explore: {
-      status_bar_background: {fg: "#151515", bg: "#E8E3E3"},
-      command_bar_text: {fg: "#E8E3E3"},
+      status_bar_background: {fg: "#141b1e", bg: "#dadada"},
+      command_bar_text: {fg: "#dadada"},
       highlight: {fg: "black", bg: "yellow"},
       status: {
           error: {fg: "white", bg: "red"},
@@ -86,8 +86,8 @@ $env.config = {
       col_padding: 2
     }
     style: {
-      text: { fg: "#8C977D" }
-      selected_text: { fg: "#151515" bg: "#8C977D" attr: b}
+      text: { fg: "#141b1e" }
+      selected_text: { fg: "#141b1e" bg: "#8ccf7e" attr: b}
       description_text: yellow
     }
   }
