@@ -1,6 +1,6 @@
 [%General]
-author=jomada, based on KvAdaptaDark by Tsu Jan
-comment=Carl
+author=Jomada, based on KvAdaptaDark by Tsu Jan
+comment=Edna
 x11drag=menubar_and_primary_toolbar
 alt_mnemonic=true
 left_tabs=true
@@ -13,7 +13,7 @@ spread_progressbar=true
 composite=true
 menu_shadow_depth=5
 tooltip_shadow_depth=2
-splitter_width=4
+splitter_width=10
 scroll_width=9
 scroll_arrows=false
 scroll_min_extent=60
@@ -57,8 +57,8 @@ tooltip_delay=-1
 tree_branch_line=true
 no_window_pattern=false
 opaque=kaffeine,kmplayer,subtitlecomposer,kdenlive,vlc,smplayer,smplayer2,avidemux,avidemux2_qt4,avidemux3_qt4,avidemux3_qt5,kamoso,QtCreator,VirtualBox,trojita,dragon,digikam
-reduce_window_opacity=30
-reduce_menu_opacity=30
+reduce_window_opacity=20
+reduce_menu_opacity=20
 respect_DE=true
 scrollable_menu=false
 submenu_delay=250
@@ -74,16 +74,16 @@ shadowless_popup=false
 tooltip_blur_radius=0
 
 [GeneralColors]
-window.color=#111216
-base.color=#111216
-alt.base.color=#111216
-button.color=#111216
+window.color=#263238
+base.color=#263238
+alt.base.color=#263238
+button.color=#2d393f
 light.color=#47535a
 mid.light.color=#313131
 dark.color=black
 mid.color=#191919
-highlight.color=#3c78ff
-inactive.highlight.color=#3c78ff
+highlight.color=#10a6d4
+inactive.highlight.color=#10a6d4
 text.color=#cfd8dc
 window.text.color=#cfd8dc
 button.text.color=#cfd8dc
@@ -97,27 +97,27 @@ progress.indicator.text.color=#cfd8dc
 [Hacks]
 transparent_ktitle_label=false
 transparent_dolphin_view=false
-transparent_pcmanfm_sidepane=true
+transparent_pcmanfm_sidepane=false
 blur_translucent=false
 transparent_menutitle=false
 respect_darkness=false
 kcapacitybar_as_progressbar=true
 force_size_grip=false
-iconless_pushbutton=true
-iconless_menu=true
-disabled_icon_opacity=70
+iconless_pushbutton=false
+iconless_menu=false
+disabled_icon_opacity=100
 lxqtmainmenu_iconsize=22
-normal_default_pushbutton=true
-single_top_toolbar=true
+normal_default_pushbutton=false
+single_top_toolbar=false
 tint_on_mouseover=0
 transparent_pcmanfm_view=false
-no_selection_tint=true
+no_selection_tint=false
 transparent_arrow_button=true
 blur_only_active_window=false
-centered_forms=true
+centered_forms=false
 kinetic_scrolling=false
 middle_click_scroll=false
-noninteger_translucency=false
+noninteger_translucency=true
 style_vertical_toolbars=false
 
 [PanelButtonCommand]
@@ -384,7 +384,7 @@ min_height=+0.3font
 frame.expansion=0
 
 [Splitter]
-indicator.size=48
+indicator.size=360
 
 [Scrollbar]
 inherits=PanelButtonCommand

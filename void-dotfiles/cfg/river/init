@@ -58,10 +58,10 @@ riverctl xcursor-theme Breeze_Hacked 25
 # =============================================================================== #
 # Borders colours:                                                                #
 # =============================================================================== #
-riverctl background-color 0x151515
-riverctl border-color-focused 0x8C977D
-riverctl border-color-unfocused 0x1F1F1F
-riverctl border-color-urgent 0xB66467
+riverctl background-color 0x141b1e
+riverctl border-color-focused 0x8ccf7e
+riverctl border-color-unfocused 0x232a2d
+riverctl border-color-urgent 0xe57474
 
 # =============================================================================== #
 # window Rules:                                                                   #

@@ -115,11 +115,12 @@ $env.config = {
     event: { send: executehostcommand, cmd: 'cd (fd -t d -E .git -E node_modules
         | fzf --preview-window=right,30%
               --style=full --height=30% --border --layout reverse --preview-window right,40%
-              --color fg:#8C977D,bg:#151515
-              --color bg+:#1F1F1F,fg+:#8C977D
-              --color hl:#c4b28a,hl+:#c4b28a,gutter:#151515
-              --color pointer:#424242,info:#424242
-              --color border:#8C977D
+              --color fg:#5d6466,bg:#1e2527
+              --color bg+:#8ccf7e,fg+:#2c2f30
+              --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
+              --color pointer:#373d49,info:#606672
+              --color border:#1e2527
+              --color border:#8ccf7e
               --preview "eza --icons --tree {}")' }
   }
   {
@@ -141,11 +142,12 @@ $env.config = {
              --read0
              --query (commandline)
              --style=full --height=30% --border --layout reverse --preview-window right,40%
-             --color fg:#8C977D,bg:#151515
-             --color bg+:#1F1F1F,fg+:#8C977D
-             --color hl:#c4b28a,hl+:#c4b28a,gutter:#151515
-             --color pointer:#424242,info:#424242
-             --color border:#8C977D
+            --color fg:#5d6466,bg:#1e2527
+            --color bg+:#8ccf7e,fg+:#2c2f30
+            --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
+            --color pointer:#373d49,info:#606672
+            --color border:#1e2527
+            --color border:#8ccf7e
            | decode utf-8
            | str trim
        )"
