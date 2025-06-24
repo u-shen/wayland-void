@@ -114,3 +114,4 @@ x-scheme-handler/magnet=transmission-gtk.desktop
 x-scheme-handler/mailto=chromium.desktop
 x-scheme-handler/spotify=spotify.desktop
 x-scheme-handler/terminal=alacritty.desktop
+x-scheme-handler/mpv=open-in-mpv.desktop

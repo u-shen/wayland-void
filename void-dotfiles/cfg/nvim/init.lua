@@ -31,7 +31,8 @@ local now_if_args = vim.fn.argc(-1) > 0 and now or later
 --          ╰─────────────────────────────────────────────────────────╯
 now_if_args(function()
   require("mini.icons").setup()
-  require("mini.icons").tweak_lsp_kind()
+  later(MiniIcons.mock_nvim_web_devicons)
+  later(MiniIcons.tweak_lsp_kind)
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Misc                           │
@@ -51,18 +52,6 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require("mini.trailspace").setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Diff                           │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.diff").setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Git                            │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.git").setup()
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.SplitJoin                      │
@@ -93,6 +82,18 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require("mini.extra").setup()
+end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Git                            │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
+  require("mini.git").setup()
+end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Diff                           │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
+  require("mini.diff").setup({ view = { style = 'sign' } })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Notify                         │
@@ -176,7 +177,7 @@ later(function()
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Paris                          │
+--          │                     Mini.Pairs                          │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require("mini.pairs").setup({
@@ -196,6 +197,14 @@ later(function()
       ["<"] = { action = "closeopen", pair = "<>", neigh_pattern = "[^%S][^%S]", register = { cr = false } },
     },
   })
+  local cr_action = function()
+    if vim.fn.complete_info()['selected'] ~= -1 then
+      return vim.fn.complete_info()['selected'] ~= -1 and '\25' or '\25\r'
+    else
+      return require('mini.pairs').cr()
+    end
+  end
+  vim.keymap.set('i', '<CR>', cr_action, { expr = true })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Ai                             │
@@ -312,53 +321,6 @@ later(function()
   end
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Files                          │
---          ╰─────────────────────────────────────────────────────────╯
-now_if_args(function()
-  require("mini.files").setup({
-    mappings = {
-      go_in_plus = "<Tab>",
-      go_out_plus = "<C-h>",
-      synchronize = "<C-s>",
-      reset = "gh",
-      close = "q",
-      go_in = "",
-      go_out = "",
-    },
-    content = {
-      filter = function(fs_entry)
-        local ignore = { "node_modules", "build", "depes", "incremental" }
-        local filter_hidden = not vim.tbl_contains(ignore, fs_entry.name)
-        return filter_hidden and not vim.startswith(fs_entry.name, ".")
-      end,
-    },
-    windows = {
-      max_number = 1,
-      width_focus = 999,
-    },
-  })
-
-  -- Toggle dotfiles : ==================================================================
-  local toggle = { enabled = true }
-  toggle_dotfiles = function()
-    function toggle:bool()
-      self.enabled = not self.enabled
-      return self.enabled
-    end
-
-    local is_enabled = not toggle:bool()
-    require("mini.files").refresh({
-      content = {
-        filter = function(fs_entry)
-          local ignore = { "node_modules", "build", "depes", "incremental" }
-          local filter_hidden = not vim.tbl_contains(ignore, fs_entry.name)
-          return is_enabled and true or (filter_hidden and not vim.startswith(fs_entry.name, "."))
-        end,
-      },
-    })
-  end
-end)
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Tabline                        │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
@@ -446,68 +408,11 @@ now(function()
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Snippets                       │
---          ╰─────────────────────────────────────────────────────────╯
-now(function()
-  -- Languge Patterns: ==============================================================
-  local markdown = { 'markdown.json' }
-  local webPatterns = { 'web/*.json' }
-  local webHtmlPatterns = { 'web/*.json', 'html.json', "ejs.json" }
-  local lang_patterns = {
-    markdown_inline = markdown,
-    html = webHtmlPatterns,
-    ejs = webHtmlPatterns,
-    tsx = webPatterns,
-    javascript = webPatterns,
-    typescript = webPatterns,
-    javascriptreact = webPatterns,
-    typescriptreact = webPatterns,
-  }
-  -- Expand Patterns: ===============================================================
-  local match_strict = function(snips)
-    -- Do not match with whitespace to cursor's left ================================
-    -- return require('mini.snippets').default_match(snips, { pattern_fuzzy = '%S+' })
-    -- Match exact from the start to the end of the string ==========================
-    return require('mini.snippets').default_match(snips, { pattern_fuzzy = '^%S+$' })
-  end
-  -- Setup Snippets ==================================================================
-  require('mini.snippets').setup({
-    snippets = {
-      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
-      require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
-    },
-    mappings = {
-      expand = '<C-e>',
-      jump_next = '<C-l>',
-      jump_prev = '<C-h>',
-      stop = '<C-c>',
-    },
-    expand   = {
-      match = match_strict,
-      insert = function(snippet)
-        return require('mini.snippets').default_insert(snippet, {
-          empty_tabstop = '',
-          empty_tabstop_final = ''
-        })
-      end
-    },
-  })
-  require('mini.snippets').start_lsp_server()
-  -- Expand Snippets Or complete by Tab ===============================================
-  expand_or_complete = function()
-    if #MiniSnippets.expand({ insert = false }) > 0 then
-      vim.schedule(MiniSnippets.expand); return ''
-    end
-    return vim.fn.pumvisible() == 1 and
-        (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or "<Tab>"
-  end
-end)
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Completion                     │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- enable configured language servers 0.11: ========================================
-  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "eslint", "prisma", "markdown" }
+  local lsp_configs = { "lua", "html", "css", "emmet", "json", "tailwind", "typescript", "eslint", "prisma" }
   vim.lsp.config("*", {
     capabilities = {
       textDocument = {
@@ -548,6 +453,132 @@ now(function()
         })
       end,
     },
+  })
+end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Snippets                       │
+--          ╰─────────────────────────────────────────────────────────╯
+now(function()
+  -- Languge Patterns: ==============================================================
+  local markdown = { 'markdown.json' }
+  local webPatterns = { 'web/*.json' }
+  local webHtmlPatterns = { 'web/*.json', 'html.json', "ejs.json" }
+  local lang_patterns = {
+    markdown_inline = markdown,
+    html = webHtmlPatterns,
+    ejs = webHtmlPatterns,
+    tsx = webPatterns,
+    javascript = webPatterns,
+    typescript = webPatterns,
+    javascriptreact = webPatterns,
+    typescriptreact = webPatterns,
+  }
+  -- Expand Patterns: ===============================================================
+  local match_strict = function(snips)
+    -- Do not match with whitespace to cursor's left ================================
+    -- return require('mini.snippets').default_match(snips, { pattern_fuzzy = '%S+' })
+    -- Match exact from the start to the end of the string ==========================
+    return require('mini.snippets').default_match(snips, { pattern_fuzzy = '^%S+$' })
+  end
+  -- Setup Snippets ==================================================================
+  require('mini.snippets').setup({
+    snippets = {
+      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
+    },
+    mappings = {
+      expand = '<C-e>',
+      jump_next = '<C-l>',
+      jump_prev = '<C-h>',
+      stop = '<C-c>',
+    },
+    expand   = {
+      match = match_strict,
+      insert = function(snippet)
+        return require('mini.snippets').default_insert(snippet, {
+          empty_tabstop = '',
+          empty_tabstop_final = ''
+        })
+      end
+    },
+  })
+  require('mini.snippets').start_lsp_server()
+  -- Expand Snippets Or complete by Tab ===============================================
+  expand_or_complete = function()
+    if #MiniSnippets.expand({ insert = false }) > 0 then
+      vim.schedule(MiniSnippets.expand); return ''
+    end
+    return vim.fn.pumvisible() == 1 and
+        (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or "<Tab>"
+  end
+end)
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.Files                          │
+--          ╰─────────────────────────────────────────────────────────╯
+now_if_args(function()
+  require("mini.files").setup({
+    mappings = {
+      go_in_plus = "<Tab>",
+      go_out_plus = "<C-h>",
+      synchronize = "<C-s>",
+      reset = "gh",
+      close = "q",
+      go_in = "",
+      go_out = "",
+    },
+    content = {
+      filter = function(fs_entry)
+        local ignore = { "node_modules", "build", "depes", "incremental" }
+        local filter_hidden = not vim.tbl_contains(ignore, fs_entry.name)
+        return filter_hidden and not vim.startswith(fs_entry.name, ".")
+      end,
+    },
+    windows = {
+      max_number = 1,
+      width_focus = 999,
+    },
+  })
+  -- Toggle dotfiles : ==================================================================
+  local toggle = { enabled = true }
+  toggle_dotfiles = function()
+    function toggle:bool()
+      self.enabled = not self.enabled
+      return self.enabled
+    end
+
+    local is_enabled = not toggle:bool()
+    require("mini.files").refresh({
+      content = {
+        filter = function(fs_entry)
+          local ignore = { "node_modules", "build", "depes", "incremental" }
+          local filter_hidden = not vim.tbl_contains(ignore, fs_entry.name)
+          return is_enabled and true or (filter_hidden and not vim.startswith(fs_entry.name, "."))
+        end,
+      },
+    })
+  end
+  -- Open In Splits : ==================================================================
+  local map_split = function(buf_id, lhs, direction)
+    local rhs = function()
+      -- Make new window and set it as target
+      local cur_target = MiniFiles.get_explorer_state().target_window
+      local new_target = vim.api.nvim_win_call(cur_target, function()
+        vim.cmd(direction .. ' split')
+        return vim.api.nvim_get_current_win()
+      end)
+      MiniFiles.set_target_window(new_target)
+    end
+    -- Adding `desc` will result into `show_help` entries
+    local desc = 'Split ' .. direction
+    vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+  end
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesBufferCreate',
+    callback = function(args)
+      local buf_id = args.data.buf_id
+      map_split(buf_id, '<C-v>', 'belowright horizontal')
+      map_split(buf_id, '<C-b>', 'belowright vertical')
+    end,
   })
 end)
 --          ╔═════════════════════════════════════════════════════════╗
@@ -672,11 +703,11 @@ now(function()
   vim.opt.swapfile              = false
   vim.opt.writebackup           = false
   vim.opt.backup                = false
-  vim.opt.spell                 = false
   vim.opt.undofile              = true
   vim.opt.shada                 = { "'10", "<0", "s10", "h" }
   -- Spelling ================================================================
-  vim.opt.spelllang             = 'en,ru,uk'
+  vim.opt.spell                 = false
+  vim.opt.spelllang             = 'en'
   vim.opt.spelloptions          = 'camel'
   vim.opt.dictionary            = vim.fn.stdpath('config') .. '/misc/dict/english.txt'
   -- UI: ====================================================================
@@ -690,6 +721,7 @@ now(function()
   vim.opt.showmatch             = true
   vim.opt.laststatus            = 0
   vim.opt.cmdheight             = 0
+  vim.opt.cedit                 = ''
   vim.opt.pumwidth              = 20
   vim.opt.pumblend              = 8
   vim.opt.pumheight             = 8
@@ -728,6 +760,7 @@ now(function()
   vim.opt.tabstop               = 2
   vim.opt.softtabstop           = 2
   vim.opt.breakindentopt        = "list:-1"
+  vim.opt.iskeyword             = '@,48-57,_,192-255,-'
   vim.opt.formatlistpat         = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
   vim.opt.virtualedit           = "block"
   vim.opt.formatoptions         = "rqnl1j"
@@ -817,12 +850,12 @@ local diagnostic_opts = {
       [vim.diagnostic.severity.ERROR] = " ",
     },
     -- interference With Mini.Diff ====================================================
-    -- numhl = {
-    --   [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-    --   [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
-    --   [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
-    --   [vim.diagnostic.severity.HINT] = "DiagnosticHint",
-    -- },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+      [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+    },
   },
 }
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup: ======================
@@ -956,6 +989,9 @@ later(function()
   vim.keymap.set("n", "J", "mzJ`z:delmarks z<cr>")
   vim.keymap.set("x", "/", "<Esc>/\\%V")
   vim.keymap.set("x", "R", ":s###g<left><left><left>")
+  -- Split: ========================================================================
+  vim.keymap.set('n', '<leader>v', ':split<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>s', ':vsplit<CR>', { noremap = true, silent = true })
   -- Subtitle Keys: =================================================================
   vim.keymap.set('n', 'S', function()
     return ':%s/\\<' .. vim.fn.escape(vim.fn.expand('<cword>'), '/\\') .. '\\>/'
