@@ -11,7 +11,7 @@ case "$selected" in
 	"REBOOT") doas reboot ;;
 	"SUSPEND") doas zzz ;;
 	"HIBERNATE") doas zzz ;;
-	"LOCK") swaylock ;;
+	"LOCK") gtklock ;;
 	"LOG OUT") riverctl exit ;;
 	*) exit 1 ;;
 esac

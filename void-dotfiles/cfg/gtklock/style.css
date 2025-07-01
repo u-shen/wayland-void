@@ -1,3 +1,6 @@
+/* # =============================================================================== # */
+/* # Gtk Lock Style:                                                                 # */
+/* # =============================================================================== # */
 @define-color color0 #141b1e;
 @define-color color1 #e57474;
 @define-color color2 #8ccf7e;
@@ -55,6 +58,8 @@ window {
   border-radius: 20px;
   padding: 10px 15px;
   border: 1px solid @color2;
+  caret-color: @color2;
+  color: @color2;
 }
 
 #warning-label,
@@ -63,6 +68,10 @@ window {
   margin-top: 12px;
   padding: 10px 2rem;
   margin-bottom: 20px;
+}
+
+#error-label {
+  color: @color1;
 }
 
 #unlock-button {
