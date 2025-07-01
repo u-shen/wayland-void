@@ -102,6 +102,7 @@ later(function()
   require('mini.notify').setup()
   vim.notify = require('mini.notify').make_notify()
 end)
+
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Align                          │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -197,14 +198,6 @@ later(function()
       ["<"] = { action = "closeopen", pair = "<>", neigh_pattern = "[^%S][^%S]", register = { cr = false } },
     },
   })
-  local cr_action = function()
-    if vim.fn.complete_info()['selected'] ~= -1 then
-      return vim.fn.complete_info()['selected'] ~= -1 and '\25' or '\25\r'
-    else
-      return require('mini.pairs').cr()
-    end
-  end
-  vim.keymap.set('i', '<CR>', cr_action, { expr = true })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Ai                             │
@@ -432,8 +425,8 @@ now(function()
   require("mini.completion").setup({
     delay = { completion = 100, info = 100, signature = 50 },
     window = {
-      info = { border = "none" },
-      signature = { border = "none" },
+      info = { border = "single" },
+      signature = { border = "single" },
     },
     mappings = {
       force_twostep = '<C-n>',
@@ -483,7 +476,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
@@ -504,13 +497,14 @@ now(function()
   })
   require('mini.snippets').start_lsp_server()
   -- Expand Snippets Or complete by Tab ===============================================
-  expand_or_complete = function()
+  local expand_or_complete = function()
     if #MiniSnippets.expand({ insert = false }) > 0 then
       vim.schedule(MiniSnippets.expand); return ''
     end
     return vim.fn.pumvisible() == 1 and
         (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or "<Tab>"
   end
+  vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Files                          │
@@ -582,7 +576,17 @@ now_if_args(function()
   })
 end)
 --          ╔═════════════════════════════════════════════════════════╗
---          ║                          Treesitter                     ║
+--          ║                       Mini.Keymap                       ║
+--          ╚═════════════════════════════════════════════════════════╝
+now_if_args(function()
+  local map_multistep = require('mini.keymap').map_multistep
+  map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+  map_multistep('i', '<C-j>', { 'pmenu_next' })
+  map_multistep('i', '<C-k>', { 'pmenu_prev' })
+  map_multistep('i', '<BS>', { 'minipairs_bs' })
+end)
+--          ╔═════════════════════════════════════════════════════════╗
+--          ║                      Treesitter                         ║
 --          ╚═════════════════════════════════════════════════════════╝
 now_if_args(function()
   add({
@@ -1017,10 +1021,6 @@ later(function()
     vim.api.nvim_win_set_height(0, 20)
     vim.cmd("startinsert")
   end)
-  -- Move inside completion list with <TAB> ========================================
-  vim.keymap.set("i", "<C-j>", [[pumvisible() ? "\<C-n>" : "\<C-j>"]], { expr = true })
-  vim.keymap.set("i", "<C-k>", [[pumvisible() ? "\<C-p>" : "\<C-k>"]], { expr = true })
-  vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true })
   -- Mini Pick =====================================================================
   vim.keymap.set('n', '<leader>fd', zoxide_pick)
   vim.keymap.set('n', '<leader>fn', directory_pick)

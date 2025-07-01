@@ -1,14 +1,14 @@
 # =============================================================================== #
-# Git Configuartion:                                                              #
+# Git Configurations:                                                             #
 # =============================================================================== #
 [init]
-	defaultBranch = main
+	defaultBranch                   = main
 [user]
-	name = u-shen
-	email = farah.ushen@gmail.com
+	name                            = u-shen
+	email                           = farah.ushen@gmail.com
 [core]
-	editor = nvim
-    pager = delta
+	editor                          = nvim
+  pager                           = delta
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -28,6 +28,6 @@
     line-numbers-plus-style       = "#8C977D"
     line-numbers-zero-style       = "#424242"
 [merge]
-    conflictstyle = diff3
+    conflictstyle                 = diff3
 [diff]
-    colorMoved = default
+    colorMoved                    = default

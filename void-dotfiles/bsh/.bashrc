@@ -27,6 +27,12 @@ export PAGER="less"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
+export KOMOREBI_CONFIG_HOME="$HOME/.config/komorebi"
+export BUN_INSTALL_CACHE_DIR="$HOME/.cache/bun/install/cache"
+export NI_CONFIG_FILE="$HOME/.config/ni/nirc"
+export NI_DEFAULT_AGENT="npm"
+export NI_GLOBAL_AGENT="npm"
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 
 # =============================================================================== #
 # Clean ~:                                                                        #
@@ -97,6 +103,7 @@ eval "$(starship init bash)"
 # =============================================================================== #
 eval "$(zoxide init bash)"
 
+
 # =============================================================================== #
 # ALIASES:                                                                        #
 # =============================================================================== #
@@ -160,38 +167,19 @@ alias cat="bat"
 alias cls="clear"
 
 # =============================================================================== #
-# Functions Alias :                                                               #
-# =============================================================================== #
-# Universal Terminal alias for bun, pnpm, npm, and yarn:                          #
-# =============================================================================== #
-p() {
-  if [[ -f bun.lockb ]]; then
-    command bun "$@"
-  elif [[ -f pnpm-lock.yaml ]]; then
-    command pnpm "$@"
-  elif [[ -f yarn.lock ]]; then
-    command yarn "$@"
-  elif [[ -f package-lock.json ]]; then
-    command npm "$@"
-  else
-    command pnpm "$@"
-  fi
-}
-
-# =============================================================================== #
 # Source fzf keybindingd:                                                         #
 # =============================================================================== #
 eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_COMMAND="fd --type=d --no-hidden --strip-cwd-prefix --exclude .git"
 export FZF_DEFAULT_OPTS='
-  --style=full --height=30% --border --layout reverse --preview-window right,40%
-  --color fg:#5d6466,bg:#1e2527
-  --color bg+:#8ccf7e,fg+:#2c2f30
-  --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
-  --color pointer:#373d49,info:#606672
-  --color border:#1e2527
-  --color border:#8ccf7e'
+       --style=full --height=30% --border --layout reverse --preview-window right,40%
+       --color fg:#b3b9b8,bg:#141b1e
+       --color bg+:#1e2527,fg+:#dadada
+       --color hl:#8ccf7e,hl+:#8ccf7e,gutter:#141b1e
+       --color pointer:#373d49,info:#606672
+       --color border:#141b1e
+       --color border:#8ccf7e'
 
 # =============================================================================== #
 # Tab Completions:                                                                #

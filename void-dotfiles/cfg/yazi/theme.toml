@@ -18,7 +18,7 @@ count_copied   = { fg = "#232a2d", bg = "#8ccf7e" }
 count_cut      = { fg = "#232a2d", bg = "#e57474" }
 count_selected = { fg = "#232a2d", bg = "#8ccf7e" }
 border_symbol = "│"
-border_style  = { fg = "#4f585e" }
+border_style  = { fg = "#232a2d" }
 syntect_theme = ""
 
 [status]

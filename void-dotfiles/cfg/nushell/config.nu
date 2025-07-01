@@ -17,8 +17,8 @@ $env.config = {
   edit_mode: vi
   error_style: "fancy"
   cursor_shape: {
-    vi_insert: block
     vi_normal: block
+    vi_insert: line
     emacs: line
   }
   ls: {
@@ -50,7 +50,7 @@ $env.config = {
           info: {}
       },
       table: {
-          split_line: {fg: "#424242"},
+          split_line: {fg: "#232a2d"},
           selected_cell: {bg: light_blue},
           selected_row: {},
           selected_column: {},
@@ -60,7 +60,7 @@ $env.config = {
       max_size: 100_000
       sync_on_enter: true
       file_format: "sqlite"
-      isolation: false
+      isolation: true
   }
   completions: {
       case_sensitive: false
@@ -78,7 +78,7 @@ $env.config = {
    {
     name: completion_menu
     only_buffer_difference: false
-    marker: ">> "
+    marker: "󱓇 "
     type: {
       layout: columnar
       columns: 4
@@ -86,9 +86,11 @@ $env.config = {
       col_padding: 2
     }
     style: {
-      text: { fg: "#141b1e" }
+      text: { fg: "#b3b9b8" }
       selected_text: { fg: "#141b1e" bg: "#8ccf7e" attr: b}
-      description_text: yellow
+      description_text: { fg: "#e5c76b" }
+      match_text: { attr: b }
+      selected_match_text: { attr: br }
     }
   }
   ]
@@ -113,15 +115,7 @@ $env.config = {
     keycode: char_c
     mode: [emacs, vi_normal, vi_insert]
     event: { send: executehostcommand, cmd: 'cd (fd -t d -E .git -E node_modules
-        | fzf --preview-window=right,30%
-              --style=full --height=30% --border --layout reverse --preview-window right,40%
-              --color fg:#5d6466,bg:#1e2527
-              --color bg+:#8ccf7e,fg+:#2c2f30
-              --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
-              --color pointer:#373d49,info:#606672
-              --color border:#1e2527
-              --color border:#8ccf7e
-              --preview "eza --icons --tree {}")' }
+        | fzf --preview "eza --icons --tree {}")' }
   }
   {
     name: fuzzy_history
@@ -141,13 +135,6 @@ $env.config = {
              --scheme history
              --read0
              --query (commandline)
-             --style=full --height=30% --border --layout reverse --preview-window right,40%
-            --color fg:#5d6466,bg:#1e2527
-            --color bg+:#8ccf7e,fg+:#2c2f30
-            --color hl:#8ccf7e,hl+:#26292a,gutter:#1e2527
-            --color pointer:#373d49,info:#606672
-            --color border:#1e2527
-            --color border:#8ccf7e
            | decode utf-8
            | str trim
        )"
@@ -182,14 +169,14 @@ $env.PROMPT_MULTILINE_INDICATOR = ""
 # =============================================================================== #
 # Completer:                                                                      #
 # =============================================================================== #
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
+let carapace_completer = {|spans|
+    carapace $spans.0 nushell ...$spans | from json
+}
 let zoxide_completer = {|spans|
     $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
 }
 # =============================================================================== #
 # END OF FILE:                                                                    #
 # =============================================================================== #
-# source ~/.cache/carapace/init.nu
+source ~/.cache/carapace/init.nu
 source ~/.cache/zoxide.nu

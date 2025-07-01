@@ -9,7 +9,7 @@ var options = {
 	font_color: "8ccf7e",
 	border_size: 1.0,
 	border_color: "000000",
-	font_color_currentChapter: "8C977D",
+	font_color_currentChapter: "e57474",
 };
 var playinfo = {
 	chapters: [], //array

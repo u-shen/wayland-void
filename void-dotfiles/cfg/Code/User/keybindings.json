@@ -35,7 +35,7 @@
         "workbench.files.action.focusFilesExplorer"
       ]
     },
-    "when": "(vim.mode == 'Normal' || !activeEditor) && !inQuickOpen && !terminalFocus "
+    "when": "(vim.mode == 'Normal' || !activeEditor) && !inQuickOpen && !terminalFocus && !inputFocus"
   },
   {
     "key": "space e",
@@ -149,7 +149,7 @@
     "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space gg",
+    "key": "space g g",
     "command": "runCommands",
     "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)",
     "args": {
@@ -165,6 +165,22 @@
   // # =============================================================================== #
   // # File Explorer:                                                                  #
   // # =============================================================================== #
+  {
+    "key": "g g",
+    "command": "list.focusFirst",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "g y",
+    "command": "copyFilePath",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+
+  {
+    "key": "-",
+    "command": "list.focusParent",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
   {
     "key": "q",
     "command": "workbench.action.toggleSidebarVisibility",
@@ -202,7 +218,17 @@
   },
   {
     "key": "d",
+    "command": "moveFileToTrash",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+d",
     "command": "deleteFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
@@ -247,6 +273,65 @@
     "key": "tab",
     "command": "list.toggleExpand",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && explorerResourceIsFolder && !inputFocus"
+  },
+
+  // # =============================================================================== #
+  // # Git:                                                                            #
+  // # =============================================================================== #
+  {
+    "key": "space g a",
+    "command": "git.stageAll",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g c",
+    "command": "git.commit",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g shift+c",
+    "command": "git.commitAmend",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g p",
+    "command": "git.push",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g shift+p",
+    "command": "git.pull",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g d",
+    "command": "workbench.view.scm",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g shift+d",
+    "command": "git.openChange",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g s",
+    "command": "gitlens.showQuickCommitDetails",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g l",
+    "command": "workbench.view.scm",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g h",
+    "command": "gitlens.toggleFileBlame",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g x",
+    "command": "gitlens.showQuickCommitDetails",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   },
 
   // # =============================================================================== #
@@ -303,17 +388,28 @@
   {
     "key": "space f f",
     "command": "workbench.action.quickOpen",
-    "when": "(vim.mode == 'Normal' || !activeEditor) && !terminalFocus && !inQuickOpen"
+    "when": "vim.mode == Normal || (!sideBarFocus && !inputFocus && !inQuickOpen)"
   },
   {
     "key": "space f r",
     "command": "workbench.action.openRecent",
-    "when": "(vim.mode == 'Normal' || !activeEditor) && !terminalFocus && !inQuickOpen"
+    "when": "vim.mode == Normal || (!sideBarFocus && !inputFocus && !inQuickOpen)"
   },
   {
     "key": "space f b",
     "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor",
-    "when": "(vim.mode == 'Normal' || !activeEditor) && !terminalFocus && !inQuickOpen"
+    "when": "vim.mode == Normal || (!sideBarFocus && !inputFocus && !inQuickOpen)"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeQuickOpen",
+        "workbench.action.quickOpen"
+      ]
+    },
+    "when": "inQuickOpen"
   },
   {
     "key": "tab",
@@ -323,12 +419,26 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
+    "when": "inQuickOpen || inEditorsPicker"
   },
   {
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
+    "when": "inQuickOpen || inEditorsPicker"
+  },
+
+  // # =============================================================================== #
+  // # sidebar:                                                                        #
+  // # =============================================================================== #
+  {
+    "key": "j",
+    "command": "list.focusAnyDown",
+    "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "key": "k",
+    "command": "list.focusAnyUp",
+    "when": "sideBarFocus && !inputFocus"
   },
 
   // # =============================================================================== #
@@ -374,15 +484,6 @@
   },
 
   // # =============================================================================== #
-  // # Terminal:                                                                       #
-  // # =============================================================================== #
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-
-  // # =============================================================================== #
   // # Splits:                                                                         #
   // # =============================================================================== #
   {
@@ -394,6 +495,15 @@
     "key": "space v",
     "command": "workbench.action.splitEditorDown",
     "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !inQuickOpen"
+  },
+
+  // # =============================================================================== #
+  // # Terminal:                                                                       #
+  // # =============================================================================== #
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   },
 
   // # =============================================================================== #
@@ -411,6 +521,6 @@
   {
     "key": "space q q",
     "command": "workbench.action.closeWindow",
-    "when": "(vim.mode == 'Normal' || !activeEditor) && !terminalFocus && !inQuickOpen"
+    "when": "vim.mode == Normal || (!sideBarFocus && !inputFocus && !inQuickOpen)"
   }
 ]

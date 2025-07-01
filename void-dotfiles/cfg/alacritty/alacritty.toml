@@ -2,6 +2,7 @@
 # General:                                                                        #
 # =============================================================================== #
 general.live_config_reload = true
+general.working_directory = "/home/lli"
 
 # =============================================================================== #
 # Terminal:                                                                       #
@@ -20,6 +21,7 @@ TERM = "xterm-256color"
 # =============================================================================== #
 [window]
 decorations = "None"
+opacity = 0.99
 [window.dimensions]
 columns = 120
 lines = 48
@@ -34,7 +36,7 @@ italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 offset = { x = 0, y = 1 }
 glyph_offset = { x = 0, y = 0 }
-size = 9.3
+size = 9.4
 
 # =============================================================================== #
 # scrolling:                                                                      #
@@ -67,30 +69,36 @@ save_to_clipboard = true
 # =============================================================================== #
 # colorsscheme:                                                                   #
 # =============================================================================== #
-  [colors.primary]
-    background = '0x141b1e'
-    foreground =  '0xdadada'
-  [colors.cursor]
-    text = '0x141b1e'
-    cursor = '0x8ccf7e'
-  [colors.normal]
-    black =   '0x232a2d'
-    red =     '0xe57474'
-    green =   '0x8ccf7e'
-    yellow =  '0xe5c76b'
-    blue =     '0x67b0e8'
-    magenta = '0xc47fd5'
-    cyan =    '0x6cbfbf'
-    white =   '0xb3b9b8'
-  [colors.bright]
-    black =   '0x2d3437'
-    red =     '0xef7e7e'
-    green =   '0x96d988'
-    yellow =  '0xf4d67a'
-    blue =    '0x71baf2'
-    magenta = '0xce89df'
-    cyan =    '0x67cbe7'
-    white =   '0xbdc3c2'
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+  background = '0x141b1e'
+  foreground =  '0xdadada'
+
+[colors.cursor]
+  text = '0x141b1e'
+  cursor = '0x8ccf7e'
+
+[colors.normal]
+  black =   '0x232a2d'
+  red =     '0xe57474'
+  green =   '0x8ccf7e'
+  yellow =  '0xe5c76b'
+  blue =     '0x67b0e8'
+  magenta = '0xc47fd5'
+  cyan =    '0x6cbfbf'
+  white =   '0xb3b9b8'
+
+[colors.bright]
+  black =   '0x2d3437'
+  red =     '0xef7e7e'
+  green =   '0x96d988'
+  yellow =  '0xf4d67a'
+  blue =    '0x71baf2'
+  magenta = '0xce89df'
+  cyan =    '0x67cbe7'
+  white =   '0xbdc3c2'
 
 # =============================================================================== #
 # keybidings:                                                                     #
