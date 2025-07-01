@@ -48,7 +48,7 @@ riverctl input $touchpad pointer-accel 0.1
 # =============================================================================== #
 # Misc configurations:                                                            #
 # =============================================================================== #
-riverctl border-width 2
+riverctl border-width 1
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 riverctl hide-cursor timeout 5000
@@ -145,7 +145,6 @@ riverctl map normal $mod+Shift R spawn "$HOME/.config/river/init"
 riverctl map normal $mod Print spawn "$HOME/.config/river/scripts/screenShoot.sh"
 riverctl map normal $mod+Shift Print spawn "$HOME/.config/river/scripts/screenRecored.sh"
 riverctl map normal $mod+Shift S spawn "$HOME/.config/river/scripts/screenShoot.sh"
-riverctl map normal $mod+Shift R spawn "$HOME/.config/river/scripts/screenRecored.sh"
 # MUSIC Bidings:                                                                  #
 # =============================================================================== #
 riverctl map normal $mod4 P spawn "mocp --toggle-pause"
