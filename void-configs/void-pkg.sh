@@ -27,7 +27,7 @@ sudo xbps-install -Sy \
     NetworkManager network-manager-applet linux-wifi-hotspot \
     net-tools wireless_tools bind-utils iputils inetutils-telnet \
     # WAYLAND QT Tools:
-    qt5ct qt5-wayland qt6-wayland kvantum  \
+    qt5ct qt6ct qt5-wayland qt6-wayland kvantum  \
     # SOUNDS TOOLS:
     pipewire wireplumber alsa-pipewire alsa-utils pamixer pavucontrol \
     # BLUETOOTHS TOOLS
@@ -35,7 +35,7 @@ sudo xbps-install -Sy \
     # LANGUAGE TOOLS:
     nodejs lua-language-server  \
     # FONTS:
-    noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji \
+    noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk \
     font-awesome dejavu-fonts-ttf \
     # theme
     gtk-engine-murrine breeze-hacked-cursor-theme papirus-icon-theme

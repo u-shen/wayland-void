@@ -173,7 +173,7 @@ eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_COMMAND="fd --type=d --no-hidden --strip-cwd-prefix --exclude .git"
 export FZF_DEFAULT_OPTS='
-       --style=full --height=30% --border --layout reverse --preview-window right,40%
+       --style=minimal --height=30% --border --layout reverse --preview-window right,40%
        --color fg:#b3b9b8,bg:#141b1e
        --color bg+:#1e2527,fg+:#dadada
        --color hl:#8ccf7e,hl+:#8ccf7e,gutter:#141b1e
