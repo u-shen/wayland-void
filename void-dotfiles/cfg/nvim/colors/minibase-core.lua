@@ -226,10 +226,10 @@ if palette then
 end
 -- General: =====================================================================
 vim.api.nvim_set_hl(0, 'SignColumn', { bg = palette.base00 })
+vim.api.nvim_set_hl(0, 'Cursor', { fg = palette.base00, bg = palette.base0B })
+vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.base03, bg = palette.base00 })
 vim.api.nvim_set_hl(0, 'Search', { fg = palette.base00, bg = palette.base09 })
 vim.api.nvim_set_hl(0, 'CurSearch', { fg = palette.base00, bg = palette.base0B })
-vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.base03, bg = palette.base00 })
-vim.api.nvim_set_hl(0, 'Cursor', { fg = palette.base00, bg = palette.base0B })
 vim.api.nvim_set_hl(0, 'FloatBorder', { fg = palette.base0B, bg = palette.base00 })
 vim.api.nvim_set_hl(0, 'FloatTitle', { link = "FloatBorder" })
 vim.api.nvim_set_hl(0, 'NormalFloat', { link = "FloatBorder" })
@@ -300,14 +300,10 @@ vim.api.nvim_set_hl(0, 'MiniDiffSignAdd', { fg = palette.base0B, bg = palette.ba
 vim.api.nvim_set_hl(0, 'MiniDiffSignChange', { fg = palette.base0C, bg = palette.base00 })
 vim.api.nvim_set_hl(0, 'MiniDiffSignDelete', { fg = palette.base08, bg = palette.base00 })
 -- Completions: ================================================================
-vim.api.nvim_set_hl(0, "MiniCompletionActiveParameter",
-  { fg = palette.base0B, bg = palette.base01, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "MiniCompletionActiveParameter", { fg = palette.base0B, bg = palette.base01 })
 vim.api.nvim_set_hl(0, "MiniCompletionInfoBorderOutdated", { link = "Mini.MiniCompletionActiveParameter" })
--- CursorWord: =================================================================
-vim.api.nvim_set_hl(0, "MiniCursorword", { bg = palette.base02 })
-vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "MiniCursorword" })
 -- Indentscope: ================================================================
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.base0B })
 vim.api.nvim_set_hl(0, "MiniIndentscopeSymbolOff", { link = "MiniIndentscopeSymbol" })
 -- Trailspace: ================================================================
-vim.api.nvim_set_hl(0, "MiniTrailspace", { bg = palette.base08 })
+vim.api.nvim_set_hl(0, "MiniTrailspace", { bg = palette.base01 })

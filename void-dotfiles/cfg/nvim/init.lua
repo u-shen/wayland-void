@@ -42,12 +42,6 @@ later(function()
   require('mini.misc').setup_auto_root({ '.git', "package.json" }, vim.fs.dirname)
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.CursorWord                     │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require('mini.cursorword').setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Trailspace                     │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
@@ -58,24 +52,6 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
   require("mini.splitjoin").setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Operators                      │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require('mini.operators').setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Bracketed                      │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.bracketed").setup()
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Jump                           │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require('mini.jump').setup()
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Extra                          │
@@ -102,43 +78,6 @@ later(function()
   require('mini.notify').setup()
   vim.notify = require('mini.notify').make_notify()
 end)
-
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Align                          │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require('mini.align').setup({
-    mappings = {
-      start = '<Leader>=',
-      start_with_preview = '<Leader>+',
-    },
-  })
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Indentscope                    │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.indentscope").setup({
-    symbol = "▎",
-    draw = { priority = 10000 },
-    options = {
-      try_as_border = true,
-      border = "both",
-    }
-  })
-end)
---          ╭─────────────────────────────────────────────────────────╮
---          │                   Mini.Jump2d                           │
---          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  require("mini.jump2d").setup({
-    labels = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    view = { dim = true, n_steps_ahead = 1 },
-    allowed_lines = { cursor_at = false },
-    mappings = { start_jumping = "" },
-    silent = true,
-  })
-end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Surround                       │
 --          ╰─────────────────────────────────────────────────────────╯
@@ -164,16 +103,11 @@ end)
 later(function()
   require("mini.hipatterns").setup({
     highlighters = {
-      -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE':  ============================
       fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
       hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
       todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
       note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-      -- Highlight hex color strings (`#rrggbb`) using that color: =========================
-      hex_color = require("mini.hipatterns").gen_highlighter.hex_color({
-        style = "inline",
-        inline_text = "■ ",
-      }),
+      hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
     },
   })
 end)
@@ -184,7 +118,7 @@ later(function()
   require("mini.pairs").setup({
     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
     skip_ts = { "string" },
-    modes = { insert = true, command = true, terminal = false },
+    modes = { insert = true, command = true, terminal = true },
     mappings = {
       [")"] = { action = "close", pair = "()", neigh_pattern = "[^\\]." },
       ["]"] = { action = "close", pair = "[]", neigh_pattern = "[^\\]." },
@@ -205,11 +139,11 @@ end)
 later(function()
   require("mini.ai").setup({
     custom_textobjects = {
-      B = require("mini.extra").gen_ai_spec.buffer(),
-      D = require("mini.extra").gen_ai_spec.diagnostic(),
-      I = require("mini.extra").gen_ai_spec.indent(),
-      L = require("mini.extra").gen_ai_spec.line(),
-      N = require("mini.extra").gen_ai_spec.number(),
+      r = require("mini.extra").gen_ai_spec.diagnostic(),
+      a = require("mini.extra").gen_ai_spec.buffer(),
+      i = require("mini.extra").gen_ai_spec.indent(),
+      d = require("mini.extra").gen_ai_spec.number(),
+      c = require("mini.extra").gen_ai_spec.line(),
       e = {
         {
           -- __-1, __-U, __-l, __-1_, __-U_, __-l_
@@ -272,7 +206,7 @@ later(function()
   })
   vim.ui.select = MiniPick.ui_select
   -- Pick Directory  Form Current Directory: ===========================================
-  function directory_pick()
+  local function directory_pick()
     local root_dir = vim.fn.getcwd()
     local fd_output = vim.fn.systemlist('fd --type d --exclude ".*" . "' .. root_dir .. '"')
     MiniPick.start({
@@ -280,17 +214,17 @@ later(function()
         items = fd_output,
         name = 'Directories (fd)',
         choose = function(item)
-          vim.fn.chdir(item)
           vim.schedule(function()
+            vim.fn.chdir(item)
             require("mini.files").open(item)
           end)
         end,
       },
     })
   end
-
+  vim.keymap.set('n', '<leader>fn', directory_pick)
   -- Pick Directory  Form Zoxide : ======================================================
-  function zoxide_pick()
+  local function zoxide_pick()
     local zoxide_output = vim.fn.systemlist('zoxide query -ls')
     local directories = {}
     for _, line in ipairs(zoxide_output) do
@@ -304,14 +238,15 @@ later(function()
         items = directories,
         name = 'Directories (zoxide)',
         choose = function(item)
-          vim.fn.chdir(item)
           vim.schedule(function()
+            vim.fn.chdir(item)
             require("mini.files").open(item)
           end)
         end,
       },
     })
   end
+  vim.keymap.set('n', '<leader>fd', zoxide_pick)
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Tabline                        │
@@ -325,7 +260,7 @@ now(function()
       return MiniTabline.default_format(buf_id, label) .. suffix
     end,
   })
-  -- hide when only one Tabline: =====================================================
+  -- hide when only One Buffer: =====================================================
   local get_n_listed_bufs = function()
     local n = 0
     for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
@@ -334,14 +269,10 @@ now(function()
     return n
   end
   vim.api.nvim_create_autocmd({
-    'BufAdd',
-    'BufDelete',
     'BufEnter',
     'BufWinEnter',
-    'TabClosed',
-    'TabEnter',
-    'WinClosed',
-    'SessionLoadPost',
+    'BufAdd',
+    'BufDelete',
   }, {
     desc = 'Hide the tabline when empty',
     group = group,
@@ -431,8 +362,8 @@ now(function()
     mappings = {
       force_twostep = '<C-n>',
       force_fallback = '<C-S-n>',
-      scroll_down = '<C-j>',
-      scroll_up = '<C-k>',
+      scroll_down = '<C-f>',
+      scroll_up = '<C-b>',
     },
     lsp_completion = {
       source_func = 'omnifunc',
@@ -453,21 +384,22 @@ end)
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
   -- Languge Patterns: ==============================================================
-  local markdown = { 'markdown.json' }
-  local webPatterns = { 'web/*.json' }
-  local webHtmlPatterns = { 'web/*.json', 'html.json', "ejs.json" }
-  local lang_patterns = {
+  local markdown        = { 'markdown.json' }
+  local webHtmlPatterns = { 'html.json', "ejs.json" }
+  local webJsTsPatterns = { 'web/javascript.json' }
+  local webPatterns     = { 'web/*.json' }
+  local lang_patterns   = {
     markdown_inline = markdown,
     html = webHtmlPatterns,
     ejs = webHtmlPatterns,
     tsx = webPatterns,
-    javascript = webPatterns,
-    typescript = webPatterns,
     javascriptreact = webPatterns,
     typescriptreact = webPatterns,
+    javascript = webJsTsPatterns,
+    typescript = webJsTsPatterns,
   }
   -- Expand Patterns: ===============================================================
-  local match_strict = function(snips)
+  local match_strict    = function(snips)
     -- Do not match with whitespace to cursor's left ================================
     -- return require('mini.snippets').default_match(snips, { pattern_fuzzy = '%S+' })
     -- Match exact from the start to the end of the string ==========================
@@ -476,7 +408,7 @@ now(function()
   -- Setup Snippets ==================================================================
   require('mini.snippets').setup({
     snippets = {
-      require('mini.snippets').gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+      require('mini.snippets').gen_loader.from_file('~/AppData/Local/nvim/snippets/global.json'),
       require('mini.snippets').gen_loader.from_lang({ lang_patterns = lang_patterns })
     },
     mappings = {
@@ -514,9 +446,9 @@ now_if_args(function()
     mappings = {
       go_in_plus = "<Tab>",
       go_out_plus = "<C-h>",
-      synchronize = "<C-s>",
-      reset = "gh",
+      synchronize = "s",
       close = "q",
+      reset = "gh",
       go_in = "",
       go_out = "",
     },
@@ -532,9 +464,9 @@ now_if_args(function()
       width_focus = 999,
     },
   })
-  -- Toggle dotfiles : ==================================================================
+  -- Toggle dotfiles : ===================================================================
   local toggle = { enabled = true }
-  toggle_dotfiles = function()
+  local toggle_dotfiles = function()
     function toggle:bool()
       self.enabled = not self.enabled
       return self.enabled
@@ -551,6 +483,10 @@ now_if_args(function()
       },
     })
   end
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniFilesBufferCreate",
+    callback = function(args) vim.keymap.set("n", ".", toggle_dotfiles, { buffer = args.data.buf_id }) end,
+  })
   -- Open In Splits : ==================================================================
   local map_split = function(buf_id, lhs, direction)
     local rhs = function()
@@ -571,19 +507,19 @@ now_if_args(function()
     callback = function(args)
       local buf_id = args.data.buf_id
       map_split(buf_id, '<C-v>', 'belowright horizontal')
-      map_split(buf_id, '<C-b>', 'belowright vertical')
+      map_split(buf_id, '<C-s>', 'belowright vertical')
     end,
   })
 end)
---          ╔═════════════════════════════════════════════════════════╗
---          ║                       Mini.Keymap                       ║
---          ╚═════════════════════════════════════════════════════════╝
-now_if_args(function()
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.keymaps                        │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
   local map_multistep = require('mini.keymap').map_multistep
-  map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+  map_multistep('i', '<CR>', { 'minipairs_cr' })
+  map_multistep('i', '<BS>', { 'minipairs_bs' })
   map_multistep('i', '<C-j>', { 'pmenu_next' })
   map_multistep('i', '<C-k>', { 'pmenu_prev' })
-  map_multistep('i', '<BS>', { 'minipairs_bs' })
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                      Treesitter                         ║
@@ -611,21 +547,21 @@ end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      TS Auto Close/Rename               │
 --          ╰─────────────────────────────────────────────────────────╯
-later(function()
+now_if_args(function()
   add("windwp/nvim-ts-autotag")
   require('nvim-ts-autotag').setup()
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                    TS Rainbow delimiters                │
 --          ╰─────────────────────────────────────────────────────────╯
-later(function()
+now_if_args(function()
   add("hiphish/rainbow-delimiters.nvim")
   require('rainbow-delimiters.setup').setup()
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                         Formatting                      ║
 --          ╚═════════════════════════════════════════════════════════╝
-later(function()
+now_if_args(function()
   add('stevearc/conform.nvim')
   require('conform').setup({
     formatters_by_ft = {
@@ -677,8 +613,6 @@ end)
 --          │                     Neovim Options                      │
 --          ╰─────────────────────────────────────────────────────────╯
 now(function()
-  -- Colors =====================================================================
-  if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
   -- Global:  =================================================================
   vim.g.mapleader               = vim.keycode("<space>")
   vim.g.maplocalleader          = vim.g.mapleader
@@ -715,23 +649,23 @@ now(function()
   vim.opt.spelloptions          = 'camel'
   vim.opt.dictionary            = vim.fn.stdpath('config') .. '/misc/dict/english.txt'
   -- UI: ====================================================================
+  vim.opt.termguicolors         = true
   vim.opt.number                = true
   vim.opt.relativenumber        = false
   vim.opt.cursorline            = false
   vim.opt.splitright            = true
   vim.opt.splitbelow            = true
-  vim.opt.termguicolors         = true
   vim.opt.confirm               = true
   vim.opt.showmatch             = true
+  vim.opt.breakindent           = true
+  vim.opt.copyindent            = true
   vim.opt.laststatus            = 0
   vim.opt.cmdheight             = 0
-  vim.opt.cedit                 = ''
+  vim.opt.cedit                 = '^F'
   vim.opt.pumwidth              = 20
   vim.opt.pumblend              = 8
   vim.opt.pumheight             = 8
   vim.opt.wrap                  = false
-  vim.opt.breakindent           = true
-  vim.opt.copyindent            = true
   vim.opt.list                  = false
   vim.opt.modeline              = false
   vim.opt.showmode              = false
@@ -910,17 +844,6 @@ later(function()
     desc = "Disable autoformat-on-save",
     bang = true,
   })
-  -- Disable MiniIndentscope in Terminals ===============================================
-  vim.api.nvim_create_autocmd("TermEnter", {
-    callback = function()
-      vim.b.miniindentscope_disable = true
-    end
-  })
-  -- toggle_dotfiles in MiniFile ======================================================
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "MiniFilesBufferCreate",
-    callback = function(args) vim.keymap.set("n", ".", toggle_dotfiles, { buffer = args.data.buf_id }) end,
-  })
   -- Qucikfix List: ==================================================================
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
@@ -934,27 +857,14 @@ later(function()
   -- close some filetypes with <q>: : =====================================================
   vim.api.nvim_create_autocmd('FileType', {
     pattern = {
-      'PlenaryTestPopup',
-      'help',
-      'lspinfo',
-      'man',
-      'notify',
       'qf',
+      'man',
+      'help',
       'query',
-      'spectre_panel',
+      'notify',
+      'lspinfo',
       'startuptime',
-      'tsplayground',
-      'neotest-output',
       'checkhealth',
-      'neotest-summary',
-      'neotest-output-panel',
-      'toggleterm',
-      'neo-tree',
-      'gitsigns-blame',
-      'AvanteAsk',
-      'AvanteInput',
-      'markdown',
-      'Trouble',
     },
     callback = function(event)
       local bo = vim.bo[event.buf]
@@ -969,37 +879,36 @@ end)
 --          │                     Neovim keymaps                      │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
-  -- Basic Keymaps: ================================================================
+  -- General: =======================================================================
   vim.keymap.set("n", "<C-s>", ":silent up<CR>")
   vim.keymap.set("i", "<C-s>", "<ESC> :up<CR>")
+  vim.keymap.set("n", "<C-c>", "cit")
   vim.keymap.set("n", "<leader>qq", ":qa<CR>")
   vim.keymap.set("n", "<leader>wq", ":close<CR>")
   vim.keymap.set("n", "<ESC>", ":nohl<CR>")
   vim.keymap.set('n', '<Space>', '<Nop>')
-  -- Move around: ==================================================================
+  vim.keymap.set("n", "ycc", "yygccp", { remap = true })
+  vim.keymap.set("n", "J", "mzJ`z:delmarks z<CR>")
+  vim.keymap.set("x", "/", "<Esc>/\\%V")
+  vim.keymap.set("x", "R", ":s###g<left><left><left>")
+  -- Focus : =======================================================================
   vim.keymap.set("n", "<C-h>", "<C-w>h")
   vim.keymap.set("n", "<C-j>", "<C-w>j")
   vim.keymap.set("n", "<C-k>", "<C-w>k")
   vim.keymap.set("n", "<C-l>", "<C-w>l")
-  -- Theme: ========================================================================
-  vim.keymap.set("n", "<leader>ud", "<cmd>set background=dark<cr>")
-  vim.keymap.set("n", "<leader>ul", "<cmd>set background=light<cr>")
-  vim.keymap.set("n", "<leader>ur", "<cmd>colorscheme randomhue<cr>")
-  -- Move lines up and down in visual mode =========================================
+  -- Move: ========================================================================
   vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
   vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-  --  Magick: ======================================================================
-  vim.keymap.set("n", "ycc", "yygccp", { remap = true })
-  vim.keymap.set("n", "J", "mzJ`z:delmarks z<cr>")
-  vim.keymap.set("x", "/", "<Esc>/\\%V")
-  vim.keymap.set("x", "R", ":s###g<left><left><left>")
   -- Split: ========================================================================
-  vim.keymap.set('n', '<leader>v', ':split<CR>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<leader>s', ':vsplit<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<leader>v', ':split<CR>')
+  vim.keymap.set('n', '<leader>s', ':vsplit<CR>')
+  -- Theme: ========================================================================
+  vim.keymap.set("n", "<leader>ud", "<cmd>set background=dark<CR>")
+  vim.keymap.set("n", "<leader>ul", "<cmd>set background=light<CR>")
+  vim.keymap.set("n", "<leader>ur", "<cmd>colorscheme randomhue<CR>")
   -- Subtitle Keys: =================================================================
-  vim.keymap.set('n', 'S', function()
-    return ':%s/\\<' .. vim.fn.escape(vim.fn.expand('<cword>'), '/\\') .. '\\>/'
-  end, { expr = true })
+  vim.keymap.set('n', 'S',
+    function() return ':%s/\\<' .. vim.fn.escape(vim.fn.expand('<cword>'), '/\\') .. '\\>/' end, { expr = true })
   -- Bufferline Keys: ==============================================================
   vim.keymap.set("n", "<Tab>", ":bnext<CR>")
   vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
@@ -1022,8 +931,6 @@ later(function()
     vim.cmd("startinsert")
   end)
   -- Mini Pick =====================================================================
-  vim.keymap.set('n', '<leader>fd', zoxide_pick)
-  vim.keymap.set('n', '<leader>fn', directory_pick)
   vim.keymap.set("n", "<leader>fb", "<CMD>Pick buffers include_current=false<CR>")
   vim.keymap.set("n", "<leader>ff", "<CMD>Pick files<CR>")
   vim.keymap.set("n", "<leader>fr", "<CMD>Pick oldfiles<CR>")
@@ -1039,11 +946,11 @@ later(function()
   vim.keymap.set("n", "gD", "<Cmd>Pick lsp scope='definition'<CR>")
   vim.keymap.set("n", "gI", "<Cmd>Pick lsp scope='declaration'<CR>")
   -- Mini Git =====================================================================
-  vim.keymap.set("n", "<leader>ga", "<cmd>:Git add .<cr>")
-  vim.keymap.set("n", "<leader>gc", "<cmd>:Git commit<cr>")
+  vim.keymap.set("n", "<leader>ga", "<cmd>:Git add .<CR>")
+  vim.keymap.set("n", "<leader>gc", "<cmd>:Git commit<CR>")
   vim.keymap.set("n", "<leader>gC", "<Cmd>Git commit --amend<CR>")
-  vim.keymap.set("n", "<leader>gp", "<cmd>:Git push -u origin main<cr>")
-  vim.keymap.set("n", "<leader>gP", "<cmd>:Git pull<cr>")
+  vim.keymap.set("n", "<leader>gp", "<cmd>:Git push -u origin main<CR>")
+  vim.keymap.set("n", "<leader>gP", "<cmd>:Git pull<CR>")
   vim.keymap.set("n", "<leader>gd", "<Cmd>Git diff<CR>")
   vim.keymap.set("n", "<leader>gD", "<Cmd>Git diff -- %<CR>")
   vim.keymap.set("n", "<leader>gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>")
@@ -1051,15 +958,11 @@ later(function()
   vim.keymap.set("n", "<leader>gh", [[<Cmd>lua MiniDiff.toggle_overlay()<CR>]])
   vim.keymap.set("n", "<leader>gx", [[<Cmd>lua MiniGit.show_at_cursor()<CR>]])
   -- Mini Files: =================================================================
-  vim.keymap.set("n", "<leader>e", function()
-    local path = vim.bo.buftype ~= "nofile" and vim.api.nvim_buf_get_name(0) or nil
-    require("mini.files").open(path, true)
-  end)
+  vim.keymap.set("n", "<leader>e",
+    function() require("mini.files").open(vim.bo.buftype ~= "nofile" and vim.api.nvim_buf_get_name(0) or nil, true) end)
   vim.keymap.set("n", "<leader>E", function() require("mini.files").open(vim.uv.cwd(), true) end)
   -- Mini Misc: ==================================================================
   vim.keymap.set("n", "<leader>bm", function() require("mini.misc").zoom() end)
-  -- Mini Jump2d: ================================================================
-  vim.keymap.set({ "o", "x", "n" }, "s", "<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>")
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                          Neovide                        ║
