@@ -271,7 +271,7 @@ flowbox rubberband,
 .content-view rubberband,
 columnview.view > rubberband,
 treeview.view > rubberband {
-  border: 1px solid #007673;
+  border: 1px solid #8ccf7e;
   background-color: rgba(0, 118, 115, 0.2); }
 
 flowbox flowboxchild {
@@ -347,9 +347,9 @@ popover.background.magnifier > contents, .osd {
  ***********/
 @keyframes needs_attention {
   from {
-    background-image: radial-gradient(farthest-side, #00f6f0 0%, rgba(0, 246, 240, 0) 0%); }
+    background-image: radial-gradient(farthest-side, #8ccf7e 0%, rgba(0, 246, 240, 0) 0%); }
   to {
-    background-image: radial-gradient(farthest-side, #00f6f0 95%, rgba(0, 246, 240, 0)); } }
+    background-image: radial-gradient(farthest-side, #8ccf7e 95%, rgba(0, 246, 240, 0)); } }
 notebook > header > tabs > arrow,
 button {
   min-height: 22px;
@@ -392,9 +392,9 @@ button {
   notebook > header > tabs > arrow:active, notebook > header > tabs > arrow:checked,
   button:active,
   button:checked {
-    color: #fefefe;
+    color: #141b1e;
     outline-color: rgba(254, 254, 254, 0.3);
-    background: #00908c;
+    background: #8ccf7e;
     text-shadow: none;
     transition-duration: 50ms; }
   notebook > header > tabs > arrow:backdrop, notebook > header > tabs > arrow:backdrop,
