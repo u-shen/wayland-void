@@ -9,13 +9,13 @@ $env.VISUAL = $env.EDITOR
 $env.PAGER = "less"
 $env.TERMINAL = "alacritty"
 export-env { load-env {
-    XDG_CONFIG_DIR: ($env.USERPROFILE | path join ".config")
-    XDG_CACHE_HOME: ($env.USERPROFILE | path join ".cache")
-    XDG_DOCUMENTS_DIR: ($env.USERPROFILE | path join "Documents")
-    XDG_DOWNLOAD_DIR: ($env.USERPROFILE | path join "Downloads")
-    XDG_MUSIC_DIR: ($env.USERPROFILE | path join "Music")
-    XDG_PICTURES_DIR: ($env.USERPROFILE | path join "Pictures")
-    XDG_VIDEOS_DIR: ($env.USERPROFILE | path join "Videos")
+    XDG_CONFIG_DIR: ($env.HOME | path join ".config")
+    XDG_CACHE_HOME: ($env.HOME | path join ".cache")
+    XDG_DOCUMENTS_DIR: ($env.HOME | path join "Documents")
+    XDG_DOWNLOAD_DIR: ($env.HOME | path join "Downloads")
+    XDG_MUSIC_DIR: ($env.HOME | path join "Music")
+    XDG_PICTURES_DIR: ($env.HOME | path join "Pictures")
+    XDG_VIDEOS_DIR: ($env.HOME | path join "Videos")
 }}
 export-env { load-env {
     RIPGREP_CONFIG_PATH : ($env.XDG_CONFIG_DIR | path join "ripgrep" "rc")
