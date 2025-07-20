@@ -120,18 +120,30 @@ later(function()
     skip_ts = { "string" },
     modes = { insert = true, command = true, terminal = true },
     mappings = {
+      -- Prevents the action if the cursor is just before any character or next to a "\".
+      ["("] = { action = "open", pair = "()", neigh_pattern = "[^\\][%s%)%]%}]" },
+      ["["] = { action = "open", pair = "[]", neigh_pattern = "[^\\][%s%)%]%}]" },
+      ["{"] = { action = "open", pair = "{}", neigh_pattern = "[^\\][%s%)%]%}]" },
+      -- This is default (prevents the action if the cursor is just next to a "\").
       [")"] = { action = "close", pair = "()", neigh_pattern = "[^\\]." },
       ["]"] = { action = "close", pair = "[]", neigh_pattern = "[^\\]." },
       ["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
-      ["["] = { action = "open", pair = "[]", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
-      ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
-      ["("] = { action = "open", pair = "()", neigh_pattern = ".[%s%z%)}%]]", register = { cr = false } },
-      ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
-      ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
-      ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^%w\\][^%w]", register = { cr = false } },
+      -- Prevents the action if the cursor is just before or next to any character.
+      ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^%w][^%w]", register = { cr = false } },
+      ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%w][^%w]", register = { cr = false } },
+      ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^%w][^%w]", register = { cr = false } },
       ["<"] = { action = "closeopen", pair = "<>", neigh_pattern = "[^%S][^%S]", register = { cr = false } },
     },
   })
+  local cr_action = function()
+    if vim.fn.pumvisible() ~= 0 then
+      local item_selected = vim.fn.complete_info()['selected'] ~= -1
+      return item_selected and '\25' or '\25\r'
+    else
+      return require('mini.pairs').cr()
+    end
+  end
+  vim.keymap.set('i', '<CR>', cr_action, { expr = true })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Ai                             │
@@ -446,7 +458,7 @@ now_if_args(function()
     mappings = {
       go_in_plus  = "<Tab>",
       go_out_plus = "<C-h>",
-      synchronize = "s",
+      synchronize = "<C-s>",
       close       = "q",
       reset       = "gh",
       mark_goto   = "gb",
@@ -519,8 +531,8 @@ now_if_args(function()
     pattern = 'MiniFilesBufferCreate',
     callback = function(args)
       local buf_id = args.data.buf_id
-      map_split(buf_id, '<C-v>', 'belowright horizontal')
-      map_split(buf_id, '<C-s>', 'belowright vertical')
+      map_split(buf_id, 'v', 'belowright horizontal')
+      map_split(buf_id, 's', 'belowright vertical')
     end,
   })
 end)
@@ -645,6 +657,7 @@ now(function()
   -- General: ================================================================
   vim.opt.clipboard             = "unnamedplus"
   vim.opt.wildmenu              = true
+  vim.opt.wildmode              = "longest:full,full"
   vim.opt.wildoptions           = "fuzzy,pum"
   vim.opt.completeopt           = 'menuone,noselect,fuzzy'
   vim.opt.complete              = '.,w,b,kspell'
@@ -730,6 +743,9 @@ now(function()
   vim.opt.synmaxcol             = 200
   vim.opt.updatetime            = 200
   vim.opt.timeoutlen            = 300
+  vim.opt.ttimeoutlen           = 0
+  vim.opt.redrawtime            = 10000
+  vim.opt.maxmempattern         = 20000
   -- Disable health checks for these providers:. ===========================
   vim.g.loaded_python_provider  = 0
   vim.g.loaded_python3_provider = 0
@@ -837,6 +853,25 @@ later(function()
       vim.highlight.on_yank({ higroup = 'CurSearch', timeout = 200 })
     end,
   })
+  -- Create directories when saving files: ========================================
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("UserConfig", {}),
+    callback = function()
+      local dir = vim.fn.expand('<afile>:p:h')
+      if vim.fn.isdirectory(dir) == 0 then
+        vim.fn.mkdir(dir, 'p')
+      end
+    end,
+  })
+  -- Auto-close terminal when process exits: ========================================
+  vim.api.nvim_create_autocmd("TermClose", {
+    group = vim.api.nvim_create_augroup("UserConfig", {}),
+    callback = function()
+      if vim.v.event.status == 0 then
+        vim.api.nvim_buf_delete(0, {})
+      end
+    end,
+  })
   -- Eable FormatOnSave =============================================================
   vim.api.nvim_create_user_command("FormatEnable", function()
     vim.b.disable_autoformat = false
@@ -898,17 +933,31 @@ later(function()
   vim.keymap.set("n", "<C-c>", "cit")
   vim.keymap.set("n", "<leader>qq", ":qa<CR>")
   vim.keymap.set("n", "<leader>wq", ":close<CR>")
+  vim.keymap.set("n", "<leader>q", ":close<CR>")
   vim.keymap.set("n", "<ESC>", ":nohl<CR>")
   vim.keymap.set('n', '<Space>', '<Nop>')
   vim.keymap.set("n", "ycc", "yygccp", { remap = true })
   vim.keymap.set("n", "J", "mzJ`z:delmarks z<CR>")
   vim.keymap.set("x", "/", "<Esc>/\\%V")
   vim.keymap.set("x", "R", ":s###g<left><left><left>")
+  vim.keymap.set("n", "J", "mzJ`z")
+  vim.keymap.set("x", "gr", '"_dP')
+  vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>")
   -- Focus : =======================================================================
   vim.keymap.set("n", "<C-h>", "<C-w>h")
   vim.keymap.set("n", "<C-j>", "<C-w>j")
   vim.keymap.set("n", "<C-k>", "<C-w>k")
   vim.keymap.set("n", "<C-l>", "<C-w>l")
+  -- Center:  ======================================================================
+  vim.keymap.set("n", "n", "nzzzv")
+  vim.keymap.set("n", "N", "Nzzzv")
+  vim.keymap.set("n", "<C-d>", "<C-d>zz")
+  vim.keymap.set("n", "<C-u>", "<C-u>zz")
+  -- Resize:  ======================================================================
+  vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
+  vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
+  vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
+  vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
   -- Move: ========================================================================
   vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
   vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -922,10 +971,14 @@ later(function()
   -- Subtitle Keys: =================================================================
   vim.keymap.set('n', 'S',
     function() return ':%s/\\<' .. vim.fn.escape(vim.fn.expand('<cword>'), '/\\') .. '\\>/' end, { expr = true })
-  -- Bufferline Keys: ==============================================================
+  -- Buffers: =======================================================================
   vim.keymap.set("n", "<Tab>", ":bnext<CR>")
-  vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
+  vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>")
+  vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
+  vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
   vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+  vim.keymap.set("n", "<leader>bm", function() require("mini.misc").zoom() end)
+  vim.keymap.set("n", "<leader>m", function() require("mini.misc").zoom() end)
   vim.keymap.set('n', '<space>bb', function()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if vim.bo[buf].buflisted and buf ~= vim.api.nvim_get_current_buf() then
@@ -943,7 +996,7 @@ later(function()
     vim.api.nvim_win_set_height(0, 20)
     vim.cmd("startinsert")
   end)
-  -- Mini Pick =====================================================================
+  -- Picker ======================================================================
   vim.keymap.set("n", "<leader>fb", "<CMD>Pick buffers include_current=false<CR>")
   vim.keymap.set("n", "<leader>ff", "<CMD>Pick files<CR>")
   vim.keymap.set("n", "<leader>fr", "<CMD>Pick oldfiles<CR>")
@@ -958,7 +1011,7 @@ later(function()
   vim.keymap.set("n", "gR", "<Cmd>Pick lsp scope='references'<CR>")
   vim.keymap.set("n", "gD", "<Cmd>Pick lsp scope='definition'<CR>")
   vim.keymap.set("n", "gI", "<Cmd>Pick lsp scope='declaration'<CR>")
-  -- Mini Git =====================================================================
+  -- Git: =======================================================================
   vim.keymap.set("n", "<leader>ga", "<cmd>:Git add .<CR>")
   vim.keymap.set("n", "<leader>gc", "<cmd>:Git commit<CR>")
   vim.keymap.set("n", "<leader>gC", "<Cmd>Git commit --amend<CR>")
@@ -970,12 +1023,10 @@ later(function()
   vim.keymap.set("n", "<leader>gl", [[<Cmd>Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order<CR>]])
   vim.keymap.set("n", "<leader>gh", [[<Cmd>lua MiniDiff.toggle_overlay()<CR>]])
   vim.keymap.set("n", "<leader>gx", [[<Cmd>lua MiniGit.show_at_cursor()<CR>]])
-  -- Mini Files: =================================================================
+  -- Explorer: ==================================================================
   vim.keymap.set("n", "<leader>e",
     function() require("mini.files").open(vim.bo.buftype ~= "nofile" and vim.api.nvim_buf_get_name(0) or nil, true) end)
   vim.keymap.set("n", "<leader>E", function() require("mini.files").open(vim.uv.cwd(), true) end)
-  -- Mini Misc: ==================================================================
-  vim.keymap.set("n", "<leader>bm", function() require("mini.misc").zoom() end)
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                          Neovide                        ║

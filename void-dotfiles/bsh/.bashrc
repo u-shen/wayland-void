@@ -27,11 +27,7 @@ export PAGER="less"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
-export KOMOREBI_CONFIG_HOME="$HOME/.config/komorebi"
 export BUN_INSTALL_CACHE_DIR="$HOME/.cache/bun/install/cache"
-export NI_CONFIG_FILE="$HOME/.config/ni/nirc"
-export NI_DEFAULT_AGENT="npm"
-export NI_GLOBAL_AGENT="npm"
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 
 # =============================================================================== #
@@ -102,7 +98,6 @@ eval "$(starship init bash)"
 # ZOXIDE:                                                                         #
 # =============================================================================== #
 eval "$(zoxide init bash)"
-
 
 # =============================================================================== #
 # ALIASES:                                                                        #
