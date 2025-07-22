@@ -16,13 +16,15 @@
   all: unset;
 }
 window {
-  background-image: url("/home/lli/Pictures/pix/wallpapers/VOID-WITHOUT-TEXT.png");
+  background-image:
+    linear-gradient(rgba(20, 27, 30, 0.8), rgba(20, 27, 30, 0.8)),
+    url("/home/lli/Pictures/pix/wallpapers/VOID-WITHOUT-TEXT.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #window-box {
-  background-color: alpha(@bg, 0.9);
+  background-color: alpha(@bg, 1);
   border: 1px solid @color3;
   padding: 0 8em;
   margin-right: 30em;
