@@ -27,14 +27,6 @@ require("mini.deps").setup({ path = { package = path_package } })
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and now or later
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.Icons                          │
---          ╰─────────────────────────────────────────────────────────╯
-now_if_args(function()
-  require("mini.icons").setup()
-  later(MiniIcons.mock_nvim_web_devicons)
-  later(MiniIcons.tweak_lsp_kind)
-end)
---          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Misc                           │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
@@ -72,10 +64,25 @@ later(function()
   require("mini.diff").setup({ view = { style = 'sign' } })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
+--          │                     Mini.keymaps                        │
+--          ╰─────────────────────────────────────────────────────────╯
+later(function()
+  local map_multistep = require('mini.keymap').map_multistep
+  map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+  map_multistep('i', '<BS>', { 'minipairs_bs' })
+  map_multistep('i', '<C-j>', { 'pmenu_next' })
+  map_multistep('i', '<C-k>', { 'pmenu_prev' })
+end)
+--          ╭─────────────────────────────────────────────────────────╮
 --          │                     Mini.Notify                         │
 --          ╰─────────────────────────────────────────────────────────╯
 later(function()
-  require('mini.notify').setup()
+  local win_config = function()
+    local has_statusline = vim.o.laststatus > 0
+    local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
+    return { anchor = 'SE', col = vim.o.columns, row = vim.o.lines - pad }
+  end
+  require('mini.notify').setup({ window = { config = win_config } })
   vim.notify = require('mini.notify').make_notify()
 end)
 --          ╭─────────────────────────────────────────────────────────╮
@@ -107,7 +114,16 @@ later(function()
       hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
       todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
       note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-      hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+      hex_color = require("mini.hipatterns").gen_highlighter.hex_color({ priority = 200 }),
+      hex_shorthand = {
+        pattern = '()#%x%x%x()%f[^%x%w]',
+        group = function(_, _, data)
+          local match = data.full_match
+          local r, g, b = match:sub(2, 2), match:sub(3, 3), match:sub(4, 4)
+          local hex_color = '#' .. r .. r .. g .. g .. b .. b
+          return require('mini.hipatterns').compute_hex_color_group(hex_color, 'bg')
+        end,
+      },
     },
   })
 end)
@@ -118,6 +134,8 @@ later(function()
   require("mini.pairs").setup({
     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
     skip_ts = { "string" },
+    skip_unbalanced = true,
+    markdown = true,
     modes = { insert = true, command = true, terminal = true },
     mappings = {
       -- Prevents the action if the cursor is just before any character or next to a "\".
@@ -366,7 +384,7 @@ now(function()
   end
   -- enable Mini.Completion: ==============================================================
   require("mini.completion").setup({
-    delay = { completion = 100, info = 100, signature = 50 },
+    delay = { completion = 50, info = 40, signature = 30, },
     window = {
       info = { border = "single" },
       signature = { border = "single" },
@@ -383,7 +401,6 @@ now(function()
         return require('mini.completion').default_process_items(items, base, {
           filtersort = 'fuzzy',
           kind_priority = {
-            Text = -1,
             Snippet = 99,
           },
         })
@@ -537,14 +554,45 @@ now_if_args(function()
   })
 end)
 --          ╭─────────────────────────────────────────────────────────╮
---          │                     Mini.keymaps                        │
+--          │                     Mini.Icons                          │
 --          ╰─────────────────────────────────────────────────────────╯
-later(function()
-  local map_multistep = require('mini.keymap').map_multistep
-  map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
-  map_multistep('i', '<BS>', { 'minipairs_bs' })
-  map_multistep('i', '<C-j>', { 'pmenu_next' })
-  map_multistep('i', '<C-k>', { 'pmenu_prev' })
+now_if_args(function()
+  require("mini.icons").setup({
+    file = {
+      ['.eslintrc.js'] = { glyph = '󰱺', hl = 'MiniIconsYellow' },
+      ['.node-version'] = { glyph = '', hl = 'MiniIconsGreen' },
+      ['.prettierrc'] = { glyph = '', hl = 'MiniIconsPurple' },
+      ['.yarnrc.yml'] = { glyph = '', hl = 'MiniIconsBlue' },
+      ['eslint.config.js'] = { glyph = '󰱺', hl = 'MiniIconsYellow' },
+      ['package.json'] = { glyph = '', hl = 'MiniIconsGreen' },
+      ['tsconfig.json'] = { glyph = '', hl = 'MiniIconsAzure' },
+      ['tsconfig.build.json'] = { glyph = '', hl = 'MiniIconsAzure' },
+      ['yarn.lock'] = { glyph = '', hl = 'MiniIconsBlue' },
+      ['vite.config.ts'] = { glyph = '', hl = 'MiniIconsYellow' },
+      ['pnpm-lock.yaml'] = { glyph = '', hl = 'MiniIconsYellow' },
+      ['pnpm-workspace.yaml'] = { glyph = '', hl = 'MiniIconsYellow' },
+      ['.dockerignore'] = { glyph = '󰡨', hl = 'MiniIconsBlue' },
+      ['react-router.config.ts'] = { glyph = '', hl = 'MiniIconsRed' },
+      ['bun.lockb'] = { glyph = '', hl = 'MiniIconsGrey' },
+      ['bun.lock'] = { glyph = '', hl = 'MiniIconsGrey' },
+    },
+    directory = {
+      ['.vscode'] = { glyph = '', hl = 'MiniIconsBlue' },
+      ['app'] = { glyph = '󰀻', hl = 'MiniIconsRed' },
+      ['routes'] = { glyph = '󰑪', hl = 'MiniIconsGreen' },
+      ['config'] = { glyph = '', hl = 'MiniIconsGrey' },
+      ['configs'] = { glyph = '', hl = 'MiniIconsGrey' },
+      ['server'] = { glyph = '󰒋', hl = 'MiniIconsCyan' },
+      ['api'] = { glyph = '󰒋', hl = 'MiniIconsCyan' },
+      ['web'] = { glyph = '󰖟', hl = 'MiniIconsBlue' },
+      ['client'] = { glyph = '󰖟', hl = 'MiniIconsBlue' },
+      ['database'] = { glyph = '󰆼', hl = 'MiniIconsOrange' },
+      ['db'] = { glyph = '󰆼', hl = 'MiniIconsOrange' },
+      ['cspell'] = { glyph = '󰓆', hl = 'MiniIconsPurple' },
+    },
+  })
+  later(MiniIcons.mock_nvim_web_devicons)
+  later(MiniIcons.tweak_lsp_kind)
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                      Treesitter                         ║
@@ -624,6 +672,13 @@ now_if_args(function()
       return { timeout_ms = 1000, lsp_format = "fallback" }
     end,
   })
+  vim.keymap.set({ "n", "v" }, "<leader>l", function()
+    require("conform").format({
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 1000,
+    })
+  end)
 end)
 --          ╔═════════════════════════════════════════════════════════╗
 --          ║                          NVIM                           ║
@@ -657,9 +712,10 @@ now(function()
   -- General: ================================================================
   vim.opt.clipboard             = "unnamedplus"
   vim.opt.wildmenu              = true
+  vim.opt.wildignorecase        = true
   vim.opt.wildmode              = "longest:full,full"
   vim.opt.wildoptions           = "fuzzy,pum"
-  vim.opt.completeopt           = 'menuone,noselect,fuzzy'
+  vim.opt.completeopt           = 'menuone,noselect,popup,fuzzy'
   vim.opt.complete              = '.,w,b,kspell'
   vim.opt.switchbuf             = "usetab"
   vim.opt.splitkeep             = 'screen'
@@ -682,7 +738,6 @@ now(function()
   vim.opt.splitright            = true
   vim.opt.splitbelow            = true
   vim.opt.confirm               = true
-  vim.opt.showmatch             = true
   vim.opt.breakindent           = true
   vim.opt.copyindent            = true
   vim.opt.laststatus            = 0
@@ -691,18 +746,23 @@ now(function()
   vim.opt.pumwidth              = 20
   vim.opt.pumblend              = 8
   vim.opt.pumheight             = 8
+  vim.opt.showmatch             = false
   vim.opt.wrap                  = false
   vim.opt.list                  = false
   vim.opt.modeline              = false
   vim.opt.showmode              = false
   vim.opt.ruler                 = false
+  vim.opt.cedit                 = '^F'
+  vim.opt.showbreak             = "↪"
   vim.opt.winborder             = "double"
   vim.opt.colorcolumn           = '+1'
+  vim.opt.backspace             = "indent,eol,start"
   vim.opt.cursorlineopt         = "screenline,number"
   vim.opt.shortmess             = "FOSWaco"
   vim.wo.signcolumn             = "yes"
   vim.opt.statuscolumn          = ""
   vim.opt.mousescroll           = "ver:3,hor:0"
+  vim.opt.guifont               = "JetBrainsMono NF:h9"
   vim.opt.guicursor             =
   "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait100-blinkoff700-blinkon700-Cursor/lCursor,sm:block-blinkwait0-blinkoff300-blinkon300"
   vim.opt.fillchars             = table.concat(
@@ -723,6 +783,7 @@ now(function()
   vim.opt.gdefault              = true
   vim.opt.tabstop               = 2
   vim.opt.softtabstop           = 2
+  vim.o.whichwrap               = vim.o.whichwrap .. "<>[]hl"
   vim.opt.breakindentopt        = "list:-1"
   vim.opt.iskeyword             = '@,48-57,_,192-255,-'
   vim.opt.formatlistpat         = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
@@ -737,9 +798,9 @@ now(function()
   vim.g.markdoptwn_folding      = 1
   vim.opt.foldtext              = ''
   -- Memory: ================================================================
+  vim.opt.lazyredraw            = true
   vim.opt.hidden                = true
   vim.opt.history               = 100
-  vim.opt.lazyredraw            = true
   vim.opt.synmaxcol             = 200
   vim.opt.updatetime            = 200
   vim.opt.timeoutlen            = 300
@@ -931,18 +992,24 @@ later(function()
   vim.keymap.set("n", "<C-s>", ":silent up<CR>")
   vim.keymap.set("i", "<C-s>", "<ESC> :up<CR>")
   vim.keymap.set("n", "<C-c>", "cit")
+  vim.keymap.set("n", "<ESC>", ":nohl<CR>")
+  vim.keymap.set('n', '<Space>', '<Nop>')
   vim.keymap.set("n", "<leader>qq", ":qa<CR>")
   vim.keymap.set("n", "<leader>wq", ":close<CR>")
   vim.keymap.set("n", "<leader>q", ":close<CR>")
-  vim.keymap.set("n", "<ESC>", ":nohl<CR>")
-  vim.keymap.set('n', '<Space>', '<Nop>')
   vim.keymap.set("n", "ycc", "yygccp", { remap = true })
   vim.keymap.set("n", "J", "mzJ`z:delmarks z<CR>")
   vim.keymap.set("x", "/", "<Esc>/\\%V")
   vim.keymap.set("x", "R", ":s###g<left><left><left>")
-  vim.keymap.set("n", "J", "mzJ`z")
+  vim.keymap.set("v", "y", "y`]")
+  vim.keymap.set("v", "p", "p`]")
+  vim.keymap.set("n", "p", "p`]")
+  vim.keymap.set("v", "p", '"_dP')
   vim.keymap.set("x", "gr", '"_dP')
-  vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>")
+  vim.keymap.set("v", "<", "<gv")
+  vim.keymap.set("v", ">", ">gv")
+  vim.keymap.set("c", "%%", "<C-R>=expand('%:h').'/'<cr>")
+  vim.keymap.set("n", "<leader>nc", ":e ~/.config/nvim/init.lua<CR>")
   -- Focus : =======================================================================
   vim.keymap.set("n", "<C-h>", "<C-w>h")
   vim.keymap.set("n", "<C-j>", "<C-w>j")
@@ -968,7 +1035,9 @@ later(function()
   vim.keymap.set("n", "<leader>ud", "<cmd>set background=dark<CR>")
   vim.keymap.set("n", "<leader>ul", "<cmd>set background=light<CR>")
   vim.keymap.set("n", "<leader>ur", "<cmd>colorscheme randomhue<CR>")
+  -- Go to end of visual selection: =================================================
   -- Subtitle Keys: =================================================================
+  vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
   vim.keymap.set('n', 'S',
     function() return ':%s/\\<' .. vim.fn.escape(vim.fn.expand('<cword>'), '/\\') .. '\\>/' end, { expr = true })
   -- Buffers: =======================================================================
