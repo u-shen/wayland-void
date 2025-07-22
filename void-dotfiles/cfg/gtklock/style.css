@@ -16,29 +16,27 @@
   all: unset;
 }
 window {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/home/lli/Pictures/pix/wallpapers/VOID-WITHOUT-TEXT.png");
+  background-image: url("/home/lli/Pictures/pix/wallpapers/VOID-WITHOUT-TEXT.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #window-box {
-  background-color: alpha(@bg, 0.7);
+  background-color: alpha(@bg, 0.9);
   border: 1px solid @color3;
-  padding: 0 4em;
+  padding: 0 8em;
+  margin-right: 30em;
 }
 #clock-label {
   min-width: 320px;
   background-color: alpha(@color2, 0.1);
   color: @color2;
-  font-weight: 500;
+  font-weight: 900;
   font-size: 9pt;
   padding: 10px 30px;
-  margin-bottom: 10px;
+  margin-bottom: 60px;
   border-radius: 0 0 10px 10px;
   border: 1px solid alpha(@color2, 0.5);
-  border-top: 0;
 }
 #input-label {
   font-size: 0;
@@ -48,6 +46,7 @@ window {
 }
 #input-field {
   padding: 10px 15px;
+  border-radius: 4px;
   border: 1px solid @color2;
   caret-color: @color2;
   color: @color2;
@@ -63,9 +62,8 @@ window {
   color: @color1;
 }
 #unlock-button {
-  border-radius: 20px;
+  border-radius: 4px;
   background-color: alpha(@color2, 0.1);
   color: @color2;
-  border-radius: 25px;
   border: 1px solid alpha(@color2, 0.5);
 }
